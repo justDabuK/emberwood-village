@@ -10,6 +10,10 @@ const allShops = await Astro.glob('../pages/shops/*.md')
 
 <BaseLayout title="Emberwood Village">
     <!-- TODO: add the map of emberwood, make a grid on top of it and put the links into the quadrants where their respective house is-->
+    <!-- todo: add view page transitions, if possible ->
+        - https://docs.astro.build/en/guides/view-transitions/
+        - https://docs.astro.build/en/tutorials/add-view-transitions/
+    -->
     <h2>Shops</h2>
     <ul>
         {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} />)}
