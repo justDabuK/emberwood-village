@@ -6,6 +6,7 @@ const allShops = await Astro.glob('../pages/shops/*.md')
 ---
 
 <BaseLayout title="Emberwood Village">
+    <!-- TODO: add the map of emberwood, make a grid on top of it and put the links into the quadrants where their respective house is-->
     <p>This is the list of shops</p>
     <ul>
         {allShops.map((shop) => <ShopLink url={shop.url} title={shop.frontmatter.title} />)}
