@@ -1,20 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ShopLink from "../components/ShopLink.astro";
+import MarkdownLink from "../components/MarkdownLink.astro";
 
-const allShops = await Astro.glob('../pages/shops/*.md')
 const allEstablishments = await Astro.glob('../pages/establishments/*.md')
+const allMisc = await Astro.glob('../pages/misc/*.md')
+const allShops = await Astro.glob('../pages/shops/*.md')
+
 ---
 
 <BaseLayout title="Emberwood Village">
     <!-- TODO: add the map of emberwood, make a grid on top of it and put the links into the quadrants where their respective house is-->
     <h2>Shops</h2>
     <ul>
-        {allShops.map((shop) => <ShopLink url={shop.url} title={shop.frontmatter.title} />)}
+        {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} />)}
     </ul>
 
     <h2>Hotels, Bars und Restaurants</h2>
     <ul>
-        {allEstablishments.map((establishment) => <ShopLink url={establishment.url} title={establishment.frontmatter.title} />)}
+        {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} />)}
+    </ul>
+
+    <h2>Anderweitig interessante Orte</h2>
+    <ul>
+        {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} />)}
     </ul>
 </BaseLayout>
