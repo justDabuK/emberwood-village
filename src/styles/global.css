@@ -1,7 +1,6 @@
 
 html {
-    --background: oklch(17.64% 0.032 304.82);
-    background-color: var(--background);
+    background-color: oklch(17.64% 0.032 304.82);
     font-family: sans-serif;
     color: oklch(93.52% 0.0379 304.82);
 }
