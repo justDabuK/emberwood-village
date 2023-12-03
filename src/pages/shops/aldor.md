@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/ShopLayout.astro
 title: 'Aldor the Immense'
+description: 'Hier kann man Magic Items Spell Services der Wizard Spell list kaufen'
 ---
 
 ## Waren

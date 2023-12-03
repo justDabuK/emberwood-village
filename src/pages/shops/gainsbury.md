@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ShopLayout.astro
 title: 'Gainsbury Expeditionary Supply Company'
+description: 'Hier gibt es Ausrüstung jeglicher Art für die Expedition in die Ruinen.'
 ---
-Hier gibt es Ausrüstung jeglicher Art für die Expedition in die Ruinen.
 
 | Item                                                                                               | Cost   |
 |----------------------------------------------------------------------------------------------------|--------|

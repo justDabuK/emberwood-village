@@ -1,9 +1,8 @@
 ---
 layout: ../../layouts/ShopLayout.astro
 title: 'Fairweather Trades and Exports'
+description: 'Hier kann man Delirium verkaufen'
 ---
-
-Hier kann Delirium verkauft werden. Den Kaufpreis abhängig von der Größe seht ihr in der List
 
 ### Delirium-preise
 | Size            | Market Value |
