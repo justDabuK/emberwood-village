@@ -14,6 +14,12 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         - https://docs.astro.build/en/guides/view-transitions/
         - https://docs.astro.build/en/tutorials/add-view-transitions/
     -->
+    <!-- TODO: add spells
+        - levels and magic schools behave like tags in the tutorial
+        - name, level, school and "at higher levels" gehen ins frontmatter
+        - unlocked attribute auch
+        - wenn noch nicht unlocked dann wird rausgefiltern und wenn trotzdem access dann "Nice try site"
+    -->
     <h2>Shops</h2>
     <ul>
         {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} />)}
