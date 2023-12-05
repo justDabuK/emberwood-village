@@ -13,5 +13,5 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout title={frontmatter.title}>
     <p>{frontmatter.description}</p>
-    <slot />
+    {frontmatter.disabled ? <span>Nice try. Come back once this is unlocked</span> : <slot />}
 </BaseLayout>

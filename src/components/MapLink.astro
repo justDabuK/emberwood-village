@@ -1,20 +1,33 @@
 ---
-const { url, title, columnStart, columnEnd, rowStart, rowEnd } = Astro.props;
+const { url, title, columnStart, columnEnd, rowStart, rowEnd, disabled } = Astro.props;
 ---
-<a class="mapLink" href={url} >{title}</a>
+
+{disabled ? <div class="disabledDiv" >{title}</div> : <a class="mapLink" href={url}>{title}</a>}
 
 <style define:vars={{columnStart, columnEnd, rowStart, rowEnd}}>
     .mapLink {
         grid-column: var(--columnStart) / var(--columnEnd);
         grid-row: var(--rowStart) / var(--rowEnd);
-        background-color: oklch(76.99% 0.08 226.91 / 0.3);
-        color: oklch(17.64% 0.032 304.82);
+        background-color: oklch(76.99% 0.08 226.91 / 0.5);
+        color: oklch(44.81% 0.0859 226.91);
         display: grid;
         place-items: center;
         font-size: 0.5rem;
         border-radius: 5px;
     }
+
     .mapLink:hover {
-        background-color: oklch(76.99% 0.08 226.91 / 0.5);
+        background-color: oklch(76.99% 0.08 226.91 / 0.8);
+    }
+
+    .disabledDiv {
+        grid-column: var(--columnStart) / var(--columnEnd);
+        grid-row: var(--rowStart) / var(--rowEnd);
+        background-color: oklch(61.72% 0.0307 226.91 / 30%);
+        color: oklch(85% 0.0379 304.82);
+        display: grid;
+        place-items: center;
+        font-size: 0.5rem;
+        border-radius: 5px;
     }
 </style>
