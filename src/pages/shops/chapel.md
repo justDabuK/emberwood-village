@@ -2,10 +2,10 @@
 layout: ../../layouts/ShopLayout.astro
 title: 'Chapel of Saint Ardenna'
 description: 'Hier kann man Spell scrolls und services der Cleric Spell list kaufen.'
-columnStart: 21
-columnEnd: 24
-rowStart: 14
-rowEnd: 17
+columnStart: 20
+columnEnd: 25
+rowStart: 13
+rowEnd: 18
 ---
 ## Waren
 ### Magic Items
