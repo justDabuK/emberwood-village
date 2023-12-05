@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MarkdownLink from "../components/MarkdownLink.astro";
+import MapLink from "../components/MapLink.astro";
 
 const allEstablishments = await Astro.glob('../pages/establishments/*.md')
 const allMisc = await Astro.glob('../pages/misc/*.md')
@@ -9,7 +10,6 @@ const allShops = await Astro.glob('../pages/shops/*.md')
 ---
 
 <BaseLayout title="Emberwood Village">
-    <!-- TODO: add the map of emberwood, make a grid on top of it and put the links into the quadrants where their respective house is-->
     <!-- todo: add view page transitions, if possible ->
         - https://docs.astro.build/en/guides/view-transitions/
         - https://docs.astro.build/en/tutorials/add-view-transitions/
@@ -20,6 +20,13 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         - unlocked attribute auch
         - wenn noch nicht unlocked dann wird rausgefiltern und wenn trotzdem access dann "Nice try site"
     -->
+    <div class="map-container">
+        <img class="image" src="/images/02_EMBERWOOD_VILLAGE_NOGRID.jpg" alt="Map of Emberwood" />
+        {[...allEstablishments, ...allShops, ...allMisc]
+            .filter((establishment) => establishment.frontmatter.columnStart && establishment.frontmatter.columnEnd && establishment.frontmatter.rowStart && establishment.frontmatter.rowEnd)
+            .map((establishment) => <MapLink url={establishment.url} title={establishment.frontmatter.title} columnStart={establishment.frontmatter.columnStart} columnEnd={establishment.frontmatter.columnEnd} rowStart={establishment.frontmatter.rowStart} rowEnd={establishment.frontmatter.rowEnd} />)}
+
+    </div>
     <h2>Shops</h2>
     <ul>
         {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} />)}
@@ -35,3 +42,17 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} />)}
     </ul>
 </BaseLayout>
+
+<style>
+    .map-container {
+        display: grid;
+        grid-template-columns: repeat(48, 1fr);
+        grid-template-rows: repeat(36, 1fr);
+    }
+    .image{
+        width: 100%;
+        height: auto;
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+    }
+</style>

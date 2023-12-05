@@ -2,6 +2,10 @@
 layout: ../../layouts/ShopLayout.astro
 title: 'Bark and Buzzard'
 description: 'Quasi Hotel, bekannt für das Ember Ale'
+columnStart: 40
+columnEnd: 44
+rowStart: 29
+rowEnd: 33
 ---
 
 ## Angebot

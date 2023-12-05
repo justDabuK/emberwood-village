@@ -2,6 +2,10 @@
 layout: ../../layouts/ShopLayout.astro
 title: 'Lumennox Manor'
 description: 'Lokales Geisterhaus'
+columnStart: 13
+columnEnd: 18
+rowStart: 30
+rowEnd: 36
 ---
 ## Gerüchte
 Lokales Geisterhaus

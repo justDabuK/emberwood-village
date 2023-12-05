@@ -1,11 +1,11 @@
 ---
 layout: ../../layouts/ShopLayout.astro
-title: 'Shrine of the Old Gods'
-description: 'Hier kann man Spell scrolls und services der Druid Spell list kaufen, sowie Healing Potions'
-columnStart: -5
-columnEnd: -1
-rowStart: 1
-rowEnd: 3
+title: 'Followers of the Leaking Needle'
+description: 'Hier kann man magische Tattoos erwerben'
+columnStart: 3
+columnEnd: 8
+rowStart: 23
+rowEnd: 29
 ---
 ## Preisliste
 ### Healing potions

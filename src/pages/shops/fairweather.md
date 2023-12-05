@@ -2,6 +2,10 @@
 layout: ../../layouts/ShopLayout.astro
 title: 'Fairweather Trades and Exports'
 description: 'Hier kann man Delirium verkaufen'
+columnStart: 26
+columnEnd: 30
+rowStart: 22
+rowEnd: 25
 ---
 
 ### Delirium-preise
