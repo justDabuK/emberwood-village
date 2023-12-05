@@ -1,4 +1,11 @@
 ---
-const {url, title} = Astro.props;
+const {url, title, disabled} = Astro.props;
 ---
-<li><a href={url}>{title}</a></li>
+<li>{disabled ? <span>{title}</span> : <a href={url}>{title}</a>}</li>
+
+<style>
+    span {
+        color: oklch(60% 0.0379 304.82);
+        cursor: default;
+    }
+</style>

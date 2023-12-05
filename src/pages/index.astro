@@ -17,8 +17,6 @@ const allShops = await Astro.glob('../pages/shops/*.md')
     <!-- TODO: add spells
         - levels and magic schools behave like tags in the tutorial
         - name, level, school and "at higher levels" gehen ins frontmatter
-        - unlocked attribute auch
-        - wenn noch nicht unlocked dann wird rausgefiltern und wenn trotzdem access dann "Nice try site"
     -->
     <div class="map-container">
         <img class="image" src="/images/02_EMBERWOOD_VILLAGE_NOGRID.jpg" alt="Map of Emberwood" />
@@ -29,17 +27,17 @@ const allShops = await Astro.glob('../pages/shops/*.md')
     </div>
     <h2>Shops</h2>
     <ul>
-        {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} />)}
+        {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
     </ul>
 
     <h2>Hotels, Bars und Restaurants</h2>
     <ul>
-        {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} />)}
+        {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled}/>)}
     </ul>
 
     <h2>Anderweitig interessante Orte</h2>
     <ul>
-        {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} />)}
+        {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} />)}
     </ul>
 </BaseLayout>
 
