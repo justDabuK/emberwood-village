@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MarkdownLink from "../../components/MarkdownLink.astro";
+
+const allSpells = await Astro.glob("/src/pages/spells/*.md");
+---
+<BaseLayout title="Spells">
+    <ul>
+        {allSpells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} />)}
+    </ul>
+</BaseLayout>

@@ -4,6 +4,8 @@ const { url, title, columnStart, columnEnd, rowStart, rowEnd, disabled } = Astro
 
 {disabled ? <div class="disabledDiv" >{title}</div> : <a class="mapLink" href={url}>{title}</a>}
 
+<!-- TODO: add icons to all shops -->
+
 <style define:vars={{columnStart, columnEnd, rowStart, rowEnd}}>
     .mapLink {
         grid-column: var(--columnStart) / var(--columnEnd);
