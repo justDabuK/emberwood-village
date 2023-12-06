@@ -6,6 +6,8 @@ columnStart: 32
 columnEnd: 37
 rowStart: 19
 rowEnd: 23
+icon: 'queensMen'
+iconSize: '3.5rem'
 ---
 ## Waren
 | Item                    | Kosten |

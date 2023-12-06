@@ -5,7 +5,9 @@ description: 'Hier kann man Magic Items Spell Services der Wizard Spell list kau
 columnStart: 25
 columnEnd: 29
 rowStart: 17
-rowEnd: 20
+rowEnd: 21
+icon: 'aldor'
+iconSize: '3rem'
 ---
 
 ## Waren

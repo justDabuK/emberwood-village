@@ -1,12 +1,29 @@
 ---
-const { url, title, columnStart, columnEnd, rowStart, rowEnd, disabled } = Astro.props;
+type Props = {
+    url: string;
+    frontmatter: {
+        title: string;
+        columnStart: number;
+        columnEnd: number;
+        rowStart: number;
+        rowEnd: number;
+        disabled?: boolean;
+        icon?: string;
+        iconSize?: string;
+    }
+}
+const { url, frontmatter } = Astro.props;
+const { title, columnStart, columnEnd, rowStart, rowEnd, disabled, icon } = frontmatter;
+const iconSize = frontmatter.iconSize || "2rem";
 ---
 
-{disabled ? <div class="disabledDiv" >{title}</div> : <a class="mapLink" href={url}>{title}</a>}
+{disabled ?
+<div class="disabledDiv" >{title}</div> :
+<a class="mapLink" href={url}>{icon ? <img src={`/icons/${icon}.png`} alt={icon} /> :title}</a>}
 
 <!-- TODO: add icons to all shops -->
 
-<style define:vars={{columnStart, columnEnd, rowStart, rowEnd}}>
+<style define:vars={{columnStart, columnEnd, rowStart, rowEnd, iconSize}}>
     .mapLink {
         grid-column: var(--columnStart) / var(--columnEnd);
         grid-row: var(--rowStart) / var(--rowEnd);
@@ -31,5 +48,9 @@ const { url, title, columnStart, columnEnd, rowStart, rowEnd, disabled } = Astro
         place-items: center;
         font-size: 0.5rem;
         border-radius: 5px;
+    }
+
+    img {
+        height: var(--iconSize);
     }
 </style>

@@ -22,7 +22,7 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         <img class="image" src="/images/02_EMBERWOOD_VILLAGE_NOGRID.jpg" alt="Map of Emberwood" />
         {[...allEstablishments, ...allShops, ...allMisc]
             .filter((establishment) => establishment.frontmatter.columnStart && establishment.frontmatter.columnEnd && establishment.frontmatter.rowStart && establishment.frontmatter.rowEnd)
-            .map((establishment) => <MapLink url={establishment.url} title={establishment.frontmatter.title} columnStart={establishment.frontmatter.columnStart} columnEnd={establishment.frontmatter.columnEnd} rowStart={establishment.frontmatter.rowStart} rowEnd={establishment.frontmatter.rowEnd} disabled={establishment.frontmatter.disabled} />)}
+            .map((establishment) => <MapLink url={establishment.url} frontmatter={establishment.frontmatter} />)}
 
     </div>
     <h2>Shops</h2>
