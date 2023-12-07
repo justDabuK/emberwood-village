@@ -82,3 +82,42 @@ a {
         display: none;
     }
 }
+
+/* spacing */
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid oklch(93.52% 0.0379 304.82);
+}
+
+
+th,
+td {
+    padding: 8px;
+}
+
+th {
+    letter-spacing: 2px;
+}
+
+td {
+    letter-spacing: 1px;
+}
+
+thead th:nth-last-child(1) {
+    text-align: right;
+}
+
+tbody td:nth-last-child(1) {
+    text-align: right;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: oklch(30% 0.032 304.82);
+}
+
+tbody tr:nth-child(even) {
+    background-color: oklch(17.64% 0.032 304.82);
+}
