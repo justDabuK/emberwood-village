@@ -14,10 +14,6 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         - https://docs.astro.build/en/guides/view-transitions/
         - https://docs.astro.build/en/tutorials/add-view-transitions/
     -->
-    <!-- TODO: add spells
-        - levels and magic schools behave like tags in the tutorial
-        - name, level, school and "at higher levels" gehen ins frontmatter
-    -->
     <div class="map-container">
         <img class="image" src="/images/02_EMBERWOOD_VILLAGE_NOGRID.jpg" alt="Map of Emberwood" />
         {[...allEstablishments, ...allShops, ...allMisc]
