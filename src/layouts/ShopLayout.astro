@@ -6,13 +6,14 @@ type Props = {
         title: string;
         description: string;
         disabled: booelan;
+        icon?: string;
     };
 };
 
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={frontmatter.title} icon={frontmatter.icon}>
     <p>{frontmatter.description}</p>
     {frontmatter.disabled ? <span>Nice try. Come back once this is unlocked</span> : <slot />}
 </BaseLayout>
