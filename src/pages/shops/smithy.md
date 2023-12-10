@@ -6,6 +6,8 @@ columnStart: 12
 columnEnd: 17
 rowStart: 22
 rowEnd: 26
+icon: 'blacksmith'
+iconSize: '3.5rem'
 ---
 
 ## Waren
