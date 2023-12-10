@@ -6,6 +6,8 @@ columnStart: 26
 columnEnd: 32
 rowStart: 25
 rowEnd: 29
+icon: 'lily'
+iconSize: '3.5rem'
 ---
 ## Waren
 | Item                         | Description | Kosten |

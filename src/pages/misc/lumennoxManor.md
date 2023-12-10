@@ -6,6 +6,8 @@ columnStart: 13
 columnEnd: 18
 rowStart: 30
 rowEnd: 36
+icon: 'eclipse'
+iconSize: '3rem'
 ---
 ## Gerüchte
 Lokales Geisterhaus
