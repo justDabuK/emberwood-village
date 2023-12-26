@@ -24,8 +24,6 @@ const iconSize = frontmatter.iconSize || "2rem";
 <div class="disabledDiv" >{title}</div> :
 <a class="mapLink" href={url}>{icon ? <img style={`view-transition-name: ${icon}`} src={`/icons/${icon}.png`} alt={icon} /> :title}</a>}
 
-<!-- TODO: add icons to all shops -->
-
 <style define:vars={{columnStart, columnEnd, rowStart, rowEnd, iconSize}}>
     .mapLink {
         grid-column: var(--columnStart) / var(--columnEnd);
