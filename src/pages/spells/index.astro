@@ -1,11 +1,29 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MarkdownLink from "../../components/MarkdownLink.astro";
+import {MarkdownInstance} from "astro";
 
 const allSpells = await Astro.glob("/src/pages/spells/*.md");
+const levelToSpellMap = new Map<number,  MarkdownInstance<Record<string, any>>[]>();
+allSpells.forEach((spell) => {
+    const level = spell.frontmatter.level;
+    if (levelToSpellMap.has(level)) {
+        levelToSpellMap.get(level).push(spell);
+    } else {
+        levelToSpellMap.set(level, [spell]);
+    }
+});
+const sortedLevelToSpellMap = new Map([...levelToSpellMap.entries()].sort());
 ---
 <BaseLayout title="Spells">
     <ul>
         {allSpells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} />)}
     </ul>
+    <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well-->
+    {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
+            <h3>Level {level}</h3>
+            <ul>
+                {spells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} />)}
+            </ul>
+    ))}
 </BaseLayout>

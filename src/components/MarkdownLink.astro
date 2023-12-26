@@ -1,7 +1,9 @@
 ---
+import {sanitizeTitle} from "../scripts/sanitizeTitle";
 const {url, title, disabled} = Astro.props;
+const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
 ---
-<li>{disabled ? <span>{title}</span> : <a href={url}>{title}</a>}</li>
+<li>{disabled ? <span>{title}</span> : <a href={url} style={viewTransitionNameStyle}>{title}</a>}</li>
 
 <style>
     span {
