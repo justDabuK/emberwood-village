@@ -7,6 +7,7 @@ castingTime: '1 hour'
 range: '30 feet'
 components: 'V, S, M (a delerium fragment worth 100 gp for each participating creature, which the spell consumes)'
 duration: 'Instantaneous'
+disabled: true
 ---
 
 This spell may only be cast in an area covered by the Deep Haze.

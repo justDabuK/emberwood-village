@@ -7,6 +7,7 @@ castingTime: '1 bonus action'
 range: 'Self'
 components: 'V, S, M (a delerium shard worth 500 gp, which the spell consumes)'
 duration: '1 minute'
+disabled: true
 ---
 
 When you cast this spell, you gain one level of contamination. You draw unrestrained arcane magic from the delerium shard you hold in your hand. Until the spell ends, you gain the following benefits:

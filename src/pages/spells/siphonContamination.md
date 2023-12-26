@@ -7,6 +7,7 @@ castingTime: '1 hour'
 range: 'Touch'
 components: 'V, S, M (500 gp worth of specially-prepared alchemical fluids and a delerium geode worth 5,000 gp, all of which are consumed by the spell)'
 duration: 'Instantaneous'
+disabled: true
 ---
 
 This demanding spell transfers contamination from one creature to another. When you cast this spell, you must first touch either a willing humanoid creature with one or more levels of contamination, or a former humanoid creature whose current form is the result of a monstrous transformation. You then touch a different willing humanoid creature.

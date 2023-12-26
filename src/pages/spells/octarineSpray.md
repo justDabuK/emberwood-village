@@ -7,6 +7,7 @@ castingTime: '1 action'
 range: 'Self (60-foot cone)'
 components: 'V, S (a delerium fragment worth 100 gp, which the spell consumes)'
 duration: 'Instantaneous'
+disabled: true
 ---
 
 When you cast this spell, you gain one level of contamination. Octarine rays of light flash from your hand. Each ray is a different colour and has a different power and purpose, see the table below. Each creature in a 60-foot cone must succeed on a Constitution saving throw. For each target, roll a d8 to determine which colour ray affects it.

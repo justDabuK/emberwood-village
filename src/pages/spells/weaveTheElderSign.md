@@ -7,6 +7,7 @@ castingTime: '1 action'
 range: '120 feet'
 components: 'S, M (a delerium chip worth 10gp, which the spell consumes)'
 duration: 'Concentration, up to 1 minute'
+disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*

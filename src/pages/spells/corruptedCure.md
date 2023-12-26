@@ -7,6 +7,7 @@ castingTime: '1 bonus action'
 range: '90 feet'
 components: 'V, M (a delerium chip worth 10 gp)'
 duration: 'Instantaneous'
+disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*

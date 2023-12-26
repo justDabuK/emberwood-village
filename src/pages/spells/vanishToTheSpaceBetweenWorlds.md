@@ -7,6 +7,7 @@ castingTime: '1 reaction, which you take when you take damage'
 range: 'Self'
 components: 'S, M (a delerium chip worth 10 gp) '
 duration: '1 round'
+disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*

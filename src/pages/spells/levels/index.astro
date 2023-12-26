@@ -27,7 +27,7 @@ const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sor
     {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
             <h3>Level {level}</h3>
             <ul>
-                {spells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} />)}
+                {spells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} />)}
             </ul>
     ))}
 </BaseLayout>

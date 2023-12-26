@@ -7,6 +7,7 @@ castingTime: '1 bonus action'
 range: '60 feet'
 components: 'V, S, M (a delerium fragment worth 100gp, and a dagger)'
 duration: '1 minute'
+disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*

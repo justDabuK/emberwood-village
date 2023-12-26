@@ -22,7 +22,7 @@ const allSpells = (await Astro.glob("/src/pages/spells/*.md")).sort(byTitle);
         </div>
     </a>
     <ul>
-        {allSpells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} />)}
+        {allSpells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} />)}
     </ul>
     <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well-->
 </BaseLayout>

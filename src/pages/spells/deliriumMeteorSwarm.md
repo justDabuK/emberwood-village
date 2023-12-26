@@ -7,6 +7,7 @@ castingTime: '1 action'
 range: '1 mile'
 components: 'V, S, M (an igneous rock and a delerium fragment worth 100gp, which the spell consumes)'
 duration: '1 minute'
+disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*

@@ -7,6 +7,7 @@ castingTime: '1 action'
 range: Touch
 components: 'V, S, M (see description)'
 duration: 'Concentration, up to 1 minute'
+disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*

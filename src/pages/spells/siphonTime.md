@@ -7,6 +7,7 @@ castingTime: '1 action'
 range: '120 feet'
 components: 'V, S, M (a broken clock, and a delerium fragment worth 100gp, which the spell consumes)'
 duration: 'Concentration, up to 1 minutes'
+disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*
