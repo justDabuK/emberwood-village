@@ -22,7 +22,7 @@ const iconSize = frontmatter.iconSize || "2rem";
 
 {disabled ?
 <div class="disabledDiv" >{title}</div> :
-<a class="mapLink" href={url} transition:animate={ fade({ duration: '1s'})}>{icon ? <img src={`/icons/${icon}.png`} alt={icon} transition:animate={ fade({ duration: '2s'})} /> :title}</a>}
+<a class="mapLink" href={url}>{icon ? <img style={`view-transition-name: ${icon}`} src={`/icons/${icon}.png`} alt={icon} /> :title}</a>}
 
 <!-- TODO: add icons to all shops -->
 
