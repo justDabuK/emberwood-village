@@ -6,7 +6,7 @@ columnStart: 26
 columnEnd: 30
 rowStart: 22
 rowEnd: 25
-icon: 'delirium'
+icon: 'delirium.png'
 iconSize: '2.5rem'
 ---
 

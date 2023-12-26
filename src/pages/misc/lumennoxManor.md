@@ -6,7 +6,7 @@ columnStart: 13
 columnEnd: 18
 rowStart: 30
 rowEnd: 36
-icon: 'eclipse'
+icon: 'eclipse.svg'
 iconSize: '3rem'
 ---
 ## Gerüchte

@@ -6,8 +6,8 @@ columnStart: 40
 columnEnd: 45
 rowStart: 29
 rowEnd: 33
-icon: 'bed'
-iconSize: '3rem'
+icon: 'bed.svg'
+iconSize: '2.5rem'
 ---
 
 ## Angebot

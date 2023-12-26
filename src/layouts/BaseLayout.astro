@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
 import {sanitizeTitle} from "../scripts/sanitizeTitle";
+import { Icon } from 'astro-icon/components';
 
 interface Props {
 	title: string;
@@ -10,8 +11,11 @@ interface Props {
 }
 
 const { title, icon } = Astro.props;
-const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
+const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
+const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
 
+const isSvg = icon?.endsWith(".svg");
+const iconNameWithoutExtension = icon?.split(".")[0];
 ---
 
 <!doctype html>
@@ -28,19 +32,28 @@ const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
 	<body>
 		<Header />
 		{icon ?
-			<div class="headline-container">
-				<img src={`/icons/${icon}.png`} alt={icon} style={`view-transition-name: ${icon}`}/>
-				<h1 style={viewTransitionNameStyle}>{title}</h1>
+			<div class="headline-container">{
+				isSvg
+				? <Icon name={iconNameWithoutExtension} style={iconTransitionName} />
+				: <img src={`/icons/${icon}`} alt={icon} style={iconTransitionName}/>
+			}
+				<h1 style={titleTransitionName}>{title}</h1>
 			</div> :
-			<h1 style={viewTransitionNameStyle}>{title}</h1>
+			<h1 style={titleTransitionName}>{title}</h1>
 		}
 		<slot />
 	</body>
 </html>
 
-<style>
+<style define:vars={{icon}}>
 	img {
 		height: 4rem;
+	}
+
+	[data-icon] {
+		height: 4rem;
+		width: 4rem;
+		view-transition-name: var(--icon);
 	}
 
 	.headline-container {

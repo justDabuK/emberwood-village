@@ -6,7 +6,7 @@ columnStart: 25
 columnEnd: 29
 rowStart: 17
 rowEnd: 21
-icon: 'aldor'
+icon: 'aldor.png'
 iconSize: '3rem'
 ---
 

@@ -1,5 +1,6 @@
 ---
-import { fade } from "astro:transitions";
+import { Icon } from 'astro-icon/components';
+import {sanitizeTitle} from "../scripts/sanitizeTitle";
 
 type Props = {
     url: string;
@@ -18,18 +19,27 @@ type Props = {
 const { url, frontmatter } = Astro.props;
 const { title, columnStart, columnEnd, rowStart, rowEnd, disabled, icon } = frontmatter;
 const iconSize = frontmatter.iconSize || "2rem";
+const isSvg = icon?.endsWith(".svg");
+const iconNameWithoutExtension = icon?.split(".")[0];
+const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
+
 ---
 
 {disabled ?
 <div class="disabledDiv" >{title}</div> :
-<a class="mapLink" href={url}>{icon ? <img style={`view-transition-name: ${icon}`} src={`/icons/${icon}.png`} alt={icon} /> :title}</a>}
+<a class="mapLink" href={url}>{icon
+    ? isSvg
+        ? <Icon name={iconNameWithoutExtension} height={iconSize} width={iconSize} style={iconTransitionName}/>
+        : <img style={iconTransitionName} src={`/icons/${icon}`} alt={icon} />
+    : title}
+</a>}
 
-<style define:vars={{columnStart, columnEnd, rowStart, rowEnd, iconSize}}>
+<style define:vars={{columnStart, columnEnd, rowStart, rowEnd, iconSize, icon}}>
     .mapLink {
         grid-column: var(--columnStart) / var(--columnEnd);
         grid-row: var(--rowStart) / var(--rowEnd);
         background-color: oklch(76.99% 0.08 226.91 / 0.5);
-        color: oklch(44.81% 0.0859 226.91);
+        color: oklch(17.64% 0.032 304.82);
         display: grid;
         place-items: center;
         font-size: 0.5rem;
@@ -53,5 +63,6 @@ const iconSize = frontmatter.iconSize || "2rem";
 
     img {
         height: var(--iconSize);
+        color: red;
     }
 </style>

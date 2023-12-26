@@ -6,8 +6,8 @@ columnStart: 20
 columnEnd: 25
 rowStart: 21
 rowEnd: 24
-icon: 'mining'
-iconSize: '2.5rem'
+icon: 'mining.svg'
+iconSize: '2rem'
 ---
 
 | Item                                                                                                            | Cost   |

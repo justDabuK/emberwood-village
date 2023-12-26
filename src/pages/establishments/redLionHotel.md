@@ -6,7 +6,7 @@ columnStart: 2
 columnEnd: 10
 rowStart: 5
 rowEnd: 13
-icon: 'amethystAcademy'
+icon: 'amethystAcademy.png'
 iconSize: '7rem'
 ---
 ## Preisliste

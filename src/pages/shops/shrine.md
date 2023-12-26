@@ -5,7 +5,9 @@ description: 'Hier kann man Spell scrolls und services der Druid Spell list kauf
 columnStart: -5
 columnEnd: -1
 rowStart: 1
-rowEnd: 3
+rowEnd: 5
+icon: 'shrine.svg'
+iconSize: '3rem'
 ---
 ## Preisliste
 ### Healing potions
