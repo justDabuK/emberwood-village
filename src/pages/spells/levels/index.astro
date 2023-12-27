@@ -25,7 +25,7 @@ const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sor
     </a>
     <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well-->
     {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
-            <h3>Level {level}</h3>
+            <h3>{ level === 0 ? "Cantrips" : `Level ${level}`}</h3>
             <ul>
                 {spells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} />)}
             </ul>
