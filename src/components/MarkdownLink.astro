@@ -4,7 +4,11 @@ const {url, title, disabled} = Astro.props;
 const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
 ---
 <li>
-    {disabled ? <span>???</span> : <a href={url} style={viewTransitionNameStyle}>{title}</a>}
+    {
+        disabled
+            ? <span style={viewTransitionNameStyle}>???</span>
+            : <a href={url} style={viewTransitionNameStyle}>{title}</a>
+    }
     <slot />
 </li>
 
