@@ -7,6 +7,10 @@ castingTime: '1 minute'
 range: 'Touch'
 components: 'V, S, M (An eldritch lily mixed into 250 gp worth of specially-prepared purified fluids, which the spell consumes)'
 duration: '24 hours'
+prerequisites:
+  - 'can cast 7th level spells'
+  - 'knows the Neutralizing Field spell'
+  - 'visited the *Delirium Heart*'
 disabled: true
 ---
 
