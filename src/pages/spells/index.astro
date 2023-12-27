@@ -3,6 +3,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import MarkdownLink from "../../components/MarkdownLink.astro";
 import {MarkdownInstance} from "astro";
 
+const possiblePrerequisites = [
+    'can cast 8th level spells',
+    'know every other contaminated spell',
+    'cast each other contaminated spell at least once',
+]
+
+const achievedPrerequisites = [
+    'witnessed monstrous transformation',
+]
+
 const byTitle = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>): number => {
     if(a.frontmatter.title < b.frontmatter.title) {
         return -1;
@@ -22,7 +32,20 @@ const allSpells = (await Astro.glob("/src/pages/spells/*.md")).sort(byTitle);
         </div>
     </a>
     <ul>
-        {allSpells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} />)}
+        {
+            allSpells.map((spell) =>
+                    <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} >
+                        {
+                            spell.frontmatter.prerequisites && spell.frontmatter.prerequisites.length > 0
+                                ? <ul>
+                                    {spell.frontmatter.prerequisites.map((prerequisite) => <li>{achievedPrerequisites.includes(prerequisite) ? prerequisite : "???"}</li>)}
+
+                                    </ul>
+                                : null
+                        }
+                    </MarkdownLink>
+            )
+        }
     </ul>
     <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well-->
 </BaseLayout>

@@ -7,6 +7,10 @@ castingTime: '1 bonus action'
 range: 'Self'
 components: 'V, S, M (a delerium shard worth 500 gp, which the spell consumes)'
 duration: '1 minute'
+prerequisites:
+  - 'can cast 8th level spells'
+  - 'know every other contaminated spell'
+  - 'cast each other contaminated spell at least once'
 disabled: true
 ---
 
