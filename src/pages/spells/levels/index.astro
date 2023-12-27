@@ -23,7 +23,18 @@ const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sor
             Sort alphabetically
         </div>
     </a>
-    <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well-->
+    <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well
+        - [X] cantrips
+        - [X] 1
+        - [X] 2
+        - [ ] 3
+        - [ ] 4
+        - [ ] 5
+        - [ ] 6
+        - [ ] 7
+        - [ ] 8
+        - [ ] 9
+        -->
     {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
             <h3>{ level === 0 ? "Cantrips" : `Level ${level}`}</h3>
             <ul>
