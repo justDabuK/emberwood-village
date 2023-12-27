@@ -48,9 +48,9 @@ const allSpells = (await Astro.glob("/src/pages/spells/*.md")).sort(byTitle);
                     <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} >
                         {
                             spell.frontmatter.prerequisites && spell.frontmatter.prerequisites.length > 0
-                                ? <ul>
-                                    {spell.frontmatter.prerequisites.map((prerequisite) => <li>{achievedPrerequisites.includes(prerequisite) ? prerequisite : "???"}</li>)}
-
+                                ?
+                                    <ul>
+                                        {spell.frontmatter.prerequisites.map((prerequisite) => <li>{achievedPrerequisites.includes(prerequisite) ? prerequisite : "???"}</li>)}
                                     </ul>
                                 : null
                         }
