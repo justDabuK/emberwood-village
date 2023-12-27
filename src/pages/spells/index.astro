@@ -3,14 +3,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import MarkdownLink from "../../components/MarkdownLink.astro";
 import {MarkdownInstance} from "astro";
 
-const possiblePrerequisites = [
-    'can cast 8th level spells',
-    'know every other contaminated spell',
-    'cast each other contaminated spell at least once',
-]
+enum possiblePrerequisites {
+    LEVEL_8 = 'can cast 8th level spells',
+    KNOWS_CONTAMINATED_SPELLS = 'know every other contaminated spell',
+    CAST_ALL_CONTAMINATED_SPELLS = 'cast each other contaminated spell at least once',
+    MONSTROUS_TRANFORMATION = 'witnessed monstrous transformation',
+}
 
 const achievedPrerequisites = [
-    'witnessed monstrous transformation',
+    possiblePrerequisites.MONSTROUS_TRANFORMATION,
 ]
 
 const byTitle = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>): number => {
