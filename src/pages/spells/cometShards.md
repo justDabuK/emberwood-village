@@ -7,7 +7,6 @@ castingTime: '1 action'
 range: '120 feet'
 components: 'V, S, M (a delerium chip worth 10 gp, which the spell consumes)'
 duration: 'Instantaneous'
-disabled: true
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*

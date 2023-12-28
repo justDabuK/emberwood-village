@@ -13,7 +13,7 @@ iconSize: '3rem'
 ### Healing potions
 | Item                                                                                                                              | Preis  |
 |-----------------------------------------------------------------------------------------------------------------------------------|--------|
-| 2 [Potion of Healing](https://5e.tools/items.html#potion%20of%20healing_dmg)                                                      | 50 gp  |
+| 0/2 [Potion of Healing](https://5e.tools/items.html#potion%20of%20healing_dmg)                                                    | 50 gp  |
 | 1 [Potion of Greater Healing](https://5e.tools/items.html#potion%20of%20greater%20healing_dmg) (auf Nachfrage, braucht einen Tag) | 150 gp |
 
 ### Spell casting service
