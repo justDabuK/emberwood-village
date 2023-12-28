@@ -43,6 +43,7 @@ const allSpells = (await Astro.glob("/src/pages/spells/*.md")).sort(byTitle);
         </div>
     </a>
     <ul>
+        <!-- TODO: add delerium icon to contaminated spells-->
         {
             allSpells.map((spell) =>
                     <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} >

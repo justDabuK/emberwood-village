@@ -21,17 +21,17 @@ const allShops = await Astro.glob('../pages/shops/*.md')
             .map((establishment) => <MapLink url={establishment.url} frontmatter={establishment.frontmatter} />)}
 
     </div>
-    <h2>Shops</h2>
+    <h3>Shops</h3>
     <ul>
         {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
     </ul>
 
-    <h2>Hotels, Bars und Restaurants</h2>
+    <h3>Hotels, Bars und Restaurants</h3>
     <ul>
         {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled}/>)}
     </ul>
 
-    <h2>Anderweitig interessante Orte</h2>
+    <h3>Anderweitig interessante Orte</h3>
     <ul>
         {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} />)}
     </ul>
