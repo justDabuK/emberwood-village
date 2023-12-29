@@ -30,7 +30,7 @@ const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
         ? <div class="disabledDiv" >???</div>
         : <a class="mapLink" href={url}>{ icon
             ? isSvg
-                ? <Icon name={iconNameWithoutExtension} height={iconSize} width={iconSize} style={iconTraHeansitionName}/>
+                ? <Icon name={iconNameWithoutExtension} height={iconSize} width={iconSize} style={iconTransitionName}/>
                 : <img style={iconTransitionName} src={`/icons/${icon}`} alt={icon} />
             : title
         }
