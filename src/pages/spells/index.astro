@@ -46,7 +46,7 @@ const allSpells = (await Astro.glob("/src/pages/spells/*.md")).sort(byTitle);
         <!-- TODO: add delerium icon to contaminated spells-->
         {
             allSpells.map((spell) =>
-                    <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} >
+                    <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} icon={spell.frontmatter.school.startsWith("Contaminated") ? 'deliriumCrystal.png' : ''}>
                         {
                             spell.frontmatter.prerequisites && spell.frontmatter.prerequisites.length > 0
                                 ?

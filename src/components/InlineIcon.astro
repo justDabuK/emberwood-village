@@ -1,0 +1,23 @@
+---
+import {Icon} from "astro-icon/components";
+const {icon} = Astro.props;
+
+const isSvg = icon?.endsWith(".svg");
+const iconNameWithoutExtension = icon?.split(".")[0];
+
+---
+
+{
+    icon
+        ? isSvg
+            ? <Icon name={iconNameWithoutExtension} height="2rem" width="2rem"/>
+            : <img src={`/icons/${icon}`} alt={icon}/>
+        : null
+}
+
+<style>
+    img {
+        height: 1rem;
+        margin-right: 0.5rem;
+    }
+</style>

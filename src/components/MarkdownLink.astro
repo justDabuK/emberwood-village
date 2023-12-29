@@ -1,13 +1,16 @@
 ---
 import {sanitizeTitle} from "../scripts/sanitizeTitle";
-const {url, title, disabled} = Astro.props;
+import InlineIcon from "./InlineIcon.astro";
+
+const {url, title, disabled, icon} = Astro.props;
 const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
+
 ---
 <li>
     {
         disabled
             ? <span style={viewTransitionNameStyle}>???</span>
-            : <a href={url} style={viewTransitionNameStyle}>{title}</a>
+            : <a href={url} style={viewTransitionNameStyle}> <InlineIcon icon={icon} />{title}</a>
     }
     <slot />
 </li>
