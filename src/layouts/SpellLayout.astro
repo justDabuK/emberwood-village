@@ -31,7 +31,7 @@ const getLevelString = () => {
 };
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={frontmatter.title} icon={ frontmatter.school.startsWith("Contaminated") ? "delirium.png" : ""}>
     <p><em>{getLevelString()}</em> <em>{frontmatter.school}</em></p>
     <p><strong>Casting Time:</strong> {frontmatter.castingTime}</p>
     <p><strong>Range:</strong> {frontmatter.range}</p>
