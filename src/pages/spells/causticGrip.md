@@ -7,7 +7,6 @@ castingTime: '1 action'
 range: 'Self'
 components: 'S'
 duration: 'Concentration, up to 1 minute'
-disabled: true
 ---
 
 For the spell’s duration, your hand secretes sticky burning acid which you can use to hold a creature in a painful clutch. When you cast this spell, and as an action on your turn until the spell ends, you can make a melee spell attack against one creature within 5 feet of you. On a hit, you deal 4d4 acid damage to the target, and the creature is restrained in your acidic grip until the end of your next turn. You can attack the same target round after round, or choose a new one at any time. If you switch targets, the prior target is no longer affected by the spell.

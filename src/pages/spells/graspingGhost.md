@@ -7,7 +7,6 @@ castingTime: '1 action'
 range: '60 feet'
 components: 'S, M (a finger bone and a scrap of fabric)'
 duration: 'Instantaneous'
-disabled: true
 ---
 
 A flock of floating spectral hands appear and grasp a target you can see within range. The target must succeed on a Strength saving throw. A target takes 3d8 necrotic damage on a failed save, or half as much damage on a successful one.

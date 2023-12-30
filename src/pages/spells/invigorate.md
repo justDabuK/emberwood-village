@@ -7,7 +7,6 @@ castingTime: '1 action'
 range: '30 feet'
 components: 'S, M (a syringe and a blood sample)'
 duration: '1 hour'
-disabled: true
 ---
 
 Choose up to three creatures within range. Each target gains 10 temporary hit points.
