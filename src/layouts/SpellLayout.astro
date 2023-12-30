@@ -30,7 +30,7 @@ const getLevelString = () => {
     }
 };
 ---
-
+<!-- TODO: think about adding an icon for every school of magic -->
 <BaseLayout title={frontmatter.title} icon={ frontmatter.school.startsWith("Contaminated") ? "delirium.png" : ""}>
     <p><em>{getLevelString()}</em> <em>{frontmatter.school}</em></p>
     <p><strong>Casting Time:</strong> {frontmatter.castingTime}</p>

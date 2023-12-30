@@ -8,9 +8,21 @@ range: 'Self'
 components: 'V, S, M (a delerium shard worth 500 gp, which the spell consumes)'
 duration: '1 minute'
 prerequisites:
+  - 'knows a contaminated spell of 1st level'
+  - 'knows a contaminated spell of 2nd level'
+  - 'knows a contaminated spell of 3rd level'
+  - 'knows a contaminated spell of 4th level'
+  - 'knows a contaminated spell of 5th level'
+  - 'knows a contaminated spell of 6th level'
+  - 'knows a contaminated spell of 7th level'
+  - 'has cast a contaminated spell of 1st level'
+  - 'has cast a contaminated spell of 2nd level'
+  - 'has cast a contaminated spell of 3rd level'
+  - 'has cast a contaminated spell of 4th level'
+  - 'has cast a contaminated spell of 5th level'
+  - 'has cast a contaminated spell of 6th level'
+  - 'has cast a contaminated spell of 7th level'
   - 'can cast 8th level spells'
-  - 'know every other contaminated spell'
-  - 'cast each other contaminated spell at least once'
 disabled: true
 ---
 
