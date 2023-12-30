@@ -10,7 +10,7 @@ const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
     {
         disabled
             ? <span style={viewTransitionNameStyle}>???</span>
-            : <a href={url} style={viewTransitionNameStyle}> <InlineIcon icon={icon} />{title}</a>
+            : <a href={url} style={viewTransitionNameStyle}><InlineIcon icon={icon} />{title}</a>
     }
     <slot />
 </li>
