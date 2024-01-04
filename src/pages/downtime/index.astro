@@ -1,15 +1,14 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import MarkdownLink from "../../components/MarkdownLink.astro";
+
+const allDowntimeActivities = (await Astro.glob("/src/pages/downtime/*.md"));
+
 ---
 
 <BaseLayout title="Downtime">
         <ul>
-            <li>
-                Research spells
-                <ul>
-                    <li>learn some contaminated spells you picked up on the way</li>
-                </ul>
-            </li>
+            {allDowntimeActivities.map((activity) => <MarkdownLink url={activity.url} title={activity.frontmatter.title} disabled={activity.frontmatter.disabled} />)}
             <li>
                 Create scrolls
                 <ul>
