@@ -10,32 +10,6 @@ const allDowntimeActivities = (await Astro.glob("/src/pages/downtime/*.md"));
         <ul>
             {allDowntimeActivities.map((activity) => <MarkdownLink url={activity.url} title={activity.frontmatter.title} disabled={activity.frontmatter.disabled} />)}
             <li>
-                Create scrolls
-                <ul>
-                    <li>only available to spellcasters</li>
-                </ul>
-            </li>
-            <li>
-                Brew potions
-                <ul>
-                    <li>TODO: what is necessary for this? </li>
-                </ul>
-            </li>
-            <li>
-                Learn a tool proficiency
-                <ul>
-                    <li>10 weeks of training</li>
-                </ul>
-            </li>
-            <li>
-                Religious service
-                <ul>
-                    <li>help in the temple and get a favor (aka. a discount on the next service)</li>
-                    <li>help the Falling Fire</li>
-                    <li>help the Silver Order in Camp Dawn</li>
-                </ul>
-            </li>
-            <li>
                 Crime
                 <ul>
                     <li>available as soon as there is a better relationship with the Queen's Men</li>

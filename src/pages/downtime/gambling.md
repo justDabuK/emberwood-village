@@ -5,6 +5,9 @@ disabled: true
 ---
 Make some money gambling in Buckledown Row.
 
+## Prerequisites
+- you have found Buckledown Row
+
 ## Cost
 - starting money (10, 100 or 1000 gp)
 - at least 1 day of downtime ???
