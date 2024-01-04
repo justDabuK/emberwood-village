@@ -7,19 +7,8 @@ const allDowntimeActivities = (await Astro.glob("/src/pages/downtime/*.md"));
 ---
 
 <BaseLayout title="Downtime">
-        <ul>
-            {allDowntimeActivities.map((activity) => <MarkdownLink url={activity.url} title={activity.frontmatter.title} disabled={activity.frontmatter.disabled} />)}
-            <li>
-                Crime
-                <ul>
-                    <li>available as soon as there is a better relationship with the Queen's Men</li>
-                </ul>
-            </li>
-            <li>
-                Patroling (aka work)
-                <ul>
-                    <li>help the hooded lanterns</li>
-                </ul>
-            </li>
-        </ul>
+    Downtime activities in and around Emberwood Village that one can do in between adventures.
+    <ul>
+        {allDowntimeActivities.map((activity) => <MarkdownLink url={activity.url} title={activity.frontmatter.title} disabled={activity.frontmatter.disabled} />)}
+    </ul>
 </BaseLayout>
