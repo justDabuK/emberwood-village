@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/DefaultLayout.astro
-title: "Religious Service"
+title: "Learn a Tool Proficiency"
 ---
 Learn a new tool proficiency from a teacher.
 
