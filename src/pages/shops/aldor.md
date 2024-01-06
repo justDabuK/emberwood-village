@@ -18,7 +18,7 @@ iconSize: '3rem'
 |------------------------------------------------------------------------------------------------|--------|
 | 9 [Potion of Healing](https://5e.tools/items.html#potion%20of%20healing_dmg)                   | 100 gp |
 | 5 [Potion of Greater Healing](https://5e.tools/items.html#potion%20of%20greater%20healing_dmg) | 300 gp |
-| Scroll of [Shield](https://5e.tools/spells.html#shield_phb)                                    | 75 gp  |
+| ~~Scroll of [Shield](https://5e.tools/spells.html#shield_phb)~~                                | 75 gp  |
 | Scroll of [Phantasmal Force](https://5e.tools/spells.html#phantasmal%20force_phb)              | 150 gp |
 | Scroll of [Dragon's Breath](https://5e.tools/spells.html#dragon's%20breath_xge)                | 150 gp |
 | Scroll of [Tasha's Mind Whip](https://5e.tools/spells.html#tasha's%20mind%20whip_tce)          | 150 gp |
