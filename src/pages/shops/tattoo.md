@@ -6,7 +6,6 @@ columnStart: 3
 columnEnd: 8
 rowStart: 23
 rowEnd: 29
-disabled: true
 ---
 ## Tattoo Angebot
 | Tattoo                                                                                                   | Beschreibung                                                                                                         | Preis                  |

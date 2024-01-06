@@ -18,4 +18,10 @@ title: "Timeline"
 |                                | unlock first delerium spells                                        |
 | _Level up to 3_                |                                                                     |
 | 1 day                          | Rosa rescue mission                                                 |
+|                                | first contamination from rattlings                                  |
+|                                | first purge by Old Zoya                                             |
+| 2 days                         | Downtime                                                            |
+|                                | picked up new rumors                                                |
+|                                | Met Panin Diaz and his entourage                                    |
+|                                | Got another job from River after another successful Lily evening    |
 
