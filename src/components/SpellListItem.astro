@@ -1,0 +1,27 @@
+---
+import {achievedPrerequisites} from "../scripts/spellPrerequisites";
+import MarkdownLink from "./MarkdownLink.astro";
+
+type Props = {
+    url: string,
+    frontmatter: {
+        title: string,
+        disabled: boolean,
+        school: string,
+        prerequisites: string[]
+    }
+}
+
+const { spell } = Astro.props;
+
+---
+<MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} icon={spell.frontmatter.school.startsWith("Contaminated") ? 'deliriumCrystal.png' : ''}>
+    {
+        spell.frontmatter.prerequisites && spell.frontmatter.prerequisites.length > 0
+            ?
+                <ul>
+                    {spell.frontmatter.prerequisites.map((prerequisite) => <li>{achievedPrerequisites.includes(prerequisite) ? prerequisite : "???"}</li>)}
+                </ul>
+            : null
+    }
+</MarkdownLink>

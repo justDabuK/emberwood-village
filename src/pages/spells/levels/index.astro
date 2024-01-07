@@ -1,7 +1,7 @@
 ---
 import {MarkdownInstance} from "astro";
-import MarkdownLink from "../../../components/MarkdownLink.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SpellListItem from "../../../components/SpellListItem.astro";
 
 const allSpells = await Astro.glob("/src/pages/spells/*.md");
 const levelToSpellMap = new Map<number,  MarkdownInstance<Record<string, any>>[]>();
@@ -38,7 +38,7 @@ const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sor
     {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
             <h3>{ level === 0 ? "Cantrips" : `Level ${level}`}</h3>
             <ul>
-                {spells.map((spell) => <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} icon={spell.frontmatter.school.startsWith("Contaminated") ? 'deliriumCrystal.png' : ''}/>)}
+                {spells.map((spell) => <SpellListItem spell={spell} />)}
             </ul>
     ))}
 </BaseLayout>
