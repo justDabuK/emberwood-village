@@ -9,19 +9,19 @@ const currentPath = pathname.slice(1);
     <h1 class="delerium-text-color"><a href="/">Drakkenheim Beyond</a></h1>
     <ul class="nav-list">
         <li class={currentPath === "" || currentPath.startsWith('shops') || currentPath.startsWith('establishments') || currentPath.startsWith('misc') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-emberwood" href="/">Emberwood</a>
+            <a style="view-transition-name: nav-link-emberwood" href="/"><span>Emberwood</span></a>
         </li>
         <li class={currentPath.startsWith('spells') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-spells" href="/spells">Spells</a>
+            <a style="view-transition-name: nav-link-spells" href="/spells"><span>Spells</span></a>
         </li>
         <li class={currentPath.startsWith('downtime') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-downtime" href="/downtime">Downtime</a>
+            <a style="view-transition-name: nav-link-downtime" href="/downtime"><span>Downtime</span></a>
         </li>
         <li class={currentPath.startsWith('bestiary') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-bestiary" href="/bestiary">Bestiary</a>
+            <a style="view-transition-name: nav-link-bestiary" href="/bestiary"><span>Bestiary</span></a>
         </li>
         <li class={currentPath.startsWith('timeline') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-timeline" href="/timeline">Timeline</a>
+            <a style="view-transition-name: nav-link-timeline" href="/timeline"><span>Timeline</span></a>
         </li>
     </ul>
 </nav>
@@ -96,6 +96,21 @@ const currentPath = pathname.slice(1);
         display: block;
         position: relative;
         z-index: 1;
+    }
+
+    .nav-list a span {
+        background-image: linear-gradient(90deg, rebeccapurple, teal);
+        background-size: 0 3px;
+        background-repeat: no-repeat;
+        background-position: left 1.5em;
+        padding-block: .15em;
+
+        transition: background-size 500ms;
+    }
+
+    .nav-list a:hover span,
+    .nav-list a:focus span {
+        background-size: 100% 3px;
     }
 
     .delerium-text-color a {
