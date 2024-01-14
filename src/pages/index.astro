@@ -10,10 +10,6 @@ const allShops = await Astro.glob('../pages/shops/*.md')
 ---
 
 <BaseLayout title="Emberwood Village">
-    <!-- todo: add view page transitions, if possible ->
-        - https://docs.astro.build/en/guides/view-transitions/
-        - https://docs.astro.build/en/tutorials/add-view-transitions/
-    -->
     <div class="map-container">
         <img class="image" src="/images/02_EMBERWOOD_VILLAGE_NOGRID.jpg" alt="Map of Emberwood" />
         {[...allEstablishments, ...allShops, ...allMisc]
@@ -21,6 +17,8 @@ const allShops = await Astro.glob('../pages/shops/*.md')
             .map((establishment) => <MapLink url={establishment.url} frontmatter={establishment.frontmatter} />)}
 
     </div>
+    <!-- TODO: put these three sections into a grid/flexbox and let them fit next to each other if possible-->
+
     <h3>Shops</h3>
     <ul>
         {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
@@ -42,11 +40,14 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         display: grid;
         grid-template-columns: repeat(48, 1fr);
         grid-template-rows: repeat(36, 1fr);
+        max-width: 80%;
     }
+
     .image{
         width: 100%;
         height: auto;
         grid-column: 1 / -1;
         grid-row: 1 / -1;
+        border-radius: 10px;
     }
 </style>

@@ -31,7 +31,7 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 	</head>
 	<body>
 		<Header />
-		<main class="smaller-width">
+		<main >
 			{icon ?
 				<div class="headline-container">{
 					isSvg
@@ -57,14 +57,13 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 		width: 4rem;
 	}
 
+	main {
+		padding: 2rem 0;
+	}
+
 	.headline-container {
 		display: flex;
 		align-items: center;
 		gap: 2rem;
-	}
-
-	.smaller-width {
-		max-width: 80ch;
-		margin: 0 auto;
 	}
 </style>
