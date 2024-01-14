@@ -31,7 +31,7 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 	</head>
 	<body>
 		<Header />
-		<div class="smaller-width">
+		<main class="smaller-width">
 			{icon ?
 				<div class="headline-container">{
 					isSvg
@@ -43,7 +43,7 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 				<h2 style={titleTransitionName}>{title}</h2>
 			}
 			<slot />
-		</div>
+		</main>
 	</body>
 </html>
 
