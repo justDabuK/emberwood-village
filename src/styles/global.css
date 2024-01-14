@@ -28,6 +28,7 @@ table {
 :root {
     --body-bg: oklch(17.64% 0.032 304.82);
     --nav-bg: oklch(25% 0.032 304.82);
+    --card-bg: oklch(20% 0.032 304.82);
     --highlight-color: oklch(76.99% 0.08 226.91);
     --text-color: oklch(93.52% 0.0379 304.82);
 }
@@ -65,6 +66,12 @@ h4 {
 
 * {
     box-sizing: border-box;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 0 1rem;
 }
 
 /* nav styles */

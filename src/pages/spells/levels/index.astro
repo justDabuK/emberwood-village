@@ -35,10 +35,24 @@ const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sor
         - [ ] 8
         - [ ] 9
         -->
-    {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
-            <h3>{ level === 0 ? "Cantrips" : `Level ${level}`}</h3>
-            <ul>
-                {spells.map((spell) => <SpellListItem spell={spell} />)}
-            </ul>
-    ))}
+    <div class="level-list-container">
+        {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
+                <div class="card">
+                    <h3>{ level === 0 ? "Cantrips" : `Level ${level}`}</h3>
+                    <ul>
+                        {spells.map((spell) => <SpellListItem spell={spell} />)}
+                    </ul>
+                </div>
+        ))}
+    </div>
 </BaseLayout>
+
+<style>
+    .level-list-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+</style>

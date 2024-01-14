@@ -19,21 +19,21 @@ const allShops = await Astro.glob('../pages/shops/*.md')
     </div>
 
     <div class="shop-list">
-        <div class="shop-list-section">
+        <div class="shop-list-section card">
             <h3>Shops</h3>
             <ul>
                 {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
             </ul>
         </div>
 
-        <div class="shop-list-section">
+        <div class="shop-list-section card">
             <h3>Hotels, Bars und Restaurants</h3>
             <ul>
                 {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled}/>)}
             </ul>
         </div>
 
-        <div class="shop-list-section">
+        <div class="shop-list-section card">
             <h3>Anderweitig interessante Orte</h3>
             <ul>
                 {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} />)}
@@ -58,14 +58,9 @@ const allShops = await Astro.glob('../pages/shops/*.md')
     }
 
     .shop-list {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        display: grid;
         gap: 1rem;
         margin-top: 1rem;
-    }
-
-    .shop-list-section {
-        min-width: 300px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 </style>
