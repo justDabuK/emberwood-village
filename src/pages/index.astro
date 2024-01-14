@@ -17,22 +17,29 @@ const allShops = await Astro.glob('../pages/shops/*.md')
             .map((establishment) => <MapLink url={establishment.url} frontmatter={establishment.frontmatter} />)}
 
     </div>
-    <!-- TODO: put these three sections into a grid/flexbox and let them fit next to each other if possible-->
 
-    <h3>Shops</h3>
-    <ul>
-        {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
-    </ul>
+    <div class="shop-list">
+        <div class="shop-list-section">
+            <h3>Shops</h3>
+            <ul>
+                {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
+            </ul>
+        </div>
 
-    <h3>Hotels, Bars und Restaurants</h3>
-    <ul>
-        {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled}/>)}
-    </ul>
+        <div class="shop-list-section">
+            <h3>Hotels, Bars und Restaurants</h3>
+            <ul>
+                {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled}/>)}
+            </ul>
+        </div>
 
-    <h3>Anderweitig interessante Orte</h3>
-    <ul>
-        {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} />)}
-    </ul>
+        <div class="shop-list-section">
+            <h3>Anderweitig interessante Orte</h3>
+            <ul>
+                {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} />)}
+            </ul>
+        </div>
+    </div>
 </BaseLayout>
 
 <style>
@@ -40,7 +47,6 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         display: grid;
         grid-template-columns: repeat(48, 1fr);
         grid-template-rows: repeat(36, 1fr);
-        max-width: 80%;
     }
 
     .image{
@@ -49,5 +55,17 @@ const allShops = await Astro.glob('../pages/shops/*.md')
         grid-column: 1 / -1;
         grid-row: 1 / -1;
         border-radius: 10px;
+    }
+
+    .shop-list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .shop-list-section {
+        min-width: 300px;
     }
 </style>
