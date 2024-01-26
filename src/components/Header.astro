@@ -2,27 +2,45 @@
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
-// TODO: automate nav list
+
+const navList = [
+    {
+        name: "Emberwood",
+        path: "",
+        pathStartsWith: ["shops", "establishments", "misc"],
+    },
+    {
+        name: "Spells",
+        path: "spells",
+    },
+    {
+        name: "Downtime",
+        path: "downtime",
+
+    },
+    {
+        name: "Bestiary",
+        path: "bestiary",
+    },
+    {
+        name: "Timeline",
+        path: "timeline",
+    }
+]
+
+const isSubPath = (pathStartsWith: string[], currentPath: string) => pathStartsWith.some(path => currentPath.startsWith(path));
 ---
 
 <nav>
     <h1 class="delerium-text-color"><a href="/">Drakkenheim Beyond</a></h1>
     <ul class="nav-list">
-        <li class={currentPath === "" || currentPath.startsWith('shops') || currentPath.startsWith('establishments') || currentPath.startsWith('misc') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-emberwood" href="/"><span>Emberwood</span></a>
-        </li>
-        <li class={currentPath.startsWith('spells') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-spells" href="/spells"><span>Spells</span></a>
-        </li>
-        <li class={currentPath.startsWith('downtime') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-downtime" href="/downtime"><span>Downtime</span></a>
-        </li>
-        <li class={currentPath.startsWith('bestiary') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-bestiary" href="/bestiary"><span>Bestiary</span></a>
-        </li>
-        <li class={currentPath.startsWith('timeline') ? "active" : ""}>
-            <a style="view-transition-name: nav-link-timeline" href="/timeline"><span>Timeline</span></a>
-        </li>
+        {
+            navList.map(({ name, path, pathStartsWith }) =>
+                <li class={isSubPath(pathStartsWith ?? [path], currentPath) || currentPath === path ? "active" : ""}>
+                    <a style={`view-transition-name: nav-link-${name}`} href={`/${path}`}><span>{name}</span></a>
+                </li>
+            )
+        }
     </ul>
 </nav>
 
