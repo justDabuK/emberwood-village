@@ -1,25 +1,37 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import {sanitizeTitle} from "../../scripts/sanitizeTitle";
+
 
 ---
-<!--
-TODO:
-- add nex
-  - add spell overview for nex
-    - concentrated spells have different background
-    - there is a vue component for tracking
-      - concentration
-      - spell slots
-    - when hovering over spell detail view, it extends and shows whole description
-  - add turn action overview for
-    - nex
-    - hedrick
-    - Bernhard?
-- add Jazz
-  - add turn action overview
-- add Remi
-  - add turn action overview
--->
 <BaseLayout title="Characters">
     <p>Here you will see the characters and links to their specific sites</p>
+    <div class="character-list-container">
+        <div class="card">
+            <a href="/characters/nex">
+                <h3 style={`view-transition-name: ${sanitizeTitle("Nex")}`}>Nex</h3>
+                <p><em>insert nice picture of Nex</em></p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/characters/remi">
+                <h3 style={`view-transition-name: ${sanitizeTitle("Remi")}`}>Remi</h3>
+                <p><em>insert nice picture of Remi</em></p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/characters/jazz">
+                <h3 style={`view-transition-name: ${sanitizeTitle("Jazz")}`}>Jazz</h3>
+                <p><em>insert nice picture of Jazz</em></p>
+            </a>
+        </div>
+    </div>
 </BaseLayout>
+
+<style>
+    .character-list-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+</style>

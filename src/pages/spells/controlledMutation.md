@@ -10,6 +10,7 @@ duration: 'Concentration, up to 1 hour'
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*
+
 You weave contaminated energy to temporarily imbue a creature within range with a beneficial mutation. Choose one of the following effects; the target gains that effect until the spell ends.
 
 **Strength**. The target has advantage on Strength attack rolls, ability checks, and saving throws. The target can choose to gain a Contamination Level. If it does, its melee weapon attacks deal an additional 2d6 necrotic damage for the spell’s duration.

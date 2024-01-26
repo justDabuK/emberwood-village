@@ -17,10 +17,15 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    text-wrap: balance;
 }
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+li {
+    line-height: 1.5;
 }
 
 /* end of CSS reset */
@@ -44,6 +49,11 @@ body {
     grid-template-columns: 15rem 1fr;
     gap: 4rem;
     min-height: 100vh;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
 }
 
 h2 {
@@ -78,11 +88,6 @@ h4 {
 .hamburger {
     padding-right: 20px;
     cursor: pointer;
-}
-
-a {
-    color: var(--highlight-color);
-    text-decoration: none;
 }
 
 /* spacing */
