@@ -6,8 +6,8 @@ columnStart: 20
 columnEnd: 25
 rowStart: 21
 rowEnd: 24
-icon: 'mining.svg'
-iconSize: '2.5rem'
+icon: 'pickaxe.svg'
+iconSize: '3rem'
 ---
 
 | Item                                                                                                            | Cost   |

@@ -6,8 +6,8 @@ columnStart: 26
 columnEnd: 32
 rowStart: 25
 rowEnd: 29
-icon: 'lily.svg'
-iconSize: '3rem'
+icon: 'drama-masks.svg'
+iconSize: '4rem'
 ---
 ## Waren
 | Item                         | Description | Kosten |

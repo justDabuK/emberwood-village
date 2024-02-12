@@ -7,7 +7,7 @@ columnEnd: 18
 rowStart: 30
 rowEnd: 36
 icon: 'eclipse.svg'
-iconSize: '3rem'
+iconSize: '4rem'
 ---
 ## Gerüchte
 Lokales Geisterhaus
