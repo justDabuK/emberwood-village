@@ -6,6 +6,6 @@ columnStart: 30
 columnEnd: 37
 rowStart: 7
 rowEnd: 13
-icon: 'hoodedLanterns.png'
+icon: 'eye.svg'
 iconSize: '5rem'
 ---

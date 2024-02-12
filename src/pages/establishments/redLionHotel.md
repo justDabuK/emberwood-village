@@ -6,7 +6,7 @@ columnStart: 2
 columnEnd: 10
 rowStart: 5
 rowEnd: 13
-icon: 'amethystAcademy.png'
+icon: 'glass-wine.svg'
 iconSize: '7rem'
 ---
 ## Preisliste

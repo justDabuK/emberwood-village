@@ -6,6 +6,6 @@ columnStart: -10
 columnEnd: -5
 rowStart: -5
 rowEnd: -1
-icon: 'fallingFire.png'
+icon: 'barn.svg'
 iconSize: '3.5rem'
 ---

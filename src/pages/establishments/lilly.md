@@ -6,7 +6,7 @@ columnStart: 26
 columnEnd: 32
 rowStart: 25
 rowEnd: 29
-icon: 'drama-masks.svg'
+icon: 'microphone-variant.svg'
 iconSize: '4rem'
 ---
 ## Waren
