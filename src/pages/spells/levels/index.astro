@@ -16,6 +16,14 @@ const levelToSpellMap = new Map<number,  MarkdownInstance<Record<string, any>>[]
 const sortedLevelToSpellMap = new Map([...levelToSpellMap.entries()].sort());
 
 const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sort())]
+
+const getGridRowSpanStyle = (spells: MarkdownInstance<Record<string, any>>[]) => {
+    const headlinOfset = 3;
+    const numberOfSpells = spells.length;
+    const numberOfPrerequisites = spells.reduce((acc, spell) => acc + (spell.frontmatter.prerequisites ? spell.frontmatter.prerequisites.length : 0), 0);
+
+    return `grid-row: span ${headlinOfset + numberOfSpells + numberOfPrerequisites}`;
+}
 ---
 <BaseLayout title="Spells">
     <a href="/spells">
@@ -37,7 +45,7 @@ const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sor
         -->
     <div class="level-list-container">
         {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
-                <div class="card">
+                <div class="card" style={getGridRowSpanStyle(spells)}>
                     <h3>{ level === 0 ? "Cantrips" : `Level ${level}`}</h3>
                     <ul>
                         {spells.map((spell) => <SpellListItem spell={spell} />)}
@@ -51,8 +59,12 @@ const levels = [...new Set(allSpells.map((spell) => spell.frontmatter.level).sor
     .level-list-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
+        grid-auto-rows: 1.75rem;
         padding: 1rem 0;
+    }
+
+    .card {
+        margin: 0.5rem;
     }
 
 </style>
