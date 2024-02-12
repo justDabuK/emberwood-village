@@ -2,11 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MarkdownLink from "../components/MarkdownLink.astro";
 import MapLink from "../components/MapLink.astro";
+import {MarkdownInstance} from "astro";
 
 const allEstablishments = await Astro.glob('../pages/establishments/*.md')
 const allMisc = await Astro.glob('../pages/misc/*.md')
 const allShops = await Astro.glob('../pages/shops/*.md')
 
+const getGridRowSpanStyle = (shops: MarkdownInstance<Record<string, any>>[]) => `grid-row: span ${3 + shops.length}`;
 ---
 
 <BaseLayout title="Emberwood Village">
@@ -19,21 +21,21 @@ const allShops = await Astro.glob('../pages/shops/*.md')
     </div>
 
     <div class="shop-list">
-        <div class="shop-list-section card">
+        <div class="card" style={getGridRowSpanStyle(allShops)}>
             <h3>Shops</h3>
             <ul>
                 {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
             </ul>
         </div>
 
-        <div class="shop-list-section card">
+        <div class="card" style={getGridRowSpanStyle(allEstablishments)}>
             <h3>Hotels, Bars und Restaurants</h3>
             <ul>
                 {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled}/>)}
             </ul>
         </div>
 
-        <div class="shop-list-section card">
+        <div class="card" style={getGridRowSpanStyle(allMisc)}>
             <h3>Anderweitig interessante Orte</h3>
             <ul>
                 {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} />)}
@@ -59,8 +61,12 @@ const allShops = await Astro.glob('../pages/shops/*.md')
 
     .shop-list {
         display: grid;
-        gap: 1rem;
         margin-top: 1rem;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-auto-rows: 1.75rem;
+    }
+
+    .card {
+        margin: 0.5rem;
     }
 </style>
