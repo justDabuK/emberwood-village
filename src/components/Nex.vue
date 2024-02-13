@@ -220,10 +220,6 @@ const reset = () => {
 </template>
 
 <style scoped>
-
-
-
-
 .cheat-sheet {
   display: grid;
   grid-template-rows: auto 1fr;
