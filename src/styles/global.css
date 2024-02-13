@@ -36,6 +36,7 @@ li {
     --card-bg: oklch(20% 0.032 304.82);
     --highlight-color: oklch(76.99% 0.08 226.91);
     --text-color: oklch(93.52% 0.0379 304.82);
+    --text-color-darker-1: oklch(60% 0.0379 304.82);
 }
 
 html {
