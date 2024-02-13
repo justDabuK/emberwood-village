@@ -41,6 +41,9 @@ li {
     --map-link-bg: oklch(76.99% 0.08 226.91 / 0.5);
     --map-link-bg-hover: oklch(76.99% 0.08 226.91 / 0.8);
     --map-link-icon-color: oklch(44.81% 0.08 226.91);
+    --button-color: oklch(60% 0.08 226.91);
+    --button-color-hover: oklch(55% 0.08 226.91);
+    --button-color-active: oklch(44.81% 0.08 226.91);
 }
 
 a {

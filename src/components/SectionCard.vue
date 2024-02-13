@@ -1,0 +1,94 @@
+<script setup lang="ts">
+import type {Section} from "../scripts/cheatSheetTypes.ts";
+
+defineProps<{
+  section: Section;
+}>();
+
+const model = defineModel<boolean>({required: true});
+
+const toggleModel = () => {
+  model.value = !model.value;
+}
+</script>
+
+<template>
+  <div :class="`card section ${model ? 'used' : ''}`" @click="toggleModel">
+
+    <div class="section-title">
+      <span>{{section.title}}</span>
+      <input v-model="model" type="checkbox">
+    </div>
+
+    <div v-for="subsection in section.subsections" :key="subsection.title" class="subsection">
+      <div class="subsection-header">
+        <span>{{subsection.title}}</span>
+        <span v-if="subsection.dice">{{ subsection.dice }}</span>
+      </div>
+
+      <div v-if="subsection.description" class="description">
+        <span>{{ subsection.description }}</span>
+      </div>
+
+      <ul v-if="subsection.items">
+        <li v-for="item in subsection.items" :key="item.name">
+          <span>{{ item.name }}</span> <span>{{item.dice}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<style>
+.used {
+  background-color: var(--body-bg);
+  color: var(--text-color-darker-1);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10px;
+  cursor: pointer;
+
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    span {
+      color: var(--text-color-darker-1);
+    }
+    input {
+      cursor: pointer;
+    }
+  }
+
+  .subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .subsection-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      span {
+        font-weight: 600;
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+  }
+}
+</style>
