@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Jazz from "../../components/character/Jazz.vue";
 ---
 <!--
 TODO:
 - add Jazz
   - add turn action overview
 -->
-<BaseLayout title="Jazz"></BaseLayout>
+<BaseLayout title="Jazz">
+    <Jazz clien:load />
+</BaseLayout>
