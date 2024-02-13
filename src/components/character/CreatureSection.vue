@@ -2,7 +2,7 @@
 import SectionCard from "./SectionCard.vue";
 import ArmorClass from "./ArmorClass.vue";
 import HealthPoints from "./HealthPoints.vue";
-import type {Creature} from "../scripts/cheatSheetTypes.ts";
+import type {Creature} from "../../scripts/cheatSheetTypes.ts";
 
 const creature = defineModel<Creature>({required: true});
 </script>

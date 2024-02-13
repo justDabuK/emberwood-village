@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {Section} from "../scripts/cheatSheetTypes.ts";
+import type {Section} from "../../scripts/cheatSheetTypes.ts";
 
 defineProps<{
   section: Section;
