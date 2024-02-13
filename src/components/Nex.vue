@@ -10,6 +10,11 @@ const nexActionUsed = ref(false);
 const nexBonusActionUsed = ref(false);
 const nexReactionUsed = ref(false);
 const nexMovementUsed = ref(false);
+const nexMaxHealthPoints = 11;
+const nexHealthPoints = ref(nexMaxHealthPoints);
+const nexArmorClass = 14;
+const nexLevel = 3;
+const nexProficiencyBonus = 2;
 
 const nexAction: Section = {
   title: 'Action',
@@ -78,13 +83,16 @@ const nexMovement: Section = {
 const bernhardActionUsed = ref(false);
 const bernhardReactionUsed = ref(false);
 const bernhardMovementUsed = ref(false);
+const bernhardMaxHealthPoints = 5 + 5*nexLevel;
+const bernhardHealthPoints = ref(bernhardMaxHealthPoints);
+const bernhardArmorClass = 14 + nexProficiencyBonus;
 
 const bernhardAction: Section = {
   title: 'Action',
   subsections: [
     {
       title: 'Weapon Attack',
-      dice: 'D20+6',
+      dice: `D20+${4 + nexProficiencyBonus}`,
       items: [
         {name: 'Slam', dice: '1d8+4'},
       ]
@@ -115,6 +123,9 @@ const bernhardMovement: Section = {
 const hedrickActionUsed = ref(false);
 const hedrickReactionUsed = ref(false);
 const hedrickMovementUsed = ref(false);
+const hedrickMaxHealthPoints = 1;
+const hedrickHealthPoints = ref(hedrickMaxHealthPoints);
+const hedrickArmorClass = 11;
 
 const hedrickAction: Section = {
   title: 'Action',
@@ -170,18 +181,6 @@ const reset = () => {
   hedrickMovementUsed.value = false;
 }
 
-const nexMaxHealthPoints = 11;
-const nexHealthPoints = ref(nexMaxHealthPoints);
-const nexArmorClass = 14;
-
-const bernhardMaxHealthPoints = 5 + 5*3;
-const bernhardHealthPoints = ref(bernhardMaxHealthPoints);
-const bernhardArmorClass = 14 + 2;
-
-const hedrickMaxHealthPoints = 1;
-const hedrickHealthPoints = ref(hedrickMaxHealthPoints);
-const hedrickArmorClass = 11;
-
 </script>
 
 <template>
@@ -193,28 +192,28 @@ const hedrickArmorClass = 11;
     <div class="creature-section">
       <h3>Nex</h3>
       <div class="action-grid">
-        <HealthPoints v-model="nexHealthPoints" :max-health-points="nexMaxHealthPoints" />
-        <ArmorClass :armor-class="nexArmorClass" />
         <SectionCard v-model="nexActionUsed" :section="nexAction" />
         <SectionCard v-model="nexBonusActionUsed" :section="nexBonusAction" />
         <SectionCard v-model="nexReactionUsed" :section="nexReaction" />
         <SectionCard v-model="nexMovementUsed" :section="nexMovement" />
+        <HealthPoints v-model="nexHealthPoints" :max-health-points="nexMaxHealthPoints" />
+        <ArmorClass :armor-class="nexArmorClass" />
       </div>
       <h3>Bernhard</h3>
       <div class="action-grid">
-        <HealthPoints v-model="bernhardHealthPoints" :max-health-points="bernhardMaxHealthPoints" />
-        <ArmorClass :armor-class="bernhardArmorClass" />
         <SectionCard v-model="bernhardActionUsed" :section="bernhardAction" />
         <SectionCard v-model="bernhardReactionUsed" :section="bernhardReaction" />
         <SectionCard v-model="bernhardMovementUsed" :section="bernhardMovement" />
+        <HealthPoints v-model="bernhardHealthPoints" :max-health-points="bernhardMaxHealthPoints" />
+        <ArmorClass :armor-class="bernhardArmorClass" />
       </div>
       <h3>Hedrick</h3>
       <div class="action-grid">
-        <HealthPoints v-model="hedrickHealthPoints" :max-health-points="hedrickMaxHealthPoints" />
-        <ArmorClass :armor-class="hedrickArmorClass" />
         <SectionCard v-model="hedrickActionUsed" :section="hedrickAction" />
         <SectionCard v-model="hedrickReactionUsed" :section="hedrickReaction" />
         <SectionCard v-model="hedrickMovementUsed" :section="hedrickMovement" />
+        <HealthPoints v-model="hedrickHealthPoints" :max-health-points="hedrickMaxHealthPoints" />
+        <ArmorClass :armor-class="hedrickArmorClass" />
       </div>
     </div>
   </div>
