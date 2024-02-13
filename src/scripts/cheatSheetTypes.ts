@@ -1,6 +1,7 @@
 export type Section = {
     title: string;
     subsections: Subsection[];
+    used?: boolean;
 }
 
 export type Subsection = {

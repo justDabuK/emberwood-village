@@ -80,45 +80,53 @@ const nexMovement: Section = {
   ]
 }
 
-const bernhardActionUsed = ref(false);
-const bernhardReactionUsed = ref(false);
-const bernhardMovementUsed = ref(false);
 const bernhardMaxHealthPoints = 5 + 5 * nexLevel;
 const bernhardHealthPoints = ref(bernhardMaxHealthPoints);
 const bernhardArmorClass = 14 + nexProficiencyBonus;
-
-const bernhardAction: Section = {
-  title: 'Action',
-  subsections: [
-    {
-      title: 'Weapon Attack',
-      dice: `D20+${4 + nexProficiencyBonus}`,
-      items: [
-        {name: 'Slam', dice: '1d8+4'},
-      ]
-    },
-  ]
-}
-
-const bernhardReaction: Section = {
-  title: 'Reaction',
-  subsections: [
-    {
-      title: 'Opertunity Attack',
-      description: 'See Weapon Attack'
-    },
-  ]
-}
-
-const bernhardMovement: Section = {
-  title: 'Movement',
-  subsections: [
-    {
-      title: 'Walking 30ft.',
-      description: '(6 Felder)'
-    },
-  ]
-}
+const bernhardCheatSheet = ref<Section[]>([
+  {
+    title: 'Action',
+    used: false,
+    subsections: [
+      {
+        title: 'Weapon Attack',
+        dice: `D20+${4 + nexProficiencyBonus}`,
+        items: [
+          {name: 'Slam', dice: '1d8+4'},
+        ]
+      },
+    ]
+  },
+  {
+    title: 'Reaction',
+    used: false,
+    subsections: [
+      {
+        title: 'Opertunity Attack',
+        description: 'See Weapon Attack'
+      },
+    ]
+  },
+  {
+    title: 'Movement',
+    used: false,
+    subsections: [
+      {
+        title: 'Walking 30ft.',
+        description: '(6 Felder)'
+      },
+    ]
+  },
+  {
+    title: 'Features',
+    subsections: [
+      {
+        title: 'Lightning Absorption',
+        description: 'If hit by lightning damage, regain HP equal to the damage'
+      }
+    ]
+  }
+])
 
 const hedrickActionUsed = ref(false);
 const hedrickReactionUsed = ref(false);
@@ -173,9 +181,9 @@ const reset = () => {
   nexBonusActionUsed.value = false;
   nexReactionUsed.value = false;
   nexMovementUsed.value = false;
-  bernhardActionUsed.value = false;
-  bernhardReactionUsed.value = false;
-  bernhardMovementUsed.value = false;
+
+  bernhardCheatSheet.value.forEach(section => section.used = false);
+
   hedrickActionUsed.value = false;
   hedrickReactionUsed.value = false;
   hedrickMovementUsed.value = false;
@@ -203,9 +211,7 @@ const reset = () => {
     <div class="creature-section">
       <h3>Bernhard</h3>
       <div class="action-grid">
-        <SectionCard v-model="bernhardActionUsed" :section="bernhardAction"/>
-        <SectionCard v-model="bernhardReactionUsed" :section="bernhardReaction"/>
-        <SectionCard v-model="bernhardMovementUsed" :section="bernhardMovement"/>
+        <SectionCard v-for="section in bernhardCheatSheet" :key="section.title" v-model="section.used" :section="section"/>
         <HealthPoints v-model="bernhardHealthPoints" :max-health-points="bernhardMaxHealthPoints"/>
         <ArmorClass :armor-class="bernhardArmorClass"/>
       </div>
