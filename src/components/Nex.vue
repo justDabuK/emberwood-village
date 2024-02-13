@@ -2,9 +2,7 @@
 
 import {ref} from "vue";
 import type {Creature, Section} from "../scripts/cheatSheetTypes.ts";
-import SectionCard from "./SectionCard.vue";
-import HealthPoints from "./HealthPoints.vue";
-import ArmorClass from "./ArmorClass.vue";
+import CreatureSection from "./CreatureSection.vue";
 
 const nexLevel = 3;
 const nexProficiencyBonus = 2;
@@ -63,7 +61,7 @@ const creatureList = ref<Creature[]>([
         used: false,
         subsections: [
           {
-            title: 'Opertunity Attack',
+            title: 'Opportunity Attack',
             description: 'See Weapon Attack'
           },
           {
@@ -123,7 +121,7 @@ const creatureList = ref<Creature[]>([
         used: false,
         subsections: [
           {
-            title: 'Opertunity Attack',
+            title: 'Opportunity Attack',
             description: 'See Weapon Attack'
           },
         ]
@@ -179,7 +177,7 @@ const creatureList = ref<Creature[]>([
         used: false,
         subsections: [
           {
-            title: 'Opertunity Attack',
+            title: 'Opportunity Attack',
             description: 'See Weapon Attack'
           },
         ]
@@ -234,14 +232,7 @@ const reset = () => {
       <button @click="reset">New round</button>
     </div>
 
-    <div v-for="creature in creatureList" :key="creature.name" class="creature-section">
-      <h3>{{creature.name}}</h3>
-      <div class="action-grid">
-        <SectionCard v-for="section in creature.sectionList" :key="section.title" v-model="section.used" :section="section"/>
-        <HealthPoints v-model="creature.healthPoints.current" :max-health-points="creature.healthPoints.max"/>
-        <ArmorClass :armor-class="creature.armorClass"/>
-      </div>
-    </div>
+    <CreatureSection v-for="(creature, index) in creatureList" :key="creature.name" v-model="creatureList[index]" />
   </div>
 </template>
 
@@ -275,13 +266,6 @@ const reset = () => {
         background-color: var(--button-color-active);
       }
     }
-  }
-
-
-  .action-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
   }
 }
 </style>
