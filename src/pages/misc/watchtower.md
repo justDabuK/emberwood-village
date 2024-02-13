@@ -7,5 +7,4 @@ columnEnd: 37
 rowStart: 7
 rowEnd: 13
 icon: 'eye.svg'
-iconSize: '5rem'
 ---

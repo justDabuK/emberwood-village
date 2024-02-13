@@ -7,7 +7,6 @@ columnEnd: 37
 rowStart: 19
 rowEnd: 23
 icon: 'skull.svg'
-iconSize: '3.5rem'
 ---
 ## Waren
 | Item                    | Kosten |

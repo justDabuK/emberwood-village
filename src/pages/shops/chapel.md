@@ -7,7 +7,6 @@ columnStart: 20
 columnEnd: 25
 rowStart: 13
 rowEnd: 18
-iconSize: '4rem'
 ---
 ## Waren
 ### Magic Items

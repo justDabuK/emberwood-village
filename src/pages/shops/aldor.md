@@ -7,7 +7,6 @@ columnEnd: 29
 rowStart: 17
 rowEnd: 21
 icon: 'crystal-ball.svg'
-iconSize: '3rem'
 ---
 
 ## Waren

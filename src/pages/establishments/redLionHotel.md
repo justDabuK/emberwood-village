@@ -7,7 +7,6 @@ columnEnd: 10
 rowStart: 5
 rowEnd: 13
 icon: 'glass-wine.svg'
-iconSize: '7rem'
 ---
 ## Preisliste
 | Objekt                           | Kosten |

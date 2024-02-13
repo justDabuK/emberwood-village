@@ -7,5 +7,4 @@ columnEnd: -5
 rowStart: -5
 rowEnd: -1
 icon: 'barn.svg'
-iconSize: '3.5rem'
 ---

@@ -7,7 +7,6 @@ columnEnd: -1
 rowStart: 1
 rowEnd: 5
 icon: 'shrine.svg'
-iconSize: '4rem'
 ---
 ## Preisliste
 ### Healing potions

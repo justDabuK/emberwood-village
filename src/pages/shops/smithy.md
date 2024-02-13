@@ -7,7 +7,6 @@ columnEnd: 17
 rowStart: 22
 rowEnd: 26
 icon: 'sword-cross.svg'
-iconSize: '3rem'
 ---
 
 ## Waren

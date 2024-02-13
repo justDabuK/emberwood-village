@@ -7,7 +7,6 @@ columnEnd: 25
 rowStart: 21
 rowEnd: 24
 icon: 'pickaxe.svg'
-iconSize: '3rem'
 ---
 
 | Item                                                                                                            | Cost   |

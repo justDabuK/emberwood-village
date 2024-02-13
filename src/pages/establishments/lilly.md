@@ -7,7 +7,6 @@ columnEnd: 32
 rowStart: 25
 rowEnd: 29
 icon: 'microphone-variant.svg'
-iconSize: '4rem'
 ---
 ## Waren
 | Item                         | Description | Kosten |

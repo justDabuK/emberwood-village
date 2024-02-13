@@ -7,7 +7,6 @@ columnEnd: 45
 rowStart: 29
 rowEnd: 33
 icon: 'home.svg'
-iconSize: '4rem'
 ---
 
 ## Angebot
