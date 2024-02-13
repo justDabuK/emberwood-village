@@ -3,6 +3,8 @@
 import {ref} from "vue";
 import type {Section} from "../scripts/cheatSheetTypes.ts";
 import SectionCard from "./SectionCard.vue";
+import HealthPoints from "./HealthPoints.vue";
+import ArmorClass from "./ArmorClass.vue";
 
 const nexActionUsed = ref(false);
 const nexBonusActionUsed = ref(false);
@@ -168,6 +170,18 @@ const reset = () => {
   hedrickMovementUsed.value = false;
 }
 
+const nexMaxHealthPoints = 11;
+const nexHealthPoints = ref(nexMaxHealthPoints);
+const nexArmorClass = 14;
+
+const bernhardMaxHealthPoints = 5 + 5*3;
+const bernhardHealthPoints = ref(bernhardMaxHealthPoints);
+const bernhardArmorClass = 14 + 2;
+
+const hedrickMaxHealthPoints = 1;
+const hedrickHealthPoints = ref(hedrickMaxHealthPoints);
+const hedrickArmorClass = 11;
+
 </script>
 
 <template>
@@ -179,6 +193,8 @@ const reset = () => {
     <div class="creature-section">
       <h3>Nex</h3>
       <div class="action-grid">
+        <HealthPoints v-model="nexHealthPoints" :max-health-points="nexMaxHealthPoints" />
+        <ArmorClass :armor-class="nexArmorClass" />
         <SectionCard v-model="nexActionUsed" :section="nexAction" />
         <SectionCard v-model="nexBonusActionUsed" :section="nexBonusAction" />
         <SectionCard v-model="nexReactionUsed" :section="nexReaction" />
@@ -186,12 +202,16 @@ const reset = () => {
       </div>
       <h3>Bernhard</h3>
       <div class="action-grid">
+        <HealthPoints v-model="bernhardHealthPoints" :max-health-points="bernhardMaxHealthPoints" />
+        <ArmorClass :armor-class="bernhardArmorClass" />
         <SectionCard v-model="bernhardActionUsed" :section="bernhardAction" />
         <SectionCard v-model="bernhardReactionUsed" :section="bernhardReaction" />
         <SectionCard v-model="bernhardMovementUsed" :section="bernhardMovement" />
       </div>
       <h3>Hedrick</h3>
       <div class="action-grid">
+        <HealthPoints v-model="hedrickHealthPoints" :max-health-points="hedrickMaxHealthPoints" />
+        <ArmorClass :armor-class="hedrickArmorClass" />
         <SectionCard v-model="hedrickActionUsed" :section="hedrickAction" />
         <SectionCard v-model="hedrickReactionUsed" :section="hedrickReaction" />
         <SectionCard v-model="hedrickMovementUsed" :section="hedrickMovement" />
@@ -201,6 +221,10 @@ const reset = () => {
 </template>
 
 <style scoped>
+
+
+
+
 .cheat-sheet {
   display: grid;
   grid-template-rows: auto 1fr;
