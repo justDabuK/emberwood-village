@@ -49,6 +49,20 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 </html>
 
 <style define:vars={{icon}}>
+	html {
+		background-color: var(--body-bg);
+		font-family: system-ui;
+		color: var(--text-color);
+	}
+
+	body {
+		display: grid;
+		grid-template-columns: 15rem 1fr;
+		gap: 4rem;
+		min-height: 100vh;
+		overflow: auto;
+	}
+
 	img {
 		height: 4rem;
 	}
@@ -61,11 +75,28 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 	main {
 		padding: 2rem 0;
 		max-width: 80%;
+		overflow: auto;
 	}
 
 	.headline-container {
 		display: flex;
 		align-items: center;
 		gap: 2rem;
+	}
+
+	@media screen and (max-width: 1000px) {
+		body {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr auto;
+			gap: 1rem;
+			max-height: 100vh;
+		}
+
+		main {
+			grid-row: 1;
+			max-width: 100%;
+			padding: 0;
+		}
 	}
 </style>

@@ -182,4 +182,62 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) => pathStartsW
             text-shadow: 0 0 5px teal;
         }
     }
+
+    @media screen and (max-width: 1000px) {
+        h1 {
+            display: none;
+        }
+
+        nav {
+            padding: 1rem 0;
+            padding-block: 0;
+        }
+
+        [data-icon] {
+            color: var(--text-color);
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+            padding-block: 0;
+            margin: 0 0.5rem 0.5rem 0.5rem;
+        }
+
+        .nav-list li {
+            padding: 1rem 0.5rem 0.5rem 0.5rem;
+            border-radius: 0 0 100vw 100vw;
+            line-height: 1;
+        }
+
+        .nav-list a span {
+            display: none;
+        }
+
+        .nav-list li.active::before,
+        .nav-list li.active::after {
+            --border-radius: 1rem;
+
+
+            content: '';
+            position: absolute;
+            width: var(--border-radius);
+            height: var(--border-radius);
+            top: 0;
+            background: var(--nav-bg);
+        }
+
+        .nav-list li.active::before {
+            left: calc(var(--border-radius) * -1);
+            border-radius: 0 100vw 0 0;
+            box-shadow: 5px -5px 0 5px var(--body-bg);
+        }
+
+        .nav-list li.active::after {
+            right: calc(var(--border-radius) * -1);
+            border-radius: 100vw 0 0 0;
+            box-shadow: -5px -5px 0 5px var(--body-bg);
+        }
+    }
 </style>

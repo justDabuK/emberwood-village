@@ -45,19 +45,6 @@ li {
     --map-link-icon-color: oklch(44.81% 0.08 226.91);
 }
 
-html {
-    background-color: var(--body-bg);
-    font-family: system-ui;
-    color: var(--text-color);
-}
-
-body {
-    display: grid;
-    grid-template-columns: 15rem 1fr;
-    gap: 4rem;
-    min-height: 100vh;
-}
-
 a {
     color: var(--highlight-color);
     text-decoration: none;
