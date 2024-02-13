@@ -1,27 +1,37 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {computed, ref, watch} from "vue";
 
-defineProps<{
+const props = defineProps<{
   maxHealthPoints: number;
 }>();
 
 const model = defineModel<number>({required: true});
 
+watch(model, (newValue) => {
+  if(newValue > props.maxHealthPoints) {
+    model.value = props.maxHealthPoints;
+  }
+})
+
 const healthPointDelta = ref(0);
 
 const heal = () => {
   model.value += healthPointDelta.value;
-  model.value = 0;
+  healthPointDelta.value = 0;
 }
 
 const damage = () => {
   model.value -= healthPointDelta.value;
-  model.value = 0;
+  healthPointDelta.value = 0;
 }
+
+const healthPercentage = computed(() => {
+  return (model.value / props.maxHealthPoints) * 100;
+});
 </script>
 
 <template>
-  <div class="card health-points">
+  <div class="card health-points" :style="`--health-percentage: ${healthPercentage}%`">
     <span class="health-points-title">HP</span>
     <div class="health-points-data">
       <div class="actual-points">
@@ -71,6 +81,8 @@ input[type=number] {
   flex-direction: column;
   gap: 30px;
   padding: 10px;
+  /* TODO: can I animate the change? */
+  background: linear-gradient(90deg, darkgreen var(--health-percentage), var(--card-bg) 0%);
 
   button {
     background-color: var(--body-bg);
@@ -82,7 +94,7 @@ input[type=number] {
   }
 
   .heal-button {
-    background-color: darkgreen;
+    background-color: green;
   }
 
   .damage-button {

@@ -83,7 +83,7 @@ const nexMovement: Section = {
 const bernhardActionUsed = ref(false);
 const bernhardReactionUsed = ref(false);
 const bernhardMovementUsed = ref(false);
-const bernhardMaxHealthPoints = 5 + 5*nexLevel;
+const bernhardMaxHealthPoints = 5 + 5 * nexLevel;
 const bernhardHealthPoints = ref(bernhardMaxHealthPoints);
 const bernhardArmorClass = 14 + nexProficiencyBonus;
 
@@ -192,28 +192,33 @@ const reset = () => {
     <div class="creature-section">
       <h3>Nex</h3>
       <div class="action-grid">
-        <SectionCard v-model="nexActionUsed" :section="nexAction" />
-        <SectionCard v-model="nexBonusActionUsed" :section="nexBonusAction" />
-        <SectionCard v-model="nexReactionUsed" :section="nexReaction" />
-        <SectionCard v-model="nexMovementUsed" :section="nexMovement" />
-        <HealthPoints v-model="nexHealthPoints" :max-health-points="nexMaxHealthPoints" />
-        <ArmorClass :armor-class="nexArmorClass" />
+        <SectionCard v-model="nexActionUsed" :section="nexAction"/>
+        <SectionCard v-model="nexBonusActionUsed" :section="nexBonusAction"/>
+        <SectionCard v-model="nexReactionUsed" :section="nexReaction"/>
+        <SectionCard v-model="nexMovementUsed" :section="nexMovement"/>
+        <HealthPoints v-model="nexHealthPoints" :max-health-points="nexMaxHealthPoints"/>
+        <ArmorClass :armor-class="nexArmorClass"/>
       </div>
+    </div>
+    <div class="creature-section">
       <h3>Bernhard</h3>
       <div class="action-grid">
-        <SectionCard v-model="bernhardActionUsed" :section="bernhardAction" />
-        <SectionCard v-model="bernhardReactionUsed" :section="bernhardReaction" />
-        <SectionCard v-model="bernhardMovementUsed" :section="bernhardMovement" />
-        <HealthPoints v-model="bernhardHealthPoints" :max-health-points="bernhardMaxHealthPoints" />
-        <ArmorClass :armor-class="bernhardArmorClass" />
+        <SectionCard v-model="bernhardActionUsed" :section="bernhardAction"/>
+        <SectionCard v-model="bernhardReactionUsed" :section="bernhardReaction"/>
+        <SectionCard v-model="bernhardMovementUsed" :section="bernhardMovement"/>
+        <HealthPoints v-model="bernhardHealthPoints" :max-health-points="bernhardMaxHealthPoints"/>
+        <ArmorClass :armor-class="bernhardArmorClass"/>
       </div>
+    </div>
+
+    <div class="creature-section">
       <h3>Hedrick</h3>
       <div class="action-grid">
-        <SectionCard v-model="hedrickActionUsed" :section="hedrickAction" />
-        <SectionCard v-model="hedrickReactionUsed" :section="hedrickReaction" />
-        <SectionCard v-model="hedrickMovementUsed" :section="hedrickMovement" />
-        <HealthPoints v-model="hedrickHealthPoints" :max-health-points="hedrickMaxHealthPoints" />
-        <ArmorClass :armor-class="hedrickArmorClass" />
+        <SectionCard v-model="hedrickActionUsed" :section="hedrickAction"/>
+        <SectionCard v-model="hedrickReactionUsed" :section="hedrickReaction"/>
+        <SectionCard v-model="hedrickMovementUsed" :section="hedrickMovement"/>
+        <HealthPoints v-model="hedrickHealthPoints" :max-health-points="hedrickMaxHealthPoints"/>
+        <ArmorClass :armor-class="hedrickArmorClass"/>
       </div>
     </div>
   </div>
@@ -223,7 +228,7 @@ const reset = () => {
 .cheat-sheet {
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 10px;
+  gap: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--text-color-darker-1);
 
@@ -250,6 +255,7 @@ const reset = () => {
       }
     }
   }
+
 
   .action-grid {
     display: grid;
