@@ -31,8 +31,8 @@ const damage = () => {
       </div>
       <div class="delta">
         <input v-model="healthPointDelta" type="number" />
-        <button @click="heal">+</button>
-        <button @click="damage">-</button>
+        <button class="heal-button" @click="heal">+</button>
+        <button class="damage-button" @click="damage">-</button>
       </div>
     </div>
   </div>
@@ -79,6 +79,14 @@ input[type=number] {
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
+  }
+
+  .heal-button {
+    background-color: darkgreen;
+  }
+
+  .damage-button {
+    background-color: darkred;
   }
 
   .health-points-title {
