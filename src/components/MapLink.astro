@@ -40,8 +40,8 @@ const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
     .mapLink {
         grid-column: var(--columnStart) / var(--columnEnd);
         grid-row: var(--rowStart) / var(--rowEnd);
-        background-color: oklch(76.99% 0.08 226.91 / 0.5);
-        color: oklch(44.81% 0.0859 226.91);
+        background-color: var(--map-link-bg);
+        color: var(--map-link-icon-color);
         display: grid;
         place-items: center;
         font-size: 0.5rem;
@@ -50,7 +50,7 @@ const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
     }
 
     .mapLink:hover {
-        background-color: oklch(76.99% 0.08 226.91 / 0.8);
+        background-color: var(--map-link-bg-hover);
     }
 
     .disabledDiv {

@@ -31,12 +31,18 @@ li {
 /* end of CSS reset */
 
 :root {
+    /* background/text colors*/
     --body-bg: oklch(17.64% 0.032 304.82);
-    --nav-bg: oklch(25% 0.032 304.82);
     --card-bg: oklch(20% 0.032 304.82);
+    --nav-bg: oklch(25% 0.032 304.82);
+    --text-color-darker-1: oklch(60% 0.032 304.82);
+    --text-color: oklch(93.52% 0.032 304.82);
+
+    /* accent/primary colors*/
     --highlight-color: oklch(76.99% 0.08 226.91);
-    --text-color: oklch(93.52% 0.0379 304.82);
-    --text-color-darker-1: oklch(60% 0.0379 304.82);
+    --map-link-bg: oklch(76.99% 0.08 226.91 / 0.5);
+    --map-link-bg-hover: oklch(76.99% 0.08 226.91 / 0.8);
+    --map-link-icon-color: oklch(44.81% 0.08 226.91);
 }
 
 html {
