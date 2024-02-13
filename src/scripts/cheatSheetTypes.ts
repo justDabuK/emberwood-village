@@ -1,3 +1,13 @@
+export type Creature = {
+    name: string;
+    healthPoints: {
+        current: number;
+        max: number;
+    }
+    armorClass: number;
+    sectionList: Section[];
+}
+
 export type Section = {
     title: string;
     subsections: Subsection[];

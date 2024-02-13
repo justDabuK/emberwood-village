@@ -1,192 +1,228 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
-import type {Section} from "../scripts/cheatSheetTypes.ts";
+import type {Creature, Section} from "../scripts/cheatSheetTypes.ts";
 import SectionCard from "./SectionCard.vue";
 import HealthPoints from "./HealthPoints.vue";
 import ArmorClass from "./ArmorClass.vue";
 
-const nexActionUsed = ref(false);
-const nexBonusActionUsed = ref(false);
-const nexReactionUsed = ref(false);
-const nexMovementUsed = ref(false);
-const nexMaxHealthPoints = 11;
-const nexHealthPoints = ref(nexMaxHealthPoints);
-const nexArmorClass = 14;
 const nexLevel = 3;
 const nexProficiencyBonus = 2;
 
-const nexAction: Section = {
-  title: 'Action',
-  subsections: [
-    {
-      title: 'Weapon Attack',
-      dice: 'D20+3',
-      items: [
-        {name: 'Crossbow light', dice: '1d8+1'},
-        {name: 'Crossbow Hand', dice: '1d6+1'},
-        {name: 'Dagger', dice: '1d4+1'}
-      ]
-    },
-    {
-      title: 'Spell casting',
-      description: 'See spell casting cheat sheet'
-    }
-  ]
-}
-
-const nexBonusAction: Section = {
-  title: 'Bonus Action',
-  subsections: [
-    {
-      title: 'Off-hand attack',
-      dice: 'D20+3',
-      items: [
-        {name: 'Dagger', dice: '1d4'}
-      ]
-    },
-    {
-      title: 'Command Bernhard',
-      description: 'Bernhard needs a command, otherwise he will take the Dodge action'
-    },
-    {
-      title: 'Spell casting',
-      description: 'See spell casting cheat sheet'
-    }
-  ]
-}
-
-const nexReaction: Section = {
-  title: 'Reaction',
-  subsections: [
-    {
-      title: 'Opertunity Attack',
-      description: 'See Weapon Attack'
-    },
-    {
-      title: 'Spell casting',
-      description: 'See spell casting cheat sheet'
-    }
-  ]
-}
-
-const nexMovement: Section = {
-  title: 'Movement',
-  subsections: [
-    {
-      title: 'Walking 30ft.',
-      description: '(6 Felder)'
-    },
-  ]
-}
-
-const bernhardMaxHealthPoints = 5 + 5 * nexLevel;
-const bernhardHealthPoints = ref(bernhardMaxHealthPoints);
-const bernhardArmorClass = 14 + nexProficiencyBonus;
-const bernhardCheatSheet = ref<Section[]>([
+const creatureList = ref<Creature[]>([
   {
-    title: 'Action',
-    used: false,
-    subsections: [
+    name: "Nex",
+    healthPoints: {
+      current: (5 + 3) * nexLevel,
+      max: (5 + 3) * nexLevel,
+    },
+    armorClass: 14,
+    sectionList: [
       {
-        title: 'Weapon Attack',
-        dice: `D20+${4 + nexProficiencyBonus}`,
-        items: [
-          {name: 'Slam', dice: '1d8+4'},
+        title: 'Action',
+        used: false,
+        subsections: [
+          {
+            title: 'Weapon Attack',
+            dice: 'D20+3',
+            items: [
+              {name: 'Crossbow light', dice: '1d8+1'},
+              {name: 'Crossbow Hand', dice: '1d6+1'},
+              {name: 'Dagger', dice: '1d4+1'}
+            ]
+          },
+          {
+            title: 'Spell casting',
+            description: 'See spell casting cheat sheet'
+          }
         ]
       },
-    ]
-  },
-  {
-    title: 'Reaction',
-    used: false,
-    subsections: [
       {
-        title: 'Opertunity Attack',
-        description: 'See Weapon Attack'
+        title: 'Bonus Action',
+        used: false,
+        subsections: [
+          {
+            title: 'Off-hand attack',
+            dice: 'D20+3',
+            items: [
+              {name: 'Dagger', dice: '1d4'}
+            ]
+          },
+          {
+            title: 'Command Bernhard',
+            description: 'Bernhard needs a command, otherwise he will take the Dodge action'
+          },
+          {
+            title: 'Spell casting',
+            description: 'See spell casting cheat sheet'
+          }
+        ]
       },
-    ]
-  },
-  {
-    title: 'Movement',
-    used: false,
-    subsections: [
       {
-        title: 'Walking 30ft.',
-        description: '(6 Felder)'
+        title: 'Reaction',
+        used: false,
+        subsections: [
+          {
+            title: 'Opertunity Attack',
+            description: 'See Weapon Attack'
+          },
+          {
+            title: 'Spell casting',
+            description: 'See spell casting cheat sheet'
+          }
+        ]
       },
+      {
+        title: 'Movement',
+        used: false,
+        subsections: [
+          {
+            title: 'Walking 30ft.',
+            description: '(6 Felder)'
+          },
+        ]
+      },
+      {
+        title: "Features",
+        subsections: [
+          {
+            title: "Fey Ancestry",
+            description: "Advantage against getting charmed"
+          },
+          {
+            title: "Makeshift meals",
+            description: `${nexLevel} HP for ${nexProficiencyBonus} creatures during short rest, 1 per long rest`
+          }
+        ]
+      }
     ]
   },
   {
-    title: 'Features',
-    subsections: [
+    name: 'Bernhard',
+    healthPoints: {
+      current: 5 +5 * nexLevel,
+      max: 5 +5 * nexLevel,
+    },
+    armorClass: 14 + nexProficiencyBonus,
+    sectionList: [
       {
-        title: 'Lightning Absorption',
-        description: 'If hit by lightning damage, regain HP equal to the damage'
+        title: 'Action',
+        used: false,
+        subsections: [
+          {
+            title: 'Weapon Attack',
+            dice: `D20+${4 + nexProficiencyBonus}`,
+            items: [
+              {name: 'Slam', dice: '1d8+4'},
+            ]
+          },
+        ]
+      },
+      {
+        title: 'Reaction',
+        used: false,
+        subsections: [
+          {
+            title: 'Opertunity Attack',
+            description: 'See Weapon Attack'
+          },
+        ]
+      },
+      {
+        title: 'Movement',
+        used: false,
+        subsections: [
+          {
+            title: 'Walking 30ft.',
+            description: '(6 Felder)'
+          },
+        ]
+      },
+      {
+        title: 'Features',
+        subsections: [
+          {
+            title: 'Lightning Absorption',
+            description: 'If hit by lightning damage, regain HP equal to the damage'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Hedrick',
+    healthPoints: {
+      current: 1,
+      max: 1,
+    },
+    armorClass: 11,
+    sectionList: [
+      {
+        title: 'Action',
+        used: false,
+        subsections: [
+          {
+            title: 'Help',
+            description: 'Give advantage to next attacker'
+          },
+          {
+            title: 'Weapon Attack',
+            dice: 'D20+3',
+            items: [
+              {name: 'Talons', dice: '1'},
+            ]
+          },
+        ]
+      },
+      {
+        title: 'Reaction',
+        used: false,
+        subsections: [
+          {
+            title: 'Opertunity Attack',
+            description: 'See Weapon Attack'
+          },
+        ]
+      },
+      {
+        title: 'Movement',
+        used: false,
+        subsections: [
+          {
+            title: 'Walking 5ft.',
+            description: '(1 Feld)'
+          },
+          {
+            title: 'Flying 60ft.',
+            description: '(12 Felder)'
+          },
+        ]
+      },
+      {
+        title: 'Features',
+        subsections: [
+          {
+            title: 'Flyby',
+            description: 'No opportunity attacks while flying'
+          },
+          {
+            title: 'Keen Hearing and Sight',
+            description: 'Advantage on perception checks when hearing or seeing'
+          }
+        ]
       }
     ]
   }
-])
+]);
 
-const hedrickActionUsed = ref(false);
-const hedrickReactionUsed = ref(false);
-const hedrickMovementUsed = ref(false);
-const hedrickMaxHealthPoints = 1;
-const hedrickHealthPoints = ref(hedrickMaxHealthPoints);
-const hedrickArmorClass = 11;
-
-const hedrickAction: Section = {
-  title: 'Action',
-  subsections: [
-    {
-      title: 'Help',
-      description: 'Give advantage to next attacker'
-    },
-    {
-      title: 'Weapon Attack',
-      dice: 'D20+3',
-      items: [
-        {name: 'Talons', dice: '1'},
-      ]
-    },
-  ]
-}
-
-const hedrickReaction: Section = {
-  title: 'Reaction',
-  subsections: [
-    {
-      title: 'Opertunity Attack',
-      description: 'See Weapon Attack'
-    },
-  ]
-}
-
-const hedrickMovement: Section = {
-  title: 'Movement',
-  subsections: [
-    {
-      title: 'Walking 5ft.',
-      description: '(1 Feld)'
-    },
-    {
-      title: 'Flying 60ft.',
-      description: '(12 Felder)'
-    },
-  ]
+const resetSection = (section: Section) => {
+  if(section.used !== undefined) {
+    section.used = false
+  }
 }
 
 const reset = () => {
-  nexActionUsed.value = false;
-  nexBonusActionUsed.value = false;
-  nexReactionUsed.value = false;
-  nexMovementUsed.value = false;
-
-  bernhardCheatSheet.value.forEach(section => section.used = false);
-
-  hedrickActionUsed.value = false;
-  hedrickReactionUsed.value = false;
-  hedrickMovementUsed.value = false;
+  creatureList.value.forEach((creature) => creature.sectionList.forEach(resetSection));
 }
 
 </script>
@@ -197,34 +233,13 @@ const reset = () => {
       <span>Round cheat sheet</span>
       <button @click="reset">New round</button>
     </div>
-    <div class="creature-section">
-      <h3>Nex</h3>
-      <div class="action-grid">
-        <SectionCard v-model="nexActionUsed" :section="nexAction"/>
-        <SectionCard v-model="nexBonusActionUsed" :section="nexBonusAction"/>
-        <SectionCard v-model="nexReactionUsed" :section="nexReaction"/>
-        <SectionCard v-model="nexMovementUsed" :section="nexMovement"/>
-        <HealthPoints v-model="nexHealthPoints" :max-health-points="nexMaxHealthPoints"/>
-        <ArmorClass :armor-class="nexArmorClass"/>
-      </div>
-    </div>
-    <div class="creature-section">
-      <h3>Bernhard</h3>
-      <div class="action-grid">
-        <SectionCard v-for="section in bernhardCheatSheet" :key="section.title" v-model="section.used" :section="section"/>
-        <HealthPoints v-model="bernhardHealthPoints" :max-health-points="bernhardMaxHealthPoints"/>
-        <ArmorClass :armor-class="bernhardArmorClass"/>
-      </div>
-    </div>
 
-    <div class="creature-section">
-      <h3>Hedrick</h3>
+    <div v-for="creature in creatureList" :key="creature.name" class="creature-section">
+      <h3>{{creature.name}}</h3>
       <div class="action-grid">
-        <SectionCard v-model="hedrickActionUsed" :section="hedrickAction"/>
-        <SectionCard v-model="hedrickReactionUsed" :section="hedrickReaction"/>
-        <SectionCard v-model="hedrickMovementUsed" :section="hedrickMovement"/>
-        <HealthPoints v-model="hedrickHealthPoints" :max-health-points="hedrickMaxHealthPoints"/>
-        <ArmorClass :armor-class="hedrickArmorClass"/>
+        <SectionCard v-for="section in creature.sectionList" :key="section.title" v-model="section.used" :section="section"/>
+        <HealthPoints v-model="creature.healthPoints.current" :max-health-points="creature.healthPoints.max"/>
+        <ArmorClass :armor-class="creature.armorClass"/>
       </div>
     </div>
   </div>
