@@ -5,6 +5,8 @@ import {ref} from "vue";
 
 const JAZZ_LEVEL = 3;
 const JAZZ_PROFICIENCY_BONUS = 2;
+const JAZZ_NUMBER_OF_RAGES = 2;
+const JAZZ_RAGE_DAMAGE = 2;
 
 const creatureList = ref<Creature[]>([
     {
@@ -21,11 +23,11 @@ const creatureList = ref<Creature[]>([
           subsections: [
             {
               title: 'Weapon Attack',
-              dice: 'D20+6',
+              dice: 'd20+6',
               items: [
                 {
                   name: 'any weapon',
-                  dice: '1d12+4(+6 R)'
+                  dice: `1d12+4(+${4 + JAZZ_RAGE_DAMAGE} R)`
                 }
               ]
             },
@@ -46,7 +48,7 @@ const creatureList = ref<Creature[]>([
             {
               title: 'Grapple or Shove',
               description: 'when melee attack hits, can attempt to grapple or shove same creature',
-              dice: 'D20+6'
+              dice: 'd20+6'
             }
           ]
         },
@@ -57,7 +59,7 @@ const creatureList = ref<Creature[]>([
             {
               title: 'Rage',
               usages: {
-                flags: [false, false],
+                flags: [...Array(JAZZ_NUMBER_OF_RAGES)].fill(false),
                 typeOfRest: TypeOfRest.LONG
               },
               description: 'resistance to bludgeoning, piercing, and slashing damage. +2 damage. Advantage on Strength ability checks & saving throws'
@@ -109,7 +111,11 @@ const creatureList = ref<Creature[]>([
             },
             {
               title: 'Noble Confidence',
-              description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${JAZZ_PROFICIENCY_BONUS} allies per short rest`
+              usages: {
+                flags: [...Array(JAZZ_PROFICIENCY_BONUS)].fill(false),
+                typeOfRest: TypeOfRest.SHORT
+              },
+              description: `give 1d4 bonus to ability check, saving throw or attack roll to an ally (during a short rest)`
             }
           ]
         }

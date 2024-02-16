@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
-import type {Creature} from "../../scripts/cheatSheetTypes.ts";
+import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 
 const nexLevel = 3;
@@ -22,7 +22,7 @@ const creatureList = ref<Creature[]>([
         subsections: [
           {
             title: 'Weapon Attack',
-            dice: 'D20+3',
+            dice: 'd20+3',
             items: [
               {name: 'Crossbow light', dice: '1d8+1'},
               {name: 'Crossbow Hand', dice: '1d6+1'},
@@ -41,7 +41,7 @@ const creatureList = ref<Creature[]>([
         subsections: [
           {
             title: 'Off-hand attack',
-            dice: 'D20+3',
+            dice: 'd20+3',
             items: [
               {name: 'Dagger', dice: '1d4'}
             ]
@@ -89,6 +89,10 @@ const creatureList = ref<Creature[]>([
           },
           {
             title: "Makeshift meals",
+            usages: {
+              flags: [false],
+              typeOfRest: TypeOfRest.LONG,
+            },
             description: `${nexLevel} HP for ${nexProficiencyBonus} creatures during short rest, 1 per long rest`
           }
         ]
@@ -109,7 +113,7 @@ const creatureList = ref<Creature[]>([
         subsections: [
           {
             title: 'Weapon Attack',
-            dice: `D20+${4 + nexProficiencyBonus}`,
+            dice: `d20+${4 + nexProficiencyBonus}`,
             items: [
               {name: 'Slam', dice: '1d8+4'},
             ]
@@ -165,7 +169,7 @@ const creatureList = ref<Creature[]>([
           },
           {
             title: 'Weapon Attack',
-            dice: 'D20+3',
+            dice: 'd20+3',
             items: [
               {name: 'Talons', dice: '1'},
             ]

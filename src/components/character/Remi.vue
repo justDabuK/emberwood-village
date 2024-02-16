@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type {Creature} from "../../scripts/cheatSheetTypes.ts";
+import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {ref} from "vue";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 
 const REMI_LEVEL = 3;
 const REMI_PROFICIENCY_BONUS = 2;
+const REMI_SNEAK_ATTACK_DICE = "2d6";
 
 const creatureList = ref<Creature[]>([
   {
@@ -21,7 +22,7 @@ const creatureList = ref<Creature[]>([
         subsections: [
           {
             title: 'Weapon Attack',
-            dice: 'D20+6',
+            dice: 'd20+6',
             items: [
               {name: 'Shortsword', dice: '1d6+4'},
             ]
@@ -38,7 +39,7 @@ const creatureList = ref<Creature[]>([
             items: [
                 {
                   name: 'Damage',
-                  dice: '2d6',
+                  dice: REMI_SNEAK_ATTACK_DICE,
                 }
             ]
           }
@@ -50,7 +51,7 @@ const creatureList = ref<Creature[]>([
         subsections: [
           {
             title: 'Off-hand Attack',
-            dice: 'D20+6',
+            dice: 'd20+6',
             items: [
               {name: 'Shortsword', dice: '1d6'},
             ]
@@ -98,6 +99,10 @@ const creatureList = ref<Creature[]>([
           },
           {
             title: 'Noble Confidence',
+            usages: {
+              flags: [...Array(REMI_PROFICIENCY_BONUS)].fill(false),
+              typeOfRest: TypeOfRest.SHORT
+            },
             description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${REMI_PROFICIENCY_BONUS} allies per short rest`
           }
         ]
