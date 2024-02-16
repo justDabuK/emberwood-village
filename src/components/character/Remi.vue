@@ -13,6 +13,11 @@ const creatureList = ref<Creature[]>([
     healthPoints: {
       current: (5 + 1) * REMI_LEVEL,
       max: (5 + 1) * REMI_LEVEL,
+      temporary: 0,
+      hitDice: {
+        flags: [...Array(REMI_LEVEL)].fill(false),
+        dice: 'd8'
+      }
     },
     armorClass: 14,
     sectionList: [

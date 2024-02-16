@@ -48,6 +48,7 @@ const healthPercentage = computed(() => {
         <button class="damage-button" @click="damage">-</button>
       </div>
     </div>
+    <!-- TODO: add temporary hit points & hit dice-->
   </div>
 </template>
 

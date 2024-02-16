@@ -4,15 +4,20 @@ import {ref} from "vue";
 import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 
-const nexLevel = 3;
-const nexProficiencyBonus = 2;
+const NEX_LEVEL = 3;
+const NEX_PROFICIENCY_BONUS = 2;
 
 const creatureList = ref<Creature[]>([
   {
     name: "Nex",
     healthPoints: {
-      current: (5 + 3) * nexLevel,
-      max: (5 + 3) * nexLevel,
+      current: (5 + 3) * NEX_LEVEL,
+      max: (5 + 3) * NEX_LEVEL,
+      temporary: 0,
+      hitDice: {
+        flags: [...Array(NEX_LEVEL)].fill(false),
+        dice: 'd8'
+      }
     },
     armorClass: 14,
     sectionList: [
@@ -93,7 +98,7 @@ const creatureList = ref<Creature[]>([
               flags: [false],
               typeOfRest: TypeOfRest.LONG,
             },
-            description: `${nexLevel} HP for ${nexProficiencyBonus} creatures during short rest, 1 per long rest`
+            description: `${NEX_LEVEL} HP for ${NEX_PROFICIENCY_BONUS} creatures during short rest, 1 per long rest`
           }
         ]
       }
@@ -102,10 +107,10 @@ const creatureList = ref<Creature[]>([
   {
     name: 'Bernhard',
     healthPoints: {
-      current: 5 +5 * nexLevel,
-      max: 5 +5 * nexLevel,
+      current: 5 +5 * NEX_LEVEL,
+      max: 5 +5 * NEX_LEVEL,
     },
-    armorClass: 14 + nexProficiencyBonus,
+    armorClass: 14 + NEX_PROFICIENCY_BONUS,
     sectionList: [
       {
         title: 'Action',
@@ -113,7 +118,7 @@ const creatureList = ref<Creature[]>([
         subsections: [
           {
             title: 'Weapon Attack',
-            dice: `d20+${4 + nexProficiencyBonus}`,
+            dice: `d20+${4 + NEX_PROFICIENCY_BONUS}`,
             items: [
               {name: 'Slam', dice: '1d8+4'},
             ]

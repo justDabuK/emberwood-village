@@ -14,6 +14,11 @@ const creatureList = ref<Creature[]>([
       healthPoints: {
         current: (7 + 3) * JAZZ_LEVEL,
         max: (7 + 3) * JAZZ_LEVEL,
+        temporary: 0,
+        hitDice: {
+          flags: [...Array(JAZZ_LEVEL)].fill(false),
+          dice: 'd12'
+        }
       },
       armorClass: 15,
       sectionList: [

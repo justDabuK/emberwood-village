@@ -3,6 +3,11 @@ export type Creature = {
     healthPoints: {
         current: number;
         max: number;
+        temporary?: number;
+        hitDice?: {
+            flags: boolean[];
+            dice: string;
+        }
     }
     armorClass: number;
     sectionList: Section[];
