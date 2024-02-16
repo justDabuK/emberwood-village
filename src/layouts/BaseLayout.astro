@@ -4,13 +4,14 @@ import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
 import {sanitizeTitle} from "../scripts/sanitizeTitle";
 import { Icon } from 'astro-icon/components';
+import InlineIcon from '../components/InlineIcon.astro';
 
 interface Props {
 	title: string;
 	icon?: string;
 }
 
-const { title, icon } = Astro.props;
+const { title, icon, iconCover } = Astro.props;
 const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
 const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
 
@@ -33,16 +34,10 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 		<!-- TODO: make the header appear below the content, when we are in mobile mode (like youtube, spotify, etc.)-->
 		<Header />
 		<main >
-			{icon ?
-				<div class="headline-container">{
-					isSvg
-						? <Icon name={iconNameWithoutExtension} style={iconTransitionName} />
-						: <img src={`/icons/${icon}`} alt={icon} style={iconTransitionName}/>
-				}
+				<div class="headline-container">
+					<InlineIcon icon={icon} size="4rem" cover={iconCover}/>
 					<h2 style={titleTransitionName}>{title}</h2>
-				</div> :
-				<h2 style={titleTransitionName}>{title}</h2>
-			}
+				</div>
 			<slot />
 		</main>
 	</body>

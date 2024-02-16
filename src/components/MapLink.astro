@@ -1,6 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
-import {sanitizeTitle} from "../scripts/sanitizeTitle";
+import InlineIcon from "../components/InlineIcon.astro";
 
 type Props = {
     url: string;
@@ -17,9 +16,6 @@ type Props = {
 
 const { url, frontmatter } = Astro.props;
 const { title, columnStart, columnEnd, rowStart, rowEnd, disabled, icon } = frontmatter;
-const isSvg = icon?.endsWith(".svg");
-const iconNameWithoutExtension = icon?.split(".")[0];
-const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
 
 ---
 <!-- TODO: introduce a tooltip that shows the name of the location -->
@@ -28,9 +24,7 @@ const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
     disabled
         ? <div class="disabledDiv" >???</div>
         : <a class="mapLink" href={url}>{ icon
-            ? isSvg
-                ? <Icon name={iconNameWithoutExtension} style={iconTransitionName}/>
-                : <img style={iconTransitionName} src={`/icons/${icon}`} alt={icon} />
+            ? <InlineIcon icon={icon} size="50%"/>
             : title
         }
     </a>
@@ -62,14 +56,5 @@ const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
         place-items: center;
         font-size: 0.5rem;
         border-radius: 5px;
-    }
-
-    img {
-        height: 50%;
-        color: red;
-    }
-    [data-icon] {
-        height: 50%;
-        width: 50%;
     }
 </style>
