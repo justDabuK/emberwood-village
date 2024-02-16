@@ -94,6 +94,10 @@ table {
         }
     }
 
+    :is(td):last-of-type {
+        text-align: right;
+    }
+
     :is(tr):last-of-type {
         & td {
             border-block-width: 1px;
