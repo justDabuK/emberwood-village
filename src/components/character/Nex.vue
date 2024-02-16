@@ -1,8 +1,7 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
-import type {Creature, Section} from "../../scripts/cheatSheetTypes.ts";
-import CreatureSection from "./CreatureSection.vue";
+import type {Creature} from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 
 const nexLevel = 3;
