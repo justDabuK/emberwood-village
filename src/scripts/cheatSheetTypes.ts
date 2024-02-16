@@ -17,8 +17,20 @@ export type Section = {
 export type Subsection = {
     title: string;
     dice?: string;
+    usages?: Usages;
     description?: string;
     items?: Item[];
+}
+
+export enum TypeOfRest {
+    SHORT = "SR",
+    LONG = "LR"
+
+}
+
+export type Usages = {
+    flags: boolean[];
+    typeOfRest: TypeOfRest;
 }
 
 export type Item = {

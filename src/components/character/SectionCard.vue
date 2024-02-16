@@ -28,6 +28,10 @@ const toggleModel = () => {
       <div class="subsection-header">
         <span>{{ subsection.title }}</span>
         <span v-if="subsection.dice">{{ subsection.dice }}</span>
+        <div v-if="subsection.usages" class="usages">
+          <input v-for="(flag, index) in subsection.usages.flags" :key="index" type="checkbox" :checked="flag">
+          <span>{{ `/${subsection.usages.typeOfRest}` }}</span>
+        </div>
       </div>
 
       <div v-if="subsection.description" class="description">

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import RoundCheatSheet from "./RoundCheatSheet.vue";
-import type {Creature} from "../../scripts/cheatSheetTypes.ts";
+import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {ref} from "vue";
 
 const JAZZ_LEVEL = 3;
@@ -31,7 +31,10 @@ const creatureList = ref<Creature[]>([
             },
             {
               title: "Breath Weapon",
-              dice: "2/LS", // TODO: introduce checkbox for limited resources
+              usages: {
+                flags: [false, false],
+                typeOfRest: TypeOfRest.LONG,
+              },
               description: "15ft. cone, 1d10 force damage, DEX save (DC 13) for half"
             }
           ]
@@ -53,7 +56,10 @@ const creatureList = ref<Creature[]>([
           subsections: [
             {
               title: 'Rage',
-              dice: '2/LS',
+              usages: {
+                flags: [false, false],
+                typeOfRest: TypeOfRest.LONG
+              },
               description: 'resistance to bludgeoning, piercing, and slashing damage. +2 damage. Advantage on Strength ability checks & saving throws'
             },
             {
