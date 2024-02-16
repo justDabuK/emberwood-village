@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import MarkdownLink from "../components/MarkdownLink.astro";
 import MapLink from "../components/MapLink.astro";
 import {MarkdownInstance} from "astro";
+import { Image } from 'astro:assets';
+import emberwoodVillageMap from "../assets/02_EMBERWOOD_VILLAGE_NOGRID.jpg";
+
 
 const allEstablishments = await Astro.glob('../pages/establishments/*.md')
 const allMisc = await Astro.glob('../pages/misc/*.md')
@@ -13,7 +16,7 @@ const getGridRowSpanStyle = (shops: MarkdownInstance<Record<string, any>>[]) => 
 
 <BaseLayout title="Emberwood Village">
     <div class="map-container">
-        <img class="image" src="/images/02_EMBERWOOD_VILLAGE_NOGRID.jpg" alt="Map of Emberwood" />
+        <Image class="image" src={emberwoodVillageMap} alt="Map of Emberwood" />
         {[...allEstablishments, ...allShops, ...allMisc]
             .filter((establishment) => establishment.frontmatter.columnStart && establishment.frontmatter.columnEnd && establishment.frontmatter.rowStart && establishment.frontmatter.rowEnd)
             .map((establishment) => <MapLink url={establishment.url} frontmatter={establishment.frontmatter} />)}
@@ -53,7 +56,7 @@ const getGridRowSpanStyle = (shops: MarkdownInstance<Record<string, any>>[]) => 
         overflow: auto;
     }
 
-    .image{
+    .image {
         width: 100%;
         height: auto;
         grid-column: 1 / -1;
