@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {Section} from "../../scripts/cheatSheetTypes.ts";
+import Usages from "./Usages.vue";
 
 defineProps<{
   section: Section;
@@ -28,10 +29,7 @@ const toggleModel = () => {
       <div class="subsection-header">
         <span>{{ subsection.title }}</span>
         <span v-if="subsection.dice">{{ subsection.dice }}</span>
-        <div v-if="subsection.usages" class="usages">
-          <input v-for="(flag, index) in subsection.usages.flags" :key="index" type="checkbox" :checked="flag">
-          <span>{{ `/${subsection.usages.typeOfRest}` }}</span>
-        </div>
+        <Usages v-if="subsection.usages" :usages="subsection.usages"/>
       </div>
 
       <div v-if="subsection.description" class="description">

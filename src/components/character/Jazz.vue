@@ -17,7 +17,8 @@ const creatureList = ref<Creature[]>([
         temporary: 0,
         hitDice: {
           flags: [...Array(JAZZ_LEVEL)].fill(false),
-          dice: 'd12'
+          description: 'd12',
+          typeOfRest: TypeOfRest.LONG,
         }
       },
       armorClass: 15,

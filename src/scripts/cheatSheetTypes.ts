@@ -4,10 +4,7 @@ export type Creature = {
         current: number;
         max: number;
         temporary?: number;
-        hitDice?: {
-            flags: boolean[];
-            dice: string;
-        }
+        hitDice?: UsagesPerRest;
     }
     armorClass: number;
     sectionList: Section[];
@@ -22,7 +19,7 @@ export type Section = {
 export type Subsection = {
     title: string;
     dice?: string;
-    usages?: Usages;
+    usages?: UsagesPerRest;
     description?: string;
     items?: Item[];
 }
@@ -33,8 +30,9 @@ export enum TypeOfRest {
 
 }
 
-export type Usages = {
+export type UsagesPerRest = {
     flags: boolean[];
+    description?: string;
     typeOfRest: TypeOfRest;
 }
 
