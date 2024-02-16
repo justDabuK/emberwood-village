@@ -11,6 +11,9 @@ watch(model, (newValue) => {
   if(newValue > props.maxHealthPoints) {
     model.value = props.maxHealthPoints;
   }
+  if(newValue < 0) {
+    model.value = 0;
+  }
 })
 
 const healthPointDelta = ref(0);
