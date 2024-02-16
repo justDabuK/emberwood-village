@@ -85,7 +85,11 @@ input[type=number] {
   gap: 30px;
   padding: 10px;
   /* TODO: can I animate the change? */
-  background: linear-gradient(90deg, darkgreen var(--health-percentage), var(--card-bg) 0%);
+  background-image: linear-gradient(darkgreen, darkgreen);
+  background-size: var(--health-percentage) 100%;
+  background-repeat: no-repeat;
+
+  transition: background-size 500ms ease-in-out;
 
   button {
     background-color: var(--body-bg);
