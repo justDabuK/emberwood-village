@@ -109,7 +109,7 @@ input[type=number] {
   }
 
   .health-points-title {
-    color: var(--text-color-darker-1);
+    color: oklch(93.52% 0.032 304.82 / 0.5);
   }
 
   .health-points-data {
