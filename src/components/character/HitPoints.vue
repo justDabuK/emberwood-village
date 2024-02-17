@@ -20,16 +20,16 @@ watch(hitPoints, (newValue) => {
   }
 })
 
-const healthPointDelta = ref(0);
+const hitPointDelta = ref(0);
 
 const heal = () => {
-  hitPoints.value += healthPointDelta.value;
-  healthPointDelta.value = 0;
+  hitPoints.value += hitPointDelta.value;
+  hitPointDelta.value = 0;
 }
 
 const damage = () => {
   if(temporaryHitPoints.value) {
-    const remainingTemporaryHitPoints = temporaryHitPoints.value - healthPointDelta.value
+    const remainingTemporaryHitPoints = temporaryHitPoints.value - hitPointDelta.value
     if(remainingTemporaryHitPoints < 0) {
       hitPoints.value += remainingTemporaryHitPoints;
       temporaryHitPoints.value = 0;
@@ -37,9 +37,9 @@ const damage = () => {
       temporaryHitPoints.value = remainingTemporaryHitPoints;
     }
   } else {
-    hitPoints.value -= healthPointDelta.value;
+    hitPoints.value -= hitPointDelta.value;
   }
-  healthPointDelta.value = 0;
+  hitPointDelta.value = 0;
   console.log(`HP: ${hitPoints.value} | THP: ${temporaryHitPoints.value}`)
 }
 
@@ -58,7 +58,7 @@ const healthPercentage = computed(() => {
         <span>{{ maxHitPoints }}</span>
       </div>
       <div class="delta">
-        <input v-model="healthPointDelta" type="number" />
+        <input v-model="hitPointDelta" type="number" />
         <button class="heal-button" @click="heal">+</button>
         <button class="damage-button" @click="damage">-</button>
       </div>
