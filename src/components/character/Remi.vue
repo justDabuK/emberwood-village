@@ -33,6 +33,10 @@ const creatureList = ref<Creature[]>([
               {name: 'Shortsword', dice: '1d6+4'},
             ]
           },
+          {
+            title: 'Hat of Disguise',
+            description: 'Disguise Self at will as an action'
+          }
         ]
       },
       {
