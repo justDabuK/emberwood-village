@@ -44,6 +44,11 @@ const creatureList = ref<Creature[]>([
                 typeOfRest: TypeOfRest.LONG,
               },
               description: "15ft. cone, 1d10 force damage, DEX save (DC 13) for half"
+            },
+            {
+              title: "Pin down (from Grappler)",
+              description: "restrain a creature you are grappling (everyone gets advantage on attacks against it & you, you and it have disadvantage on attack rolls)",
+              dice: 'd20+6',
             }
           ]
         },
@@ -96,11 +101,11 @@ const creatureList = ref<Creature[]>([
             },
             {
               title: 'Long Jump',
-              description: '10ft. run-up, 36ft. jump'
+              description: '10ft.(2 Felder) run-up, 36ft. (7 Felder) jump'
             },
             {
               title: 'High Jump',
-              description: '10ft. run-up, 14ft. jump'
+              description: '10ft.(2 Felder) run-up, 14ft. (2 Felder) jump'
             }
           ]
         },
@@ -122,6 +127,10 @@ const creatureList = ref<Creature[]>([
                 typeOfRest: TypeOfRest.SHORT
               },
               description: `give 1d4 bonus to ability check, saving throw or attack roll to an ally (during a short rest)`
+            },
+            {
+              title: 'Grappler',
+              description: 'advantage on attack rolls against creatures you are grappling'
             }
           ]
         }
