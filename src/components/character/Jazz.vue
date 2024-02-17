@@ -5,7 +5,7 @@ import {ref} from "vue";
 
 const JAZZ_LEVEL = 3;
 const JAZZ_PROFICIENCY_BONUS = 2;
-const JAZZ_NUMBER_OF_RAGES = 2;
+const JAZZ_NUMBER_OF_RAGES = 3;
 const JAZZ_RAGE_DAMAGE = 2;
 
 const creatureList = ref<Creature[]>([
@@ -46,6 +46,11 @@ const creatureList = ref<Creature[]>([
               description: "15ft. cone, 1d10 force damage, DEX save (DC 13) for half"
             },
             {
+              title: 'Coiling Grasp Tattoo',
+              dice: 'DC 14 STR/DEX save',
+              description: "3d6 force damage, grappled. Reach is 15 ft. (3 Felder)"
+            },
+            {
               title: "Pin down (from Grappler)",
               description: "restrain a creature you are grappling (everyone gets advantage on attacks against it & you, you and it have disadvantage on attack rolls)",
               dice: 'd20+6',
@@ -62,6 +67,16 @@ const creatureList = ref<Creature[]>([
               dice: 'd20+6'
             }
           ]
+        },
+        {
+          title: 'Reckless Attack',
+          used: false,
+          subsections: [
+            {
+              title: 'Advantage on demand',
+              description: 'advantage on attack rolls, but attackers also have advantage against you',
+            }
+          ],
         },
         {
           title: 'Bonus Action',

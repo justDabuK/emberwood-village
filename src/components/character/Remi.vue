@@ -20,7 +20,7 @@ const creatureList = ref<Creature[]>([
         typeOfRest: TypeOfRest.LONG,
       }
     },
-    armorClass: 14,
+    armorClass: 16,
     sectionList: [
       {
         title: 'Action',
@@ -110,6 +110,9 @@ const creatureList = ref<Creature[]>([
               typeOfRest: TypeOfRest.SHORT
             },
             description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${REMI_PROFICIENCY_BONUS} allies per short rest`
+          },{
+          title: 'Fancy Footwork',
+            description: 'no opportunity attacks from target when meleed before'
           }
         ]
       }
