@@ -29,7 +29,7 @@ const toggleModel = () => {
       <div class="subsection-header">
         <span>{{ subsection.title }}</span>
         <span v-if="subsection.dice">{{ subsection.dice }}</span>
-        <Usages v-if="subsection.usages" :usages="subsection.usages"/>
+        <Usages v-if="subsection.usages" v-model="subsection.usages"/>
       </div>
 
       <div v-if="subsection.description" class="description">

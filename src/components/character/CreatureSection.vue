@@ -12,7 +12,7 @@ const creature = defineModel<Creature>({required: true});
     <h3>{{creature.name}}</h3>
     <div class="action-grid">
       <SectionCard v-for="section in creature.sectionList" :key="section.title" v-model="section.used" :section="section"/>
-      <HealthPoints v-model="creature.healthPoints.current" :max-health-points="creature.healthPoints.max"/>
+      <HealthPoints v-model="creature.healthPoints.current" v-model:temporary-hit-points="creature.healthPoints.temporary" v-model:hit-dice="creature.healthPoints.hitDice" :max-health-points="creature.healthPoints.max"/>
       <ArmorClass :armor-class="creature.armorClass"/>
     </div>
   </div>

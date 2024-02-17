@@ -1,35 +1,50 @@
 <script setup lang="ts">
 import {computed, ref, watch} from "vue";
+import Usages from "./Usages.vue";
+import type {UsagesPerRest} from "../../scripts/cheatSheetTypes.ts";
 
 const props = defineProps<{
   maxHealthPoints: number;
 }>();
 
-const model = defineModel<number>({required: true});
+const hitPoints = defineModel<number>({required: true});
+const temporaryHitPoints = defineModel<number>('temporaryHitPoints');
+const hitDice = defineModel<UsagesPerRest>('hitDice');
 
-watch(model, (newValue) => {
+watch(hitPoints, (newValue) => {
   if(newValue > props.maxHealthPoints) {
-    model.value = props.maxHealthPoints;
+    hitPoints.value = props.maxHealthPoints;
   }
   if(newValue < 0) {
-    model.value = 0;
+    hitPoints.value = 0;
   }
 })
 
 const healthPointDelta = ref(0);
 
 const heal = () => {
-  model.value += healthPointDelta.value;
+  hitPoints.value += healthPointDelta.value;
   healthPointDelta.value = 0;
 }
 
 const damage = () => {
-  model.value -= healthPointDelta.value;
+  if(temporaryHitPoints.value) {
+    const remainingTemporaryHitPoints = temporaryHitPoints.value - healthPointDelta.value
+    if(remainingTemporaryHitPoints < 0) {
+      hitPoints.value += remainingTemporaryHitPoints;
+      temporaryHitPoints.value = 0;
+    } else {
+      temporaryHitPoints.value = remainingTemporaryHitPoints;
+    }
+  } else {
+    hitPoints.value -= healthPointDelta.value;
+  }
   healthPointDelta.value = 0;
+  console.log(`HP: ${hitPoints.value} | THP: ${temporaryHitPoints.value}`)
 }
 
 const healthPercentage = computed(() => {
-  return (model.value / props.maxHealthPoints) * 100;
+  return (hitPoints.value / props.maxHealthPoints) * 100;
 });
 </script>
 
@@ -38,7 +53,7 @@ const healthPercentage = computed(() => {
     <span class="health-points-title">HP</span>
     <div class="health-points-data">
       <div class="actual-points">
-        <input v-model="model" type="number" />
+        <input v-model="hitPoints" type="number" />
         <span>/</span>
         <span>{{ maxHealthPoints }}</span>
       </div>
@@ -48,7 +63,14 @@ const healthPercentage = computed(() => {
         <button class="damage-button" @click="damage">-</button>
       </div>
     </div>
-    <!-- TODO: add temporary hit points & hit dice-->
+    <div v-if="temporaryHitPoints !== undefined" class="actual-points">
+      <span>Temporary hit points</span>
+      <input v-model="temporaryHitPoints" type="number">
+    </div>
+    <div v-if="hitDice" class="actual-points">
+      <span>Hit dice</span>
+      <Usages v-model="hitDice" />
+    </div>
   </div>
 </template>
 
@@ -117,17 +139,18 @@ input[type=number] {
     display: flex;
     gap: 20px;
 
-    .actual-points {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-    }
     .delta {
       display: flex;
       gap: 5px;
       align-items: center;
     }
   }
+}
+
+.actual-points {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 </style>
