@@ -1,6 +1,6 @@
 export type Creature = {
     name: string;
-    healthPoints: {
+    hitPoints: {
         current: number;
         max: number;
         temporary?: number;

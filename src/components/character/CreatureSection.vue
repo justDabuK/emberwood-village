@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SectionCard from "./SectionCard.vue";
 import ArmorClass from "./ArmorClass.vue";
-import HealthPoints from "./HealthPoints.vue";
+import HitPoints from "./HitPoints.vue";
 import type {Creature} from "../../scripts/cheatSheetTypes.ts";
 
 const creature = defineModel<Creature>({required: true});
@@ -12,7 +12,7 @@ const creature = defineModel<Creature>({required: true});
     <h3>{{creature.name}}</h3>
     <div class="action-grid">
       <SectionCard v-for="section in creature.sectionList" :key="section.title" v-model="section.used" :section="section"/>
-      <HealthPoints v-model="creature.healthPoints.current" v-model:temporary-hit-points="creature.healthPoints.temporary" v-model:hit-dice="creature.healthPoints.hitDice" :max-health-points="creature.healthPoints.max"/>
+      <HitPoints v-model="creature.hitPoints.current" v-model:temporary-hit-points="creature.hitPoints.temporary" v-model:hit-dice="creature.hitPoints.hitDice" :max-hit-points="creature.hitPoints.max"/>
       <ArmorClass :armor-class="creature.armorClass"/>
     </div>
   </div>

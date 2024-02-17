@@ -4,7 +4,7 @@ import Usages from "./Usages.vue";
 import type {UsagesPerRest} from "../../scripts/cheatSheetTypes.ts";
 
 const props = defineProps<{
-  maxHealthPoints: number;
+  maxHitPoints: number;
 }>();
 
 const hitPoints = defineModel<number>({required: true});
@@ -12,8 +12,8 @@ const temporaryHitPoints = defineModel<number>('temporaryHitPoints');
 const hitDice = defineModel<UsagesPerRest>('hitDice');
 
 watch(hitPoints, (newValue) => {
-  if(newValue > props.maxHealthPoints) {
-    hitPoints.value = props.maxHealthPoints;
+  if(newValue > props.maxHitPoints) {
+    hitPoints.value = props.maxHitPoints;
   }
   if(newValue < 0) {
     hitPoints.value = 0;
@@ -44,7 +44,7 @@ const damage = () => {
 }
 
 const healthPercentage = computed(() => {
-  return (hitPoints.value / props.maxHealthPoints) * 100;
+  return (hitPoints.value / props.maxHitPoints) * 100;
 });
 </script>
 
@@ -55,7 +55,7 @@ const healthPercentage = computed(() => {
       <div class="actual-points">
         <input v-model="hitPoints" type="number" />
         <span>/</span>
-        <span>{{ maxHealthPoints }}</span>
+        <span>{{ maxHitPoints }}</span>
       </div>
       <div class="delta">
         <input v-model="healthPointDelta" type="number" />

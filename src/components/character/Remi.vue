@@ -10,7 +10,7 @@ const REMI_SNEAK_ATTACK_DICE = "2d6";
 const creatureList = ref<Creature[]>([
   {
     name: "Remi",
-    healthPoints: {
+    hitPoints: {
       current: (5 + 1) * REMI_LEVEL,
       max: (5 + 1) * REMI_LEVEL,
       temporary: 0,

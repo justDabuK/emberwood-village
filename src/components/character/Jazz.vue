@@ -11,7 +11,7 @@ const JAZZ_RAGE_DAMAGE = 2;
 const creatureList = ref<Creature[]>([
     {
       name: "Jazz",
-      healthPoints: {
+      hitPoints: {
         current: (7 + 3) * JAZZ_LEVEL,
         max: (7 + 3) * JAZZ_LEVEL,
         temporary: 0,

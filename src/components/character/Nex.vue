@@ -10,7 +10,7 @@ const NEX_PROFICIENCY_BONUS = 2;
 const creatureList = ref<Creature[]>([
   {
     name: "Nex",
-    healthPoints: {
+    hitPoints: {
       current: (5 + 3) * NEX_LEVEL,
       max: (5 + 3) * NEX_LEVEL,
       temporary: 0,
@@ -107,7 +107,7 @@ const creatureList = ref<Creature[]>([
   },
   {
     name: 'Bernhard',
-    healthPoints: {
+    hitPoints: {
       current: 5 +5 * NEX_LEVEL,
       max: 5 +5 * NEX_LEVEL,
     },
@@ -159,7 +159,7 @@ const creatureList = ref<Creature[]>([
   },
   {
     name: 'Hedrick',
-    healthPoints: {
+    hitPoints: {
       current: 1,
       max: 1,
     },
