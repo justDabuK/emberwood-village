@@ -46,10 +46,14 @@ const damage = () => {
 const healthPercentage = computed(() => {
   return (hitPoints.value / props.maxHitPoints) * 100;
 });
+
+const temporaryHitPointPercentage = computed(() => {
+  return temporaryHitPoints.value ? (temporaryHitPoints.value / props.maxHitPoints) * 100 : 0;
+});
 </script>
 
 <template>
-  <div class="card health-points" :style="`--health-percentage: ${healthPercentage}%`">
+  <div class="card health-points" :style="`--health-percentage: ${healthPercentage}%; --thp-percentage: ${temporaryHitPointPercentage}%`">
     <span class="health-points-title">HP</span>
     <div class="health-points-data">
       <div class="actual-points">
@@ -103,12 +107,13 @@ input[type=number] {
 }
 
 .health-points {
+  position:relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 10px;
-  /* TODO: can I animate the change? */
-  background-image: linear-gradient(darkgreen, darkgreen);
+  /* TODO: can I animate the temporary hit points as well? */
+  background-image: linear-gradient(90deg, darkgoldenrod var(--thp-percentage), darkgreen 0);
   background-size: var(--health-percentage) 100%;
   background-repeat: no-repeat;
 
