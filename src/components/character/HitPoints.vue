@@ -156,6 +156,7 @@ input[type=number] {
   display: flex;
   gap: 5px;
   align-items: center;
+  justify-content: space-between;
 }
 
 </style>
