@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {sanitizeTitle} from "../../scripts/sanitizeTitle";
 import { Image } from 'astro:assets';
-import jazzProfilePicture from "../../assets/jazz-profile-picture.jpg";
+import jazzProfilePicture from "../../assets/jazz-profile-picture.png";
 import remiProfilePicture from "../../assets/remi-profile-picture.jpg";
 import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
 
@@ -32,6 +32,21 @@ import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
 </BaseLayout>
 
 <style>
+    .card {
+        padding: 1rem;
+    }
+
+    h3 {
+        margin: 0;
+        text-align: center;
+    }
+
+    a {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
     .character-list-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
