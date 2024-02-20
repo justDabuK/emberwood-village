@@ -12,20 +12,20 @@ import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
     <div class="character-list-container">
         <div class="card">
             <a href="/characters/nex">
-                <h3 style={`view-transition-name: ${sanitizeTitle("Nex")}`}>Nex</h3>
                 <Image src={dominikProfilePicture} alt="Nex profile picture" class="profile-picture"/>
+                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Nex")}`}>Nex</div>
             </a>
         </div>
         <div class="card">
             <a href="/characters/remi">
-                <h3 style={`view-transition-name: ${sanitizeTitle("Remi")}`}>Remi</h3>
                 <Image src={remiProfilePicture} alt="Remi profile picture" class="profile-picture"/>
+                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Remi")}`}>Remi</div>
             </a>
         </div>
         <div class="card">
             <a href="/characters/jazz">
-                <h3 style={`view-transition-name: ${sanitizeTitle("Jazz")}`}>Jazz</h3>
                 <Image src={jazzProfilePicture} alt="Jazz profile picture" class="profile-picture"/>
+                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Jazz")}`}>Jazz</div>
             </a>
         </div>
     </div>
@@ -34,17 +34,18 @@ import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
 <style>
     .card {
         padding: 1rem;
+        position: relative;
     }
 
-    h3 {
-        margin: 0;
-        text-align: center;
-    }
-
-    a {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+    .character-name {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        padding: 1rem;
+        background-color: var(--map-link-bg-hover);
+        border-radius: 10px;
+        color: var(--map-link-icon-color);
+        font-size: 1.25rem;
     }
 
     .character-list-container {
