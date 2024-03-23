@@ -2,13 +2,14 @@
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {ref} from "vue";
+import {useStorage} from "@vueuse/core";
 
 const JAZZ_LEVEL = 3;
 const JAZZ_PROFICIENCY_BONUS = 2;
 const JAZZ_NUMBER_OF_RAGES = 3;
 const JAZZ_RAGE_DAMAGE = 2;
 
-const creatureList = ref<Creature[]>([
+const defaultJazzCreatureList = [
     {
       name: "Jazz",
       hitPoints: {
@@ -151,7 +152,9 @@ const creatureList = ref<Creature[]>([
         }
       ]
     }
-]);
+];
+
+const creatureList = useStorage<Creature[]>('jazz-creature-list', defaultJazzCreatureList);
 
 </script>
 

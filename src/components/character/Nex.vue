@@ -1,13 +1,12 @@
 <script setup lang="ts">
-
-import {ref} from "vue";
 import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
+import {useStorage} from "@vueuse/core";
 
 const NEX_LEVEL = 3;
 const NEX_PROFICIENCY_BONUS = 2;
 
-const creatureList = ref<Creature[]>([
+const defaultNexCreatureList = [
   {
     name: "Nex",
     hitPoints: {
@@ -221,7 +220,9 @@ const creatureList = ref<Creature[]>([
       }
     ]
   }
-]);
+];
+
+const creatureList = useStorage<Creature[]>('nex-creature-list', defaultNexCreatureList);
 
 </script>
 

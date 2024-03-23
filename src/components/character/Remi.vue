@@ -2,12 +2,13 @@
 import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {ref} from "vue";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
+import {useStorage} from "@vueuse/core";
 
 const REMI_LEVEL = 3;
 const REMI_PROFICIENCY_BONUS = 2;
 const REMI_SNEAK_ATTACK_DICE = "2d6";
 
-const creatureList = ref<Creature[]>([
+const defaultRemiCreatureList = [
   {
     name: "Remi",
     hitPoints: {
@@ -122,7 +123,9 @@ const creatureList = ref<Creature[]>([
       }
     ]
   }
-])
+];
+
+const creatureList = useStorage<Creature[]>('remi-creature-list', defaultRemiCreatureList);
 </script>
 
 <template>
