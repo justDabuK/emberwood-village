@@ -90,10 +90,6 @@ const defaultJazzCreatureList = [
                 typeOfRest: TypeOfRest.LONG
               },
               description: 'resistance to bludgeoning, piercing, and slashing damage. +2 damage. Advantage on Strength ability checks & saving throws'
-            },
-            {
-              title: 'Cunning Action',
-              description: 'Dash, Disengage, or Hide'
             }
           ]
         },
