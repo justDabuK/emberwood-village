@@ -20,11 +20,11 @@ watch(hitPoints, (newValue) => {
   }
 })
 
-const hitPointDelta = ref(0);
+const hitPointDelta = ref(1);
 
 const heal = () => {
   hitPoints.value += hitPointDelta.value;
-  hitPointDelta.value = 0;
+  hitPointDelta.value = 1;
 }
 
 const damage = () => {
