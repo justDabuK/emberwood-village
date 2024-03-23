@@ -24,4 +24,10 @@ title: "Timeline"
 |                                | picked up new rumors                                                |
 |                                | Met Panin Diaz and his entourage                                    |
 |                                | Got another job from River after another successful Lily evening    |
+| 1 day: Monday                  | Rat's Nest Tavern                                                   |
+|                                | rescued Petra                                                       |
+|                                | delerium crystal for River                                          |
+|                                | camp at eckerman mill                                               |
+| _Level up to 4_                |                                                                     |
+
 
