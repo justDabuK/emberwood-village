@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
-import {ref} from "vue";
 import {useStorage} from "@vueuse/core";
 
 const JAZZ_LEVEL = 3;
