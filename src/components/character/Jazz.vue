@@ -99,7 +99,7 @@ const defaultJazzCreatureList = [
           subsections: [
             {
               title: 'Advantage on demand',
-              description: 'advantage on attack rolls, but attackers also have advantage against you',
+              description: "advantage on attack rolls, but attackers also have advantage against you. Use when you don't hit",
             }
           ],
         },
