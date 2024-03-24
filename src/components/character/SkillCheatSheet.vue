@@ -74,7 +74,7 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
         </div>
       </div>
       <ul class="skill-list">
-        <li v-for="skill in SkillsPerAbilityScore[scoreKey]">{{`${getSkillModifier(skill, scoreKey)} ${skill}`}}</li>
+        <li v-for="skill in SkillsPerAbilityScore[scoreKey]" :class="[skillProficiencyList.includes(skill) ? 'proficient' : '', skillExpertiseList.includes(skill) ? 'expertise' : '']">{{`${getSkillModifier(skill, scoreKey)} ${skill}`}}</li>
       </ul>
     </div>
   </div>
@@ -126,5 +126,14 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
   flex-direction: column;
   list-style: none;
   margin: 10px auto;
+  font-weight: 300;
+
+  .proficient {
+    font-weight: 600;
+  }
+
+  .expertise {
+    font-weight: 700;
+  }
 }
 </style>
