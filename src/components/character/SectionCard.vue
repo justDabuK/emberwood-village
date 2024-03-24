@@ -49,6 +49,7 @@ const toggleModel = () => {
 .used {
   background-color: var(--body-bg);
   color: var(--text-color-darker-1);
+  box-shadow: unset;
 }
 
 .cursor-pointer {

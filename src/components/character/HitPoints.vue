@@ -88,6 +88,9 @@ input {
   padding: 5px 10px;
   text-align: right;
   width: 100%;
+  box-shadow:
+      inset 0 2px 20px oklch(0 0 0 / 10%),
+      0 2px 0 oklch(100% 0 0 / 15%);
 
   &:focus {
     outline: 1px solid var(--highlight-color);
@@ -118,6 +121,9 @@ input[type=number] {
   background-image: linear-gradient(90deg, darkgoldenrod var(--thp-percentage), darkgreen 0);
   background-size: var(--health-percentage) 100%;
   background-repeat: no-repeat;
+  box-shadow:
+      inset 0 1px 0 oklch(100% 0 0 / 15%),
+      0 1px 3px oklch(0 0 0 / 10%);
 
   transition: background-size 500ms ease-in-out;
 

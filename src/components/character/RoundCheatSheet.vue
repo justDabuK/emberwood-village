@@ -50,6 +50,9 @@ const resetUsed = () => {
       border-radius: 5px;
       padding: 10px 20px;
       font: inherit;
+      box-shadow:
+          inset 0 1px 0 oklch(70% 0.08 226.91),
+          0 1px 3px oklch(0 0 0 / 20%);
 
       &:hover {
         background-color: var(--button-color-hover);
@@ -57,6 +60,9 @@ const resetUsed = () => {
 
       &:active {
         background-color: var(--button-color-active);
+        box-shadow:
+            inset 0 2px 20px oklch(0 0 0 / 10%),
+            0 2px 0 oklch(100% 0 0 / 15%);
       }
 
       &.secondary {
