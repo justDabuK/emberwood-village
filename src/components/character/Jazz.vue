@@ -1,20 +1,54 @@
 <script setup lang="ts">
 import RoundCheatSheet from "./RoundCheatSheet.vue";
-import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
+import {type AbilityScores, type Creature, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {useStorage} from "@vueuse/core";
+import SkillCheatSheet from "./SkillCheatSheet.vue";
 
 const JAZZ_LEVEL = 4;
 const JAZZ_PROFICIENCY_BONUS = 2;
 const JAZZ_NUMBER_OF_RAGES = 3;
 const JAZZ_RAGE_DAMAGE = 2;
-const MODIFIRE = {
-  STR: 4,
-  DEX: 2,
-  CON: 3,
-  INT: -1,
-  WIS: 0,
-  CHA: 1
+
+const ABILITY_SCORES: AbilityScores = {
+  STR: 19,
+  DEX: 14,
+  CON: 16,
+  INT: 8,
+  WIS: 10,
+  CHA: 12
 };
+
+const getModifier = (abilityScore: number) => {
+  return Math.floor((abilityScore - 10) / 2);
+};
+
+const MODIFIER: AbilityScores = {
+  STR: getModifier(ABILITY_SCORES.STR),
+  DEX: getModifier(ABILITY_SCORES.DEX),
+  CON: getModifier(ABILITY_SCORES.CON),
+  INT: getModifier(ABILITY_SCORES.INT),
+  WIS: getModifier(ABILITY_SCORES.WIS),
+  CHA: getModifier(ABILITY_SCORES.CHA)
+};
+
+const SAVING_THROWS: AbilityScores = {
+  STR: MODIFIER.STR + JAZZ_PROFICIENCY_BONUS,
+  DEX: MODIFIER.DEX,
+  CON: MODIFIER.CON + JAZZ_PROFICIENCY_BONUS,
+  INT: MODIFIER.INT,
+  WIS: MODIFIER.WIS,
+  CHA: MODIFIER.CHA
+};
+
+const SKILL_PROFICIENCIES = [
+    Skill.Athletics,
+    Skill.Survival,
+    Skill.Persuasion
+]
+
+const SKILL_EXPERTIES = [
+  Skill.Intimidation
+]
 
 const breathWeaponDamageDiceNumber = () => {
   if(JAZZ_LEVEL < 5) {
@@ -49,11 +83,11 @@ const defaultJazzCreatureList = [
           subsections: [
             {
               title: 'Weapon Attack',
-              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIRE.STR}`,
+              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR}`,
               items: [
                 {
                   name: 'any weapon',
-                  dice: `1d12+${MODIFIRE.STR}(+${MODIFIRE.STR + JAZZ_RAGE_DAMAGE} R)`
+                  dice: `1d12+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`
                 }
               ]
             },
@@ -63,11 +97,11 @@ const defaultJazzCreatureList = [
                 flags: [...Array(JAZZ_PROFICIENCY_BONUS)].fill(false),
                 typeOfRest: TypeOfRest.LONG,
               },
-              description: `15ft. cone, ${breathWeaponDamageDiceNumber()}d10 force damage, DEX save (DC ${8 + MODIFIRE.CON + JAZZ_PROFICIENCY_BONUS}) for half`
+              description: `15ft. cone, ${breathWeaponDamageDiceNumber()}d10 force damage, DEX save (DC ${8 + MODIFIER.CON + JAZZ_PROFICIENCY_BONUS}) for half`
             },
             {
               title: 'Dragon Fear',
-              dice: `DC ${8 + JAZZ_PROFICIENCY_BONUS + MODIFIRE.CHA} WIS save`,
+              dice: `DC ${8 + JAZZ_PROFICIENCY_BONUS + MODIFIER.CHA} WIS save`,
               description: 'creatures within 30ft.(6 Felder), frightened for 1 minute if fail, can repeat save when taking damage'
             },
             {
@@ -78,7 +112,7 @@ const defaultJazzCreatureList = [
             {
               title: "Pin down (from Grappler)",
               description: "restrain a creature you are grappling (everyone gets advantage on attacks against it & you, you and it have disadvantage on attack rolls)",
-              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIRE.STR}`,
+              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR}`,
             }
           ]
         },
@@ -89,7 +123,7 @@ const defaultJazzCreatureList = [
             {
               title: 'Grapple or Shove',
               description: 'when melee attack hits, can attempt to grapple or shove same creature',
-              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIRE.STR}`
+              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR}`
             }
           ]
         },
@@ -181,5 +215,18 @@ const resetToDefault = () => {
 </script>
 
 <template>
-  <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" />
+  <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" class="round-cheat-sheet" />
+  <SkillCheatSheet
+      :modifiers="MODIFIER"
+      :ability-scores="ABILITY_SCORES"
+      :saving-throws="SAVING_THROWS"
+      :skill-proficiency-list="SKILL_PROFICIENCIES"
+      :skill-expertise-list="SKILL_EXPERTIES"
+  />
 </template>
+
+<style scoped>
+.round-cheat-sheet {
+  border-bottom: 1px solid var(--text-color-darker-1);
+}
+</style>
