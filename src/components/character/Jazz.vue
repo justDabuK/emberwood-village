@@ -26,7 +26,7 @@ const breathWeaponDamageDiceNumber = () => {
   } else {
     return 4;
   }
-}
+};
 
 const defaultJazzCreatureList = [
     {
