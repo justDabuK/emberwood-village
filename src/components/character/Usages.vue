@@ -6,7 +6,7 @@ const model = defineModel<UsagesPerRest>({required: true});
 
 <template>
   <div class="usages">
-    <input v-for="(flag, index) in model.flags" :key="index" type="checkbox" :checked="flag">
+    <input v-for="(_, index) in model.flags" :key="index" type="checkbox" v-model="model.flags[index]">
     <span v-if="model.description">{{model.description}}</span>
     <span>{{ `/${model.typeOfRest}` }}</span>
   </div>
