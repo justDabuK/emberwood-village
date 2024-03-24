@@ -28,6 +28,8 @@ const reset = () => {
 
 <style scoped>
 .contamination {
+  grid-column: 1;
+  grid-row: 3;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -43,9 +45,11 @@ const reset = () => {
   }
 
   .contamination-data {
+    flex-grow: 1;
     display: grid;
     grid-template-columns: auto 1fr auto;
     place-items: center;
+
     span {
       font-size: 2em;
     }
