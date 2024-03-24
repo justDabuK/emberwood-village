@@ -3,10 +3,30 @@ import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {useStorage} from "@vueuse/core";
 
-const JAZZ_LEVEL = 3;
+const JAZZ_LEVEL = 4;
 const JAZZ_PROFICIENCY_BONUS = 2;
 const JAZZ_NUMBER_OF_RAGES = 3;
 const JAZZ_RAGE_DAMAGE = 2;
+const MODIFIRE = {
+  STR: 4,
+  DEX: 2,
+  CON: 3,
+  INT: -1,
+  WIS: 0,
+  CHA: 1
+};
+
+const breathWeaponDamageDiceNumber = () => {
+  if(JAZZ_LEVEL < 5) {
+    return 1;
+  } else if (JAZZ_LEVEL < 11) {
+    return 2;
+  } else if (JAZZ_LEVEL < 17) {
+    return 3;
+  } else {
+    return 4;
+  }
+}
 
 const defaultJazzCreatureList = [
     {
@@ -29,21 +49,26 @@ const defaultJazzCreatureList = [
           subsections: [
             {
               title: 'Weapon Attack',
-              dice: 'd20+6',
+              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIRE.STR}`,
               items: [
                 {
                   name: 'any weapon',
-                  dice: `1d12+4(+${4 + JAZZ_RAGE_DAMAGE} R)`
+                  dice: `1d12+${MODIFIRE.STR}(+${MODIFIRE.STR + JAZZ_RAGE_DAMAGE} R)`
                 }
               ]
             },
             {
               title: "Breath Weapon",
               usages: {
-                flags: [false, false],
+                flags: [...Array(JAZZ_PROFICIENCY_BONUS)].fill(false),
                 typeOfRest: TypeOfRest.LONG,
               },
-              description: "15ft. cone, 1d10 force damage, DEX save (DC 13) for half"
+              description: `15ft. cone, ${breathWeaponDamageDiceNumber()}d10 force damage, DEX save (DC ${8 + MODIFIRE.CON + JAZZ_PROFICIENCY_BONUS}) for half`
+            },
+            {
+              title: 'Dragon Fear',
+              dice: `DC ${8 + JAZZ_PROFICIENCY_BONUS + MODIFIRE.CHA} WIS save`,
+              description: 'creatures within 30ft.(6 Felder), frightened for 1 minute if fail, can repeat save when taking damage'
             },
             {
               title: 'Coiling Grasp Tattoo',
@@ -53,7 +78,7 @@ const defaultJazzCreatureList = [
             {
               title: "Pin down (from Grappler)",
               description: "restrain a creature you are grappling (everyone gets advantage on attacks against it & you, you and it have disadvantage on attack rolls)",
-              dice: 'd20+6',
+              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIRE.STR}`,
             }
           ]
         },
@@ -64,7 +89,7 @@ const defaultJazzCreatureList = [
             {
               title: 'Grapple or Shove',
               description: 'when melee attack hits, can attempt to grapple or shove same creature',
-              dice: 'd20+6'
+              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIRE.STR}`
             }
           ]
         },
