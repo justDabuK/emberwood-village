@@ -35,13 +35,30 @@ const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
 const addSign = (number: number) => {
   return number >= 0 ? `+${number}` : number;
 };
+
+const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
+  switch (abilityScore) {
+    case "STR":
+      return "Strength";
+    case "DEX":
+      return "Dexterity";
+    case "CON":
+      return "Constitution";
+    case "INT":
+      return "Intelligence";
+    case "WIS":
+      return "Wisdom";
+    case "CHA":
+      return "Charisma";
+  }
+}
 </script>
 
 
 <template>
   <div class="cheat-sheet">
     <div v-for="scoreKey in abilityScoreKeys" :key="scoreKey" class="card">
-      <span>{{ scoreKey }}</span>
+      <h2 class="headline">{{ getAbilityScoreName(scoreKey) }}</h2>
       <div class="ability-overview">
         <div class="secondary-section">
           <span>Score</span>
@@ -52,7 +69,7 @@ const addSign = (number: number) => {
           <span>{{ addSign(props.modifiers[scoreKey]) }}</span>
         </div>
         <div class="secondary-section">
-          <span>Saving Throws</span>
+          <span>Saving Throw</span>
           <span>{{ addSign(props.savingThrows[scoreKey]) }}</span>
         </div>
       </div>
@@ -74,6 +91,11 @@ const addSign = (number: number) => {
 .card {
   display: flex;
   flex-direction: column;
+}
+
+.headline {
+  display: block;
+  text-align: center;
 }
 
 .ability-overview {
@@ -103,5 +125,6 @@ const addSign = (number: number) => {
   display: flex;
   flex-direction: column;
   list-style: none;
+  margin: 10px auto;
 }
 </style>
