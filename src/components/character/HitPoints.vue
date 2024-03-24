@@ -107,6 +107,8 @@ input[type=number] {
 }
 
 .health-points {
+  grid-row: 1;
+  grid-column: 1;
   position:relative;
   display: flex;
   flex-direction: column;

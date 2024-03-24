@@ -73,6 +73,7 @@ h4 {
     box-sizing: border-box;
 }
 
+/* TODO: give cards a stand out effect */
 .card {
     background: var(--card-bg);
     border-radius: 10px;

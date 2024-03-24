@@ -15,6 +15,8 @@ defineProps<{
 
 <style scoped>
 .armor-class {
+  grid-row: 2;
+  grid-column: 1;
   display: flex;
   flex-direction: column;
   gap: 30px;
