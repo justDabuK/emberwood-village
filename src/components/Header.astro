@@ -104,6 +104,9 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) => pathStartsW
         view-transition-name: activeNavTab;
         background: var(--body-bg);
         position: relative;
+        box-shadow:
+                inset 0 2px 20px oklch(0 0 0 / 10%),
+                0 2px 0 oklch(100% 0 0 / 15%);
     }
 
     .nav-list li.active::before,
@@ -128,7 +131,9 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) => pathStartsW
     .nav-list li.active::after {
         bottom: calc(var(--border-radius) * -1);
         border-radius: 0 100vw 0 0;
-        box-shadow: 10px -10px 0 10px var(--body-bg);
+        box-shadow:
+                10px -10px 0 10px var(--body-bg),
+                inset 0 2px 0 oklch(100% 0 0 / 15%);
     }
 
 
