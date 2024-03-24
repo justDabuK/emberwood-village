@@ -7,6 +7,8 @@ export type Creature = {
         hitDice?: UsagesPerRest;
     }
     armorClass: number;
+    contamination: number;
+    exhaustion: number;
     sectionList: Section[];
 }
 

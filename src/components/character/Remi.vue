@@ -21,6 +21,8 @@ const defaultRemiCreatureList = [
         typeOfRest: TypeOfRest.LONG,
       }
     },
+    contamination: 0,
+    exhaustion: 0,
     armorClass: 16,
     sectionList: [
       {

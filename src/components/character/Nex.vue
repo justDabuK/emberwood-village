@@ -19,6 +19,8 @@ const defaultNexCreatureList = [
         typeOfRest: TypeOfRest.LONG,
       }
     },
+    contamination: 0,
+    exhaustion: 0,
     armorClass: 14,
     sectionList: [
       {
@@ -110,6 +112,8 @@ const defaultNexCreatureList = [
       current: 5 +5 * NEX_LEVEL,
       max: 5 +5 * NEX_LEVEL,
     },
+    contamination: 0,
+    exhaustion: 0,
     armorClass: 14 + NEX_PROFICIENCY_BONUS,
     sectionList: [
       {
@@ -162,6 +166,8 @@ const defaultNexCreatureList = [
       current: 1,
       max: 1,
     },
+    contamination: 0,
+    exhaustion: 0,
     armorClass: 11,
     sectionList: [
       {

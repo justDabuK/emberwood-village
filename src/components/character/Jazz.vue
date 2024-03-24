@@ -71,7 +71,9 @@ const defaultJazzCreatureList = [
           typeOfRest: TypeOfRest.LONG,
         }
       },
-      armorClass: 15,
+      contamination: 0,
+      exhaustion: 0,
+      armorClass: 10 + MODIFIER.DEX + MODIFIER.CON,
       sectionList: [
         {
           title: 'Action',

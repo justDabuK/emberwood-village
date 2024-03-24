@@ -3,6 +3,7 @@ import SectionCard from "./SectionCard.vue";
 import ArmorClass from "./ArmorClass.vue";
 import HitPoints from "./HitPoints.vue";
 import type {Creature} from "../../scripts/cheatSheetTypes.ts";
+import Contamination from "./Contamination.vue";
 
 const creature = defineModel<Creature>({required: true});
 </script>
@@ -14,6 +15,7 @@ const creature = defineModel<Creature>({required: true});
       <SectionCard v-for="section in creature.sectionList" :key="section.title" v-model="section.used" :section="section"/>
       <HitPoints v-model="creature.hitPoints.current" v-model:temporary-hit-points="creature.hitPoints.temporary" v-model:hit-dice="creature.hitPoints.hitDice" :max-hit-points="creature.hitPoints.max"/>
       <ArmorClass :armor-class="creature.armorClass"/>
+      <Contamination v-model="creature.contamination" />
     </div>
   </div>
 </template>
