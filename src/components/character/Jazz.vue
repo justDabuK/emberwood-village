@@ -175,9 +175,11 @@ const defaultJazzCreatureList = [
 ];
 
 const creatureList = useStorage<Creature[]>('jazz-creature-list', defaultJazzCreatureList);
-
+const resetToDefault = () => {
+  creatureList.value = defaultJazzCreatureList;
+};
 </script>
 
 <template>
-  <RoundCheatSheet v-model="creatureList" />
+  <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" />
 </template>

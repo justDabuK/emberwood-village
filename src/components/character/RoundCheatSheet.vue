@@ -2,6 +2,10 @@
 import type {Creature, Section} from "../../scripts/cheatSheetTypes.ts";
 import CreatureSection from "./CreatureSection.vue";
 
+const emit = defineEmits<{
+  (evt: 'resetToDefault'): void;
+}>();
+
 const creatureList = defineModel<Creature[]>({required: true});
 const resetSection = (section: Section) => {
   if(section.used !== undefined) {
@@ -9,7 +13,7 @@ const resetSection = (section: Section) => {
   }
 }
 
-const reset = () => {
+const resetUsed = () => {
   creatureList.value.forEach((creature) => creature.sectionList.forEach(resetSection));
 }
 </script>
@@ -17,8 +21,8 @@ const reset = () => {
 <template>
   <div class="cheat-sheet">
     <div class="cheat-sheet-headline">
-      <span>Round cheat sheet</span>
-      <button @click="reset">New round</button>
+      <button class="secondary" @click="emit('resetToDefault')">Long Rest</button>
+      <button @click="resetUsed">New round</button>
     </div>
 
     <CreatureSection v-for="(creature, index) in creatureList" :key="creature.name" v-model="creatureList[index]"/>
@@ -34,8 +38,9 @@ const reset = () => {
 
   .cheat-sheet-headline {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+    gap: 8px;
 
     button {
       cursor: pointer;
@@ -52,6 +57,19 @@ const reset = () => {
 
       &:active {
         background-color: var(--button-color-active);
+      }
+
+      &.secondary {
+        background-color: transparent;
+        border: 1px solid var(--text-color);
+
+        &:hover {
+          background-color: oklch(60% 0.08 226.91 / 25%);
+        }
+
+        &:active {
+          background-color: oklch(60% 0.08 226.91 / 50%);
+        }
       }
     }
   }
