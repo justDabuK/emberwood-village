@@ -31,14 +31,10 @@ const MODIFIER: AbilityScores = {
   CHA: getModifier(ABILITY_SCORES.CHA)
 };
 
-const SAVING_THROWS: AbilityScores = {
-  STR: MODIFIER.STR + JAZZ_PROFICIENCY_BONUS,
-  DEX: MODIFIER.DEX,
-  CON: MODIFIER.CON + JAZZ_PROFICIENCY_BONUS,
-  INT: MODIFIER.INT,
-  WIS: MODIFIER.WIS,
-  CHA: MODIFIER.CHA
-};
+const SAVING_THOW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
+  "STR",
+  "CON"
+];
 
 const SKILL_PROFICIENCIES = [
     Skill.Athletics,
@@ -219,9 +215,10 @@ const resetToDefault = () => {
   <SkillCheatSheet
       :modifiers="MODIFIER"
       :ability-scores="ABILITY_SCORES"
-      :saving-throws="SAVING_THROWS"
+      :saving-throw-proficiency-list="SAVING_THOW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
       :skill-expertise-list="SKILL_EXPERTIES"
+      :proficiency-bonus="JAZZ_PROFICIENCY_BONUS"
   />
 </template>
 

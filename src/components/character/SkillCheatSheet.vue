@@ -5,9 +5,10 @@ import {type AbilityScores, Skill} from "../../scripts/cheatSheetTypes.ts";
 const props = defineProps<{
   abilityScores: AbilityScores;
   modifiers: AbilityScores;
-  savingThrows: AbilityScores;
+  savingThrowProficiencyList: (keyof AbilityScores);
   skillProficiencyList: Skill[];
   skillExpertiseList: Skill[];
+  proficiencyBonus: number;
 }>();
 
 const abilityScoreKeys = Object.keys(props.abilityScores) as (keyof AbilityScores)[];
@@ -24,12 +25,17 @@ const SkillsPerAbilityScore = {
 const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
   const modifier = props.modifiers[abilityScore];
   if (props.skillProficiencyList.includes(skill)) {
-    return addSign(modifier + 2);
+    return addSign(modifier + props.proficiencyBonus);
   } else if (props.skillExpertiseList.includes(skill)) {
-    return addSign(modifier + 4);
+    return addSign(modifier + props.proficiencyBonus * 2);
   } else {
     return addSign(modifier);
   }
+}
+
+const getSavingThrowModifier = (abilityScore: keyof AbilityScores) => {
+  const modifier = props.modifiers[abilityScore];
+  return props.savingThrowProficiencyList.includes(abilityScore) ? addSign(modifier + props.proficiencyBonus) : addSign(modifier);
 }
 
 const addSign = (number: number) => {
@@ -69,8 +75,8 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
           <span>{{ addSign(props.modifiers[scoreKey]) }}</span>
         </div>
         <div class="secondary-section">
-          <span>Saving Throw</span>
-          <span>{{ addSign(props.savingThrows[scoreKey]) }}</span>
+          <span :class="savingThrowProficiencyList.includes(scoreKey) ? 'proficient' : ''">Saving Throw</span>
+          <span>{{ getSavingThrowModifier(scoreKey) }}</span>
         </div>
       </div>
       <ul class="skill-list">
@@ -126,14 +132,14 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
   flex-direction: column;
   list-style: none;
   margin: 10px auto;
-  font-weight: 300;
+}
 
-  .proficient {
-    font-weight: 600;
-  }
+.proficient {
+  color: var(--highlight-color);
+}
 
-  .expertise {
-    font-weight: 700;
-  }
+.expertise {
+  font-weight: 600;
+  color: var(--highlight-color);
 }
 </style>
