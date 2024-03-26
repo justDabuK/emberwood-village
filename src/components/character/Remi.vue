@@ -1,19 +1,78 @@
 <script setup lang="ts">
-import {type Creature, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
+import {type AbilityScores, type Creature, getModifier, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {ref} from "vue";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {useStorage} from "@vueuse/core";
+import SkillCheatSheet from "./SkillCheatSheet.vue";
 
-const REMI_LEVEL = 3;
+const REMI_LEVEL = 4;
 const REMI_PROFICIENCY_BONUS = 2;
-const REMI_SNEAK_ATTACK_DICE = "2d6";
+const getSneakAttackDice = () => {
+  if(REMI_LEVEL < 3) {
+    return '1d6';
+  } else if (REMI_LEVEL < 5) {
+    return '2d6';
+  } else if (REMI_LEVEL < 7) {
+    return '3d6';
+  } else if (REMI_LEVEL < 9) {
+    return '4d6';
+  } else if (REMI_LEVEL < 11) {
+    return '5d6';
+  } else if (REMI_LEVEL < 13) {
+    return '6d6';
+  } else if (REMI_LEVEL < 15) {
+    return '7d6';
+  } else if (REMI_LEVEL < 17) {
+    return '8d6';
+  } else if (REMI_LEVEL < 19) {
+    return '9d6';
+  } else {
+    return '10d6';
+  }
+};
+
+const ABILITY_SCORES: AbilityScores = {
+  STR: 8,
+  DEX: 19,
+  CON: 13,
+  INT: 12,
+  WIS: 10,
+  CHA: 17
+};
+
+const MODIFIER: AbilityScores = {
+  STR: getModifier(ABILITY_SCORES.STR),
+  DEX: getModifier(ABILITY_SCORES.DEX),
+  CON: getModifier(ABILITY_SCORES.CON),
+  INT: getModifier(ABILITY_SCORES.INT),
+  WIS: getModifier(ABILITY_SCORES.WIS),
+  CHA: getModifier(ABILITY_SCORES.CHA)
+};
+
+const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
+  "DEX",
+  "INT"
+];
+
+const SKILL_PROFICIENCIES = [
+  Skill.Athletics,
+  Skill.Acrobatics,
+  Skill.History,
+    Skill.Performance
+]
+
+const SKILL_EXPERTIES = [
+  Skill.Deception,
+    Skill.Persuasion
+]
+
 
 const defaultRemiCreatureList = [
   {
     name: "Remi",
     hitPoints: {
-      current: (5 + 1) * REMI_LEVEL,
-      max: (5 + 1) * REMI_LEVEL,
+      current: (5 + MODIFIER.CON) * REMI_LEVEL,
+      max: (5 + MODIFIER.CON) * REMI_LEVEL,
       temporary: 0,
       hitDice: {
         flags: [...Array(REMI_LEVEL)].fill(false),
@@ -23,7 +82,7 @@ const defaultRemiCreatureList = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: 16,
+    armorClass: 12 + MODIFIER.DEX,
     sectionList: [
       {
         title: 'Action',
@@ -31,9 +90,9 @@ const defaultRemiCreatureList = [
         subsections: [
           {
             title: 'Weapon Attack',
-            dice: 'd20+6',
+            dice: `d20+${MODIFIER.DEX + REMI_PROFICIENCY_BONUS}`,
             items: [
-              {name: 'Shortsword', dice: '1d6+4'},
+              {name: 'Shortsword', dice: `1d6+${MODIFIER.DEX}`},
             ]
           },
           {
@@ -52,7 +111,7 @@ const defaultRemiCreatureList = [
             items: [
                 {
                   name: 'Damage',
-                  dice: REMI_SNEAK_ATTACK_DICE,
+                  dice: getSneakAttackDice(),
                 }
             ]
           }
@@ -64,7 +123,7 @@ const defaultRemiCreatureList = [
         subsections: [
           {
             title: 'Off-hand Attack',
-            dice: 'd20+6',
+            dice: `d20+${MODIFIER.DEX + REMI_PROFICIENCY_BONUS}`,
             items: [
               {name: 'Shortsword', dice: '1d6'},
             ]
@@ -128,8 +187,26 @@ const defaultRemiCreatureList = [
 ];
 
 const creatureList = useStorage<Creature[]>('remi-creature-list', defaultRemiCreatureList);
+
+const resetToDefault = () => {
+  creatureList.value = defaultRemiCreatureList;
+};
 </script>
 
 <template>
-  <RoundCheatSheet v-model="creatureList" />
+  <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" class="round-cheat-sheet"/>
+  <SkillCheatSheet
+      :modifiers="MODIFIER"
+      :ability-scores="ABILITY_SCORES"
+      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
+      :skill-proficiency-list="SKILL_PROFICIENCIES"
+      :skill-expertise-list="SKILL_EXPERTIES"
+      :proficiency-bonus="REMI_PROFICIENCY_BONUS"
+  />
 </template>
+
+<style scoped>
+.round-cheat-sheet {
+  border-bottom: 1px solid var(--text-color-darker-1);
+}
+</style>

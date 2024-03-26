@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import RoundCheatSheet from "./RoundCheatSheet.vue";
-import {type AbilityScores, type Creature, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
+import {type AbilityScores, type Creature, getModifier, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {useStorage} from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 
@@ -18,10 +18,6 @@ const ABILITY_SCORES: AbilityScores = {
   CHA: 12
 };
 
-const getModifier = (abilityScore: number) => {
-  return Math.floor((abilityScore - 10) / 2);
-};
-
 const MODIFIER: AbilityScores = {
   STR: getModifier(ABILITY_SCORES.STR),
   DEX: getModifier(ABILITY_SCORES.DEX),
@@ -31,7 +27,7 @@ const MODIFIER: AbilityScores = {
   CHA: getModifier(ABILITY_SCORES.CHA)
 };
 
-const SAVING_THOW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
+const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
   "STR",
   "CON"
 ];
@@ -217,7 +213,7 @@ const resetToDefault = () => {
   <SkillCheatSheet
       :modifiers="MODIFIER"
       :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THOW_PROFICIENCIES_LIST"
+      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
       :skill-expertise-list="SKILL_EXPERTIES"
       :proficiency-bonus="JAZZ_PROFICIENCY_BONUS"
