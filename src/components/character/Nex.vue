@@ -437,7 +437,6 @@ const resetToDefault = () => {
 </template>
 
 <style scoped>
-
 .cheat-sheet-list {
   display: flex;
   flex-direction: column;

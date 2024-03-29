@@ -58,14 +58,18 @@ const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
 const SKILL_PROFICIENCIES = [
   Skill.Athletics,
   Skill.Acrobatics,
+  Skill.Stealth,
   Skill.History,
-    Skill.Performance
+  Skill.Perception,
+  Skill.Performance
 ]
 
 const SKILL_EXPERTIES = [
   Skill.Deception,
-    Skill.Persuasion
+  Skill.Persuasion
 ]
+
+const dualWielderArmorclassBonus = 1;
 
 
 const defaultRemiCreatureList = [
@@ -83,14 +87,14 @@ const defaultRemiCreatureList = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getStuddedLeatherArmorClass(MODIFIER.DEX),
+    armorClass: getStuddedLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
     sectionList: [
       {
         title: 'Action',
         used: false,
         subsections: [
           {
-            title: 'Weapon Attack',
+            title: '2 Weapon Attacks (Dual Wielder)',
             dice: `d20+${MODIFIER.DEX + REMI_PROFICIENCY_BONUS}`,
             items: [
               {name: 'Shortsword', dice: `1d6+${MODIFIER.DEX}`},
@@ -122,13 +126,6 @@ const defaultRemiCreatureList = [
         title: 'Bonus Action',
         used: false,
         subsections: [
-          {
-            title: 'Off-hand Attack',
-            dice: `d20+${MODIFIER.DEX + REMI_PROFICIENCY_BONUS}`,
-            items: [
-              {name: 'Shortsword', dice: '1d6'},
-            ]
-          },
           {
             title: 'Cunning Action',
             description: 'Dash, Disengage, or Hide'
@@ -195,19 +192,28 @@ const resetToDefault = () => {
 </script>
 
 <template>
-  <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" class="round-cheat-sheet"/>
-  <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
-      :proficiency-bonus="REMI_PROFICIENCY_BONUS"
-  />
+  <div class="cheat-sheet-list">
+    <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault"/>
+    <div class="divider" />
+    <SkillCheatSheet
+        :modifiers="MODIFIER"
+        :ability-scores="ABILITY_SCORES"
+        :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
+        :skill-proficiency-list="SKILL_PROFICIENCIES"
+        :skill-expertise-list="SKILL_EXPERTIES"
+        :proficiency-bonus="REMI_PROFICIENCY_BONUS"
+    />
+  </div>
 </template>
 
 <style scoped>
-.round-cheat-sheet {
-  border-bottom: 1px solid var(--text-color-darker-1);
+.cheat-sheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .divider {
+    border-bottom: 1px solid var(--text-color-darker-1);
+  }
 }
 </style>
