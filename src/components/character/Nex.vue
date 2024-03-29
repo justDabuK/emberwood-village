@@ -4,20 +4,13 @@ import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {useStorage} from "@vueuse/core";
 import type {MarkdownInstance} from "astro";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
+import {getHideArmorClass} from "../../scripts/armorClassUtils.ts";
 
 defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
 }>();
 
 const NEX_LEVEL = 4;
-
-const getHideArmorClass = (dexModifier: number) => {
-  return 12 + Math.min(dexModifier, 2);
-}
-
-const getChainShirtArmorClass = (dexModifier: number) => {
-  return 13 + Math.min(dexModifier, 2);
-}
 
 const getProficiencyBonus = (level: number) => {
   if(level < 5) {

@@ -4,6 +4,7 @@ import {ref} from "vue";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {useStorage} from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
+import {getStuddedLeatherArmorClass} from "../../scripts/armorClassUtils.ts";
 
 const REMI_LEVEL = 4;
 const REMI_PROFICIENCY_BONUS = 2;
@@ -82,7 +83,7 @@ const defaultRemiCreatureList = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: 12 + MODIFIER.DEX,
+    armorClass: getStuddedLeatherArmorClass(MODIFIER.DEX),
     sectionList: [
       {
         title: 'Action',

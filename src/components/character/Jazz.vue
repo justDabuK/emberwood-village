@@ -3,6 +3,7 @@ import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {type AbilityScores, type Creature, getModifier, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import {useStorage} from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
+import {getUnarmoredDefenseArmorClass} from "../../scripts/armorClassUtils.ts";
 
 const JAZZ_LEVEL = 4;
 const JAZZ_PROFICIENCY_BONUS = 2;
@@ -69,7 +70,7 @@ const defaultJazzCreatureList = [
       },
       contamination: 0,
       exhaustion: 0,
-      armorClass: 10 + MODIFIER.DEX + MODIFIER.CON,
+      armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX, MODIFIER.CON),
       sectionList: [
         {
           title: 'Action',
