@@ -36,6 +36,8 @@ const getCantripsKnown = (level: number) => {
   }
 };
 
+const getSpellsKnown = (level: number, intModifier: number) => level + intModifier;
+
 const getSpellSlots = (level: number) => {
   if(level === 1) {
     return 1;
