@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import {getSpellSchoolIconName} from "../scripts/getSpellSchoolIconName";
 
 type Props = {
     frontmatter: {
@@ -30,8 +31,7 @@ const getLevelString = () => {
     }
 };
 ---
-<!-- TODO: think about adding an icon for every school of magic -->
-<BaseLayout title={frontmatter.title} icon={ frontmatter.school.startsWith("Contaminated") ? "delirium.png" : ""}>
+<BaseLayout title={frontmatter.title} icon={getSpellSchoolIconName(frontmatter.school)}>
     <p><em>{getLevelString()}</em> <em>{frontmatter.school}</em></p>
     <p><strong>Casting Time:</strong> {frontmatter.castingTime}</p>
     <p><strong>Range:</strong> {frontmatter.range}</p>
