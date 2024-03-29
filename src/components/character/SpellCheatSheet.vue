@@ -106,8 +106,8 @@ const isCostlySpell = (components: string) => {
   }
 
   .spell-cheat-sheet-body {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(620px, 1fr));
     gap: 20px;
 
     .spell-section {
