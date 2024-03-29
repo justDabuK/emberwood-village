@@ -2,11 +2,13 @@
 import {achievedPrerequisites} from "../scripts/spellPrerequisites";
 import MarkdownLink from "./MarkdownLink.astro";
 import {getSpellSchoolIconName} from "../scripts/getSpellSchoolIconName";
+import InlineIcon from "./InlineIcon.astro";
 
 type Props = {
     url: string,
     frontmatter: {
         title: string,
+        ritual?: boolean,
         disabled: boolean,
         school: string,
         prerequisites: string[]
@@ -17,6 +19,9 @@ const { spell } = Astro.props;
 
 ---
 <MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} icon={getSpellSchoolIconName(spell.frontmatter.school)}>
+    {
+        spell.frontmatter.ritual ? <InlineIcon icon="pentagram.svg" size="1rem" slot="postfix" /> : null
+    }
     {
         spell.frontmatter.prerequisites && spell.frontmatter.prerequisites.length > 0
             ?

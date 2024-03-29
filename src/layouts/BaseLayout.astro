@@ -37,6 +37,7 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 				<div class="headline-container">
 					<InlineIcon icon={icon} size="4rem" cover={iconCover}/>
 					<h2 style={titleTransitionName}>{title}</h2>
+					<slot name="headline-postfix" />
 				</div>
 			<slot />
 		</main>
@@ -77,6 +78,10 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 		display: flex;
 		align-items: center;
 		gap: 2rem;
+
+		h2 {
+			margin: 0;
+		}
 	}
 
 	@media screen and (max-width: 1000px) {

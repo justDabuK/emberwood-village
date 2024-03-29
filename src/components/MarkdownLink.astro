@@ -13,6 +13,7 @@ const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
             : <span>
                     <InlineIcon icon={icon} size="1rem" disableTransition />
                     <a href={url} style={viewTransitionNameStyle}>{title}</a>
+                    <slot name="postfix" />
                 </span>
     }
     <slot />
