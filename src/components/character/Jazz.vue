@@ -59,8 +59,8 @@ const defaultJazzCreatureList = [
     {
       name: "Jazz",
       hitPoints: {
-        current: (7 + 3) * JAZZ_LEVEL,
-        max: (7 + 3) * JAZZ_LEVEL,
+        current: (7 + MODIFIER.CON) * JAZZ_LEVEL,
+        max: (7 + MODIFIER.CON) * JAZZ_LEVEL,
         temporary: 0,
         hitDice: {
           flags: [...Array(JAZZ_LEVEL)].fill(false),
