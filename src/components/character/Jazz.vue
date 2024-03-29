@@ -210,19 +210,28 @@ const resetToDefault = () => {
 </script>
 
 <template>
-  <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" class="round-cheat-sheet" />
-  <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
-      :proficiency-bonus="JAZZ_PROFICIENCY_BONUS"
-  />
+  <div class="cheat-sheet-list">
+    <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" class="round-cheat-sheet" />
+    <div class="divider" />
+    <SkillCheatSheet
+        :modifiers="MODIFIER"
+        :ability-scores="ABILITY_SCORES"
+        :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
+        :skill-proficiency-list="SKILL_PROFICIENCIES"
+        :skill-expertise-list="SKILL_EXPERTIES"
+        :proficiency-bonus="JAZZ_PROFICIENCY_BONUS"
+    />
+  </div>
 </template>
 
 <style scoped>
-.round-cheat-sheet {
-  border-bottom: 1px solid var(--text-color-darker-1);
+.cheat-sheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .divider {
+    border-bottom: 1px solid var(--text-color-darker-1);
+  }
 }
 </style>
