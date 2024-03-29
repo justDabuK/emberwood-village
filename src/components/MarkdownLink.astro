@@ -9,15 +9,28 @@ const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
 <li>
     {
         disabled
-            ? <span style={viewTransitionNameStyle}>???</span>
-            : <a href={url} style={viewTransitionNameStyle}><InlineIcon icon={icon} size="1rem" disableTransition />{title}</a>
+            ? <span style={viewTransitionNameStyle} class="disabled">???</span>
+            : <span>
+                    <InlineIcon icon={icon} size="1rem" disableTransition />
+                    <a href={url} style={viewTransitionNameStyle}>{title}</a>
+                </span>
     }
     <slot />
 </li>
 
 <style>
     span {
-        color: oklch(60% 0.0379 304.82);
-        cursor: default;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &.disabled {
+            color: oklch(60% 0.0379 304.82);
+            cursor: default;
+        }
+    }
+
+    li {
+        list-style: none;
     }
 </style>

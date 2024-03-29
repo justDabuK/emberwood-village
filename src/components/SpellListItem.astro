@@ -1,6 +1,7 @@
 ---
 import {achievedPrerequisites} from "../scripts/spellPrerequisites";
 import MarkdownLink from "./MarkdownLink.astro";
+import InlineIcon from "./InlineIcon.astro";
 
 type Props = {
     url: string,
@@ -14,8 +15,35 @@ type Props = {
 
 const { spell } = Astro.props;
 
+const getSpellSchoolIconName = (school: string) => {
+    if(school.startsWith("Contaminated")) {
+        return "deliriumCrystal.png";
+    }
+
+    switch (school) {
+        case "Abjuration":
+            return "abjuration.svg";
+        case "Conjuration":
+            return "conjuration.svg";
+        case "Divination":
+            return "divination.svg";
+        case "Enchantment":
+            return "enchantment.svg";
+        case "Evocation":
+            return "evocation.svg";
+        case "Illusion":
+            return "illusion.svg";
+        case "Necromancy":
+            return "necromancy.svg";
+        case "Transmutation":
+            return "transmutation.svg";
+    default:
+        return "";
+    }
+}
+
 ---
-<MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} icon={spell.frontmatter.school.startsWith("Contaminated") ? 'deliriumCrystal.png' : ''}>
+<MarkdownLink url={spell.url} title={spell.frontmatter.title} disabled={spell.frontmatter.disabled} icon={getSpellSchoolIconName(spell.frontmatter.school)}>
     {
         spell.frontmatter.prerequisites && spell.frontmatter.prerequisites.length > 0
             ?
