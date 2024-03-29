@@ -430,6 +430,8 @@ const resetToDefault = () => {
         :all-spells="allSpells"
         :type-of-rest="creatureList[0].magic.refresh"
         :known-spell-name-list="knownSpellNameList"
+        :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(NEX_LEVEL)"
+        :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(NEX_LEVEL)"
     />
   </div>
 </template>
