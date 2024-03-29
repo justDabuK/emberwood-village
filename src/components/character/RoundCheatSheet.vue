@@ -34,7 +34,6 @@ const resetUsed = () => {
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 30px;
-  padding-bottom: 20px;
 
   .cheat-sheet-headline {
     display: flex;

@@ -6,6 +6,7 @@ import type {MarkdownInstance} from "astro";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {getHideArmorClass} from "../../scripts/armorClassUtils.ts";
 import {Spell} from "../../scripts/spellUtils.ts";
+import SpellCheatSheet from "./SpellCheatSheet.vue";
 
 defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
@@ -13,7 +14,7 @@ defineProps<{
 
 const NEX_LEVEL = 4;
 
-const knownSpellList = [
+const knownSpellNameList = [
   Spell.Thaumaturgy,
   Spell.AcidBurn,
   Spell.AcidSplash,
@@ -175,7 +176,7 @@ const SKILL_PROFICIENCIES = [
 
 const SKILL_EXPERTIES: Skill[] = [];
 
-const defaultNexCreatureList = [
+const defaultNexCreatureList: Creature[] = [
   {
     name: "Nex",
     hitPoints: {
@@ -191,6 +192,16 @@ const defaultNexCreatureList = [
     contamination: 0,
     exhaustion: 0,
     armorClass: getHideArmorClass(MODIFIER.DEX),
+    magic: {
+      spellSlots: {
+        [getSlotLevel(NEX_LEVEL)]: {
+          flags: [...Array(getSpellSlots(NEX_LEVEL))].fill(false),
+          max: getSpellSlots(NEX_LEVEL),
+        },
+      },
+      refresh: TypeOfRest.SHORT,
+      concentration: false,
+    },
     sectionList: [
       {
         title: 'Action',
@@ -397,19 +408,41 @@ const resetToDefault = () => {
 </script>
 
 <template>
-  <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault" class="cheat-sheet" />
-  <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
-      :proficiency-bonus="getProficiencyBonus(NEX_LEVEL)"
-  />
+  <div class="cheat-sheet-list">
+    <RoundCheatSheet
+        v-model="creatureList"
+        @reset-to-default="resetToDefault"
+    />
+    <div class="divider" />
+    <SkillCheatSheet
+        :modifiers="MODIFIER"
+        :ability-scores="ABILITY_SCORES"
+        :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
+        :skill-proficiency-list="SKILL_PROFICIENCIES"
+        :skill-expertise-list="SKILL_EXPERTIES"
+        :proficiency-bonus="getProficiencyBonus(NEX_LEVEL)"
+    />
+    <div class="divider" />
+    <SpellCheatSheet
+        v-if="creatureList[0].magic"
+        v-model:spell-slots="creatureList[0].magic.spellSlots"
+        v-model:concentration="creatureList[0].magic.concentration"
+        :all-spells="allSpells"
+        :type-of-rest="creatureList[0].magic.refresh"
+        :known-spell-name-list="knownSpellNameList"
+    />
+  </div>
 </template>
 
 <style scoped>
-.cheat-sheet {
-  border-bottom: 1px solid var(--text-color-darker-1);
+
+.cheat-sheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .divider {
+    border-bottom: 1px solid var(--text-color-darker-1);
+  }
 }
 </style>

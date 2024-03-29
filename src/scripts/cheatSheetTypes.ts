@@ -1,6 +1,6 @@
 export type Creature = {
     name: string;
-    hitPoints: {
+    hitPoints?: {
         current: number;
         max: number;
         temporary?: number;
@@ -9,8 +9,52 @@ export type Creature = {
     armorClass: number;
     contamination: number;
     exhaustion: number;
+    magic?: {
+        spellSlots: SpellSlots;
+        refresh: TypeOfRest;
+        concentration: boolean;
+    }
     sectionList: Section[];
 }
+
+export type SpellSlots = {
+    1?: {
+        flags: boolean[];
+        max: number;
+    },
+    2?: {
+        flags: boolean[];
+        max: number;
+    },
+    3?: {
+        flags: boolean[];
+        max: number;
+    },
+    4?: {
+        flags: boolean[];
+        max: number;
+    },
+    5?: {
+        flags: boolean[];
+        max: number;
+    },
+    6?: {
+        flags: boolean[];
+        max: number;
+    },
+    7?: {
+        flags: boolean[];
+        max: number;
+    },
+    8?: {
+        flags: boolean[];
+        max: number;
+    },
+    9?: {
+        flags: boolean[];
+        max: number;
+    },
+};
 
 export type Section = {
     title: string;
