@@ -3,6 +3,8 @@
 import {type SpellSlots, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import type {MarkdownInstance} from "astro";
 import type {Spell} from "../../scripts/spellUtils.ts";
+import AbjurationIcon from "../../icons/abjuration.svg";
+import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 
 const props = defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
@@ -46,14 +48,10 @@ const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameLis
       </div>
     </div>
     <div class="spell-cheat-sheet-body">
-      <div v-for="spell in knownSpellList" :key="spell.frontmatter.title" class="card">
+      <div v-for="spell in knownSpellList" :key="spell.frontmatter.title" class="card spell">
+        <SpellSchoolIcon class="fill-red" :spell-school="spell.frontmatter.school"/>
         <h2>{{ spell.frontmatter.title }}</h2>
-        <p>{{ spell.frontmatter.level }}</p>
-        <p>{{ spell.frontmatter.school }}</p>
-        <p>{{ spell.frontmatter.castingTime }}</p>
         <p>{{ spell.frontmatter.range }}</p>
-        <p>{{ spell.frontmatter.components }}</p>
-        <p>{{ spell.frontmatter.duration }}</p>
       </div>
     </div>
   </div>
@@ -76,10 +74,26 @@ const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameLis
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+
+    .spell {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   .concentration {
     background-color: var(--map-link-bg);
   }
+}
+
+.fill-red {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 30px;
+  width: 30px;
+  color: var(--text-color-darker-1);
 }
 </style>
