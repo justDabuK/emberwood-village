@@ -28,21 +28,21 @@ const getGridRowSpanStyle = (shops: MarkdownInstance<Record<string, any>>[]) => 
         <div class="card" style={getGridRowSpanStyle(allShops)}>
             <h3>Shops</h3>
             <ul>
-                {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled}/>)}
+                {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled} icon={shop.frontmatter.icon}/>)}
             </ul>
         </div>
 
         <div class="card" style={getGridRowSpanStyle(allEstablishments)}>
             <h3>Hotels, Bars und Restaurants</h3>
             <ul>
-                {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled}/>)}
+                {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled} icon={establishment.frontmatter.icon}/>)}
             </ul>
         </div>
 
         <div class="card" style={getGridRowSpanStyle(allMisc)}>
             <h3>Anderweitig interessante Orte</h3>
             <ul>
-                {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} />)}
+                {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} icon={misc.frontmatter.icon} />)}
             </ul>
         </div>
     </div>
