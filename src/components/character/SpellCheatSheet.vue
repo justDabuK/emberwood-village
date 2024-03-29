@@ -5,6 +5,7 @@ import type {MarkdownInstance} from "astro";
 import type {Spell} from "../../scripts/spellUtils.ts";
 import AbjurationIcon from "../../icons/abjuration.svg";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
+import SpellRangeIcon from "./SpellRangeIcon.vue";
 
 const props = defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
@@ -19,7 +20,14 @@ const concentration = defineModel<boolean>("concentration");
 
 const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameList.includes(spell.frontmatter.title));
 
+const getCostlyComponent = (components: string) => {
+  const match = components.match(/\((.+)\)/);
+  return match ? match[1] : "";
+};
 
+const isCostlySpell = (components: string) => {
+  return components.includes('delerium') || components.includes('gold') ;
+};
 </script>
 
 <template>
@@ -48,11 +56,14 @@ const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameLis
       </div>
     </div>
     <div class="spell-cheat-sheet-body">
-      <div v-for="spell in knownSpellList" :key="spell.frontmatter.title" class="card spell">
+      <a v-for="spell in knownSpellList" :key="spell.frontmatter.title" :href="spell.url" :class="['card', 'spell', spell.frontmatter.duration.includes('Concentration') ? 'concentration' : '']">
         <SpellSchoolIcon class="spell-school-icon" :spell-school="spell.frontmatter.school"/>
-        <h2>{{ spell.frontmatter.title }}</h2>
-        <p>{{ spell.frontmatter.range }}</p>
-      </div>
+        <SpellRangeIcon class="spell-range-icon" :range="spell.frontmatter.range"/>
+        <p>{{ spell.frontmatter.title }}</p>
+        <p v-if="isCostlySpell(spell.frontmatter.components)">
+          {{ getCostlyComponent(spell.frontmatter.components) }}
+        </p>
+      </a>
     </div>
   </div>
 </template>
@@ -80,20 +91,30 @@ const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameLis
       display: flex;
       flex-direction: column;
       text-align: center;
+      color: var(--text-color);
+
+      .spell-school-icon {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        height: 30px;
+        width: 30px;
+        color: var(--text-color-darker-1);
+      }
+
+      .spell-range-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        height: 30px;
+        width: 30px;
+        color: var(--text-color-darker-1);
+      }
     }
   }
 
   .concentration {
-    background-color: var(--map-link-bg);
+    background-color: oklch(76.99% 0.08 226.91 / 0.2);
   }
-}
-
-.spell-school-icon {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  height: 30px;
-  width: 30px;
-  color: var(--text-color-darker-1);
 }
 </style>
