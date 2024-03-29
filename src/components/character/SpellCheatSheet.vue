@@ -49,7 +49,7 @@ const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameLis
     </div>
     <div class="spell-cheat-sheet-body">
       <div v-for="spell in knownSpellList" :key="spell.frontmatter.title" class="card spell">
-        <SpellSchoolIcon class="fill-red" :spell-school="spell.frontmatter.school"/>
+        <SpellSchoolIcon class="spell-school-icon" :spell-school="spell.frontmatter.school"/>
         <h2>{{ spell.frontmatter.title }}</h2>
         <p>{{ spell.frontmatter.range }}</p>
       </div>
@@ -88,9 +88,9 @@ const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameLis
   }
 }
 
-.fill-red {
+.spell-school-icon {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   left: 10px;
   height: 30px;
   width: 30px;
