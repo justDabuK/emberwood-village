@@ -5,6 +5,7 @@ import {useStorage} from "@vueuse/core";
 import type {MarkdownInstance} from "astro";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {getHideArmorClass} from "../../scripts/armorClassUtils.ts";
+import {Spell} from "../../scripts/spellUtils.ts";
 
 defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
@@ -12,6 +13,72 @@ defineProps<{
 
 const NEX_LEVEL = 4;
 
+const knownSpellList = [
+  Spell.Thaumaturgy,
+  Spell.AcidBurn,
+  Spell.AcidSplash,
+  Spell.BacterialBarrage,
+  Spell.Bless,
+  Spell.ChillTouch,
+  Spell.Guidance,
+  Spell.Light,
+  Spell.Mending,
+  Spell.Message,
+  Spell.PoisonNeedle,
+  Spell.PoisonSpray,
+  Spell.Resistance,
+  Spell.ShockingGrasp,
+  Spell.SpareTheDying,
+  Spell.AcidOrb,
+  Spell.Alarm,
+  Spell.CometShards,
+  Spell.ComprehendLanguages,
+  Spell.CorruptedCure,
+  Spell.CreateOrDestroyWater,
+  Spell.CureWounds,
+  Spell.DetectEvilAndGood,
+  Spell.DetectMagic,
+  Spell.DetectPoisonAndDisease,
+  Spell.Envenom,
+  Spell.FalseLife,
+  Spell.FeatherFall,
+  Spell.FogCloud,
+  Spell.Grease,
+  Spell.HealingWord,
+  Spell.Identify,
+  Spell.IllusoryScript,
+  Spell.Infect,
+  Spell.InflictWounds,
+  Spell.Jump,
+  Spell.PurifyFoodAndDrink,
+  Spell.Sleep,
+  Spell.StreamOfConsumption,
+  Spell.TashaSHideousLaughter,
+  Spell.TenserSFloatingDisk,
+  Spell.ToxicShield,
+  Spell.UnseenServant,
+  Spell.Aid,
+  Spell.Biohazard,
+  Spell.BlindnessDeafness,
+  Spell.CausticGrip,
+  Spell.ControlledMutation,
+  Spell.EnhanceAbility,
+  Spell.EnlargeReduce,
+  Spell.GentleRepose,
+  Spell.GraspingGhost,
+  Spell.HoldPerson,
+  Spell.Invigorate,
+  Spell.LesserRestoration,
+  Spell.MelfSAcidArrow,
+  Spell.MistyStep,
+  Spell.OcularNecrosis,
+  Spell.ProtectionFromPoison,
+  Spell.RayOfEnfeeblement,
+  Spell.SeeInvisibility,
+  Spell.Silence,
+  Spell.SpiderClimb,
+  Spell.Web,
+]
 const getProficiencyBonus = (level: number) => {
   if(level < 5) {
     return 2;
