@@ -3,7 +3,6 @@
 import {type SpellSlots, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
 import type {MarkdownInstance} from "astro";
 import type {Spell} from "../../scripts/spellUtils.ts";
-import AbjurationIcon from "../../icons/abjuration.svg";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
 
