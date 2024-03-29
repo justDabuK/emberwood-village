@@ -95,19 +95,18 @@ const MODIFIER: AbilityScores = {
 };
 
 const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
-  "STR",
-  "CON"
+  "INT",
+  "WIS"
 ];
 
 const SKILL_PROFICIENCIES = [
-  Skill.Athletics,
-  Skill.Survival,
-  Skill.Persuasion
-]
+  Skill.Arcana,
+  Skill.Investigation,
+  Skill.Perception,
+  Skill.Survival
+];
 
-const SKILL_EXPERTIES = [
-  Skill.Intimidation
-]
+const SKILL_EXPERTIES: Skill[] = [];
 
 const defaultNexCreatureList = [
   {
