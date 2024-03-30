@@ -39,8 +39,7 @@ const damage = () => {
   } else {
     hitPoints.value -= hitPointDelta.value;
   }
-  hitPointDelta.value = 0;
-  console.log(`HP: ${hitPoints.value} | THP: ${temporaryHitPoints.value}`)
+  hitPointDelta.value = 1;
 }
 
 const healthPercentage = computed(() => {
