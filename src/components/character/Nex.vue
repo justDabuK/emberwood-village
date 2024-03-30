@@ -4,7 +4,7 @@ import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {useStorage} from "@vueuse/core";
 import type {MarkdownInstance} from "astro";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
-import {getHideArmorClass} from "../../scripts/armorClassUtils.ts";
+import {getChainShirtArmorClass, getHideArmorClass} from "../../scripts/armorClassUtils.ts";
 import {Spell} from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
 
@@ -27,16 +27,19 @@ const knownSpellNameList = [
   Spell.GentleRepose,
   Spell.Invigorate,
   // --- Cantrips:  4 ---
-  Spell.BacterialBarrage,
   Spell.Guidance,
   Spell.PoisonNeedle,
+  Spell.ChillTouch,
+  Spell.Resistance,
   // --- known spells : 9 ---
-  Spell.CometShards,
-  Spell.Envenom,
-  Spell.Grease,
-  Spell.HealingWord,
+  Spell.AcidOrb,
   Spell.Infect,
+  Spell.StreamOfConsumption,
+  Spell.HealingWord,
   Spell.GraspingGhost,
+  Spell.OcularNecrosis,
+  Spell.Biohazard,
+  Spell.CometShards,
   Spell.WitherAndBloom,
 ]
 const getProficiencyBonus = (level: number) => {
@@ -103,12 +106,14 @@ const getTheoriesKnown = (level: number) => {
   }
 };
 
+const medicalExpertBonus = 1;
+
 const ABILITY_SCORES: AbilityScores = {
   STR: 10,
   DEX: 12,
   CON: 16,
   INT: 20,
-  WIS: 13,
+  WIS: 13 + medicalExpertBonus,
   CHA: 8
 };
 
@@ -150,7 +155,7 @@ const defaultNexCreatureList: Creature[] = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getHideArmorClass(MODIFIER.DEX),
+    armorClass: getChainShirtArmorClass(MODIFIER.DEX),
     magic: {
       spellSlots: {
         [getSlotLevel(NEX_LEVEL)]: {
@@ -233,6 +238,10 @@ const defaultNexCreatureList: Creature[] = [
               typeOfRest: TypeOfRest.LONG,
             },
             description: `${NEX_LEVEL} HP for ${getProficiencyBonus(NEX_LEVEL)} creatures during short rest, 1 per long rest`
+          },
+          {
+            title: "Medical Expert",
+            description: `During a short rest, remove one exhaustion, disease, charmed, frightened, paralyzed, poisoned from up to six creatures. Up to 6 creatures get ${getProficiencyBonus(NEX_LEVEL)} extra hit dice during short rest.`
           }
         ]
       },
@@ -246,6 +255,10 @@ const defaultNexCreatureList: Creature[] = [
           {
             title: "Pharmacology",
             description: `When healing, add +${MODIFIER.INT} to the amount`
+          },
+          {
+            title: "Rapid Response",
+            description: `No opportunity attack when healing`
           }
         ]
       }

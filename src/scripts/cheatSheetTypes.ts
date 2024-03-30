@@ -105,6 +105,7 @@ export enum Skill {
     Acrobatics = 'Acrobatics',
     SleightOfHand = 'Sleight of Hand',
     Stealth = 'Stealth',
+    ThievesTools = "Thieve's Tools",
     Arcana = 'Arcana',
     History = 'History',
     Investigation = 'Investigation',

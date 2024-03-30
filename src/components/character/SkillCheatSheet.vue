@@ -15,7 +15,7 @@ const abilityScoreKeys = Object.keys(props.abilityScores) as (keyof AbilityScore
 
 const SkillsPerAbilityScore = {
   STR: [Skill.Athletics],
-  DEX: [Skill.Acrobatics, Skill.SleightOfHand, Skill.Stealth],
+  DEX: [Skill.Acrobatics, Skill.SleightOfHand, Skill.Stealth, Skill.ThievesTools],
   CON: [],
   INT: [Skill.Arcana, Skill.History, Skill.Investigation, Skill.Nature, Skill.Religion],
   WIS: [Skill.AnimalHandling, Skill.Insight, Skill.Medicine, Skill.Perception, Skill.Survival],

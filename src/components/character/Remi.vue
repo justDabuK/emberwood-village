@@ -59,6 +59,7 @@ const SKILL_PROFICIENCIES = [
   Skill.Athletics,
   Skill.Acrobatics,
   Skill.Stealth,
+  Skill.ThievesTools,
   Skill.History,
   Skill.Perception,
   Skill.Performance
