@@ -53,6 +53,7 @@ export enum Spell {
     DetectPoisonAndDisease = "Detect Poison and Disease",
     Envenom = "Envenom",
     FalseLife = "False Life",
+    FindFamiliar = "Find Familiar",
     FeatherFall = "Feather Fall",
     FogCloud = "Fog Cloud",
     Grease = "Grease",

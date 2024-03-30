@@ -42,6 +42,7 @@ const knownSpellNameList = [
   Spell.DetectPoisonAndDisease,
   Spell.Envenom,
   Spell.FalseLife,
+  Spell.FindFamiliar,
   Spell.FeatherFall,
   Spell.FogCloud,
   Spell.Grease,

@@ -44,7 +44,7 @@ const getCostlyComponent = (components: string) => {
 };
 
 const isCostlySpell = (components: string) => {
-  return components.includes('delerium') || components.includes('gold') ;
+  return components.includes('delerium') || components.includes('gold') || components.includes('gp') ;
 };
 </script>
 
