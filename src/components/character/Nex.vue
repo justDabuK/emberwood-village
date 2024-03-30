@@ -26,7 +26,7 @@ const knownSpellNameList = [
   Spell.InflictWounds,
   Spell.GentleRepose,
   Spell.Invigorate,
-  // --- Cantrips ---
+  // --- Cantrips:  4 ---
   Spell.BacterialBarrage,
   Spell.Guidance,
   Spell.PoisonNeedle,
@@ -104,12 +104,12 @@ const getTheoriesKnown = (level: number) => {
 };
 
 const ABILITY_SCORES: AbilityScores = {
-  STR: 8,
-  DEX: 14,
+  STR: 10,
+  DEX: 12,
   CON: 16,
   INT: 20,
-  WIS: 10,
-  CHA: 12
+  WIS: 13,
+  CHA: 8
 };
 
 const MODIFIER: AbilityScores = {
@@ -127,10 +127,10 @@ const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
 ];
 
 const SKILL_PROFICIENCIES = [
+  Skill.Stealth,
   Skill.Arcana,
   Skill.Investigation,
   Skill.Perception,
-  Skill.Survival
 ];
 
 const SKILL_EXPERTIES: Skill[] = [];
@@ -233,6 +233,19 @@ const defaultNexCreatureList: Creature[] = [
               typeOfRest: TypeOfRest.LONG,
             },
             description: `${NEX_LEVEL} HP for ${getProficiencyBonus(NEX_LEVEL)} creatures during short rest, 1 per long rest`
+          }
+        ]
+      },
+      {
+        title: "Esoteric Theories",
+        subsections: [
+          {
+            title: "Laboratory Assistant",
+            description: "You know Find Familiar"
+          },
+          {
+            title: "Pharmacology",
+            description: `When healing, add +${MODIFIER.INT} to the amount`
           }
         ]
       }

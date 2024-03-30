@@ -17,11 +17,11 @@ const props = defineProps<{
 const spellSlots = defineModel<SpellSlots>("spellSlots");
 const concentration = defineModel<boolean>("concentration");
 
-const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameList.includes(spell.frontmatter.title));
+const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameList.includes(spell.frontmatter.title)).sort((a, b) => a.frontmatter.level - b.frontmatter.level);
 
 const isBonusActionSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.castingTime.includes('bonus');
-const isActionSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.castingTime.includes('action') && !isBonusActionSpell(spell);
 const isReactionSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.castingTime.includes('reaction');
+const isActionSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.castingTime.includes('action') && !isBonusActionSpell(spell) && !isReactionSpell(spell);
 const isRitualSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.ritual;
 
 const bonusActionSpellList = knownSpellList.filter(isBonusActionSpell);
@@ -77,7 +77,7 @@ const isCostlySpell = (components: string) => {
       <div v-for="spellSection in spellSectionList" :key="spellSection.title" class="spell-section">
         <h2>{{spellSection.title}}</h2>
         <div class="spell-section-spell-list">
-          <a v-for="spell in spellSection.spells" :key="spell.frontmatter.title" :href="spell.url" :class="['card', 'spell', spell.frontmatter.duration.includes('Concentration') ? 'concentration' : '']">
+          <a v-for="spell in spellSection.spells" :key="spell.frontmatter.title" :href="spell.url" :class="['card', 'spell', spell.frontmatter.duration.includes('Concentration') ? 'concentration' : '', 'card', 'spell', spell.frontmatter.level === 0 ? 'cantrip' : '']">
             <SpellSchoolIcon class="spell-school-icon" :spell-school="spell.frontmatter.school"/>
             <SpellRangeIcon class="spell-range-icon" :range="spell.frontmatter.range"/>
             <p>{{ spell.frontmatter.title }}</p>
@@ -148,8 +148,18 @@ const isCostlySpell = (components: string) => {
     }
   }
 
+  --concentration-color: oklch(76.99% 0.08 226.91 / 0.2);
+  --cantrip-color: oklch(40% 0.032 304.82 / 0.4);
   .concentration {
-    background-color: oklch(76.99% 0.08 226.91 / 0.2);
+    background-color: var(--concentration-color);
+
+    &.cantrip {
+      background: linear-gradient(90deg, var(--cantrip-color), var(--concentration-color));
+    }
+  }
+
+  .cantrip {
+    background-color: var(--cantrip-color);
   }
 }
 </style>
