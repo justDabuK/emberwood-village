@@ -91,4 +91,5 @@ export enum Spell {
     Silence = "Silence",
     SpiderClimb = "Spider Climb",
     Web = "Web",
+    WitherAndBloom = "Wither and Bloom",
 }

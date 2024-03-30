@@ -35,7 +35,7 @@ const getLevelString = () => {
 ---
 <BaseLayout title={frontmatter.title} icon={getSpellSchoolIconName(frontmatter.school)}>
     {frontmatter.ritual ? <InlineIcon icon="pentagram.svg" size="2rem" slot="headline-postfix"/> :null}
-    <p><em>{getLevelString()}</em><em>{frontmatter.school}</em></p>
+    <p><em>{getLevelString()}</em> <em>{frontmatter.school}</em></p>
     <p><strong>Casting Time:</strong> {frontmatter.castingTime}</p>
     <p><strong>Range:</strong> {frontmatter.range}</p>
     <p><strong>Components:</strong> {frontmatter.components}</p>

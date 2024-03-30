@@ -80,6 +80,7 @@ const knownSpellNameList = [
   Spell.Silence,
   Spell.SpiderClimb,
   Spell.Web,
+  Spell.WitherAndBloom,
 ]
 const getProficiencyBonus = (level: number) => {
   if(level < 5) {
