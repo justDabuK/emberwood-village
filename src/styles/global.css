@@ -44,6 +44,37 @@ li {
     --button-color: oklch(60% 0.08 226.91);
     --button-color-hover: oklch(55% 0.08 226.91);
     --button-color-active: oklch(44.81% 0.08 226.91);
+
+    /* sizes */
+    --size-4: 4px;
+    --size-8: 8px;
+    --size-12: 12px;
+    --size-16: 16px;
+    --size-24: 24px;
+    --size-32: 32px;
+    --size-48: 48px;
+    --size-64: 64px;
+    --size-96: 96px;
+    --size-128: 128px;
+    --size-192: 192px;
+    --size-256: 256px;
+    --size-384: 384px;
+    --size-512: 512px;
+    --size-640: 640px;
+    --size-768: 768px;
+
+    /* font sizes */
+    --font-size-12: 12px;
+    --font-size-14: 14px;
+    --font-size-16: 16px;
+    --font-size-18: 18px;
+    --font-size-20: 20px;
+    --font-size-24: 24px;
+    --font-size-30: 30px;
+    --font-size-36: 36px;
+    --font-size-48: 48px;
+    --font-size-60: 60px;
+    --font-size-72: 72px;
 }
 
 a {
