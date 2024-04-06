@@ -191,6 +191,8 @@ const creatureList = useStorage<Creature[]>('remi-creature-list', defaultRemiCre
 const resetToDefault = () => {
   creatureList.value = defaultRemiCreatureList;
 };
+const notesStorage = useStorage<string>('remi-notes', "");
+
 </script>
 
 <template>
@@ -205,6 +207,8 @@ const resetToDefault = () => {
         :skill-expertise-list="SKILL_EXPERTIES"
         :proficiency-bonus="REMI_PROFICIENCY_BONUS"
     />
+    <div class="divider" />
+    <textarea v-model="notesStorage" placeholder="Notes"></textarea>
   </div>
 </template>
 

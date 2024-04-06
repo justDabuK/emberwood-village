@@ -208,6 +208,7 @@ const creatureList = useStorage<Creature[]>('jazz-creature-list', defaultJazzCre
 const resetToDefault = () => {
   creatureList.value = defaultJazzCreatureList;
 };
+const notesStorage = useStorage<string>('jazz-notes', "");
 </script>
 
 <template>
@@ -222,6 +223,8 @@ const resetToDefault = () => {
         :skill-expertise-list="SKILL_EXPERTIES"
         :proficiency-bonus="JAZZ_PROFICIENCY_BONUS"
     />
+    <div class="divider" />
+    <textarea v-model="notesStorage" placeholder="Notes"></textarea>
   </div>
 </template>
 

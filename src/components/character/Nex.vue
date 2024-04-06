@@ -391,6 +391,8 @@ const creatureList = useStorage<Creature[]>('nex-creature-list', defaultNexCreat
 const resetToDefault = () => {
   creatureList.value = defaultNexCreatureList;
 };
+
+const notesStorage = useStorage<string>('nex-notes', "");
 </script>
 
 <template>
@@ -419,6 +421,8 @@ const resetToDefault = () => {
         :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(NEX_LEVEL)"
         :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(NEX_LEVEL)"
     />
+    <div class="divider" />
+    <textarea v-model="notesStorage" placeholder="Notes"></textarea>
   </div>
 </template>
 
