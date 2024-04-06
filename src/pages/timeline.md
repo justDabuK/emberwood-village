@@ -29,5 +29,12 @@ title: "Timeline"
 |                                | delerium crystal for River                                          |
 |                                | camp at eckerman mill                                               |
 | _Level up to 4_                |                                                                     |
+| 1 day: Tuesday                 | Calm day in Emberwood village                                       |
+|                                | Remi: Getting to know more Lanterns                                 |
+|                                | Jazz: Healed by Flamekeeper Hanna                                   |
+|                                | Nex: Back alley fight with Old Rattlecan                            |
+| 1 day: Wednesday               | Adventure time with Panin Dias                                      |
+|                                | Fight with Lemmington against shadowy dregs                         |
+|                                | Caspian duel over a delerium dragon wyrmling and a mutated Troll    |
 
 
