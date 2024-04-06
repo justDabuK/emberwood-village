@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type {Creature, Section} from "../../scripts/cheatSheetTypes.ts";
 import CreatureSection from "./CreatureSection.vue";
+import {computed} from "vue";
+import InspirationToggleButton from "./InspirationToggleButton.vue";
 
 const emit = defineEmits<{
   (evt: 'resetToDefault'): void;
@@ -16,11 +18,17 @@ const resetSection = (section: Section) => {
 const resetUsed = () => {
   creatureList.value.forEach((creature) => creature.sectionList.forEach(resetSection));
 }
+
+const inspiration = computed<boolean | undefined>({
+  get: () => creatureList.value[0].inspiration,
+  set: (value: boolean | undefined) => creatureList.value[0].inspiration = value
+});
 </script>
 
 <template>
   <div class="cheat-sheet">
     <div class="cheat-sheet-headline">
+      <InspirationToggleButton v-if="inspiration !== undefined" v-model="inspiration"/>
       <button class="secondary" @click="emit('resetToDefault')">Long Rest</button>
       <button @click="resetUsed">New round</button>
     </div>

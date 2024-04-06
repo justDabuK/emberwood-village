@@ -1,6 +1,6 @@
 export type Creature = {
     name: string;
-    hitPoints?: {
+    hitPoints: {
         current: number;
         max: number;
         temporary?: number;
@@ -14,6 +14,7 @@ export type Creature = {
         refresh: TypeOfRest;
         concentration: boolean;
     }
+    inspiration?: boolean;
     sectionList: Section[];
 }
 
