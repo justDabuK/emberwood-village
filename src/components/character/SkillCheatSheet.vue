@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {type AbilityScores, Skill} from "../../scripts/cheatSheetTypes.ts";
+import {addSign} from "../../scripts/addSign.ts";
 
 const props = defineProps<{
   abilityScores: AbilityScores;
@@ -37,10 +38,6 @@ const getSavingThrowModifier = (abilityScore: keyof AbilityScores) => {
   const modifier = props.modifiers[abilityScore];
   return props.savingThrowProficiencyList.includes(abilityScore) ? addSign(modifier + props.proficiencyBonus) : addSign(modifier);
 }
-
-const addSign = (number: number) => {
-  return number >= 0 ? `+${number}` : number;
-};
 
 const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
   switch (abilityScore) {

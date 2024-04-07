@@ -6,6 +6,7 @@ import type {Creature} from "../../scripts/cheatSheetTypes.ts";
 import Contamination from "./Contamination.vue";
 import KeyValueCard from "./TitleValueCard.vue";
 import TitleValueCard from "./TitleValueCard.vue";
+import {addSign} from "../../scripts/addSign.ts";
 
 const creature = defineModel<Creature>({required: true});
 </script>
@@ -18,6 +19,12 @@ const creature = defineModel<Creature>({required: true});
       <HitPoints v-model="creature.hitPoints.current" v-model:temporary-hit-points="creature.hitPoints.temporary" v-model:hit-dice="creature.hitPoints.hitDice" :max-hit-points="creature.hitPoints.max"/>
       <TitleValueCard class="armor-class" title="AC" :value="creature.armorClass"/>
       <Contamination v-model="creature.contamination" />
+      <TitleValueCard
+          v-if="creature.initiative !== undefined"
+          title="Initiative"
+          :value="addSign(creature.initiative)"
+          class="initiative"
+      />
     </div>
   </div>
 </template>
