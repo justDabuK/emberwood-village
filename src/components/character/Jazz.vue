@@ -71,6 +71,7 @@ const defaultJazzCreatureList = [
       contamination: 0,
       exhaustion: 0,
       armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX, MODIFIER.CON),
+      initiative: MODIFIER.DEX,
       inspiration: false,
       sectionList: [
         {

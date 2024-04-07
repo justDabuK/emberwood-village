@@ -7,6 +7,7 @@ export type Creature = {
         hitDice?: UsagesPerRest;
     }
     armorClass: number;
+    initiative?: number;
     contamination: number;
     exhaustion: number;
     magic?: {

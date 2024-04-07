@@ -1,32 +1,31 @@
 <script setup lang="ts">
 defineProps<{
-  armorClass: number;
+  title: string;
+  value: number;
 }>();
 </script>
 
 <template>
-  <div class="card armor-class">
-    <span class="armor-class-title">AC</span>
-    <div class="armor-class-data">
-      <span>{{armorClass}}</span>
+  <div class="card">
+    <span class="title">{{ title }}</span>
+    <div class="value">
+      <span>{{ value }}</span>
     </div>
   </div>
 </template>
 
 <style scoped>
-.armor-class {
-  grid-row: 2;
-  grid-column: 1;
+.card {
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 10px;
 
-  .armor-class-title {
+  .title {
     color: var(--text-color-darker-1);
   }
 
-  .armor-class-data {
+  .value {
     display: grid;
     place-items: center;
     span {

@@ -89,6 +89,7 @@ const defaultRemiCreatureList = [
     contamination: 0,
     exhaustion: 0,
     armorClass: getStuddedLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
+    initiative: MODIFIER.DEX + MODIFIER.CHA,
     inspiration: false,
     sectionList: [
       {

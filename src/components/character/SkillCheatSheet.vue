@@ -5,7 +5,7 @@ import {type AbilityScores, Skill} from "../../scripts/cheatSheetTypes.ts";
 const props = defineProps<{
   abilityScores: AbilityScores;
   modifiers: AbilityScores;
-  savingThrowProficiencyList: (keyof AbilityScores);
+  savingThrowProficiencyList: (keyof AbilityScores)[];
   skillProficiencyList: Skill[];
   skillExpertiseList: Skill[];
   proficiencyBonus: number;
