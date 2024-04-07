@@ -1,6 +1,8 @@
 ---
-layout: ../../layouts/DefaultLayout.astro
+layout: ../../layouts/MagicItemLayout.astro
 title: "Tome of Occult Draconic Practices"
+rarity: "Rarity Varies"
+type: "Wondrous Item"
 ---
 _Wondrous Item, Rarity Varies (Requires Attunement by an Apothecary)_
 ### Slumbering(Uncommon)

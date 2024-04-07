@@ -1,6 +1,8 @@
 ---
-layout: ../../layouts/DefaultLayout.astro
+layout: ../../layouts/MagicItemLayout.astro
 title: "Delirium Rapier"
+rarity: "Rare"
+type: "Rapier"
 ---
 *Rare Rapier (requires attunement)* 
 

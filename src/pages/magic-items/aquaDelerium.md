@@ -1,6 +1,8 @@
 ---
-layout: ../../layouts/DefaultLayout.astro
+layout: ../../layouts/MagicItemLayout.astro
 title: "Aqua Delerium"
+rarity: "Rare"
+type: "Potion"
 ---
 *Potion, rare*
 

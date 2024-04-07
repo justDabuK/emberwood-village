@@ -1,0 +1,21 @@
+---
+import {achievedPrerequisites} from "../scripts/spellPrerequisites";
+import MarkdownLink from "./MarkdownLink.astro";
+import {getSpellSchoolIconName} from "../scripts/spellUtils";
+import InlineIcon from "./InlineIcon.astro";
+import {getMagicItemIconName} from "../scripts/getMagicItemIconName";
+
+type Props = {
+    url: string,
+    frontmatter: {
+        title: string,
+        rarity: boolean,
+        type: string,
+        disabled: boolean,
+    }
+}
+
+const { item } = Astro.props;
+
+---
+<MarkdownLink url={item.url} title={item.frontmatter.title} disabled={item.frontmatter.disabled} icon={getMagicItemIconName(item.frontmatter.type)} />

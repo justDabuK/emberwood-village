@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import MarkdownLink from "../../components/MarkdownLink.astro";
+import MagicItemListItem from "../../components/MagicItemListItem.astro";
 
 const allMagicItems = (await Astro.glob("/src/pages/magic-items/*.md"));
 
@@ -8,6 +8,6 @@ const allMagicItems = (await Astro.glob("/src/pages/magic-items/*.md"));
 
 <BaseLayout title="Magic Items">
     <ul>
-        {allMagicItems.map((item) => <MarkdownLink url={item.url} title={item.frontmatter.title} disabled={item.frontmatter.disabled} />)}
+        {allMagicItems.map((item) => <MagicItemListItem item={item} />)}
     </ul>
 </BaseLayout>
