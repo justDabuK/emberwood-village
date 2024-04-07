@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import SectionCard from "./SectionCard.vue";
-import ArmorClass from "./TitleValueCard.vue";
 import HitPoints from "./HitPoints.vue";
 import type {Creature} from "../../scripts/cheatSheetTypes.ts";
 import Contamination from "./Contamination.vue";
-import KeyValueCard from "./TitleValueCard.vue";
 import TitleValueCard from "./TitleValueCard.vue";
 import {addSign} from "../../scripts/addSign.ts";
 

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {type AbilityScores, type Creature, getModifier, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
-import {ref} from "vue";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {useStorage} from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
