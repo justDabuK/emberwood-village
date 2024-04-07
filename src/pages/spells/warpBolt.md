@@ -7,7 +7,6 @@ castingTime: '1 action'
 range: '60 feet'
 components: 'V, S, M (a delerium fragment worth 100 gp, which the spell consumes)'
 duration: 'Concentration, up to 1 minute'
-disabled: true
 ---
 
 *When you cast this spell, you gain one level of contamination.*
