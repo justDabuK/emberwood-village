@@ -30,4 +30,6 @@ export enum possiblePrerequisites {
 export const achievedPrerequisites = [
     possiblePrerequisites.MONSTROUS_TRANFORMATION,
     possiblePrerequisites.KNOWS_CONTAMINTED_LEVEL_1,
+    possiblePrerequisites.CAST_CONTAMINATED_LEVEL_1,
+    possiblePrerequisites.SLAYED_DELERIUM_DRAGON,
 ]
