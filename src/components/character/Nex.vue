@@ -7,6 +7,7 @@ import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {getChainShirtArmorClass, getHideArmorClass} from "../../scripts/armorClassUtils.ts";
 import {Spell} from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
+import NoteSection from "./NoteSection.vue";
 
 defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
@@ -422,7 +423,7 @@ const notesStorage = useStorage<string>('nex-notes', "");
         :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(NEX_LEVEL)"
     />
     <div class="divider" />
-    <textarea v-model="notesStorage" placeholder="Notes"></textarea>
+    <NoteSection v-model="notesStorage" />
   </div>
 </template>
 
