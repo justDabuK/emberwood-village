@@ -4,6 +4,7 @@ import {type AbilityScores, type Creature, getModifier, Skill, TypeOfRest} from 
 import {useStorage} from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {getUnarmoredDefenseArmorClass} from "../../scripts/armorClassUtils.ts";
+import NoteSection from "./NoteSection.vue";
 
 const JAZZ_LEVEL = 4;
 const JAZZ_PROFICIENCY_BONUS = 2;
@@ -225,7 +226,7 @@ const notesStorage = useStorage<string>('jazz-notes', "");
         :proficiency-bonus="JAZZ_PROFICIENCY_BONUS"
     />
     <div class="divider" />
-    <textarea v-model="notesStorage" placeholder="Notes"></textarea>
+    <NoteSection v-model="notesStorage" />
   </div>
 </template>
 

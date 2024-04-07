@@ -4,6 +4,7 @@ import RoundCheatSheet from "./RoundCheatSheet.vue";
 import {useStorage} from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {getStuddedLeatherArmorClass} from "../../scripts/armorClassUtils.ts";
+import NoteSection from "./NoteSection.vue";
 
 const REMI_LEVEL = 4;
 const REMI_PROFICIENCY_BONUS = 2;
@@ -208,7 +209,7 @@ const notesStorage = useStorage<string>('remi-notes', "");
         :proficiency-bonus="REMI_PROFICIENCY_BONUS"
     />
     <div class="divider" />
-    <textarea v-model="notesStorage" placeholder="Notes"></textarea>
+    <NoteSection v-model="notesStorage" />
   </div>
 </template>
 
