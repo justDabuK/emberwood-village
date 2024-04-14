@@ -22,26 +22,48 @@ const toggleModel = () => {
 
     <div class="section-title">
       <span>{{ section.title }}</span>
+      <span v-if="section.dice">{{ section.dice }}</span>
       <input v-model="model" v-if="model !== undefined" type="checkbox">
     </div>
 
-    <div v-for="subsection in section.subsections" :key="subsection.title" class="subsection">
-      <div class="subsection-header">
-        <span>{{ subsection.title }}</span>
-        <span v-if="subsection.dice">{{ subsection.dice }}</span>
-        <Usages v-if="subsection.usages" v-model="subsection.usages"/>
-      </div>
+    <template v-if="section.subsections">
+      <div v-for="subsection in section.subsections" :key="subsection.title" class="subsection">
+        <div class="subsection-header">
+          <span>{{ subsection.title }}</span>
+          <span v-if="subsection.dice">{{ subsection.dice }}</span>
+          <Usages v-if="subsection.usages" v-model="subsection.usages"/>
+        </div>
 
-      <div v-if="subsection.description" class="description">
-        <span>{{ subsection.description }}</span>
-      </div>
+        <div v-if="subsection.description" class="description">
+          <span>{{ subsection.description }}</span>
+        </div>
 
-      <ul v-if="subsection.items">
-        <li v-for="item in subsection.items" :key="item.name">
-          <span>{{ item.name }}</span> <span>{{ item.dice }}</span>
-        </li>
-      </ul>
+        <ul v-if="subsection.items">
+          <li v-for="item in subsection.items" :key="item.name">
+            <span>{{ item.name }}</span> <span>{{ item.dice }}</span>
+          </li>
+        </ul>
+      </div>
+    </template>
+
+    <div v-if="section.description" class="description">
+      <span>{{ section.description }}</span>
     </div>
+
+    <template v-if="section.table">
+      <table>
+        <thead>
+          <tr>
+            <th v-for="header in section.table.headers" :key="header">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="row in section.table.rows" :key="row[0]">
+            <td v-for="cell in row" :key="cell">{{ cell }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </template>
   </div>
 </template>
 

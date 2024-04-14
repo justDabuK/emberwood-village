@@ -11,10 +11,14 @@ const JAZZ_PROFICIENCY_BONUS = 2;
 const JAZZ_NUMBER_OF_RAGES = 3;
 const JAZZ_RAGE_DAMAGE = 2;
 
+const RACIAL_PLUS_2 = 2;
+const RACIAL_PLUS_1 = 1;
+const DRAGON_FEAR_PLUS_1 = 1;
+
 const ABILITY_SCORES: AbilityScores = {
-  STR: 19,
-  DEX: 14,
-  CON: 16,
+  STR: 17 + RACIAL_PLUS_2,
+  DEX: 13 + RACIAL_PLUS_1,
+  CON: 15 + DRAGON_FEAR_PLUS_1,
   INT: 8,
   WIS: 10,
   CHA: 12
@@ -37,12 +41,11 @@ const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
 const SKILL_PROFICIENCIES = [
     Skill.Athletics,
     Skill.Survival,
-    Skill.Persuasion
+    Skill.Persuasion,
+    Skill.Intimidation
 ]
 
-const SKILL_EXPERTIES = [
-  Skill.Intimidation
-]
+const SKILL_EXPERTIES: Skill[] = []
 
 const breathWeaponDamageDiceNumber = () => {
   if(JAZZ_LEVEL < 5) {
@@ -56,7 +59,17 @@ const breathWeaponDamageDiceNumber = () => {
   }
 };
 
-const defaultJazzCreatureList = [
+const contaminatedFuryExtraDamage = () => {
+  if (JAZZ_LEVEL < 10) {
+    return "1d8";
+  } else if (JAZZ_LEVEL < 14) {
+    return "2d8";
+  } else {
+    return "3d8";
+  }
+}
+
+const defaultJazzCreatureList: Creature[] = [
     {
       name: "Jazz",
       hitPoints: {
@@ -84,18 +97,26 @@ const defaultJazzCreatureList = [
               dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR}`,
               items: [
                 {
-                  name: 'any weapon',
-                  dice: `1d12+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`
+                  name: 'Greataxe',
+                  dice: `1d12+${contaminatedFuryExtraDamage()}+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`
+                },
+                {
+                  name: 'Javelin (30/120 ft.)',
+                  dice: `1d6+${contaminatedFuryExtraDamage()}+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`
+                },
+                {
+                  name: 'Handaxe (20/60 ft.)',
+                  dice: `1d6+${contaminatedFuryExtraDamage()}+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`
                 }
               ]
             },
             {
-              title: "Breath Weapon",
+              title: "Octarine Breath Weapon",
               usages: {
                 flags: [...Array(JAZZ_PROFICIENCY_BONUS)].fill(false),
                 typeOfRest: TypeOfRest.LONG,
               },
-              description: `15ft. cone, ${breathWeaponDamageDiceNumber()}d10 force damage, DEX save (DC ${8 + MODIFIER.CON + JAZZ_PROFICIENCY_BONUS}) for half`
+              description: `see Octarine Breath Weapon`
             },
             {
               title: 'Dragon Fear',
@@ -115,13 +136,13 @@ const defaultJazzCreatureList = [
           ]
         },
         {
-          title: 'Brute Strength',
+          title: 'Contaminated Fury',
           used: false,
           subsections: [
             {
-              title: 'Grapple or Shove',
-              description: 'when melee attack hits, can attempt to grapple or shove same creature',
-              dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR}`
+              title: 'Per contamination level ->',
+              description: 'gain level of contamination, deal an extra 2d8 necrotic damage for each level ',
+              dice: '+2d8 dmg'
             }
           ]
         },
@@ -169,11 +190,11 @@ const defaultJazzCreatureList = [
             },
             {
               title: 'Long Jump',
-              description: '10ft.(2 Felder) run-up, 36ft. (7 Felder) jump'
+              description: `10ft.(2 Felder) run-up, ${ABILITY_SCORES.STR}ft. (${Math.floor(ABILITY_SCORES.STR / 5)} Felder) jump`
             },
             {
               title: 'High Jump',
-              description: '10ft.(2 Felder) run-up, 14ft. (2 Felder) jump'
+              description: `10ft.(2 Felder) run-up, ${3 + MODIFIER.STR}ft. (${Math.floor((3 + MODIFIER.STR) / 5)} Felder) jump`
             }
           ]
         },
@@ -197,10 +218,35 @@ const defaultJazzCreatureList = [
               description: `give 1d4 bonus to ability check, saving throw or attack roll to an ally (during a short rest)`
             },
             {
+              title: 'Innured to Corruption',
+              description: 'If a spell removes your contamination, the caster doesn\'t need material components. You don\'t gain exhaustion from getting rid of contamination'
+            },
+            {
               title: 'Grappler',
               description: 'advantage on attack rolls against creatures you are grappling'
             }
           ]
+        },
+        {
+          title: 'Octarine Breath Weapon',
+          subsections: [
+            {
+              title: '15ft. cone',
+              dice: `DEX save DC ${8 + MODIFIER.CON + JAZZ_PROFICIENCY_BONUS}`
+            }
+          ],
+          description: 'roll a d6 for every target effected by the breath weapon.',
+          table: {
+            headers: ['d6', 'effect'],
+            rows: [
+                [ "1", `The target takes ${breathWeaponDamageDiceNumber()}d10 psychic damage on a failed save, or half as much damage on a success`],
+                [ "2", `The target takes ${breathWeaponDamageDiceNumber()}d10 necrotic damage on a failed save, or half as much damage on a success`],
+                [ "3", `The target takes ${breathWeaponDamageDiceNumber()}d10 force damage on a failed save, or half as much damage on a success`],
+                [ "4", `The target takes ${breathWeaponDamageDiceNumber()}d10 radiant damage on a failed save, or half as much damage on a success`],
+                [ "5", `The target takes ${breathWeaponDamageDiceNumber()}d10 thunder damage on a failed save, or half as much damage on a success`],
+                [ "6", "The target is struck by an additional ray. Roll on this table twice more. There’s no limit to how many additional rays can strike a single creature in this manner"],
+            ]
+          },
         }
       ]
     }

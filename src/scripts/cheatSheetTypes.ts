@@ -60,8 +60,14 @@ export type SpellSlots = {
 
 export type Section = {
     title: string;
-    subsections: Subsection[];
+    subsections?: Subsection[];
     used?: boolean;
+    dice?: string;
+    description?: string;
+    table?: {
+        headers: string[];
+        rows: string[][];
+    }
 }
 
 export type Subsection = {
