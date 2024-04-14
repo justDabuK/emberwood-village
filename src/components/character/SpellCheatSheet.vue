@@ -156,7 +156,6 @@ const isCostlySpell = (components: string) => {
           }
 
           .cost {
-            border: 1px solid var(--text-color-darker-1);
             border-radius: 10px;
             padding: 5px;
             background-color: oklch(from gold l c h / 0.2);
