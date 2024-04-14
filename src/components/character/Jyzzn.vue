@@ -71,7 +71,7 @@ const contaminatedFuryExtraDamage = () => {
 
 const defaultJazzCreatureList: Creature[] = [
     {
-      name: "Jazz",
+      name: "Jyzzn",
       hitPoints: {
         current: (7 + MODIFIER.CON) * JAZZ_LEVEL,
         max: (7 + MODIFIER.CON) * JAZZ_LEVEL,
