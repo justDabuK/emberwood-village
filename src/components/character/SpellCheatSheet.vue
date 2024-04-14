@@ -83,7 +83,7 @@ const isCostlySpell = (components: string) => {
           <a v-for="spell in spellSection.spells" :key="spell.frontmatter.title" :href="spell.url" :class="['card', 'spell', spell.frontmatter.duration.includes('Concentration') ? 'concentration' : '', 'card', 'spell', spell.frontmatter.level === 0 ? 'cantrip' : '']">
             <SpellSchoolIcon class="spell-school-icon" :spell-school="spell.frontmatter.school"/>
             <SpellRangeIcon class="spell-range-icon" :range="spell.frontmatter.range"/>
-            <p>{{ spell.frontmatter.title }}</p>
+            <p class="title">{{ spell.frontmatter.title }}</p>
 
             <p v-if="spell.frontmatter.level === 0 && spell.frontmatter.effect && spell.frontmatter.effect[casterLevel]">
               {{ spell.frontmatter.effect[casterLevel] }}
@@ -144,6 +144,10 @@ const isCostlySpell = (components: string) => {
             height: 30px;
             width: 30px;
             color: var(--text-color-darker-1);
+          }
+
+          .title {
+            font-weight: 500;
           }
 
           .spell-range-icon {
