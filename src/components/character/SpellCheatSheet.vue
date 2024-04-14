@@ -162,12 +162,15 @@ const isCostlySpell = (components: string) => {
           .cost {
             border-radius: 10px;
             padding: 5px;
-            background-color: oklch(from gold l c h / 0.2);
+            background-color: oklch(from gold l c h / 0.1);
+            color: oklch(from gold l c h / 0.6);
 
             &.contaminated {
-              background-color: transparent;
               position: relative;
               z-index: 1;
+              background-clip: text;
+              color: oklch(from turquoise l c h / 0.7);
+
 
               &::before {
                 content: '';
@@ -178,7 +181,7 @@ const isCostlySpell = (components: string) => {
                 height: 100%;
                 width: 100%;
                 border-radius: 10px;
-                opacity: 0.3;
+                opacity: 0.2;
                 z-index: -1;
               }
             }
