@@ -32,13 +32,18 @@ const getSneakAttackDice = () => {
   }
 };
 
+const racialBonusPlus2 = 2;
+const racialBonusPlus1 = 1;
+const actorBonus = 1
+
+
 const ABILITY_SCORES: AbilityScores = {
   STR: 8,
-  DEX: 19,
+  DEX: 17 + racialBonusPlus2,
   CON: 13,
   INT: 12,
   WIS: 10,
-  CHA: 17
+  CHA: 15 + racialBonusPlus1 + actorBonus
 };
 
 const MODIFIER: AbilityScores = {
@@ -73,7 +78,7 @@ const SKILL_EXPERTIES = [
 const dualWielderArmorclassBonus = 1;
 
 
-const defaultCreatureList = [
+const defaultCreatureList: Creature[] = [
   {
     name: "Remmi",
     hitPoints: {
@@ -100,6 +105,7 @@ const defaultCreatureList = [
             title: '2 Weapon Attacks (Dual Wielder)',
             dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
             items: [
+              {name: '<insert rapier name>', dice: `1d8+1d8+${MODIFIER.DEX}`},
               {name: 'Shortsword', dice: `1d6+${MODIFIER.DEX}`},
             ]
           },
@@ -132,6 +138,10 @@ const defaultCreatureList = [
           {
             title: 'Cunning Action',
             description: 'Dash, Disengage, or Hide'
+          },
+          {
+            title: 'Activate <insert rapier name>',
+            description: 'see <insert rapier name> section'
           }
         ]
       },
@@ -182,6 +192,29 @@ const defaultCreatureList = [
             description: 'no opportunity attacks from target when meleed before'
           }
         ]
+      },
+      {
+        title: '<insert rapier name>',
+        description: 'You can use a bonus action to speak its name, causing it to set its appareance for 1 minute. Roll a d6 to determine the effect',
+        subsections: [{
+         title: 'The sword taketh and the sword giveth',
+          usages: {
+            flags: [...Array(3)].fill(false),
+            typeOfRest: TypeOfRest.LONG
+          },
+          description: 'When you hit a creature with an attack roll using the sword, you can expend 1 charge to regain a number of hit points equal to the extra damage the sword dealt. The sword regains 1d3 expended charges daily at dawn.'
+        }],
+        table: {
+          headers: ['d6', 'effect'],
+          rows: [
+              ["1", "The sword takes the form of a green emerald and deals an extra 1d8 psychic damage"],
+              ["2", "The sword takes the form of a yellow topaz and deals an extra 1d8 necrotic damage"],
+              ["3", "The sword takes the form of a purple amathyst and deals an extra 1d8 force damage"],
+              ["4", "The sword takes the form of a white crystal and deals an extra 1d8 radiant damage"],
+              ["5", "The sword takes the form of a blue saphire and deals an extra 1d8 thunder damage"],
+              ["6", "The sword takes on two forms. Roll on this table twice more. There’s no limit to how many additional colors the sword can take on in this manner"],
+          ]
+        },
       }
     ]
   }

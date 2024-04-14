@@ -235,7 +235,7 @@ const defaultJazzCreatureList: Creature[] = [
               dice: `DEX save DC ${8 + MODIFIER.CON + JAZZ_PROFICIENCY_BONUS}`
             }
           ],
-          description: 'roll a d6 for every target effected by the breath weapon.',
+          description: 'You breathe a cone of prismatic rays. Each ray is a different color and has a different power and purpose. Roll a d6 for every target effected by the breath weapon to determine wich color ray effects it',
           table: {
             headers: ['d6', 'effect'],
             rows: [
