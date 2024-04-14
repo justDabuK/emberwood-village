@@ -92,7 +92,7 @@ const isCostlySpell = (components: string) => {
               {{ spell.frontmatter.effect[currentSpellSlotLevel] }}
             </p>
 
-            <p v-if="isCostlySpell(spell.frontmatter.components)" class="cost">
+            <p v-if="isCostlySpell(spell.frontmatter.components)" :class="['cost', spell.frontmatter.school.includes('Contaminated') ? 'contaminated' : '']">
               {{ getCostlyComponent(spell.frontmatter.components) }}
             </p>
           </a>
@@ -159,6 +159,26 @@ const isCostlySpell = (components: string) => {
             border: 1px solid var(--text-color-darker-1);
             border-radius: 10px;
             padding: 5px;
+            background-color: oklch(from gold l c h / 0.2);
+
+            &.contaminated {
+              background-color: transparent;
+              position: relative;
+              z-index: 1;
+
+              &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: linear-gradient(125deg, rebeccapurple 20%, teal);
+                height: 100%;
+                width: 100%;
+                border-radius: 10px;
+                opacity: 0.3;
+                z-index: -1;
+              }
+            }
           }
         }
       }
