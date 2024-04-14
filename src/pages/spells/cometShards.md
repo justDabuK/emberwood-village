@@ -7,6 +7,15 @@ castingTime: '1 action'
 range: '120 feet'
 components: 'V, S, M (a delerium chip worth 10 gp, which the spell consumes)'
 duration: 'Instantaneous'
+effect:
+  1: '3 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
+  2: '4 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
+  3: '5 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
+  4: '6 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
+  5: '7 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
+  6: '8 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
+  7: '9 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
+  8: '10 comets -> each 2d4 + spell ATK mod force dmg & push 10 feet'
 ---
 
 *When you cast this spell, you gain 1 Contamination Level.*
