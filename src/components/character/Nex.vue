@@ -42,7 +42,8 @@ const knownSpellNameList = [
   Spell.Biohazard,
   Spell.CometShards,
   Spell.WitherAndBloom,
-]
+];
+
 const getProficiencyBonus = (level: number) => {
   if(level < 5) {
     return 2;
@@ -107,13 +108,16 @@ const getTheoriesKnown = (level: number) => {
   }
 };
 
+const racialBonusPlus2 = 2;
+const racialBonusPlus1 = 1;
+const feyTouchedBonus = 1;
 const medicalExpertBonus = 1;
 
 const ABILITY_SCORES: AbilityScores = {
   STR: 10,
   DEX: 12,
-  CON: 16,
-  INT: 20,
+  CON: 15 + racialBonusPlus1,
+  INT: 17 + racialBonusPlus2 + feyTouchedBonus,
   WIS: 13 + medicalExpertBonus,
   CHA: 8
 };
