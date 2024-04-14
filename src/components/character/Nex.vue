@@ -437,9 +437,5 @@ const notesStorage = useStorage<string>('nex-notes', "");
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  .divider {
-    border-bottom: 1px solid var(--text-color-darker-1);
-  }
 }
 </style>

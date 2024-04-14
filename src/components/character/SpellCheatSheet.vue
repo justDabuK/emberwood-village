@@ -5,6 +5,7 @@ import type {MarkdownInstance} from "astro";
 import type {Spell} from "../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
+import {computed} from "vue";
 
 const props = defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
@@ -14,8 +15,9 @@ const props = defineProps<{
   spellAttackModifier: number;
 }>();
 
-const spellSlots = defineModel<SpellSlots>("spellSlots");
+const spellSlots = defineModel<SpellSlots>("spellSlots", {required: true});
 const concentration = defineModel<boolean>("concentration");
+const currentSpellSlotLevel = computed(() => Object.keys(spellSlots.value)[0])
 
 const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameList.includes(spell.frontmatter.title)).sort((a, b) => a.frontmatter.level - b.frontmatter.level);
 
@@ -81,9 +83,13 @@ const isCostlySpell = (components: string) => {
             <SpellSchoolIcon class="spell-school-icon" :spell-school="spell.frontmatter.school"/>
             <SpellRangeIcon class="spell-range-icon" :range="spell.frontmatter.range"/>
             <p>{{ spell.frontmatter.title }}</p>
-            <p v-if="isCostlySpell(spell.frontmatter.components)">
-              {{ getCostlyComponent(spell.frontmatter.components) }}
-            </p>
+            <p v-if="spell.frontmatter.effect && spell.frontmatter.effect[currentSpellSlotLevel]">{{ spell.frontmatter.effect[currentSpellSlotLevel] }}</p>
+            <template v-if="isCostlySpell(spell.frontmatter.components)">
+              <div class="divider" />
+              <p>
+                {{ getCostlyComponent(spell.frontmatter.components) }}
+              </p>
+            </template>
           </a>
         </div>
       </div>
