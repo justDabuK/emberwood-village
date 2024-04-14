@@ -84,12 +84,9 @@ const isCostlySpell = (components: string) => {
             <SpellRangeIcon class="spell-range-icon" :range="spell.frontmatter.range"/>
             <p>{{ spell.frontmatter.title }}</p>
             <p v-if="spell.frontmatter.effect && spell.frontmatter.effect[currentSpellSlotLevel]">{{ spell.frontmatter.effect[currentSpellSlotLevel] }}</p>
-            <template v-if="isCostlySpell(spell.frontmatter.components)">
-              <div class="divider" />
-              <p>
-                {{ getCostlyComponent(spell.frontmatter.components) }}
-              </p>
-            </template>
+            <p v-if="isCostlySpell(spell.frontmatter.components)" class="cost">
+              {{ getCostlyComponent(spell.frontmatter.components) }}
+            </p>
           </a>
         </div>
       </div>
@@ -148,6 +145,12 @@ const isCostlySpell = (components: string) => {
             height: 30px;
             width: 30px;
             color: var(--text-color-darker-1);
+          }
+
+          .cost {
+            border: 1px solid var(--text-color-darker-1);
+            border-radius: 10px;
+            padding: 5px;
           }
         }
       }
