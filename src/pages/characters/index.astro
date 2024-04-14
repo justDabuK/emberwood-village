@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import {sanitizeTitle} from "../../scripts/sanitizeTitle";
 import { Image } from 'astro:assets';
 import jazzProfilePicture from "../../assets/jazz-profile-picture.png";
-import remiProfilePicture from "../../assets/remi-profile-picture.jpg";
+import remmiProfilePicture from "../../assets/remmi-profile-picture.jpg";
 import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
 
 ---
@@ -17,9 +17,9 @@ import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
             </a>
         </div>
         <div class="card">
-            <a href="/characters/remi">
-                <Image src={remiProfilePicture} alt="Remi profile picture" class="profile-picture"/>
-                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Remi")}`}>Remi</div>
+            <a href="/characters/remmi">
+                <Image src={remmiProfilePicture} alt="Remmi profile picture" class="profile-picture"/>
+                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Remmi")}`}>Remmi</div>
             </a>
         </div>
         <div class="card">

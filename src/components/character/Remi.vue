@@ -6,26 +6,26 @@ import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {getStuddedLeatherArmorClass} from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
 
-const REMI_LEVEL = 4;
-const REMI_PROFICIENCY_BONUS = 2;
+const LEVEL = 4;
+const PROFICIENCY_BONUS = 2;
 const getSneakAttackDice = () => {
-  if(REMI_LEVEL < 3) {
+  if(LEVEL < 3) {
     return '1d6';
-  } else if (REMI_LEVEL < 5) {
+  } else if (LEVEL < 5) {
     return '2d6';
-  } else if (REMI_LEVEL < 7) {
+  } else if (LEVEL < 7) {
     return '3d6';
-  } else if (REMI_LEVEL < 9) {
+  } else if (LEVEL < 9) {
     return '4d6';
-  } else if (REMI_LEVEL < 11) {
+  } else if (LEVEL < 11) {
     return '5d6';
-  } else if (REMI_LEVEL < 13) {
+  } else if (LEVEL < 13) {
     return '6d6';
-  } else if (REMI_LEVEL < 15) {
+  } else if (LEVEL < 15) {
     return '7d6';
-  } else if (REMI_LEVEL < 17) {
+  } else if (LEVEL < 17) {
     return '8d6';
-  } else if (REMI_LEVEL < 19) {
+  } else if (LEVEL < 19) {
     return '9d6';
   } else {
     return '10d6';
@@ -73,15 +73,15 @@ const SKILL_EXPERTIES = [
 const dualWielderArmorclassBonus = 1;
 
 
-const defaultRemiCreatureList = [
+const defaultCreatureList = [
   {
-    name: "Remi",
+    name: "Remmi",
     hitPoints: {
-      current: (5 + MODIFIER.CON) * REMI_LEVEL,
-      max: (5 + MODIFIER.CON) * REMI_LEVEL,
+      current: (5 + MODIFIER.CON) * LEVEL,
+      max: (5 + MODIFIER.CON) * LEVEL,
       temporary: 0,
       hitDice: {
-        flags: [...Array(REMI_LEVEL)].fill(false),
+        flags: [...Array(LEVEL)].fill(false),
         description: 'd8',
         typeOfRest: TypeOfRest.LONG,
       }
@@ -98,7 +98,7 @@ const defaultRemiCreatureList = [
         subsections: [
           {
             title: '2 Weapon Attacks (Dual Wielder)',
-            dice: `d20+${MODIFIER.DEX + REMI_PROFICIENCY_BONUS}`,
+            dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
             items: [
               {name: 'Shortsword', dice: `1d6+${MODIFIER.DEX}`},
             ]
@@ -173,10 +173,10 @@ const defaultRemiCreatureList = [
           {
             title: 'Noble Confidence',
             usages: {
-              flags: [...Array(REMI_PROFICIENCY_BONUS)].fill(false),
+              flags: [...Array(PROFICIENCY_BONUS)].fill(false),
               typeOfRest: TypeOfRest.SHORT
             },
-            description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${REMI_PROFICIENCY_BONUS} allies per short rest`
+            description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${PROFICIENCY_BONUS} allies per short rest`
           },{
           title: 'Fancy Footwork',
             description: 'no opportunity attacks from target when meleed before'
@@ -187,10 +187,10 @@ const defaultRemiCreatureList = [
   }
 ];
 
-const creatureList = useStorage<Creature[]>('remi-creature-list', defaultRemiCreatureList);
+const creatureList = useStorage<Creature[]>('remi-creature-list', defaultCreatureList);
 
 const resetToDefault = () => {
-  creatureList.value = defaultRemiCreatureList;
+  creatureList.value = defaultCreatureList;
 };
 const notesStorage = useStorage<string>('remi-notes', "");
 
@@ -206,7 +206,7 @@ const notesStorage = useStorage<string>('remi-notes', "");
         :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
         :skill-proficiency-list="SKILL_PROFICIENCIES"
         :skill-expertise-list="SKILL_EXPERTIES"
-        :proficiency-bonus="REMI_PROFICIENCY_BONUS"
+        :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />
