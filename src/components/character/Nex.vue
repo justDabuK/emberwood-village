@@ -112,6 +112,7 @@ const racialBonusPlus2 = 2;
 const racialBonusPlus1 = 1;
 const feyTouchedBonus = 1;
 const medicalExpertBonus = 1;
+const tomeOfOccultDraconicPracticesBonus = 1;
 
 const ABILITY_SCORES: AbilityScores = {
   STR: 10,
@@ -424,8 +425,8 @@ const notesStorage = useStorage<string>('nex-notes', "");
         :all-spells="allSpells"
         :type-of-rest="creatureList[0].magic.refresh"
         :known-spell-name-list="knownSpellNameList"
-        :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(NEX_LEVEL)"
-        :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(NEX_LEVEL)"
+        :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(NEX_LEVEL) + tomeOfOccultDraconicPracticesBonus"
+        :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(NEX_LEVEL) + tomeOfOccultDraconicPracticesBonus"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />
