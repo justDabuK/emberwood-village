@@ -7,6 +7,15 @@ castingTime: '1 action'
 range: '60 feet'
 components: 'S, M (a finger bone and a scrap of fabric)'
 duration: 'Instantaneous'
+effect:
+  2: '1 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
+  3: '2 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
+  4: '3 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
+  5: '4 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
+  6: '5 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
+  7: '6 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
+  8: '7 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
+  9: '8 creature -> STR save -> 3d8 necrotic damage -> grapple and moved 30 feet -> STR or DEX check to escape' 
 ---
 
 A flock of floating spectral hands appear and grasp a target you can see within range. The target must succeed on a Strength saving throw. A target takes 3d8 necrotic damage on a failed save, or half as much damage on a successful one.

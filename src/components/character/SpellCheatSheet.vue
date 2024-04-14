@@ -13,6 +13,7 @@ const props = defineProps<{
   knownSpellNameList: Spell[];
   spellsSaveDiceCheck: number;
   spellAttackModifier: number;
+  casterLevel: number;
 }>();
 
 const spellSlots = defineModel<SpellSlots>("spellSlots", {required: true});
@@ -83,7 +84,14 @@ const isCostlySpell = (components: string) => {
             <SpellSchoolIcon class="spell-school-icon" :spell-school="spell.frontmatter.school"/>
             <SpellRangeIcon class="spell-range-icon" :range="spell.frontmatter.range"/>
             <p>{{ spell.frontmatter.title }}</p>
-            <p v-if="spell.frontmatter.effect && spell.frontmatter.effect[currentSpellSlotLevel]">{{ spell.frontmatter.effect[currentSpellSlotLevel] }}</p>
+
+            <p v-if="spell.frontmatter.level === 0 && spell.frontmatter.effect && spell.frontmatter.effect[casterLevel]">
+              {{ spell.frontmatter.effect[casterLevel] }}
+            </p>
+            <p v-else-if="spell.frontmatter.effect && spell.frontmatter.effect[currentSpellSlotLevel]">
+              {{ spell.frontmatter.effect[currentSpellSlotLevel] }}
+            </p>
+
             <p v-if="isCostlySpell(spell.frontmatter.components)" class="cost">
               {{ getCostlyComponent(spell.frontmatter.components) }}
             </p>

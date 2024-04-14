@@ -427,6 +427,7 @@ const notesStorage = useStorage<string>('nex-notes', "");
         :known-spell-name-list="knownSpellNameList"
         :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(NEX_LEVEL) + tomeOfOccultDraconicPracticesBonus"
         :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(NEX_LEVEL) + tomeOfOccultDraconicPracticesBonus"
+        :caster-level="NEX_LEVEL"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />
