@@ -1,63 +1,90 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import {sanitizeTitle} from "../../scripts/sanitizeTitle";
-import { Image } from 'astro:assets';
+import { sanitizeTitle } from "../../scripts/sanitizeTitle";
+import { Image } from "astro:assets";
 import jyzznProfilePicture from "../../assets/jyzzn-profile-picture.png";
 import remmiProfilePicture from "../../assets/remmi-profile-picture.jpg";
 import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
-
 ---
+
 <BaseLayout title="Characters">
-    <p>Here you will see the characters and links to their specific sites</p>
-    <div class="character-list-container">
-        <div class="card">
-            <a href="/characters/nex">
-                <Image src={dominikProfilePicture} alt="Nex profile picture" class="profile-picture"/>
-                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Nex")}`}>Nex</div>
-            </a>
+  <p>Here you will see the characters and links to their specific sites</p>
+  <div class="character-list-container">
+    <div class="card">
+      <a href="/characters/nex">
+        <Image
+          src={dominikProfilePicture}
+          alt="Nex profile picture"
+          class="profile-picture"
+        />
+        <div
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Nex")}`}
+        >
+          Nex
         </div>
-        <div class="card">
-            <a href="/characters/remmi">
-                <Image src={remmiProfilePicture} alt="Remmi profile picture" class="profile-picture"/>
-                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Remmi")}`}>Remmi</div>
-            </a>
-        </div>
-        <div class="card">
-            <a href="/characters/jyzzn">
-                <Image src={jyzznProfilePicture} alt="Jyzzn profile picture" class="profile-picture"/>
-                <div class="character-name" style={`view-transition-name: ${sanitizeTitle("Jyzzn")}`}>Jyzzn</div>
-            </a>
-        </div>
+      </a>
     </div>
+    <div class="card">
+      <a href="/characters/remmi">
+        <Image
+          src={remmiProfilePicture}
+          alt="Remmi profile picture"
+          class="profile-picture"
+        />
+        <div
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Remmi")}`}
+        >
+          Remmi
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="/characters/jyzzn">
+        <Image
+          src={jyzznProfilePicture}
+          alt="Jyzzn profile picture"
+          class="profile-picture"
+        />
+        <div
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Jyzzn")}`}
+        >
+          Jyzzn
+        </div>
+      </a>
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
-    .card {
-        padding: 1rem;
-        position: relative;
-    }
+  .card {
+    padding: 1rem;
+    position: relative;
+  }
 
-    .character-name {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        padding: 1rem;
-        background-color: var(--map-link-bg-hover);
-        border-radius: 10px;
-        color: var(--map-link-icon-color);
-        font-size: 1.25rem;
-    }
+  .character-name {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 1rem;
+    background-color: var(--map-link-bg-hover);
+    border-radius: 10px;
+    color: var(--map-link-icon-color);
+    font-size: 1.25rem;
+  }
 
-    .character-list-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
-    }
+  .character-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
 
-    .profile-picture {
-        max-width: 100%;
-        object-fit: cover;
-        max-height: 400px;
-        border-radius: 10px;
-    }
+  .profile-picture {
+    max-width: 100%;
+    object-fit: cover;
+    max-height: 400px;
+    border-radius: 10px;
+  }
 </style>

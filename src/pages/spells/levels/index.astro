@@ -1,35 +1,46 @@
 ---
-import {MarkdownInstance} from "astro";
+import { MarkdownInstance } from "astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SpellListItem from "../../../components/SpellListItem.astro";
 
 const allSpells = await Astro.glob("/src/pages/spells/*.md");
-const levelToSpellMap = new Map<number,  MarkdownInstance<Record<string, unknown>>[]>();
-    allSpells.forEach((spell) => {
-        const level = spell.frontmatter.level;
-        if (levelToSpellMap.has(level)) {
-            levelToSpellMap.get(level).push(spell);
-        } else {
-            levelToSpellMap.set(level, [spell]);
-        }
-    });
+const levelToSpellMap = new Map<
+  number,
+  MarkdownInstance<Record<string, unknown>>[]
+>();
+allSpells.forEach((spell) => {
+  const level = spell.frontmatter.level;
+  if (levelToSpellMap.has(level)) {
+    levelToSpellMap.get(level).push(spell);
+  } else {
+    levelToSpellMap.set(level, [spell]);
+  }
+});
 const sortedLevelToSpellMap = new Map([...levelToSpellMap.entries()].sort());
 
-const getGridRowSpanStyle = (spells: MarkdownInstance<Record<string, unknown>>[]) => {
-    const headlinOfset = 3;
-    const numberOfSpells = spells.length;
-    const numberOfPrerequisites = spells.reduce((acc, spell) => acc + (spell.frontmatter.prerequisites ? spell.frontmatter.prerequisites.length : 0), 0);
+const getGridRowSpanStyle = (
+  spells: MarkdownInstance<Record<string, unknown>>[],
+) => {
+  const headlinOfset = 3;
+  const numberOfSpells = spells.length;
+  const numberOfPrerequisites = spells.reduce(
+    (acc, spell) =>
+      acc +
+      (spell.frontmatter.prerequisites
+        ? spell.frontmatter.prerequisites.length
+        : 0),
+    0,
+  );
 
-    return `grid-row: span ${headlinOfset + numberOfSpells + numberOfPrerequisites}`;
-}
+  return `grid-row: span ${headlinOfset + numberOfSpells + numberOfPrerequisites}`;
+};
 ---
+
 <BaseLayout title="Spells">
-    <a href="/spells">
-        <div>
-            Sort alphabetically
-        </div>
-    </a>
-    <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well
+  <a href="/spells">
+    <div>Sort alphabetically</div>
+  </a>
+  <!-- TODO: add the normal spells from sebastion crowe's guide to Drakkenheim as well
         - [X] cantrips
         - [X] 1
         - [X] 2
@@ -41,28 +52,31 @@ const getGridRowSpanStyle = (spells: MarkdownInstance<Record<string, unknown>>[]
         - [ ] 8
         - [ ] 9
         -->
-    <div class="level-list-container">
-        {Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
-                <div class="card" style={getGridRowSpanStyle(spells)}>
-                    <h3>{ level === 0 ? "Cantrips" : `Level ${level}`}</h3>
-                    <ul>
-                        {spells.map((spell) => <SpellListItem spell={spell} />)}
-                    </ul>
-                </div>
-        ))}
-    </div>
+  <div class="level-list-container">
+    {
+      Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
+        <div class="card" style={getGridRowSpanStyle(spells)}>
+          <h3>{level === 0 ? "Cantrips" : `Level ${level}`}</h3>
+          <ul>
+            {spells.map((spell) => (
+              <SpellListItem spell={spell} />
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
 </BaseLayout>
 
 <style>
-    .level-list-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-auto-rows: 1.75rem;
-        padding: 1rem 0;
-    }
+  .level-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 1.75rem;
+    padding: 1rem 0;
+  }
 
-    .card {
-        margin: 0.5rem;
-    }
-
+  .card {
+    margin: 0.5rem;
+  }
 </style>

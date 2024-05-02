@@ -1,8 +1,8 @@
 ---
-import {sanitizeTitle} from "../scripts/sanitizeTitle";
-import {Icon} from "astro-icon/components";
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
+import { sanitizeTitle } from "../scripts/sanitizeTitle";
+import { Icon } from "astro-icon/components";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 
 const { icon, size, disableTransition, cover } = Astro.props;
 
@@ -10,21 +10,38 @@ const isSvg = icon?.endsWith(".svg");
 const iconNameWithoutExtension = icon?.split(".")[0];
 const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}')
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif}",
+);
 const imagePath = `/src/assets/${icon}`;
-if (icon && !isSvg && !images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+if (icon && !isSvg && !images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`,
+  );
 ---
 
 {
-    icon
-        ? isSvg
-            ? <Icon name={iconNameWithoutExtension} height={size} width={size} style={iconTransitionName}/>
-            : <Image src={images[imagePath]()} alt={icon} class="inline-image" style={`width: ${size}; height: ${size}; ${!disableTransition ? iconTransitionName : ''}; ${ cover ? 'object-fit: cover' : 'object-fit: contain'};`} />
-        : null
+  icon ? (
+    isSvg ? (
+      <Icon
+        name={iconNameWithoutExtension}
+        height={size}
+        width={size}
+        style={iconTransitionName}
+      />
+    ) : (
+      <Image
+        src={images[imagePath]()}
+        alt={icon}
+        class="inline-image"
+        style={`width: ${size}; height: ${size}; ${!disableTransition ? iconTransitionName : ""}; ${cover ? "object-fit: cover" : "object-fit: contain"};`}
+      />
+    )
+  ) : null
 }
 
-<style >
-    .inline-image {
-        border-radius: 10px;
-    }
+<style>
+  .inline-image {
+    border-radius: 10px;
+  }
 </style>

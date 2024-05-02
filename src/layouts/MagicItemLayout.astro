@@ -1,19 +1,28 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import {getMagicItemIconName} from "../scripts/getMagicItemIconName";
+import { getMagicItemIconName } from "../scripts/getMagicItemIconName";
 
 type Props = {
-    frontmatter: {
-        title: string;
-        rarity: string;
-        type: string
-        disabled: booelan;
-    };
+  frontmatter: {
+    title: string;
+    rarity: string;
+    type: string;
+    disabled: booelan;
+  };
 };
 
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout title={frontmatter.title} icon={getMagicItemIconName(frontmatter.type)}>
-    {frontmatter.disabled ? <span>Nice try. Come back once this is unlocked</span> : <slot />}
+<BaseLayout
+  title={frontmatter.title}
+  icon={getMagicItemIconName(frontmatter.type)}
+>
+  {
+    frontmatter.disabled ? (
+      <span>Nice try. Come back once this is unlocked</span>
+    ) : (
+      <slot />
+    )
+  }
 </BaseLayout>

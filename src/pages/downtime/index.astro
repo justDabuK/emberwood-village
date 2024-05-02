@@ -2,13 +2,21 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MarkdownLink from "../../components/MarkdownLink.astro";
 
-const allDowntimeActivities = (await Astro.glob("/src/pages/downtime/*.md"));
-
+const allDowntimeActivities = await Astro.glob("/src/pages/downtime/*.md");
 ---
 
 <BaseLayout title="Downtime">
-    Downtime activities in and around Emberwood Village that one can do in between adventures.
-    <ul>
-        {allDowntimeActivities.map((activity) => <MarkdownLink url={activity.url} title={activity.frontmatter.title} disabled={activity.frontmatter.disabled} />)}
-    </ul>
+  Downtime activities in and around Emberwood Village that one can do in between
+  adventures.
+  <ul>
+    {
+      allDowntimeActivities.map((activity) => (
+        <MarkdownLink
+          url={activity.url}
+          title={activity.frontmatter.title}
+          disabled={activity.frontmatter.disabled}
+        />
+      ))
+    }
+  </ul>
 </BaseLayout>

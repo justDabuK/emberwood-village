@@ -2,12 +2,11 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MagicItemListItem from "../../components/MagicItemListItem.astro";
 
-const allMagicItems = (await Astro.glob("/src/pages/magic-items/*.md"));
-
+const allMagicItems = await Astro.glob("/src/pages/magic-items/*.md");
 ---
 
 <BaseLayout title="Magic Items">
-    <ul>
-        {allMagicItems.map((item) => <MagicItemListItem item={item} />)}
-    </ul>
+  <ul>
+    {allMagicItems.map((item) => <MagicItemListItem item={item} />)}
+  </ul>
 </BaseLayout>

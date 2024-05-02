@@ -1,78 +1,118 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 import MarkdownLink from "../components/MarkdownLink.astro";
 import MapLink from "../components/MapLink.astro";
-import {MarkdownInstance} from "astro";
-import { Image } from 'astro:assets';
+import { MarkdownInstance } from "astro";
+import { Image } from "astro:assets";
 import emberwoodVillageMap from "../assets/02_EMBERWOOD_VILLAGE_NOGRID.jpg";
 
+const allEstablishments = await Astro.glob("../pages/establishments/*.md");
+const allMisc = await Astro.glob("../pages/misc/*.md");
+const allShops = await Astro.glob("../pages/shops/*.md");
 
-const allEstablishments = await Astro.glob('../pages/establishments/*.md')
-const allMisc = await Astro.glob('../pages/misc/*.md')
-const allShops = await Astro.glob('../pages/shops/*.md')
-
-const getGridRowSpanStyle = (shops: MarkdownInstance<Record<string, unknown>>[]) => `grid-row: span ${3 + shops.length}`;
+const getGridRowSpanStyle = (
+  shops: MarkdownInstance<Record<string, unknown>>[],
+) => `grid-row: span ${3 + shops.length}`;
 ---
 
 <BaseLayout title="Emberwood Village">
-    <div class="map-container">
-        <Image class="image" src={emberwoodVillageMap} alt="Map of Emberwood" />
-        {[...allEstablishments, ...allShops, ...allMisc]
-            .filter((establishment) => establishment.frontmatter.columnStart && establishment.frontmatter.columnEnd && establishment.frontmatter.rowStart && establishment.frontmatter.rowEnd)
-            .map((establishment) => <MapLink url={establishment.url} frontmatter={establishment.frontmatter} />)}
+  <div class="map-container">
+    <Image class="image" src={emberwoodVillageMap} alt="Map of Emberwood" />
+    {
+      [...allEstablishments, ...allShops, ...allMisc]
+        .filter(
+          (establishment) =>
+            establishment.frontmatter.columnStart &&
+            establishment.frontmatter.columnEnd &&
+            establishment.frontmatter.rowStart &&
+            establishment.frontmatter.rowEnd,
+        )
+        .map((establishment) => (
+          <MapLink
+            url={establishment.url}
+            frontmatter={establishment.frontmatter}
+          />
+        ))
+    }
+  </div>
 
+  <!-- Todo: use icon prop for below links (need to fix the size)-->
+  <div class="shop-list">
+    <div class="card" style={getGridRowSpanStyle(allShops)}>
+      <h3>Shops</h3>
+      <ul>
+        {
+          allShops.map((shop) => (
+            <MarkdownLink
+              url={shop.url}
+              title={shop.frontmatter.title}
+              disabled={shop.frontmatter.disabled}
+              icon={shop.frontmatter.icon}
+            />
+          ))
+        }
+      </ul>
     </div>
 
-    <!-- Todo: use icon prop for below links (need to fix the size)-->
-    <div class="shop-list">
-        <div class="card" style={getGridRowSpanStyle(allShops)}>
-            <h3>Shops</h3>
-            <ul>
-                {allShops.map((shop) => <MarkdownLink url={shop.url} title={shop.frontmatter.title} disabled={shop.frontmatter.disabled} icon={shop.frontmatter.icon}/>)}
-            </ul>
-        </div>
-
-        <div class="card" style={getGridRowSpanStyle(allEstablishments)}>
-            <h3>Hotels, Bars und Restaurants</h3>
-            <ul>
-                {allEstablishments.map((establishment) => <MarkdownLink url={establishment.url} title={establishment.frontmatter.title} disabled={establishment.frontmatter.disabled} icon={establishment.frontmatter.icon}/>)}
-            </ul>
-        </div>
-
-        <div class="card" style={getGridRowSpanStyle(allMisc)}>
-            <h3>Anderweitig interessante Orte</h3>
-            <ul>
-                {allMisc.map((misc) => <MarkdownLink url={misc.url} title={misc.frontmatter.title} disabled={misc.frontmatter.disabled} icon={misc.frontmatter.icon} />)}
-            </ul>
-        </div>
+    <div class="card" style={getGridRowSpanStyle(allEstablishments)}>
+      <h3>Hotels, Bars und Restaurants</h3>
+      <ul>
+        {
+          allEstablishments.map((establishment) => (
+            <MarkdownLink
+              url={establishment.url}
+              title={establishment.frontmatter.title}
+              disabled={establishment.frontmatter.disabled}
+              icon={establishment.frontmatter.icon}
+            />
+          ))
+        }
+      </ul>
     </div>
+
+    <div class="card" style={getGridRowSpanStyle(allMisc)}>
+      <h3>Anderweitig interessante Orte</h3>
+      <ul>
+        {
+          allMisc.map((misc) => (
+            <MarkdownLink
+              url={misc.url}
+              title={misc.frontmatter.title}
+              disabled={misc.frontmatter.disabled}
+              icon={misc.frontmatter.icon}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
-    .map-container {
-        display: grid;
-        grid-template-columns: repeat(48, 1fr);
-        grid-template-rows: repeat(36, 1fr);
-        overflow: auto;
-    }
+  .map-container {
+    display: grid;
+    grid-template-columns: repeat(48, 1fr);
+    grid-template-rows: repeat(36, 1fr);
+    overflow: auto;
+  }
 
-    .image {
-        width: 100%;
-        height: auto;
-        grid-column: 1 / -1;
-        grid-row: 1 / -1;
-        border-radius: 10px;
-    }
+  .image {
+    width: 100%;
+    height: auto;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    border-radius: 10px;
+  }
 
-    .shop-list {
-        display: grid;
-        margin-top: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-auto-rows: 1.75rem;
-        overflow: auto;
-    }
+  .shop-list {
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 1.75rem;
+    overflow: auto;
+  }
 
-    .card {
-        margin: 0.5rem;
-    }
+  .card {
+    margin: 0.5rem;
+  }
 </style>

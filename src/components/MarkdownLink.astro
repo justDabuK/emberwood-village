@@ -1,37 +1,43 @@
 ---
-import {sanitizeTitle} from "../scripts/sanitizeTitle";
+import { sanitizeTitle } from "../scripts/sanitizeTitle";
 import InlineIcon from "./InlineIcon.astro";
 
-const {url, title, disabled, icon} = Astro.props;
+const { url, title, disabled, icon } = Astro.props;
 const viewTransitionNameStyle = `view-transition-name: ${sanitizeTitle(title)}`;
-
 ---
+
 <li>
-    {
-        disabled
-            ? <span style={viewTransitionNameStyle} class="disabled">???</span>
-            : <span>
-                    <InlineIcon icon={icon} size="1rem" disableTransition />
-                    <a href={url} style={viewTransitionNameStyle}>{title}</a>
-                    <slot name="postfix" />
-                </span>
-    }
-    <slot />
+  {
+    disabled ? (
+      <span style={viewTransitionNameStyle} class="disabled">
+        ???
+      </span>
+    ) : (
+      <span>
+        <InlineIcon icon={icon} size="1rem" disableTransition />
+        <a href={url} style={viewTransitionNameStyle}>
+          {title}
+        </a>
+        <slot name="postfix" />
+      </span>
+    )
+  }
+  <slot />
 </li>
 
 <style>
-    span {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+  span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-        &.disabled {
-            color: oklch(60% 0.0379 304.82);
-            cursor: default;
-        }
+    &.disabled {
+      color: oklch(60% 0.0379 304.82);
+      cursor: default;
     }
+  }
 
-    li {
-        list-style: none;
-    }
+  li {
+    list-style: none;
+  }
 </style>

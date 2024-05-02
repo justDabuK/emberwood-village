@@ -4,6 +4,7 @@ import Nex from "../../components/character/Nex.vue";
 
 const allSpells = await Astro.glob("/src/pages/spells/*.md");
 ---
+
 <!--
 TODO:
 - add nex
@@ -14,7 +15,6 @@ TODO:
       - spell slots
     - when hovering over spell detail view, it extends and shows whole description
 -->
-
 <BaseLayout title="Nex" icon="dominik-profile-picture.jpg" iconCover>
-    <Nex client:load allSpells={allSpells}/>
+  <Nex client:load allSpells={allSpells} />
 </BaseLayout>

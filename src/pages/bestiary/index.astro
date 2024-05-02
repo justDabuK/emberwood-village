@@ -2,8 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MarkdownLink from "../../components/MarkdownLink.astro";
 
-const allBeasts = (await Astro.glob("/src/pages/bestiary/*.md"));
+const allBeasts = await Astro.glob("/src/pages/bestiary/*.md");
 ---
+
 <!-- TODO: add
     - dregs
       - frenzied
@@ -17,10 +18,12 @@ const allBeasts = (await Astro.glob("/src/pages/bestiary/*.md"));
     - ratling warlock
 -->
 <BaseLayout title="Bestiary">
-    <p>Here we collect what was learned during encounters with creatures</p>
-    <ul>
-        {
-            allBeasts.map((beast) => <MarkdownLink url={beast.url} title={beast.frontmatter.title} />)
-        }
-    </ul>
+  <p>Here we collect what was learned during encounters with creatures</p>
+  <ul>
+    {
+      allBeasts.map((beast) => (
+        <MarkdownLink url={beast.url} title={beast.frontmatter.title} />
+      ))
+    }
+  </ul>
 </BaseLayout>

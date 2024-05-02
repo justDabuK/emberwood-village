@@ -2,18 +2,24 @@
 import BaseLayout from "./BaseLayout.astro";
 
 type Props = {
-    frontmatter: {
-        title: string;
-        description: string;
-        disabled: booelan;
-        icon?: string;
-    };
+  frontmatter: {
+    title: string;
+    description: string;
+    disabled: booelan;
+    icon?: string;
+  };
 };
 
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} icon={frontmatter.icon}>
-    <p>{frontmatter.description}</p>
-    {frontmatter.disabled ? <span>Nice try. Come back once this is unlocked</span> : <slot />}
+  <p>{frontmatter.description}</p>
+  {
+    frontmatter.disabled ? (
+      <span>Nice try. Come back once this is unlocked</span>
+    ) : (
+      <slot />
+    )
+  }
 </BaseLayout>

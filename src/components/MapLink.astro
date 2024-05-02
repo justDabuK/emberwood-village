@@ -2,59 +2,58 @@
 import InlineIcon from "../components/InlineIcon.astro";
 
 type Props = {
-    url: string;
-    frontmatter: {
-        title: string;
-        columnStart: number;
-        columnEnd: number;
-        rowStart: number;
-        rowEnd: number;
-        disabled?: boolean;
-        icon?: string;
-    }
-}
+  url: string;
+  frontmatter: {
+    title: string;
+    columnStart: number;
+    columnEnd: number;
+    rowStart: number;
+    rowEnd: number;
+    disabled?: boolean;
+    icon?: string;
+  };
+};
 
 const { url, frontmatter } = Astro.props;
-const { title, columnStart, columnEnd, rowStart, rowEnd, disabled, icon } = frontmatter;
-
+const { title, columnStart, columnEnd, rowStart, rowEnd, disabled, icon } =
+  frontmatter;
 ---
-<!-- TODO: introduce a tooltip that shows the name of the location -->
-<!-- TODO: can i make the icon/img just use the available space? -->
-{
-    disabled
-        ? <div class="disabledDiv" >???</div>
-        : <a class="mapLink" href={url}>{ icon
-            ? <InlineIcon icon={icon} size="50%"/>
-            : title
-        }
+
+<!-- TODO: introduce a tooltip that shows the name of the location --><!-- TODO: can i make the icon/img just use the available space? -->{
+  disabled ? (
+    <div class="disabledDiv">???</div>
+  ) : (
+    <a class="mapLink" href={url}>
+      {icon ? <InlineIcon icon={icon} size="50%" /> : title}
     </a>
+  )
 }
 
-<style define:vars={{columnStart, columnEnd, rowStart, rowEnd}}>
-    .mapLink {
-        grid-column: var(--columnStart) / var(--columnEnd);
-        grid-row: var(--rowStart) / var(--rowEnd);
-        background-color: var(--map-link-bg);
-        color: var(--map-link-icon-color);
-        display: grid;
-        place-items: center;
-        font-size: 0.5rem;
-        border-radius: 5px;
-        margin: 0.25rem;
-    }
+<style define:vars={{ columnStart, columnEnd, rowStart, rowEnd }}>
+  .mapLink {
+    grid-column: var(--columnStart) / var(--columnEnd);
+    grid-row: var(--rowStart) / var(--rowEnd);
+    background-color: var(--map-link-bg);
+    color: var(--map-link-icon-color);
+    display: grid;
+    place-items: center;
+    font-size: 0.5rem;
+    border-radius: 5px;
+    margin: 0.25rem;
+  }
 
-    .mapLink:hover {
-        background-color: var(--map-link-bg-hover);
-    }
+  .mapLink:hover {
+    background-color: var(--map-link-bg-hover);
+  }
 
-    .disabledDiv {
-        grid-column: var(--columnStart) / var(--columnEnd);
-        grid-row: var(--rowStart) / var(--rowEnd);
-        background-color: oklch(61.72% 0.0307 226.91 / 30%);
-        color: oklch(85% 0.0379 304.82);
-        display: grid;
-        place-items: center;
-        font-size: 0.5rem;
-        border-radius: 5px;
-    }
+  .disabledDiv {
+    grid-column: var(--columnStart) / var(--columnEnd);
+    grid-row: var(--rowStart) / var(--rowEnd);
+    background-color: oklch(61.72% 0.0307 226.91 / 30%);
+    color: oklch(85% 0.0379 304.82);
+    display: grid;
+    place-items: center;
+    font-size: 0.5rem;
+    border-radius: 5px;
+  }
 </style>
