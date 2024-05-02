@@ -3,7 +3,6 @@ import '../styles/global.css';
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
 import {sanitizeTitle} from "../scripts/sanitizeTitle";
-import { Icon } from 'astro-icon/components';
 import InlineIcon from '../components/InlineIcon.astro';
 
 interface Props {
@@ -13,10 +12,6 @@ interface Props {
 
 const { title, icon, iconCover } = Astro.props;
 const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
-const iconTransitionName = `view-transition-name: ${sanitizeTitle(icon ?? "")}`;
-
-const isSvg = icon?.endsWith(".svg");
-const iconNameWithoutExtension = icon?.split(".")[0];
 ---
 
 <!doctype html>
@@ -44,7 +39,7 @@ const iconNameWithoutExtension = icon?.split(".")[0];
 	</body>
 </html>
 
-<style define:vars={{icon}}>
+<style>
 	html {
 		background-color: var(--body-bg);
 		font-family: system-ui;

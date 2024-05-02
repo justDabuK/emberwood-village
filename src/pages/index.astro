@@ -11,7 +11,7 @@ const allEstablishments = await Astro.glob('../pages/establishments/*.md')
 const allMisc = await Astro.glob('../pages/misc/*.md')
 const allShops = await Astro.glob('../pages/shops/*.md')
 
-const getGridRowSpanStyle = (shops: MarkdownInstance<Record<string, any>>[]) => `grid-row: span ${3 + shops.length}`;
+const getGridRowSpanStyle = (shops: MarkdownInstance<Record<string, unknown>>[]) => `grid-row: span ${3 + shops.length}`;
 ---
 
 <BaseLayout title="Emberwood Village">

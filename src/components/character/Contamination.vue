@@ -16,12 +16,25 @@ const reset = () => {
 </script>
 
 <template>
-  <div class="card contamination" :style="`--contamination-percentage: ${contaminationPercentage}%`">
+  <div
+    class="card contamination"
+    :style="`--contamination-percentage: ${contaminationPercentage}%`"
+  >
     <span class="contamination-title">Contamination</span>
     <div class="contamination-data">
-      <button class="reset-button" @click="reset">0</button>
-      <span>{{contaminationLevel}}</span>
-      <button class="increase-button" @click="increase">+</button>
+      <button
+        class="reset-button"
+        @click="reset"
+      >
+        0
+      </button>
+      <span>{{ contaminationLevel }}</span>
+      <button
+        class="increase-button"
+        @click="increase"
+      >
+        +
+      </button>
     </div>
   </div>
 </template>

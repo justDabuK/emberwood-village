@@ -3,10 +3,13 @@ const notes = defineModel<string>({required: true});
 </script>
 
 <template>
-  <h2 >Notes</h2>
+  <h2>Notes</h2>
 
   <div class="card note-section">
-    <textarea v-model="notes" placeholder="Write your notes here" />
+    <textarea
+      v-model="notes"
+      placeholder="Write your notes here"
+    />
   </div>
 </template>
 

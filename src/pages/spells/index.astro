@@ -4,7 +4,7 @@ import {MarkdownInstance} from "astro";
 import SpellListItem from "../../components/SpellListItem.astro";
 
 
-const byTitle = (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>): number => {
+const byTitle = (a: MarkdownInstance<Record<string, unknown>>, b: MarkdownInstance<Record<string, unknown>>): number => {
     if(a.frontmatter.title < b.frontmatter.title) {
         return -1;
     } else if(a.frontmatter.title > b.frontmatter.title) {
