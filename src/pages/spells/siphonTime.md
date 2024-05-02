@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Siphon Time'
+title: "Siphon Time"
 level: 4
-school: 'Contaminated Transmutation'
-castingTime: '1 action'
-range: '120 feet'
-components: 'V, S, M (a broken clock, and a delerium fragment worth 100gp, which the spell consumes)'
-duration: 'Concentration, up to 1 minutes'
+school: "Contaminated Transmutation"
+castingTime: "1 action"
+range: "120 feet"
+components: "V, S, M (a broken clock, and a delerium fragment worth 100gp, which the spell consumes)"
+duration: "Concentration, up to 1 minutes"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 You seize upon the flow of time around up to three creatures of your choice within range, drawing seconds from them to use them yourself. Each target must succeed on a Wisdom saving throw or be affected by this spell for the duration.
 

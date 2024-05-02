@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Message'
+title: "Message"
 level: 0
-school: 'Transmutation'
-castingTime: '1 action'
-range: '120 feet'
-components: 'V, S, M (a short piece of copper wire)'
-duration: '1 round'
+school: "Transmutation"
+castingTime: "1 action"
+range: "120 feet"
+components: "V, S, M (a short piece of copper wire)"
+duration: "1 round"
 ---
 
 You point your finger toward a creature within range and whisper a message. The target (and only the target) hears the message and can reply in a whisper that only you can hear.

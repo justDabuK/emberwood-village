@@ -1,15 +1,15 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Controlled Mutation'
+title: "Controlled Mutation"
 level: 2
-school: 'Contaminated Transmutation'
-castingTime: '1 action'
-range: '30 feet'
-components: 'V, S, M (a delerium chip worth 100gp)'
-duration: 'Concentration, up to 1 hour'
+school: "Contaminated Transmutation"
+castingTime: "1 action"
+range: "30 feet"
+components: "V, S, M (a delerium chip worth 100gp)"
+duration: "Concentration, up to 1 hour"
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 You weave contaminated energy to temporarily imbue a creature within range with a beneficial mutation. Choose one of the following effects; the target gains that effect until the spell ends.
 
@@ -19,7 +19,7 @@ You weave contaminated energy to temporarily imbue a creature within range with 
 
 **Dexterity**. The target has advantage on Dexterity attack rolls, ability checks, and saving throws. The target can choose to gain a Contamination Level. If it does, its attacks with ranged and finesse weapons score a critical hit on an 18–20 for the spell’s duration.
 
-**Intelligence**. The target has advantage on Intelligence ability checks and saving throws, as well as spell attack rolls. The target can also choose to gain a Contamination Level.  If it does, for the duration of this spell, while the target is concentrating on a spell it has cast, it’s concentration can’t be broken as a result of taking damage.
+**Intelligence**. The target has advantage on Intelligence ability checks and saving throws, as well as spell attack rolls. The target can also choose to gain a Contamination Level. If it does, for the duration of this spell, while the target is concentrating on a spell it has cast, it’s concentration can’t be broken as a result of taking damage.
 
 **Wisdom**. The target has advantage on Wisdom ability checks and saving throws, as well as spell attack rolls. The target can also choose to gain a Contamination Level. If it does, for the duration of this spell, it gains blindsight to a range of 60 feet and can’t be surprised while it is conscious.
 

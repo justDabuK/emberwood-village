@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Illusory Script'
+title: "Illusory Script"
 ritual: true
 level: 1
-school: 'Illusion'
-castingTime: '1 minute'
-range: 'Touch'
-components: 'S, M (a lead-based ink worth at least 10 gp, which the spell consumes)'
-duration: '10 days'
+school: "Illusion"
+castingTime: "1 minute"
+range: "Touch"
+components: "S, M (a lead-based ink worth at least 10 gp, which the spell consumes)"
+duration: "10 days"
 ---
 
 You write on parchment, paper, or some other suitable writing material and imbue it with a potent illusion that lasts for the duration.

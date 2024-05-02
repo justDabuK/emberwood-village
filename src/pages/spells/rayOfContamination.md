@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Ray of Contamination'
+title: "Ray of Contamination"
 level: 6
-school: 'Contaminated Necromancy'
-castingTime: '1 action'
-range: '60 feet'
-components: 'V, S, M (a delerium fragment worth 100 gp, which the spell consumes)'
-duration: 'Instantaneous'
+school: "Contaminated Necromancy"
+castingTime: "1 action"
+range: "60 feet"
+components: "V, S, M (a delerium fragment worth 100 gp, which the spell consumes)"
+duration: "Instantaneous"
 disabled: true
 ---
 
-*When you cast this spell, you gain one level of contamination.* 
+_When you cast this spell, you gain one level of contamination._
 
 An octarine ray springs from your pointing finger to a creature that you can see within range. The target must succeed on a Constitution saving throw. On a failed save, a creature takes 16d6 necrotic damage and gains 1d4 levels of Contamination. On a successful save, a target takes half as much damage and does not gain any contamination levels.
 

@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import {computed} from "vue";
+import { computed } from "vue";
 
-const contaminationLevel = defineModel<number>({required: true});
+const contaminationLevel = defineModel<number>({ required: true });
 const contaminationPercentage = computed(() => {
   return (contaminationLevel.value / 6) * 100;
 });
 
 const increase = () => {
   contaminationLevel.value = Math.min(contaminationLevel.value + 1, 6);
-}
+};
 
 const reset = () => {
   contaminationLevel.value = 0;
-}
+};
 </script>
 
 <template>
@@ -22,19 +22,9 @@ const reset = () => {
   >
     <span class="contamination-title">Contamination</span>
     <div class="contamination-data">
-      <button
-        class="reset-button"
-        @click="reset"
-      >
-        0
-      </button>
+      <button class="reset-button" @click="reset">0</button>
       <span>{{ contaminationLevel }}</span>
-      <button
-        class="increase-button"
-        @click="increase"
-      >
-        +
-      </button>
+      <button class="increase-button" @click="increase">+</button>
     </div>
   </div>
 </template>
@@ -51,7 +41,6 @@ const reset = () => {
   background-size: var(--contamination-percentage) 100%;
   background-repeat: no-repeat;
   transition: background-size 500ms ease-in-out;
-
 
   .contamination-title {
     color: var(--text-color-darker-1);

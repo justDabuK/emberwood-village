@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Unbind Gravity'
+title: "Unbind Gravity"
 level: 7
-school: 'Contaminated Transmutation'
-castingTime: '1 action'
-range: '100 feet'
-components: 'V, S, M (a delerium fragment worth 100gp, which the spell consumes)'
-duration: 'Concentration, up to 1 minute'
+school: "Contaminated Transmutation"
+castingTime: "1 action"
+range: "100 feet"
+components: "V, S, M (a delerium fragment worth 100gp, which the spell consumes)"
+duration: "Concentration, up to 1 minute"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 This spell allows you to control gravity in a 100-foot-cube centered on a point within range. When you cast this spell and at the start of each of your turns for the spell’s duration, you decide which direction gravity pulls within the area. All creatures and objects that aren’t somehow anchored to the ground in the area fall in the direction you choose until they reach the edge of the area. A creature can make a Dexterity saving throw to grab onto a fixed object it can reach, thus avoiding the fall.
 

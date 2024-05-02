@@ -1,7 +1,6 @@
 <script setup lang="ts">
-
-import {type AbilityScores, Skill} from "../../scripts/cheatSheetTypes.ts";
-import {addSign} from "../../scripts/addSign.ts";
+import { type AbilityScores, Skill } from "../../scripts/cheatSheetTypes.ts";
+import { addSign } from "../../scripts/addSign.ts";
 
 const props = defineProps<{
   abilityScores: AbilityScores;
@@ -12,16 +11,40 @@ const props = defineProps<{
   proficiencyBonus: number;
 }>();
 
-const abilityScoreKeys = Object.keys(props.abilityScores) as (keyof AbilityScores)[];
+const abilityScoreKeys = Object.keys(
+  props.abilityScores,
+) as (keyof AbilityScores)[];
 
 const SkillsPerAbilityScore = {
   STR: [Skill.Athletics],
-  DEX: [Skill.Acrobatics, Skill.SleightOfHand, Skill.Stealth, Skill.ThievesTools],
+  DEX: [
+    Skill.Acrobatics,
+    Skill.SleightOfHand,
+    Skill.Stealth,
+    Skill.ThievesTools,
+  ],
   CON: [],
-  INT: [Skill.Arcana, Skill.History, Skill.Investigation, Skill.Nature, Skill.Religion],
-  WIS: [Skill.AnimalHandling, Skill.Insight, Skill.Medicine, Skill.Perception, Skill.Survival],
-  CHA: [Skill.Deception, Skill.Intimidation, Skill.Performance, Skill.Persuasion]
-}
+  INT: [
+    Skill.Arcana,
+    Skill.History,
+    Skill.Investigation,
+    Skill.Nature,
+    Skill.Religion,
+  ],
+  WIS: [
+    Skill.AnimalHandling,
+    Skill.Insight,
+    Skill.Medicine,
+    Skill.Perception,
+    Skill.Survival,
+  ],
+  CHA: [
+    Skill.Deception,
+    Skill.Intimidation,
+    Skill.Performance,
+    Skill.Persuasion,
+  ],
+};
 
 const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
   const modifier = props.modifiers[abilityScore];
@@ -32,12 +55,14 @@ const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
   } else {
     return addSign(modifier);
   }
-}
+};
 
 const getSavingThrowModifier = (abilityScore: keyof AbilityScores) => {
   const modifier = props.modifiers[abilityScore];
-  return props.savingThrowProficiencyList.includes(abilityScore) ? addSign(modifier + props.proficiencyBonus) : addSign(modifier);
-}
+  return props.savingThrowProficiencyList.includes(abilityScore)
+    ? addSign(modifier + props.proficiencyBonus)
+    : addSign(modifier);
+};
 
 const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
   switch (abilityScore) {
@@ -54,9 +79,8 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
     case "CHA":
       return "Charisma";
   }
-}
+};
 </script>
-
 
 <template>
   <div class="cheat-sheet">
@@ -72,12 +96,25 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
           <span>{{ addSign(props.modifiers[scoreKey]) }}</span>
         </div>
         <div class="secondary-section">
-          <span :class="savingThrowProficiencyList.includes(scoreKey) ? 'proficient' : ''">Saving Throw</span>
+          <span
+            :class="
+              savingThrowProficiencyList.includes(scoreKey) ? 'proficient' : ''
+            "
+            >Saving Throw</span
+          >
           <span>{{ getSavingThrowModifier(scoreKey) }}</span>
         </div>
       </div>
       <ul class="skill-list">
-        <li v-for="skill in SkillsPerAbilityScore[scoreKey]" :class="[skillProficiencyList.includes(skill) ? 'proficient' : '', skillExpertiseList.includes(skill) ? 'expertise' : '']">{{`${getSkillModifier(skill, scoreKey)} ${skill}`}}</li>
+        <li
+          v-for="skill in SkillsPerAbilityScore[scoreKey]"
+          :class="[
+            skillProficiencyList.includes(skill) ? 'proficient' : '',
+            skillExpertiseList.includes(skill) ? 'expertise' : '',
+          ]"
+        >
+          {{ `${getSkillModifier(skill, scoreKey)} ${skill}` }}
+        </li>
       </ul>
     </div>
   </div>

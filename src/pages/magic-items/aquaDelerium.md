@@ -4,7 +4,8 @@ title: "Aqua Delerium"
 rarity: "Rare"
 type: "Potion"
 ---
-*Potion, rare*
+
+_Potion, rare_
 
 This purple potion glows dimly with octarine light. It swirls and sparkles in its small stoppered bottle.
 

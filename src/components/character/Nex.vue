@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import {type AbilityScores, type Creature, getModifier, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
+import {
+  type AbilityScores,
+  type Creature,
+  getModifier,
+  Skill,
+  TypeOfRest,
+} from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
-import {useStorage} from "@vueuse/core";
-import type {MarkdownInstance} from "astro";
+import { useStorage } from "@vueuse/core";
+import type { MarkdownInstance } from "astro";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
-import {getChainShirtArmorClass } from "../../scripts/armorClassUtils.ts";
-import {Spell} from "../../scripts/spellUtils.ts";
+import { getChainShirtArmorClass } from "../../scripts/armorClassUtils.ts";
+import { Spell } from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
 import NoteSection from "./NoteSection.vue";
 
@@ -45,13 +51,13 @@ const knownSpellNameList = [
 ];
 
 const getProficiencyBonus = (level: number) => {
-  if(level < 5) {
+  if (level < 5) {
     return 2;
-  } else if(level < 9) {
+  } else if (level < 9) {
     return 3;
-  } else if(level < 13) {
+  } else if (level < 13) {
     return 4;
-  } else if(level < 17) {
+  } else if (level < 17) {
     return 5;
   } else {
     return 6;
@@ -59,52 +65,53 @@ const getProficiencyBonus = (level: number) => {
 };
 
 const getCantripsKnown = (level: number) => {
-  if(level < 4) {
+  if (level < 4) {
     return 3;
-  } else if(level < 10) {
+  } else if (level < 10) {
     return 4;
   } else {
     return 5;
   }
 };
 
-const getSpellsKnown = (level: number, intModifier: number) => level + intModifier;
+const getSpellsKnown = (level: number, intModifier: number) =>
+  level + intModifier;
 
 const getSpellSlots = (level: number) => {
-  if(level === 1) {
+  if (level === 1) {
     return 1;
   } else if (level < 5) {
     return 2;
-  } else if(level < 9){
+  } else if (level < 9) {
     return 3;
-  } else if(level < 13) {
+  } else if (level < 13) {
     return 4;
-  } else if(level < 17) {
+  } else if (level < 17) {
     return 5;
   } else {
     return 6;
   }
-}
+};
 
 const getSlotLevel = (level: number) => {
-  if(level < 3) {
+  if (level < 3) {
     return 1;
-  } else if(level < 5) {
+  } else if (level < 5) {
     return 2;
-  } else if(level < 7) {
+  } else if (level < 7) {
     return 3;
-  } else if(level < 9) {
+  } else if (level < 9) {
     return 4;
-  } else  {
+  } else {
     return 5;
   }
-}
+};
 
 const getTheoriesKnown = (level: number) => {
-  if(level === 1) {
+  if (level === 1) {
     return 0;
   } else {
-    return Math.floor(level/ 2) + 1;
+    return Math.floor(level / 2) + 1;
   }
 };
 
@@ -120,7 +127,7 @@ const ABILITY_SCORES: AbilityScores = {
   CON: 15 + racialBonusPlus1,
   INT: 17 + racialBonusPlus2 + feyTouchedBonus,
   WIS: 13 + medicalExpertBonus,
-  CHA: 8
+  CHA: 8,
 };
 
 const MODIFIER: AbilityScores = {
@@ -129,13 +136,10 @@ const MODIFIER: AbilityScores = {
   CON: getModifier(ABILITY_SCORES.CON),
   INT: getModifier(ABILITY_SCORES.INT),
   WIS: getModifier(ABILITY_SCORES.WIS),
-  CHA: getModifier(ABILITY_SCORES.CHA)
+  CHA: getModifier(ABILITY_SCORES.CHA),
 };
 
-const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
-  "INT",
-  "WIS"
-];
+const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[] = ["INT", "WIS"];
 
 const SKILL_PROFICIENCIES = [
   Skill.Stealth,
@@ -155,9 +159,9 @@ const defaultNexCreatureList: Creature[] = [
       temporary: 0,
       hitDice: {
         flags: [...Array(NEX_LEVEL)].fill(false),
-        description: 'd8',
+        description: "d8",
         typeOfRest: TypeOfRest.LONG,
-      }
+      },
     },
     contamination: 0,
     exhaustion: 0,
@@ -176,68 +180,69 @@ const defaultNexCreatureList: Creature[] = [
     },
     sectionList: [
       {
-        title: 'Action',
+        title: "Action",
         used: false,
         subsections: [
           {
-            title: 'Weapon Attack',
+            title: "Weapon Attack",
             dice: `d20+${MODIFIER.DEX + getProficiencyBonus(NEX_LEVEL)}`,
             items: [
-              {name: 'Crossbow light', dice: `1d8+${MODIFIER.DEX}`},
-              {name: 'Crossbow Hand', dice: `1d6+${MODIFIER.DEX}`},
-              {name: 'Dagger', dice: `1d4+${MODIFIER.DEX}`},
-            ]
+              { name: "Crossbow light", dice: `1d8+${MODIFIER.DEX}` },
+              { name: "Crossbow Hand", dice: `1d6+${MODIFIER.DEX}` },
+              { name: "Dagger", dice: `1d4+${MODIFIER.DEX}` },
+            ],
           },
           {
-            title: 'Spell casting',
-            description: 'See spell casting cheat sheet'
-          }
-        ]
+            title: "Spell casting",
+            description: "See spell casting cheat sheet",
+          },
+        ],
       },
       {
-        title: 'Bonus Action',
+        title: "Bonus Action",
         used: false,
         subsections: [
           {
-            title: 'Command Bernhard',
-            description: 'Bernhard needs a command, otherwise he will take the Dodge action'
+            title: "Command Bernhard",
+            description:
+              "Bernhard needs a command, otherwise he will take the Dodge action",
           },
           {
-            title: 'Spell casting',
-            description: 'See spell casting cheat sheet'
-          }
-        ]
+            title: "Spell casting",
+            description: "See spell casting cheat sheet",
+          },
+        ],
       },
       {
-        title: 'Reaction',
+        title: "Reaction",
         used: false,
         subsections: [
           {
-            title: 'Opportunity Attack',
-            description: 'See Weapon Attack'
+            title: "Opportunity Attack",
+            description: "See Weapon Attack",
           },
           {
-            title: 'Spell casting',
-            description: 'See spell casting cheat sheet'
-          }
-        ]
+            title: "Spell casting",
+            description: "See spell casting cheat sheet",
+          },
+        ],
       },
       {
-        title: 'Movement',
+        title: "Movement",
         used: false,
         subsections: [
           {
-            title: 'Walking 30ft.',
-            description: '(6 Felder)'
+            title: "Walking 30ft.",
+            description: "(6 Felder)",
           },
-        ]
+        ],
       },
       {
         title: "Features",
         subsections: [
           {
             title: "Fey Ancestry",
-            description: "Advantage against getting charmed"
+            description: "Advantage against getting charmed",
           },
           {
             title: "Makeshift meals",
@@ -245,35 +250,35 @@ const defaultNexCreatureList: Creature[] = [
               flags: [false],
               typeOfRest: TypeOfRest.LONG,
             },
-            description: `${NEX_LEVEL} HP for ${getProficiencyBonus(NEX_LEVEL)} creatures during short rest, 1 per long rest`
+            description: `${NEX_LEVEL} HP for ${getProficiencyBonus(NEX_LEVEL)} creatures during short rest, 1 per long rest`,
           },
           {
             title: "Medical Expert",
-            description: `During a short rest, remove one exhaustion, disease, charmed, frightened, paralyzed, poisoned from up to six creatures. Up to 6 creatures get ${getProficiencyBonus(NEX_LEVEL)} extra hit dice during short rest.`
-          }
-        ]
+            description: `During a short rest, remove one exhaustion, disease, charmed, frightened, paralyzed, poisoned from up to six creatures. Up to 6 creatures get ${getProficiencyBonus(NEX_LEVEL)} extra hit dice during short rest.`,
+          },
+        ],
       },
       {
         title: "Esoteric Theories",
         subsections: [
           {
             title: "Laboratory Assistant",
-            description: "You know Find Familiar"
+            description: "You know Find Familiar",
           },
           {
             title: "Pharmacology",
-            description: `When healing, add +${MODIFIER.INT} to the amount`
+            description: `When healing, add +${MODIFIER.INT} to the amount`,
           },
           {
             title: "Rapid Response",
-            description: `No opportunity attack when healing`
-          }
-        ]
-      }
-    ]
+            description: `No opportunity attack when healing`,
+          },
+        ],
+      },
+    ],
   },
   {
-    name: 'Bernhard',
+    name: "Bernhard",
     hitPoints: {
       current: 5 + 5 * NEX_LEVEL,
       max: 5 + 5 * NEX_LEVEL,
@@ -283,51 +288,50 @@ const defaultNexCreatureList: Creature[] = [
     armorClass: 14 + getProficiencyBonus(NEX_LEVEL),
     sectionList: [
       {
-        title: 'Action',
+        title: "Action",
         used: false,
         subsections: [
           {
-            title: 'Weapon Attack',
+            title: "Weapon Attack",
             dice: `d20+${4 + getProficiencyBonus(NEX_LEVEL)}`,
-            items: [
-              {name: 'Slam', dice: '1d8+4'},
-            ]
+            items: [{ name: "Slam", dice: "1d8+4" }],
           },
-        ]
+        ],
       },
       {
-        title: 'Reaction',
+        title: "Reaction",
         used: false,
         subsections: [
           {
-            title: 'Opportunity Attack',
-            description: 'See Weapon Attack'
+            title: "Opportunity Attack",
+            description: "See Weapon Attack",
           },
-        ]
+        ],
       },
       {
-        title: 'Movement',
+        title: "Movement",
         used: false,
         subsections: [
           {
-            title: 'Walking 30ft.',
-            description: '(6 Felder)'
+            title: "Walking 30ft.",
+            description: "(6 Felder)",
           },
-        ]
+        ],
       },
       {
-        title: 'Features',
+        title: "Features",
         subsections: [
           {
-            title: 'Lightning Absorption',
-            description: 'If hit by lightning damage, regain HP equal to the damage'
-          }
-        ]
-      }
-    ]
+            title: "Lightning Absorption",
+            description:
+              "If hit by lightning damage, regain HP equal to the damage",
+          },
+        ],
+      },
+    ],
   },
   {
-    name: 'Hedrick',
+    name: "Hedrick",
     hitPoints: {
       current: 1,
       max: 1,
@@ -337,97 +341,108 @@ const defaultNexCreatureList: Creature[] = [
     armorClass: 11,
     sectionList: [
       {
-        title: 'Action',
+        title: "Action",
         used: false,
         subsections: [
           {
-            title: 'Help',
-            description: 'Give advantage to next attacker'
+            title: "Help",
+            description: "Give advantage to next attacker",
           },
           {
-            title: 'Weapon Attack',
-            dice: 'd20+3',
-            items: [
-              {name: 'Talons', dice: '1'},
-            ]
+            title: "Weapon Attack",
+            dice: "d20+3",
+            items: [{ name: "Talons", dice: "1" }],
           },
-        ]
+        ],
       },
       {
-        title: 'Reaction',
+        title: "Reaction",
         used: false,
         subsections: [
           {
-            title: 'Opportunity Attack',
-            description: 'See Weapon Attack'
+            title: "Opportunity Attack",
+            description: "See Weapon Attack",
           },
-        ]
+        ],
       },
       {
-        title: 'Movement',
+        title: "Movement",
         used: false,
         subsections: [
           {
-            title: 'Walking 5ft.',
-            description: '(1 Feld)'
+            title: "Walking 5ft.",
+            description: "(1 Feld)",
           },
           {
-            title: 'Flying 60ft.',
-            description: '(12 Felder)'
+            title: "Flying 60ft.",
+            description: "(12 Felder)",
           },
-        ]
+        ],
       },
       {
-        title: 'Features',
+        title: "Features",
         subsections: [
           {
-            title: 'Flyby',
-            description: 'No opportunity attacks while flying'
+            title: "Flyby",
+            description: "No opportunity attacks while flying",
           },
           {
-            title: 'Keen Hearing and Sight',
-            description: 'Advantage on perception checks when hearing or seeing'
-          }
-        ]
-      }
-    ]
-  }
+            title: "Keen Hearing and Sight",
+            description:
+              "Advantage on perception checks when hearing or seeing",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
-const creatureList = useStorage<Creature[]>('nex-creature-list', defaultNexCreatureList);
+const creatureList = useStorage<Creature[]>(
+  "nex-creature-list",
+  defaultNexCreatureList,
+);
 const resetToDefault = () => {
   creatureList.value = defaultNexCreatureList;
 };
 
-const notesStorage = useStorage<string>('nex-notes', "");
+const notesStorage = useStorage<string>("nex-notes", "");
 </script>
 
 <template>
   <div class="cheat-sheet-list">
     <RoundCheatSheet
-        v-model="creatureList"
-        @reset-to-default="resetToDefault"
+      v-model="creatureList"
+      @reset-to-default="resetToDefault"
     />
     <div class="divider" />
     <SkillCheatSheet
-        :modifiers="MODIFIER"
-        :ability-scores="ABILITY_SCORES"
-        :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-        :skill-proficiency-list="SKILL_PROFICIENCIES"
-        :skill-expertise-list="SKILL_EXPERTIES"
-        :proficiency-bonus="getProficiencyBonus(NEX_LEVEL)"
+      :modifiers="MODIFIER"
+      :ability-scores="ABILITY_SCORES"
+      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
+      :skill-proficiency-list="SKILL_PROFICIENCIES"
+      :skill-expertise-list="SKILL_EXPERTIES"
+      :proficiency-bonus="getProficiencyBonus(NEX_LEVEL)"
     />
     <div class="divider" />
     <SpellCheatSheet
-        v-if="creatureList[0].magic"
-        v-model:spell-slots="creatureList[0].magic.spellSlots"
-        v-model:concentration="creatureList[0].magic.concentration"
-        :all-spells="allSpells"
-        :type-of-rest="creatureList[0].magic.refresh"
-        :known-spell-name-list="knownSpellNameList"
-        :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(NEX_LEVEL) + tomeOfOccultDraconicPracticesBonus"
-        :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(NEX_LEVEL) + tomeOfOccultDraconicPracticesBonus"
-        :caster-level="NEX_LEVEL"
+      v-if="creatureList[0].magic"
+      v-model:spell-slots="creatureList[0].magic.spellSlots"
+      v-model:concentration="creatureList[0].magic.concentration"
+      :all-spells="allSpells"
+      :type-of-rest="creatureList[0].magic.refresh"
+      :known-spell-name-list="knownSpellNameList"
+      :spells-save-dice-check="
+        8 +
+        MODIFIER.INT +
+        getProficiencyBonus(NEX_LEVEL) +
+        tomeOfOccultDraconicPracticesBonus
+      "
+      :spell-attack-modifier="
+        MODIFIER.INT +
+        getProficiencyBonus(NEX_LEVEL) +
+        tomeOfOccultDraconicPracticesBonus
+      "
+      :caster-level="NEX_LEVEL"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />

@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Delirium Blast'
+title: "Delirium Blast"
 level: 4
-school: 'Contaminated Evocation'
-castingTime: '1 action'
-range: '150 feet'
-components: 'V, S, M (a delerium fragment worth 100 gp, which the spell consumes)'
-duration: 'Instantaneous'
+school: "Contaminated Evocation"
+castingTime: "1 action"
+range: "150 feet"
+components: "V, S, M (a delerium fragment worth 100 gp, which the spell consumes)"
+duration: "Instantaneous"
 disabled: true
 ---
 

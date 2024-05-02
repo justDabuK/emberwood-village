@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Contaminated Hands'
+title: "Contaminated Hands"
 level: 5
-school: 'Contaminated Evocation'
-castingTime: '1 action'
-range: '120 feet'
-components: 'V, S, M (a delerium fragment worth 100gp, which the spell consumes)'
-duration: 'Concentration, up to 1 minute'
+school: "Contaminated Evocation"
+castingTime: "1 action"
+range: "120 feet"
+components: "V, S, M (a delerium fragment worth 100gp, which the spell consumes)"
+duration: "Concentration, up to 1 minute"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 You create two Large hands of shimmering, octarine force in an unoccupied space that you can see within range. The hands last for the spell’s duration. Both hands move at your command, mimicking the movements of your own hands.
 

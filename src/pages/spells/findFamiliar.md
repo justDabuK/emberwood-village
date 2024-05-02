@@ -3,11 +3,11 @@ layout: ../../layouts/SpellLayout.astro
 title: "Find Familiar"
 ritual: true
 level: 1
-school: 'Conjuration'
-castingTime: '1 hour'
-range: '10 feet'
-components: 'V, S, M (10 gp worth of charcoal, incense, and herbs that must be consumed by fire in a brass brazier)'
-duration: '8 hours'
+school: "Conjuration"
+castingTime: "1 hour"
+range: "10 feet"
+components: "V, S, M (10 gp worth of charcoal, incense, and herbs that must be consumed by fire in a brass brazier)"
+duration: "8 hours"
 ---
 
 You gain the service of a familiar, a spirit that takes an animal form you choose: bat, cat, crab, frog (toad), hawk, lizard, octopus, owl, poisonous snake, fish (quipper), rat, raven, sea horse, spider, or weasel. Appearing in an unoccupied space within range, the familiar has the statistics of the chosen form, though it is a celestial, fey, or fiend (your choice) instead of a beast.

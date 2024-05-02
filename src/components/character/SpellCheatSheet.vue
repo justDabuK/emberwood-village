@@ -1,11 +1,10 @@
 <script setup lang="ts">
-
-import {type SpellSlots, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
-import type {MarkdownInstance} from "astro";
-import type {Spell} from "../../scripts/spellUtils.ts";
+import { type SpellSlots, TypeOfRest } from "../../scripts/cheatSheetTypes.ts";
+import type { MarkdownInstance } from "astro";
+import type { Spell } from "../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
-import {computed} from "vue";
+import { computed } from "vue";
 
 const props = defineProps<{
   allSpells: MarkdownInstance<Record<string, any>>[];
@@ -16,29 +15,43 @@ const props = defineProps<{
   casterLevel: number;
 }>();
 
-const spellSlots = defineModel<SpellSlots>("spellSlots", {required: true});
+const spellSlots = defineModel<SpellSlots>("spellSlots", { required: true });
 const concentration = defineModel<boolean>("concentration");
-const currentSpellSlotLevel = computed(() => Object.keys(spellSlots.value)[0])
+const currentSpellSlotLevel = computed(() => Object.keys(spellSlots.value)[0]);
 
-const knownSpellList = props.allSpells.filter((spell) => props.knownSpellNameList.includes(spell.frontmatter.title)).sort((a, b) => a.frontmatter.level - b.frontmatter.level);
+const knownSpellList = props.allSpells
+  .filter((spell) => props.knownSpellNameList.includes(spell.frontmatter.title))
+  .sort((a, b) => a.frontmatter.level - b.frontmatter.level);
 
-const isBonusActionSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.castingTime.includes('bonus');
-const isReactionSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.castingTime.includes('reaction');
-const isActionSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.castingTime.includes('action') && !isBonusActionSpell(spell) && !isReactionSpell(spell);
-const isRitualSpell = (spell: MarkdownInstance<Record<string, any>>) => spell.frontmatter.ritual;
+const isBonusActionSpell = (spell: MarkdownInstance<Record<string, any>>) =>
+  spell.frontmatter.castingTime.includes("bonus");
+const isReactionSpell = (spell: MarkdownInstance<Record<string, any>>) =>
+  spell.frontmatter.castingTime.includes("reaction");
+const isActionSpell = (spell: MarkdownInstance<Record<string, any>>) =>
+  spell.frontmatter.castingTime.includes("action") &&
+  !isBonusActionSpell(spell) &&
+  !isReactionSpell(spell);
+const isRitualSpell = (spell: MarkdownInstance<Record<string, any>>) =>
+  spell.frontmatter.ritual;
 
 const bonusActionSpellList = knownSpellList.filter(isBonusActionSpell);
 const actionSpellList = knownSpellList.filter(isActionSpell);
 const reactionSpellList = knownSpellList.filter(isReactionSpell);
 const ritualSpellList = knownSpellList.filter(isRitualSpell);
-const remainingSpellList = knownSpellList.filter((spell) => !isBonusActionSpell(spell) && !isActionSpell(spell) && !isReactionSpell(spell) && !isRitualSpell(spell));
+const remainingSpellList = knownSpellList.filter(
+  (spell) =>
+    !isBonusActionSpell(spell) &&
+    !isActionSpell(spell) &&
+    !isReactionSpell(spell) &&
+    !isRitualSpell(spell),
+);
 
 const spellSectionList = [
-  {title: 'Action', spells: actionSpellList},
-  {title: 'Bonus Action', spells: bonusActionSpellList},
-  {title: 'Reaction', spells: reactionSpellList},
-  {title: 'Ritual', spells: ritualSpellList},
-  {title: 'Remaining', spells: remainingSpellList}
+  { title: "Action", spells: actionSpellList },
+  { title: "Bonus Action", spells: bonusActionSpellList },
+  { title: "Reaction", spells: reactionSpellList },
+  { title: "Ritual", spells: ritualSpellList },
+  { title: "Remaining", spells: remainingSpellList },
 ];
 
 const getCostlyComponent = (components: string) => {
@@ -47,7 +60,11 @@ const getCostlyComponent = (components: string) => {
 };
 
 const isCostlySpell = (components: string) => {
-  return components.includes('delerium') || components.includes('gold') || components.includes('gp') ;
+  return (
+    components.includes("delerium") ||
+    components.includes("gold") ||
+    components.includes("gp")
+  );
 };
 </script>
 
@@ -56,43 +73,92 @@ const isCostlySpell = (components: string) => {
     <div class="spell-cheat-sheet-header">
       <div class="card">
         <h2>DC</h2>
-        <h2>{{spellsSaveDiceCheck}}</h2>
+        <h2>{{ spellsSaveDiceCheck }}</h2>
       </div>
       <div class="card">
         <h2>ATK</h2>
-        <h2>{{`+${spellAttackModifier}`}}</h2>
+        <h2>{{ `+${spellAttackModifier}` }}</h2>
       </div>
       <div class="card">
-        <h2>{{ `Spell Slots per ${typeOfRest}`}}</h2>
+        <h2>{{ `Spell Slots per ${typeOfRest}` }}</h2>
         <ul>
           <li v-for="(slot, level) in spellSlots" :key="level">
             {{ `${level}: ` }}
-            <input v-if="slot" v-for="(_, index) in slot.flags" :key="index" type="checkbox" v-model="slot.flags[index]">
+            <input
+              v-if="slot"
+              v-for="(_, index) in slot.flags"
+              :key="index"
+              type="checkbox"
+              v-model="slot.flags[index]"
+            />
           </li>
         </ul>
       </div>
       <div class="card concentration">
         <h2>Concentration</h2>
-        <input type="checkbox" v-model="concentration">
+        <input type="checkbox" v-model="concentration" />
       </div>
     </div>
     <div class="spell-cheat-sheet-body">
-      <div v-for="spellSection in spellSectionList" :key="spellSection.title" class="spell-section">
-        <h2>{{spellSection.title}}</h2>
+      <div
+        v-for="spellSection in spellSectionList"
+        :key="spellSection.title"
+        class="spell-section"
+      >
+        <h2>{{ spellSection.title }}</h2>
         <div class="spell-section-spell-list">
-          <a v-for="spell in spellSection.spells" :key="spell.frontmatter.title" :href="spell.url" :class="['card', 'spell', spell.frontmatter.duration.includes('Concentration') ? 'concentration' : '', 'card', 'spell', spell.frontmatter.level === 0 ? 'cantrip' : '']">
-            <SpellSchoolIcon class="spell-school-icon" :spell-school="spell.frontmatter.school"/>
-            <SpellRangeIcon class="spell-range-icon" :range="spell.frontmatter.range"/>
+          <a
+            v-for="spell in spellSection.spells"
+            :key="spell.frontmatter.title"
+            :href="spell.url"
+            :class="[
+              'card',
+              'spell',
+              spell.frontmatter.duration.includes('Concentration')
+                ? 'concentration'
+                : '',
+              'card',
+              'spell',
+              spell.frontmatter.level === 0 ? 'cantrip' : '',
+            ]"
+          >
+            <SpellSchoolIcon
+              class="spell-school-icon"
+              :spell-school="spell.frontmatter.school"
+            />
+            <SpellRangeIcon
+              class="spell-range-icon"
+              :range="spell.frontmatter.range"
+            />
             <p class="title">{{ spell.frontmatter.title }}</p>
 
-            <p v-if="spell.frontmatter.level === 0 && spell.frontmatter.effect && spell.frontmatter.effect[casterLevel]">
+            <p
+              v-if="
+                spell.frontmatter.level === 0 &&
+                spell.frontmatter.effect &&
+                spell.frontmatter.effect[casterLevel]
+              "
+            >
               {{ spell.frontmatter.effect[casterLevel] }}
             </p>
-            <p v-else-if="spell.frontmatter.effect && spell.frontmatter.effect[currentSpellSlotLevel]">
+            <p
+              v-else-if="
+                spell.frontmatter.effect &&
+                spell.frontmatter.effect[currentSpellSlotLevel]
+              "
+            >
               {{ spell.frontmatter.effect[currentSpellSlotLevel] }}
             </p>
 
-            <p v-if="isCostlySpell(spell.frontmatter.components)" :class="['cost', spell.frontmatter.school.includes('Contaminated') ? 'contaminated' : '']">
+            <p
+              v-if="isCostlySpell(spell.frontmatter.components)"
+              :class="[
+                'cost',
+                spell.frontmatter.school.includes('Contaminated')
+                  ? 'contaminated'
+                  : '',
+              ]"
+            >
               {{ getCostlyComponent(spell.frontmatter.components) }}
             </p>
           </a>
@@ -171,9 +237,8 @@ const isCostlySpell = (components: string) => {
               background-clip: text;
               color: oklch(from turquoise l c h / 0.7);
 
-
               &::before {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -197,7 +262,11 @@ const isCostlySpell = (components: string) => {
     background-color: var(--concentration-color);
 
     &.cantrip {
-      background: linear-gradient(90deg, var(--cantrip-color), var(--concentration-color));
+      background: linear-gradient(
+        90deg,
+        var(--cantrip-color),
+        var(--concentration-color)
+      );
     }
   }
 

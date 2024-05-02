@@ -4,11 +4,12 @@ title: "Delirium Rapier"
 rarity: "Rare"
 type: "Rapier"
 ---
-*Rare Rapier (requires attunement)* 
 
-This magic sword's blade is fashioned from a horn or spine from a delirium dragon and seems to constantly shift between possible forms.  
+_Rare Rapier (requires attunement)_
 
-While attuning to the blade you feel the urge to give it a name. 
+This magic sword's blade is fashioned from a horn or spine from a delirium dragon and seems to constantly shift between possible forms.
+
+While attuning to the blade you feel the urge to give it a name.
 
 You can use a bonus action to speak its name, causing it to set its appareance for 1 minute. Roll a d6 to determine the effect
 

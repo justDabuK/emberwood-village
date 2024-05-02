@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Alarm'
+title: "Alarm"
 ritual: true
 level: 1
-school: 'Abjuration'
-castingTime: '1 minute'
-range: '30 feet'
-components: 'V, S, M (a tiny bell and a piece of fine silver wire)'
-duration: '8 hours'
+school: "Abjuration"
+castingTime: "1 minute"
+range: "30 feet"
+components: "V, S, M (a tiny bell and a piece of fine silver wire)"
+duration: "8 hours"
 ---
 
 You set an alarm against unwanted intrusion. Choose a door, a window, or an area within range that is no larger than a 20-foot cube. Until the spell ends, an alarm alerts you whenever a Tiny or larger creature touches or enters the warded area. When you cast the spell, you can designate creatures that won't set off the alarm. You also choose whether the alarm is mental or audible.

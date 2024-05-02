@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/ShopLayout.astro
-title: 'Gainsbury Expeditionary Supply Company'
-description: 'Hier gibt es Ausrüstung jeglicher Art für die Expedition in die Ruinen.'
+title: "Gainsbury Expeditionary Supply Company"
+description: "Hier gibt es Ausrüstung jeglicher Art für die Expedition in die Ruinen."
 columnStart: 20
 columnEnd: 25
 rowStart: 21
 rowEnd: 24
-icon: 'pickaxe.svg'
+icon: "pickaxe.svg"
 ---
 
 | Item                                                                                                            | Cost   |
-|-----------------------------------------------------------------------------------------------------------------|--------|
+| --------------------------------------------------------------------------------------------------------------- | ------ |
 | _Tools for handling Delirium_                                                                                   |        |
 | [Merkblatt zur sichern Handhabung von Delirium](/A%20Pamphlet%20on%20the%20Safe%20Handling%20of%20Delerium.pdf) | 1 gp   |
 | Cart                                                                                                            | 40 gp  |

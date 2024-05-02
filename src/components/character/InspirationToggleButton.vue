@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const inspiration = defineModel( {type: Boolean, required: true} );
+const inspiration = defineModel({ type: Boolean, required: true });
 </script>
 
 <template>
@@ -8,7 +8,7 @@ const inspiration = defineModel( {type: Boolean, required: true} );
     v-model="inspiration"
     type="checkbox"
     class="secondary"
-  >
+  />
   <label for="inspiration">
     <svg
       v-if="inspiration"
@@ -36,13 +36,11 @@ const inspiration = defineModel( {type: Boolean, required: true} );
 </template>
 
 <style scoped>
-
 label {
   cursor: pointer;
   border: 1px solid var(--text-color);
   border-radius: 5px;
   padding: 10px;
-
 }
 .icon {
   width: 24px;

@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Unseen Servant'
+title: "Unseen Servant"
 ritual: true
 level: 1
-school: 'Conjuration'
-castingTime: '1 action'
-range: '60 feet'
-components: 'V, S, M (a piece of string and a bit of wood)'
-duration: '1 hour'
+school: "Conjuration"
+castingTime: "1 action"
+range: "60 feet"
+components: "V, S, M (a piece of string and a bit of wood)"
+duration: "1 hour"
 ---
 
 This spell creates an invisible, mindless, shapeless, Medium force that performs simple tasks at your command until the spell ends. The servant springs into existence in an unoccupied space on the ground within range. It has AC 10, 1 hit point, and a Strength of 2, and it can't attack. If it drops to 0 hit points, the spell ends.

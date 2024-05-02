@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Forced Evolution'
+title: "Forced Evolution"
 level: 4
-school: 'Transmutation'
-castingTime: '8 hours'
-range: 'Touch'
-components: 'V, S, M (An alchemical cocktail made from rare components and delerium dust worth 250 gold, which the target consumes as part of the spell)'
-duration: 'Instantaneous'
+school: "Transmutation"
+castingTime: "8 hours"
+range: "Touch"
+components: "V, S, M (An alchemical cocktail made from rare components and delerium dust worth 250 gold, which the target consumes as part of the spell)"
+duration: "Instantaneous"
 disabled: true
 ---
 

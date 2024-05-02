@@ -2,11 +2,11 @@
 layout: ../../layouts/SpellLayout.astro
 title: "Hold Person"
 level: 2
-school: 'Enchantment'
-castingTime: '1 action'
-range: '60 feet'
+school: "Enchantment"
+castingTime: "1 action"
+range: "60 feet"
 components: "V, S, M (a small, straight piece of iron)"
-duration: 'Concentration, up to 1 minute'
+duration: "Concentration, up to 1 minute"
 ---
 
 Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.

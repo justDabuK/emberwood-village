@@ -1,20 +1,20 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Summon Delerium Draconic Spirit'
+title: "Summon Delerium Draconic Spirit"
 level: 5
-school: 'Contaminated Conjuration'
-castingTime: '1 action'
-range: '60 feet'
-components: 'V, S, M (a delerium fragment worth 100gp, which the spell consumes)'
-duration: 'Instantaneous'
+school: "Contaminated Conjuration"
+castingTime: "1 action"
+range: "60 feet"
+components: "V, S, M (a delerium fragment worth 100gp, which the spell consumes)"
+duration: "Instantaneous"
 prerequisites:
-  - 'can cast 5th level spells'
-  - 'knows the summon delerium elemental spell'
-  - 'slayed a delerium dragon and examined it'
+  - "can cast 5th level spells"
+  - "knows the summon delerium elemental spell"
+  - "slayed a delerium dragon and examined it"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 You call forth a draconic spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the Draconic Spirit stat block. The family of dragon is gem. The creature resembles a dragon of the delirium gem family, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.
 

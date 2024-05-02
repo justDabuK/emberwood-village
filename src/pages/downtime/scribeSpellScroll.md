@@ -2,15 +2,18 @@
 layout: ../../layouts/DefaultLayout.astro
 title: "Scribe a Spell Scroll"
 ---
+
 Take some time to brew some potions.
 
 ## Prerequisites
+
 - you are a spell caster
 - you know the spell you want to scribe
 
 ## Cost
+
 | Spell level | Time         | Cost                      |
-|-------------|--------------|---------------------------|
+| ----------- | ------------ | ------------------------- |
 | Cantrip     | 1 day        | 15 gp                     |
 | 1st Level   | 1 day        | 25 gp (+ Components)      |
 | 2nd Level   | 3 days       | 250 gp (+ Components)     |
@@ -23,4 +26,5 @@ Take some time to brew some potions.
 | 9th Level   | 48 workweeks | 250 000 gp (+ Components) |
 
 ## Outcome
+
 - the spell scroll you scribed

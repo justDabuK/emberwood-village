@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Bacterial Barrage'
+title: "Bacterial Barrage"
 level: 0
-school: 'Necromancy'
-castingTime: '1 action'
-range: '30 feet'
-components: 'V, S'
-duration: 'Instantaneous'
+school: "Necromancy"
+castingTime: "1 action"
+range: "30 feet"
+components: "V, S"
+duration: "Instantaneous"
 ---
 
 You attack a creature in range with a quick spreading infection that takes advantage of existing conditions. Make a ranged spell attack against a target, on a hit the infection does 1d8 necrotic damage to the target. If the target is suffering from the poisoned condition or a disease, it instead takes 1d12 necrotic damage.

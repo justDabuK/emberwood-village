@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Horrific Transformation'
+title: "Horrific Transformation"
 level: 4
-school: 'Contaminated Transmutation'
-castingTime: '1 action'
+school: "Contaminated Transmutation"
+castingTime: "1 action"
 range: Touch
-components: 'V, S, M (see description)'
-duration: 'Concentration, up to 1 minute'
+components: "V, S, M (see description)"
+duration: "Concentration, up to 1 minute"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 This spell transforms a willing creature that you touch into a horrific monstrosity. The spell has no effect on a shapechanger or a creature with 0 hit points. The transformation lasts for the duration, or until the target drops to 0 hit points or dies.
 

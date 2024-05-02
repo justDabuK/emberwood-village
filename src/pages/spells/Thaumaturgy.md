@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Thaumaturgy'
+title: "Thaumaturgy"
 level: 0
-school: 'Transmutation'
-castingTime: '1 action'
-range: '30 feet'
-components: 'V'
-duration: 'Up to 1 minute'
+school: "Transmutation"
+castingTime: "1 action"
+range: "30 feet"
+components: "V"
+duration: "Up to 1 minute"
 ---
 
 You manifest a minor wonder, a sign of supernatural power, within range. You create one of the following magical effects within range:

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {Section} from "../../scripts/cheatSheetTypes.ts";
+import type { Section } from "../../scripts/cheatSheetTypes.ts";
 import Usages from "./Usages.vue";
 
 defineProps<{
@@ -13,25 +13,30 @@ const toggleModel = () => {
     return;
   }
   model.value = !model.value;
-}
+};
 </script>
 
 <template>
-  <div :class="`card section ${model ? 'used' : ''} ${model !== undefined ? 'cursor-pointer': ''}`"
-       @click="toggleModel">
-
+  <div
+    :class="`card section ${model ? 'used' : ''} ${model !== undefined ? 'cursor-pointer' : ''}`"
+    @click="toggleModel"
+  >
     <div class="section-title">
       <span>{{ section.title }}</span>
       <span v-if="section.dice">{{ section.dice }}</span>
-      <input v-model="model" v-if="model !== undefined" type="checkbox">
+      <input v-model="model" v-if="model !== undefined" type="checkbox" />
     </div>
 
     <template v-if="section.subsections">
-      <div v-for="subsection in section.subsections" :key="subsection.title" class="subsection">
+      <div
+        v-for="subsection in section.subsections"
+        :key="subsection.title"
+        class="subsection"
+      >
         <div class="subsection-header">
           <span>{{ subsection.title }}</span>
           <span v-if="subsection.dice">{{ subsection.dice }}</span>
-          <Usages v-if="subsection.usages" v-model="subsection.usages"/>
+          <Usages v-if="subsection.usages" v-model="subsection.usages" />
         </div>
 
         <div v-if="subsection.description" class="description">
@@ -54,7 +59,9 @@ const toggleModel = () => {
       <table>
         <thead>
           <tr>
-            <th v-for="header in section.table.headers" :key="header">{{ header }}</th>
+            <th v-for="header in section.table.headers" :key="header">
+              {{ header }}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -122,7 +129,6 @@ const toggleModel = () => {
         justify-content: space-between;
       }
     }
-
   }
 }
 </style>

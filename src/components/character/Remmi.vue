@@ -1,41 +1,46 @@
 <script setup lang="ts">
-import {type AbilityScores, type Creature, getModifier, Skill, TypeOfRest} from "../../scripts/cheatSheetTypes.ts";
+import {
+  type AbilityScores,
+  type Creature,
+  getModifier,
+  Skill,
+  TypeOfRest,
+} from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
-import {useStorage} from "@vueuse/core";
+import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
-import {getStuddedLeatherArmorClass} from "../../scripts/armorClassUtils.ts";
+import { getStuddedLeatherArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
 
 const LEVEL = 4;
 const PROFICIENCY_BONUS = 2;
 const getSneakAttackDice = () => {
-  if(LEVEL < 3) {
-    return '1d6';
+  if (LEVEL < 3) {
+    return "1d6";
   } else if (LEVEL < 5) {
-    return '2d6';
+    return "2d6";
   } else if (LEVEL < 7) {
-    return '3d6';
+    return "3d6";
   } else if (LEVEL < 9) {
-    return '4d6';
+    return "4d6";
   } else if (LEVEL < 11) {
-    return '5d6';
+    return "5d6";
   } else if (LEVEL < 13) {
-    return '6d6';
+    return "6d6";
   } else if (LEVEL < 15) {
-    return '7d6';
+    return "7d6";
   } else if (LEVEL < 17) {
-    return '8d6';
+    return "8d6";
   } else if (LEVEL < 19) {
-    return '9d6';
+    return "9d6";
   } else {
-    return '10d6';
+    return "10d6";
   }
 };
 
 const racialBonusPlus2 = 2;
 const racialBonusPlus1 = 1;
-const actorBonus = 1
-
+const actorBonus = 1;
 
 const ABILITY_SCORES: AbilityScores = {
   STR: 8,
@@ -43,7 +48,7 @@ const ABILITY_SCORES: AbilityScores = {
   CON: 13,
   INT: 12,
   WIS: 10,
-  CHA: 15 + racialBonusPlus1 + actorBonus
+  CHA: 15 + racialBonusPlus1 + actorBonus,
 };
 
 const MODIFIER: AbilityScores = {
@@ -52,13 +57,10 @@ const MODIFIER: AbilityScores = {
   CON: getModifier(ABILITY_SCORES.CON),
   INT: getModifier(ABILITY_SCORES.INT),
   WIS: getModifier(ABILITY_SCORES.WIS),
-  CHA: getModifier(ABILITY_SCORES.CHA)
+  CHA: getModifier(ABILITY_SCORES.CHA),
 };
 
-const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[]= [
-  "DEX",
-  "INT"
-];
+const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[] = ["DEX", "INT"];
 
 const SKILL_PROFICIENCIES = [
   Skill.Athletics,
@@ -67,16 +69,12 @@ const SKILL_PROFICIENCIES = [
   Skill.ThievesTools,
   Skill.History,
   Skill.Perception,
-  Skill.Performance
-]
+  Skill.Performance,
+];
 
-const SKILL_EXPERTIES = [
-  Skill.Deception,
-  Skill.Persuasion
-]
+const SKILL_EXPERTIES = [Skill.Deception, Skill.Persuasion];
 
 const dualWielderArmorclassBonus = 1;
-
 
 const defaultCreatureList: Creature[] = [
   {
@@ -87,159 +85,192 @@ const defaultCreatureList: Creature[] = [
       temporary: 0,
       hitDice: {
         flags: [...Array(LEVEL)].fill(false),
-        description: 'd8',
+        description: "d8",
         typeOfRest: TypeOfRest.LONG,
-      }
+      },
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getStuddedLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
+    armorClass:
+      getStuddedLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
     initiative: MODIFIER.DEX + MODIFIER.CHA,
     inspiration: false,
     sectionList: [
       {
-        title: 'Action',
+        title: "Action",
         used: false,
         subsections: [
           {
-            title: '2 Weapon Attacks (Dual Wielder)',
+            title: "2 Weapon Attacks (Dual Wielder)",
             dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
             items: [
-              {name: '<insert rapier name>', dice: `1d8+1d8+${MODIFIER.DEX}`},
-              {name: 'Shortsword', dice: `1d6+${MODIFIER.DEX}`},
-            ]
+              { name: "<insert rapier name>", dice: `1d8+1d8+${MODIFIER.DEX}` },
+              { name: "Shortsword", dice: `1d6+${MODIFIER.DEX}` },
+            ],
           },
           {
-            title: 'Hat of Disguise',
-            description: 'Disguise Self at will as an action'
-          }
-        ]
+            title: "Hat of Disguise",
+            description: "Disguise Self at will as an action",
+          },
+        ],
       },
       {
-        title: 'Sneak Attack',
+        title: "Sneak Attack",
         used: false,
         subsections: [
           {
-            title: 'Sneak Attack',
-            description: 'if advantage, OR ally within 5ft. of target OR no one within 5ft. of you AND no disadvantage',
+            title: "Sneak Attack",
+            description:
+              "if advantage, OR ally within 5ft. of target OR no one within 5ft. of you AND no disadvantage",
             items: [
-                {
-                  name: 'Damage',
-                  dice: getSneakAttackDice(),
-                }
-            ]
-          }
-        ]
+              {
+                name: "Damage",
+                dice: getSneakAttackDice(),
+              },
+            ],
+          },
+        ],
       },
       {
-        title: 'Bonus Action',
+        title: "Bonus Action",
         used: false,
         subsections: [
           {
-            title: 'Cunning Action',
-            description: 'Dash, Disengage, or Hide'
+            title: "Cunning Action",
+            description: "Dash, Disengage, or Hide",
           },
           {
-            title: 'Activate <insert rapier name>',
-            description: 'see <insert rapier name> section'
-          }
-        ]
+            title: "Activate <insert rapier name>",
+            description: "see <insert rapier name> section",
+          },
+        ],
       },
       {
-        title: 'Reaction',
+        title: "Reaction",
         used: false,
         subsections: [
           {
-            title: 'Opportunity Attack',
-            description: 'See Weapon Attack'
+            title: "Opportunity Attack",
+            description: "See Weapon Attack",
           },
-        ]
+        ],
       },
       {
-        title: 'Movement',
+        title: "Movement",
         used: false,
         subsections: [
           {
-            title: 'Walking 30ft.',
-            description: '(6 Felder)'
+            title: "Walking 30ft.",
+            description: "(6 Felder)",
           },
           {
-            title: 'Climbing 30ft.',
-            description: '(6 Felder)'
+            title: "Climbing 30ft.",
+            description: "(6 Felder)",
           },
           {
-            title: 'Feline Agility',
-            description: 'Double movement speed for one turn, reactivates if 0 movement on 1 turn'
-          }
-        ]
+            title: "Feline Agility",
+            description:
+              "Double movement speed for one turn, reactivates if 0 movement on 1 turn",
+          },
+        ],
       },
       {
-        title: 'Features',
+        title: "Features",
         subsections: [
           {
-            title: 'Actor',
-            description: 'Advantage on Deception & Performance if impersonating'
+            title: "Actor",
+            description:
+              "Advantage on Deception & Performance if impersonating",
           },
           {
-            title: 'Noble Confidence',
+            title: "Noble Confidence",
             usages: {
               flags: [...Array(PROFICIENCY_BONUS)].fill(false),
-              typeOfRest: TypeOfRest.SHORT
+              typeOfRest: TypeOfRest.SHORT,
             },
-            description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${PROFICIENCY_BONUS} allies per short rest`
-          },{
-          title: 'Fancy Footwork',
-            description: 'no opportunity attacks from target when meleed before'
-          }
-        ]
+            description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${PROFICIENCY_BONUS} allies per short rest`,
+          },
+          {
+            title: "Fancy Footwork",
+            description:
+              "no opportunity attacks from target when meleed before",
+          },
+        ],
       },
       {
-        title: '<insert rapier name>',
-        description: 'You can use a bonus action to speak its name, causing it to set its appareance for 1 minute. Roll a d6 to determine the effect',
-        subsections: [{
-         title: 'The sword taketh and the sword giveth',
-          usages: {
-            flags: [...Array(3)].fill(false),
-            typeOfRest: TypeOfRest.LONG
+        title: "<insert rapier name>",
+        description:
+          "You can use a bonus action to speak its name, causing it to set its appareance for 1 minute. Roll a d6 to determine the effect",
+        subsections: [
+          {
+            title: "The sword taketh and the sword giveth",
+            usages: {
+              flags: [...Array(3)].fill(false),
+              typeOfRest: TypeOfRest.LONG,
+            },
+            description:
+              "When you hit a creature with an attack roll using the sword, you can expend 1 charge to regain a number of hit points equal to the extra damage the sword dealt. The sword regains 1d3 expended charges daily at dawn.",
           },
-          description: 'When you hit a creature with an attack roll using the sword, you can expend 1 charge to regain a number of hit points equal to the extra damage the sword dealt. The sword regains 1d3 expended charges daily at dawn.'
-        }],
+        ],
         table: {
-          headers: ['d6', 'effect'],
+          headers: ["d6", "effect"],
           rows: [
-              ["1", "The sword takes the form of a green emerald and deals an extra 1d8 psychic damage"],
-              ["2", "The sword takes the form of a yellow topaz and deals an extra 1d8 necrotic damage"],
-              ["3", "The sword takes the form of a purple amathyst and deals an extra 1d8 force damage"],
-              ["4", "The sword takes the form of a white crystal and deals an extra 1d8 radiant damage"],
-              ["5", "The sword takes the form of a blue saphire and deals an extra 1d8 thunder damage"],
-              ["6", "The sword takes on two forms. Roll on this table twice more. There’s no limit to how many additional colors the sword can take on in this manner"],
-          ]
+            [
+              "1",
+              "The sword takes the form of a green emerald and deals an extra 1d8 psychic damage",
+            ],
+            [
+              "2",
+              "The sword takes the form of a yellow topaz and deals an extra 1d8 necrotic damage",
+            ],
+            [
+              "3",
+              "The sword takes the form of a purple amathyst and deals an extra 1d8 force damage",
+            ],
+            [
+              "4",
+              "The sword takes the form of a white crystal and deals an extra 1d8 radiant damage",
+            ],
+            [
+              "5",
+              "The sword takes the form of a blue saphire and deals an extra 1d8 thunder damage",
+            ],
+            [
+              "6",
+              "The sword takes on two forms. Roll on this table twice more. There’s no limit to how many additional colors the sword can take on in this manner",
+            ],
+          ],
         },
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
 
-const creatureList = useStorage<Creature[]>('remi-creature-list', defaultCreatureList);
+const creatureList = useStorage<Creature[]>(
+  "remi-creature-list",
+  defaultCreatureList,
+);
 
 const resetToDefault = () => {
   creatureList.value = defaultCreatureList;
 };
-const notesStorage = useStorage<string>('remi-notes', "");
-
+const notesStorage = useStorage<string>("remi-notes", "");
 </script>
 
 <template>
   <div class="cheat-sheet-list">
-    <RoundCheatSheet v-model="creatureList" @reset-to-default="resetToDefault"/>
+    <RoundCheatSheet
+      v-model="creatureList"
+      @reset-to-default="resetToDefault"
+    />
     <div class="divider" />
     <SkillCheatSheet
-        :modifiers="MODIFIER"
-        :ability-scores="ABILITY_SCORES"
-        :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-        :skill-proficiency-list="SKILL_PROFICIENCIES"
-        :skill-expertise-list="SKILL_EXPERTIES"
-        :proficiency-bonus="PROFICIENCY_BONUS"
+      :modifiers="MODIFIER"
+      :ability-scores="ABILITY_SCORES"
+      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
+      :skill-proficiency-list="SKILL_PROFICIENCIES"
+      :skill-expertise-list="SKILL_EXPERTIES"
+      :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />

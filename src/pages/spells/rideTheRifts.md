@@ -1,15 +1,15 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Ride the Rifts'
+title: "Ride the Rifts"
 level: 3
-school: 'Contaminated Conjuration'
-castingTime: '1 action'
-range: 'Self (60-foot line)'
-components: 'V, S, M (a delerium fragment worth 100 gp, which the spell consumes)'
-duration: 'Instantaneous'
+school: "Contaminated Conjuration"
+castingTime: "1 action"
+range: "Self (60-foot line)"
+components: "V, S, M (a delerium fragment worth 100 gp, which the spell consumes)"
+duration: "Instantaneous"
 ---
 
-*When you cast this spell, you gain one level of contamination.*
+_When you cast this spell, you gain one level of contamination._
 
 A stroke of eldritch lightning forming a line 60 feet long and 5 feet wide blasts out from you in a direction you choose. Each creature in the line must succeed on a Dexterity saving throw. A creature takes 10d6 lightning damage on a failed save, or half as much damage on a successful one. You then teleport to an unoccupied space you can see within the line’s area.
 

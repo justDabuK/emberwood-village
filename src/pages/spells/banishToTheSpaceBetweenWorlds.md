@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Banish to the Space Between Worlds'
+title: "Banish to the Space Between Worlds"
 level: 8
-school: 'Contaminated Conjuration'
-castingTime: '1 action'
-range: '60 feet'
-components: 'V, S, M (a delerium fragment worth 100gp, which the spell consumes)'
-duration: 'Concentration, up to 10 minutes'
+school: "Contaminated Conjuration"
+castingTime: "1 action"
+range: "60 feet"
+components: "V, S, M (a delerium fragment worth 100gp, which the spell consumes)"
+duration: "Concentration, up to 10 minutes"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 You banish a creature that you can see within range into the Space Between Worlds. Upon this roiling plane of chaotic potential, the target wanders incomprehensible vistas searching for a way back via strange and absurd exits. The target remains there for the duration or until it escapes.
 

@@ -2,11 +2,11 @@
 layout: ../../layouts/SpellLayout.astro
 title: "Web"
 level: 2
-school: 'Conjuration'
-castingTime: '1 action'
-range: '60 feet'
+school: "Conjuration"
+castingTime: "1 action"
+range: "60 feet"
 components: "V, S, M (a bit of spiderweb)"
-duration: 'Concentration, up to 1 hour'
+duration: "Concentration, up to 1 hour"
 ---
 
 You conjure a mass of thick, sticky webbing at a point of your choice within range. The webs fill a 20-foot cube from that point for the duration. The webs are difficult terrain and lightly obscure their area.

@@ -2,11 +2,11 @@
 layout: ../../layouts/SpellLayout.astro
 title: "Enhance Ability"
 level: 2
-school: 'Transmutation'
-castingTime: '1 action'
-range: 'Touch'
-components: 'V, S, M (fur or a feather from a beast)'
-duration: 'Concentration, up to 1 hour'
+school: "Transmutation"
+castingTime: "1 action"
+range: "Touch"
+components: "V, S, M (fur or a feather from a beast)"
+duration: "Concentration, up to 1 hour"
 ---
 
 You touch a creature and bestow upon it a magical enhancement. Choose one of the following effects; the target gains that effect until the spell ends.

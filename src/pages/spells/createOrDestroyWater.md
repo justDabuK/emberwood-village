@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Create or Destroy Water'
+title: "Create or Destroy Water"
 level: 1
-school: 'Transmutation'
-castingTime: '1 action'
-range: '30 feet'
-components: 'V, S, M (a drop of water if creating water or a few grains of sand if destroying it)'
-duration: 'Instantaneous'
+school: "Transmutation"
+castingTime: "1 action"
+range: "30 feet"
+components: "V, S, M (a drop of water if creating water or a few grains of sand if destroying it)"
+duration: "Instantaneous"
 ---
 
 You either create or destroy water.

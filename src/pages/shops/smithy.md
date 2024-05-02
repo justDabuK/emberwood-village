@@ -1,18 +1,20 @@
 ---
 layout: ../../layouts/ShopLayout.astro
-title: 'Crowe and Sons Smithy'
-description: 'Lokaler Schmied'
+title: "Crowe and Sons Smithy"
+description: "Lokaler Schmied"
 columnStart: 12
 columnEnd: 17
 rowStart: 22
 rowEnd: 26
-icon: 'sword-cross.svg'
+icon: "sword-cross.svg"
 ---
 
 ## Waren
+
 ### Waffen
+
 | Weapon Name                                                           | Damage          | Properties                                                                                                                                                                                                                                                                                                                                                                                                 | Cost   |
-|-----------------------------------------------------------------------|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| --------------------------------------------------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
 | _Simple Melee Weapons_                                                |                 |                                                                                                                                                                                                                                                                                                                                                                                                            |        |
 | [Club](https://www.dndbeyond.com/equipment/club)                      | 1d4 bludgeoning | [Light](https://www.dndbeyond.com/compendium/rules/basic-rules/equipment#WeaponProperties)                                                                                                                                                                                                                                                                                                                 | 2 sp   |
 | [Dagger](https://www.dndbeyond.com/equipment/dagger)                  | 1d4 piercing    | [Finesse](https://www.dndbeyond.com/compendium/rules/basic-rules/equipment#WeaponProperties), [light](https://www.dndbeyond.com/compendium/rules/basic-rules/equipment#WeaponProperties), [thrown](https://www.dndbeyond.com/compendium/rules/basic-rules/equipment#WeaponProperties) (range 20/60)                                                                                                        | 4 gp   |
@@ -56,8 +58,9 @@ icon: 'sword-cross.svg'
 | [Net](https://www.dndbeyond.com/equipment/net)                        | -               | [Special](https://www.dndbeyond.com/compendium/rules/basic-rules/equipment#WeaponProperties), [thrown](https://www.dndbeyond.com/compendium/rules/basic-rules/equipment#WeaponProperties) (range 5/15)                                                                                                                                                                                                     | 2 gp   |
 
 ### Rüstungen
+
 | Armor Name                                                             | Armor Class (AC)          | Strength | Stealth      | Cost                     |
-|------------------------------------------------------------------------|---------------------------|----------|--------------|--------------------------|
+| ---------------------------------------------------------------------- | ------------------------- | -------- | ------------ | ------------------------ |
 | _Light Armor_                                                          |                           |          |              |                          |
 | [Padded](https://www.dndbeyond.com/equipment/padded)                   | 11 + Dex modifier         | -        | Disadvantage | 10 gp                    |
 | [Leather](https://www.dndbeyond.com/equipment/leather)                 | 11 + Dex modifier         | -        | -            | 20 gp                    |

@@ -1,39 +1,51 @@
 <script setup lang="ts">
-import type {Creature, Section} from "../../scripts/cheatSheetTypes.ts";
+import type { Creature, Section } from "../../scripts/cheatSheetTypes.ts";
 import CreatureSection from "./CreatureSection.vue";
-import {computed} from "vue";
+import { computed } from "vue";
 import InspirationToggleButton from "./InspirationToggleButton.vue";
 
 const emit = defineEmits<{
-  (evt: 'resetToDefault'): void;
+  (evt: "resetToDefault"): void;
 }>();
 
-const creatureList = defineModel<Creature[]>({required: true});
+const creatureList = defineModel<Creature[]>({ required: true });
 const resetSection = (section: Section) => {
-  if(section.used !== undefined) {
-    section.used = false
+  if (section.used !== undefined) {
+    section.used = false;
   }
-}
+};
 
 const resetUsed = () => {
-  creatureList.value.forEach((creature) => creature.sectionList.forEach(resetSection));
-}
+  creatureList.value.forEach((creature) =>
+    creature.sectionList.forEach(resetSection),
+  );
+};
 
 const inspiration = computed<boolean | undefined>({
   get: () => creatureList.value[0].inspiration,
-  set: (value: boolean | undefined) => creatureList.value[0].inspiration = value
+  set: (value: boolean | undefined) =>
+    (creatureList.value[0].inspiration = value),
 });
 </script>
 
 <template>
   <div class="cheat-sheet">
     <div class="cheat-sheet-headline">
-      <InspirationToggleButton v-if="inspiration !== undefined" v-model="inspiration"/>
-      <button class="secondary" @click="emit('resetToDefault')">Long Rest</button>
+      <InspirationToggleButton
+        v-if="inspiration !== undefined"
+        v-model="inspiration"
+      />
+      <button class="secondary" @click="emit('resetToDefault')">
+        Long Rest
+      </button>
       <button @click="resetUsed">New round</button>
     </div>
 
-    <CreatureSection v-for="(creature, index) in creatureList" :key="creature.name" v-model="creatureList[index]"/>
+    <CreatureSection
+      v-for="(creature, index) in creatureList"
+      :key="creature.name"
+      v-model="creatureList[index]"
+    />
   </div>
 </template>
 
@@ -58,8 +70,8 @@ const inspiration = computed<boolean | undefined>({
       padding: 10px 20px;
       font: inherit;
       box-shadow:
-          inset 0 1px 0 oklch(70% 0.08 226.91),
-          0 1px 3px oklch(0 0 0 / 20%);
+        inset 0 1px 0 oklch(70% 0.08 226.91),
+        0 1px 3px oklch(0 0 0 / 20%);
 
       &:hover {
         background-color: var(--button-color-hover);
@@ -68,8 +80,8 @@ const inspiration = computed<boolean | undefined>({
       &:active {
         background-color: var(--button-color-active);
         box-shadow:
-            inset 0 2px 20px oklch(0 0 0 / 10%),
-            0 2px 0 oklch(100% 0 0 / 15%);
+          inset 0 2px 20px oklch(0 0 0 / 10%),
+          0 2px 0 oklch(100% 0 0 / 15%);
       }
 
       &.secondary {

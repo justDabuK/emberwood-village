@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Sacrament of the Falling Fire'
+title: "Sacrament of the Falling Fire"
 level: 9
-school: 'Abjuration'
-castingTime: '1 hour'
-range: '30 feet'
-components: 'V, S, M (a delerium fragment worth 100 gp for each participating creature, which the spell consumes)'
-duration: 'Instantaneous'
+school: "Abjuration"
+castingTime: "1 hour"
+range: "30 feet"
+components: "V, S, M (a delerium fragment worth 100 gp for each participating creature, which the spell consumes)"
+duration: "Instantaneous"
 disabled: true
 ---
 

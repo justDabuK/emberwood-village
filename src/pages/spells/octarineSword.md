@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Octarine Sword'
+title: "Octarine Sword"
 level: 7
-school: 'Contaminated Evocation'
-castingTime: '1 bonus action'
-range: '60 feet'
-components: 'V, S, M (a delerium fragment worth 100gp, and a dagger)'
-duration: '1 minute'
+school: "Contaminated Evocation"
+castingTime: "1 bonus action"
+range: "60 feet"
+components: "V, S, M (a delerium fragment worth 100gp, and a dagger)"
+duration: "1 minute"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 You create a sword-shaped plane of contaminated energy that hovers within range. It lasts for the duration or until you cast this spell again.
 

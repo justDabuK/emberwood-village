@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Delirium Meteor Swarm'
+title: "Delirium Meteor Swarm"
 level: 9
-school: 'Contaminated Evocation'
-castingTime: '1 action'
-range: '1 mile'
-components: 'V, S, M (an igneous rock and a delerium fragment worth 100gp, which the spell consumes)'
-duration: '1 minute'
+school: "Contaminated Evocation"
+castingTime: "1 action"
+range: "1 mile"
+components: "V, S, M (an igneous rock and a delerium fragment worth 100gp, which the spell consumes)"
+duration: "1 minute"
 disabled: true
 ---
 
-*When you cast this spell, you gain 1 Contamination Level.*
+_When you cast this spell, you gain 1 Contamination Level._
 
 You call down eldritch falling stars that crash into the earth at four points you can see within range. Each creature within a 40-foot-radius sphere centered on each point you choose must make a Dexterity saving throw. The sphere spreads around corners. A creature takes 10d6 radiant damage, 10d6 necrotic damage, 10d6 thunder damage, 10d6 psychic damage, and 10d6 force damage on a failed saving throw, or half as much damage on a successful one. A creature in the area of more than one burst is affected only once.
 

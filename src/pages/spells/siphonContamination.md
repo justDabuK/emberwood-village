@@ -1,17 +1,17 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Siphon Contamination'
+title: "Siphon Contamination"
 level: 6
-school: 'Transmutation'
-castingTime: '1 hour'
-range: 'Touch'
-components: 'V, S, M (500 gp worth of specially-prepared alchemical fluids and a delerium geode worth 5,000 gp, all of which are consumed by the spell)'
-duration: 'Instantaneous'
+school: "Transmutation"
+castingTime: "1 hour"
+range: "Touch"
+components: "V, S, M (500 gp worth of specially-prepared alchemical fluids and a delerium geode worth 5,000 gp, all of which are consumed by the spell)"
+duration: "Instantaneous"
 prerequisites:
-  - 'can cast 6th level spells'
-  - 'knows the forced evolution spell'
-  - 'knows the neutralizing field spell'
-  - 'witnessed monstrous transformation'
+  - "can cast 6th level spells"
+  - "knows the forced evolution spell"
+  - "knows the neutralizing field spell"
+  - "witnessed monstrous transformation"
 disabled: true
 ---
 

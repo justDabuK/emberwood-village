@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Grease'
+title: "Grease"
 level: 1
-school: 'Conjuration'
-castingTime: '1 action'
-range: '60 feet'
-components: 'V, S, M (a bit of pork rind or butter)'
-duration: '1 minute'
+school: "Conjuration"
+castingTime: "1 action"
+range: "60 feet"
+components: "V, S, M (a bit of pork rind or butter)"
+duration: "1 minute"
 ---
 
 Slick grease covers the ground in a 10-foot square centered on a point within range and turns it into difficult terrain for the duration.

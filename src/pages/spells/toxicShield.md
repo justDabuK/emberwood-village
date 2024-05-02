@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Toxic Shield'
+title: "Toxic Shield"
 level: 1
-school: 'Conjuration'
-castingTime: '1 action'
-range: 'Self'
-components: 'S, M (a drop of dwarven blood)'
-duration: 'Concentration, up to 1 minute'
+school: "Conjuration"
+castingTime: "1 action"
+range: "Self"
+components: "S, M (a drop of dwarven blood)"
+duration: "Concentration, up to 1 minute"
 ---
 
 You gain resistance to poison damage and advantage on saves against being poisoned for the duration. In addition, whenever a creature within 5 feet of you hits you with a melee attack, the shield sprays them with poison, dealing 1d8 poison damage to the attacker.

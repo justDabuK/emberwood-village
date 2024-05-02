@@ -1,16 +1,16 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Neutralizing Field'
+title: "Neutralizing Field"
 level: 5
-school: 'Abjuration'
-castingTime: '1 action'
-range: 'Self (10-foot radius sphere)'
-components: 'V, S, M (A delerium crystal or holy relic worth 1,000 gp)'
-duration: 'Concentration, up to 1 hour'
+school: "Abjuration"
+castingTime: "1 action"
+range: "Self (10-foot radius sphere)"
+components: "V, S, M (A delerium crystal or holy relic worth 1,000 gp)"
+duration: "Concentration, up to 1 hour"
 prerequisites:
-  - 'can cast 5th level spells'
-  - 'knows the purge contamination spell'
-  - 'created at least 1 dose of aqua expurgo'
+  - "can cast 5th level spells"
+  - "knows the purge contamination spell"
+  - "created at least 1 dose of aqua expurgo"
 disabled: true
 ---
 

@@ -2,11 +2,11 @@
 layout: ../../layouts/SpellLayout.astro
 title: "Enlarge/Reduce"
 level: 2
-school: 'Transmutation'
-castingTime: '1 action'
-range: '30 feet'
-components: 'V, S, M (a pinch of powdered iron)'
-duration: 'Concentration, up to 1 minute'
+school: "Transmutation"
+castingTime: "1 action"
+range: "30 feet"
+components: "V, S, M (a pinch of powdered iron)"
+duration: "Concentration, up to 1 minute"
 ---
 
 You cause a creature or an object you can see within range to grow larger or smaller for the duration. Choose either a creature or an object that is neither worn nor carried. If the target is unwilling, it can make a Constitution saving throw. On a success, the spell has no effect.

@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/SpellLayout.astro
-title: 'Detect Evil and Good'
+title: "Detect Evil and Good"
 level: 1
-school: 'Divination'
-castingTime: '1 action'
-range: 'Self'
-components: 'V, S'
-duration: 'Concentation, up to 10 minutes'
+school: "Divination"
+castingTime: "1 action"
+range: "Self"
+components: "V, S"
+duration: "Concentation, up to 10 minutes"
 ---
 
 For the duration, you know if there is an aberration, celestial, elemental, fey, fiend, or undead within 30 feet of you, as well as where the creature is located. Similarly, you know if there is a place or object within 30 feet of you that has been magically consecrated or desecrated.
