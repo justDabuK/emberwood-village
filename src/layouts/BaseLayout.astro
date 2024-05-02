@@ -36,60 +36,61 @@ const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
       </div>
       <slot />
     </main>
-  </body><style>
-    html {
-      background-color: var(--body-bg);
-      font-family: system-ui;
-      color: var(--text-color);
-    }
-
-    body {
-      display: grid;
-      grid-template-columns: 15rem 1fr;
-      gap: 4rem;
-      min-height: 100vh;
-      overflow: auto;
-    }
-
-    img {
-      height: 4rem;
-    }
-
-    [data-icon] {
-      height: 4rem;
-      width: 4rem;
-    }
-
-    main {
-      padding: 2rem 0;
-      max-width: 80%;
-      overflow: auto;
-    }
-
-    .headline-container {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-
-      h2 {
-        margin: 0;
+    <style>
+      html {
+        background-color: var(--body-bg);
+        font-family: system-ui;
+        color: var(--text-color);
       }
-    }
 
-    @media screen and (max-width: 1000px) {
       body {
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr auto;
-        gap: 1rem;
-        max-height: 100vh;
+        grid-template-columns: 15rem 1fr;
+        gap: 4rem;
+        min-height: 100vh;
+        overflow: auto;
+      }
+
+      img {
+        height: 4rem;
+      }
+
+      [data-icon] {
+        height: 4rem;
+        width: 4rem;
       }
 
       main {
-        grid-row: 1;
-        max-width: 100%;
-        padding: 0.5rem;
+        padding: 2rem 0;
+        max-width: 80%;
+        overflow: auto;
       }
-    }
-  </style>
+
+      .headline-container {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        h2 {
+          margin: 0;
+        }
+      }
+
+      @media screen and (max-width: 1000px) {
+        body {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr auto;
+          gap: 1rem;
+          max-height: 100vh;
+        }
+
+        main {
+          grid-row: 1;
+          max-width: 100%;
+          padding: 0.5rem;
+        }
+      }
+    </style>
+  </body>
 </html>
