@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MagicItemLayout.astro
 title: "Purging Rod"
 rarity: "Uncommon"
 type: "Rod"

@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MagicItemListItem from "../../components/MagicItemListItem.astro";
+import { getCollection } from "astro:content";
 
-const allMagicItems = await Astro.glob("/src/pages/magic-items/*.md");
+const allMagicItems = await getCollection("magicItems");
 ---
 
 <BaseLayout title="Magic Items">

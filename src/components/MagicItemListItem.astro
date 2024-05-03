@@ -3,8 +3,8 @@ import MarkdownLink from "./MarkdownLink.astro";
 import { getMagicItemIconName } from "../scripts/getMagicItemIconName";
 
 type Props = {
-  url: string;
-  frontmatter: {
+  slug: string;
+  data: {
     title: string;
     rarity: boolean;
     type: string;
@@ -16,8 +16,8 @@ const { item } = Astro.props;
 ---
 
 <MarkdownLink
-  url={item.url}
-  title={item.frontmatter.title}
-  disabled={item.frontmatter.disabled}
-  icon={getMagicItemIconName(item.frontmatter.type)}
+  url={`/magicItems/${item.slug}`}
+  title={item.data.title}
+  disabled={item.data.disabled}
+  icon={getMagicItemIconName(item.data.type)}
 />

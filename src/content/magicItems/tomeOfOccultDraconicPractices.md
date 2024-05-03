@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MagicItemLayout.astro
 title: "Tome of Occult Draconic Practices"
 rarity: "Rarity Varies"
 type: "Wondrous Item"

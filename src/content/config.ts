@@ -9,7 +9,17 @@ const bestiaryCollection = defineCollection({
   }),
 });
 
+const magicItemCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    rarity: z.string(),
+    type: z.string(),
+  }),
+});
+
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   bestiary: bestiaryCollection,
+  magicItems: magicItemCollection,
 };

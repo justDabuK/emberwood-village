@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MagicItemLayout.astro
 title: "Delirium Rapier"
 rarity: "Rare"
 type: "Rapier"
