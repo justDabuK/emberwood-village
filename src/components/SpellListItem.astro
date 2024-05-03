@@ -3,37 +3,28 @@ import { achievedPrerequisites } from "../scripts/spellPrerequisites";
 import MarkdownLink from "./MarkdownLink.astro";
 import { getSpellSchoolIconName } from "../scripts/spellUtils";
 import InlineIcon from "./InlineIcon.astro";
+import { CollectionEntry } from "astro:content";
 
-type Props = {
-  url: string;
-  frontmatter: {
-    title: string;
-    ritual?: boolean;
-    disabled: boolean;
-    school: string;
-    prerequisites: string[];
-  };
-};
+type Props = CollectionEntry<"spells">;
 
 const { spell } = Astro.props;
 ---
 
 <MarkdownLink
-  url={spell.url}
-  title={spell.frontmatter.title}
-  disabled={spell.frontmatter.disabled}
-  icon={getSpellSchoolIconName(spell.frontmatter.school)}
+  url={`/spells/${spell.slug}`}
+  title={spell.data.title}
+  disabled={spell.data.disabled}
+  icon={getSpellSchoolIconName(spell.data.school)}
 >
   {
-    spell.frontmatter.ritual ? (
+    spell.data.ritual ? (
       <InlineIcon icon="pentagram.svg" size="1rem" slot="postfix" />
     ) : null
   }
   {
-    spell.frontmatter.prerequisites &&
-    spell.frontmatter.prerequisites.length > 0 ? (
+    spell.data.prerequisites && spell.data.prerequisites.length > 0 ? (
       <ul>
-        {spell.frontmatter.prerequisites.map((prerequisite) => (
+        {spell.data.prerequisites.map((prerequisite) => (
           <li>
             {achievedPrerequisites.includes(prerequisite)
               ? prerequisite

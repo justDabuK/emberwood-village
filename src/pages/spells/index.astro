@@ -1,22 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { MarkdownInstance } from "astro";
 import SpellListItem from "../../components/SpellListItem.astro";
-
+import { getCollection, type CollectionEntry } from "astro:content";
 const byTitle = (
-  a: MarkdownInstance<Record<string, unknown>>,
-  b: MarkdownInstance<Record<string, unknown>>,
+  a: CollectionEntry<"spells">,
+  b: CollectionEntry<"spells">,
 ): number => {
-  if (a.frontmatter.title < b.frontmatter.title) {
+  if (a.data.title < b.data.title) {
     return -1;
-  } else if (a.frontmatter.title > b.frontmatter.title) {
+  } else if (a.data.title > b.data.title) {
     return 1;
   } else {
     return 0;
   }
 };
 
-const allSpells = (await Astro.glob("/src/pages/spells/*.md")).sort(byTitle);
+const allSpells = (await getCollection("spells")).sort(byTitle);
 ---
 
 <BaseLayout title="Spells">

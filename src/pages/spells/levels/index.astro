@@ -1,15 +1,14 @@
 ---
-import { MarkdownInstance } from "astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SpellListItem from "../../../components/SpellListItem.astro";
+import { CollectionEntry, getCollection } from "astro:content";
 
-const allSpells = await Astro.glob("/src/pages/spells/*.md");
-const levelToSpellMap = new Map<
-  number,
-  MarkdownInstance<Record<string, unknown>>[]
->();
+const allSpells = await getCollection("spells");
+
+const levelToSpellMap = new Map<number, CollectionEntry<"spells">[]>();
+
 allSpells.forEach((spell) => {
-  const level = spell.frontmatter.level;
+  const level = spell.data.level;
   if (levelToSpellMap.has(level)) {
     levelToSpellMap.get(level).push(spell);
   } else {
@@ -18,17 +17,12 @@ allSpells.forEach((spell) => {
 });
 const sortedLevelToSpellMap = new Map([...levelToSpellMap.entries()].sort());
 
-const getGridRowSpanStyle = (
-  spells: MarkdownInstance<Record<string, unknown>>[],
-) => {
+const getGridRowSpanStyle = (spells: CollectionEntry<"spells">[]) => {
   const headlinOfset = 3;
   const numberOfSpells = spells.length;
   const numberOfPrerequisites = spells.reduce(
     (acc, spell) =>
-      acc +
-      (spell.frontmatter.prerequisites
-        ? spell.frontmatter.prerequisites.length
-        : 0),
+      acc + (spell.data.prerequisites ? spell.data.prerequisites.length : 0),
     0,
   );
 

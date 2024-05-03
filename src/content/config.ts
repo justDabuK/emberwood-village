@@ -1,7 +1,7 @@
-// Import utilities from `astro:content`
+import { number } from "astro/zod";
 import { z, defineCollection } from "astro:content";
+import { possiblePrerequisites } from "../scripts/spellPrerequisites.ts";
 
-// Define a `type` and `schema` for each collection
 const bestiaryCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -17,6 +17,7 @@ const downtimeCollection = defineCollection({
   }),
 });
 
+// TODO: make shop schema a reusable variable
 const establishmentCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -65,7 +66,45 @@ const shopCollection = defineCollection({
   }),
 });
 
-// Export a single `collections` object to register your collection(s)
+const spellCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    level: z.number(),
+    school: z.string(),
+    castingTime: z.string(),
+    range: z.string(),
+    components: z.string(),
+    duration: z.string(),
+    disabled: z.boolean().optional(),
+    prerequisites: z.array(z.nativeEnum(possiblePrerequisites)).optional(),
+    effect: z
+      .object({
+        1: z.string().optional(),
+        2: z.string().optional(),
+        3: z.string().optional(),
+        4: z.string().optional(),
+        5: z.string().optional(),
+        6: z.string().optional(),
+        7: z.string().optional(),
+        8: z.string().optional(),
+        9: z.string().optional(),
+        10: z.string().optional(),
+        11: z.string().optional(),
+        12: z.string().optional(),
+        13: z.string().optional(),
+        14: z.string().optional(),
+        15: z.string().optional(),
+        16: z.string().optional(),
+        17: z.string().optional(),
+        18: z.string().optional(),
+        19: z.string().optional(),
+        20: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
+
 export const collections = {
   bestiary: bestiaryCollection,
   downtime: downtimeCollection,
@@ -73,4 +112,5 @@ export const collections = {
   magicItems: magicItemCollection,
   misc: miscCollection,
   shops: shopCollection,
+  spells: spellCollection,
 };
