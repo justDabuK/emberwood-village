@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/DefaultLayout.astro
 title: "Fighting Pits of Buckledown Row"
 disabled: true
 ---

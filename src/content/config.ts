@@ -9,6 +9,14 @@ const bestiaryCollection = defineCollection({
   }),
 });
 
+const downtimeCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    disabled: z.boolean().optional(),
+  }),
+});
+
 const magicItemCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -21,5 +29,6 @@ const magicItemCollection = defineCollection({
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   bestiary: bestiaryCollection,
+  downtime: downtimeCollection,
   magicItems: magicItemCollection,
 };

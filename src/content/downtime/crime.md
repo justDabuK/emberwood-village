@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/DefaultLayout.astro
 title: "Crime"
 disabled: true
 ---

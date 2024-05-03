@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MarkdownLink from "../../components/MarkdownLink.astro";
+import { getCollection } from "astro:content";
 
-const allDowntimeActivities = await Astro.glob("/src/pages/downtime/*.md");
+const allDowntimeActivities = await getCollection("downtime");
 ---
 
 <BaseLayout title="Downtime">
@@ -12,9 +13,9 @@ const allDowntimeActivities = await Astro.glob("/src/pages/downtime/*.md");
     {
       allDowntimeActivities.map((activity) => (
         <MarkdownLink
-          url={activity.url}
-          title={activity.frontmatter.title}
-          disabled={activity.frontmatter.disabled}
+          url={`/downtime/${activity.slug}`}
+          title={activity.data.title}
+          disabled={activity.data.disabled}
         />
       ))
     }
