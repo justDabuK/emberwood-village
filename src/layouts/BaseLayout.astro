@@ -26,7 +26,6 @@ const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
     <ViewTransitions />
   </head>
   <body>
-    <!-- TODO: make the header appear below the content, when we are in mobile mode (like youtube, spotify, etc.)-->
     <Header />
     <main>
       <div class="headline-container">
@@ -46,7 +45,7 @@ const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
       body {
         display: grid;
         grid-template-columns: 15rem 1fr;
-        gap: 4rem;
+        gap: 1rem;
         min-height: 100vh;
         overflow: auto;
       }
@@ -61,8 +60,7 @@ const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
       }
 
       main {
-        padding: 2rem 0;
-        max-width: 80%;
+        padding: 1rem;
         overflow: auto;
       }
 

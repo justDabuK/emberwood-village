@@ -16,18 +16,6 @@ allSpells.forEach((spell) => {
   }
 });
 const sortedLevelToSpellMap = new Map([...levelToSpellMap.entries()].sort());
-
-const getGridRowSpanStyle = (spells: CollectionEntry<"spells">[]) => {
-  const headlinOfset = 3;
-  const numberOfSpells = spells.length;
-  const numberOfPrerequisites = spells.reduce(
-    (acc, spell) =>
-      acc + (spell.data.prerequisites ? spell.data.prerequisites.length : 0),
-    0,
-  );
-
-  return `grid-row: span ${headlinOfset + numberOfSpells + numberOfPrerequisites}`;
-};
 ---
 
 <BaseLayout title="Spells">
@@ -49,7 +37,7 @@ const getGridRowSpanStyle = (spells: CollectionEntry<"spells">[]) => {
   <div class="level-list-container">
     {
       Array.from(sortedLevelToSpellMap.entries()).map(([level, spells]) => (
-        <div class="card" style={getGridRowSpanStyle(spells)}>
+        <div class="card">
           <h3>{level === 0 ? "Cantrips" : `Level ${level}`}</h3>
           <ul>
             {spells.map((spell) => (
@@ -66,7 +54,6 @@ const getGridRowSpanStyle = (spells: CollectionEntry<"spells">[]) => {
   .level-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 1.75rem;
     padding: 1rem 0;
   }
 
