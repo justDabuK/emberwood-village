@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { type SpellSlots, TypeOfRest } from "../../scripts/cheatSheetTypes.ts";
-import type { MarkdownInstance } from "astro";
 import type { Spell } from "../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
-import { computed, type ComputedRef } from "vue";
+import { computed } from "vue";
 import type { CollectionEntry } from "astro:content";
 
 const props = defineProps<{

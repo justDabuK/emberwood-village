@@ -8,7 +8,6 @@ import {
 } from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
-import type { MarkdownInstance } from "astro";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getChainShirtArmorClass } from "../../scripts/armorClassUtils.ts";
 import { Spell } from "../../scripts/spellUtils.ts";

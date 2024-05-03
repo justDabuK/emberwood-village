@@ -1,4 +1,3 @@
-import { number } from "astro/zod";
 import { z, defineCollection } from "astro:content";
 import { possiblePrerequisites } from "../scripts/spellPrerequisites.ts";
 import { Spell, SpellSchool } from "../scripts/spellUtils.ts";
