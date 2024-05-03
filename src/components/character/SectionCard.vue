@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { Section } from "../../scripts/cheatSheetTypes.ts";
 import Usages from "./Usages.vue";
+import { computed } from "vue";
 
-defineProps<{
+const props = defineProps<{
   section: Section;
 }>();
 
@@ -14,11 +15,24 @@ const toggleModel = () => {
   }
   model.value = !model.value;
 };
+
+const optionalColorClass = computed(() => {
+  switch (props.section.title) {
+    case "Action":
+      return "action";
+    case "Bonus Action":
+      return "bonus-action";
+    case "Reaction":
+      return "reaction";
+    default:
+      return "";
+  }
+});
 </script>
 
 <template>
   <div
-    :class="`card section ${model ? 'used' : ''} ${model !== undefined ? 'cursor-pointer' : ''}`"
+    :class="`card section ${model ? 'used' : ''} ${model !== undefined ? 'cursor-pointer' : ''} ${optionalColorClass}`"
     @click="toggleModel"
   >
     <div class="section-title">
@@ -75,10 +89,31 @@ const toggleModel = () => {
 </template>
 
 <style>
-.used {
-  background-color: var(--body-bg);
-  color: var(--text-color-darker-1);
-  box-shadow: unset;
+.card {
+  --background-color: var(--card-bg);
+  background-color: color-mix(in srgb, var(--background-color), transparent);
+
+  &.action {
+    --background-color: var(--action-color);
+  }
+
+  &.bonus-action {
+    --background-color: var(--bonus-action-color);
+  }
+
+  &.reaction {
+    --background-color: var(--reaction-color);
+  }
+
+  &.used {
+    background-color: color-mix(
+      in srgb,
+      var(--background-color),
+      transparent 80%
+    );
+    color: var(--text-color-darker-1);
+    box-shadow: unset;
+  }
 }
 
 .cursor-pointer {

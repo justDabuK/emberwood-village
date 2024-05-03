@@ -54,6 +54,10 @@ li {
   --button-color-hover: oklch(55% 0.08 226.91);
   --button-color-active: oklch(44.81% 0.08 226.91);
 
+  --action-color: darkred;
+  --bonus-action-color: darkgoldenrod;
+  --reaction-color: darkblue;
+
   /* sizes */
   --size-4: 4px;
   --size-8: 8px;
