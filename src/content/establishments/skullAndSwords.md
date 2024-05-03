@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ShopLayout.astro
 title: "Skull & Swords"
 description: "Hier gibt es Alkohol und immer was zu sehen"
 columnStart: 32

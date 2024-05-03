@@ -17,6 +17,19 @@ const downtimeCollection = defineCollection({
   }),
 });
 
+const establishmentCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    columnStart: z.number(),
+    columnEnd: z.number(),
+    rowStart: z.number(),
+    rowEnd: z.number(),
+    icon: z.string(),
+  }),
+});
+
 const magicItemCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -26,9 +39,38 @@ const magicItemCollection = defineCollection({
   }),
 });
 
+const miscCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    columnStart: z.number(),
+    columnEnd: z.number(),
+    rowStart: z.number(),
+    rowEnd: z.number(),
+    icon: z.string(),
+  }),
+});
+
+const shopCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    columnStart: z.number(),
+    columnEnd: z.number(),
+    rowStart: z.number(),
+    rowEnd: z.number(),
+    icon: z.string(),
+  }),
+});
+
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   bestiary: bestiaryCollection,
   downtime: downtimeCollection,
+  establishments: establishmentCollection,
   magicItems: magicItemCollection,
+  misc: miscCollection,
+  shops: shopCollection,
 };

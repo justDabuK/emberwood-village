@@ -5,10 +5,11 @@ import MapLink from "../components/MapLink.astro";
 import { MarkdownInstance } from "astro";
 import { Image } from "astro:assets";
 import emberwoodVillageMap from "../assets/02_EMBERWOOD_VILLAGE_NOGRID.jpg";
+import { getCollection } from "astro:content";
 
-const allEstablishments = await Astro.glob("../pages/establishments/*.md");
-const allMisc = await Astro.glob("../pages/misc/*.md");
-const allShops = await Astro.glob("../pages/shops/*.md");
+const allEstablishments = await getCollection("establishments");
+const allMisc = await getCollection("misc");
+const allShops = await getCollection("shops");
 
 const getGridRowSpanStyle = (
   shops: MarkdownInstance<Record<string, unknown>>[],
@@ -19,19 +20,29 @@ const getGridRowSpanStyle = (
   <div class="map-container">
     <Image class="image" src={emberwoodVillageMap} alt="Map of Emberwood" />
     {
-      [...allEstablishments, ...allShops, ...allMisc]
+      [
+        ...allEstablishments.map((establishment) => ({
+          data: establishment.data,
+          url: `/establishments/${establishment.slug}`,
+        })),
+        ...allShops.map((shop) => ({
+          data: shop.data,
+          url: `/shops/${shop.slug}`,
+        })),
+        ...allMisc.map((misc) => ({
+          data: misc.data,
+          url: `/misc/${misc.slug}`,
+        })),
+      ]
         .filter(
           (establishment) =>
-            establishment.frontmatter.columnStart &&
-            establishment.frontmatter.columnEnd &&
-            establishment.frontmatter.rowStart &&
-            establishment.frontmatter.rowEnd,
+            establishment.data.columnStart &&
+            establishment.data.columnEnd &&
+            establishment.data.rowStart &&
+            establishment.data.rowEnd,
         )
         .map((establishment) => (
-          <MapLink
-            url={establishment.url}
-            frontmatter={establishment.frontmatter}
-          />
+          <MapLink url={establishment.url} frontmatter={establishment.data} />
         ))
     }
   </div>
@@ -44,10 +55,10 @@ const getGridRowSpanStyle = (
         {
           allShops.map((shop) => (
             <MarkdownLink
-              url={shop.url}
-              title={shop.frontmatter.title}
-              disabled={shop.frontmatter.disabled}
-              icon={shop.frontmatter.icon}
+              url={`/shops/${shop.slug}`}
+              title={shop.data.title}
+              disabled={shop.data.disabled}
+              icon={shop.data.icon}
             />
           ))
         }
@@ -60,10 +71,10 @@ const getGridRowSpanStyle = (
         {
           allEstablishments.map((establishment) => (
             <MarkdownLink
-              url={establishment.url}
-              title={establishment.frontmatter.title}
-              disabled={establishment.frontmatter.disabled}
-              icon={establishment.frontmatter.icon}
+              url={`/establishments/${establishment.slug}`}
+              title={establishment.data.title}
+              disabled={establishment.data.disabled}
+              icon={establishment.data.icon}
             />
           ))
         }
@@ -76,10 +87,10 @@ const getGridRowSpanStyle = (
         {
           allMisc.map((misc) => (
             <MarkdownLink
-              url={misc.url}
-              title={misc.frontmatter.title}
-              disabled={misc.frontmatter.disabled}
-              icon={misc.frontmatter.icon}
+              url={`/misc/${misc.slug}`}
+              title={misc.data.title}
+              disabled={misc.data.disabled}
+              icon={misc.data.icon}
             />
           ))
         }
@@ -108,7 +119,6 @@ const getGridRowSpanStyle = (
     display: grid;
     margin-top: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 1.75rem;
     overflow: auto;
   }
 

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ShopLayout.astro
 title: "Red Lion Hotel"
 description: "Edles Hotel"
 columnStart: 2

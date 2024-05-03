@@ -10,8 +10,8 @@ title: "Timeline"
 |                                | A night on the Road (first dreg encounter)                          |
 | _Arrival in Emberwood Village_ |                                                                     |
 | 1 day: Wednesday               | getting to know Emberwood Village                                   |
-|                                | first performance in [Gilded Lilly](/establishments/lilly)          |
-|                                | discovered teleport circle in [Lumennox Manor](/misc/lumennoxManor) |
+|                                | first performance in [Gilded Lilly](/src/content/establishments/lilly.md)          |
+|                                | discovered teleport circle in [Lumennox Manor](/src/content/misc/lumennoxManor.md) |
 | _Level up to 2_                |                                                                     |
 | 1 day: Thursday                | Delerium Hunt                                                       |
 |                                | made some delerium money                                            |

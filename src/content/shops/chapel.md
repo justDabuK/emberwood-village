@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ShopLayout.astro
 title: "Chapel of Saint Ardenna"
 description: "Hier kann man Spell scrolls und services der Cleric Spell list kaufen."
 icon: "fire.svg"

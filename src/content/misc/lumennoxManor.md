@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ShopLayout.astro
 title: "Lumennox Manor"
 description: "Lokales Geisterhaus"
 columnStart: 13

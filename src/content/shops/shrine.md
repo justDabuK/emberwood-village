@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ShopLayout.astro
 title: "Shrine of the Old Gods"
 description: "Hier kann man Spell scrolls und services der Druid Spell list kaufen, sowie Healing Potions"
 columnStart: -5

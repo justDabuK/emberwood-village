@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/ShopLayout.astro
 title: "Followers of the Leaking Needle"
 description: "Hier kann man magische Tattoos erwerben"
 columnStart: 3
