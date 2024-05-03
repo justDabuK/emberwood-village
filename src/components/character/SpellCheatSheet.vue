@@ -97,6 +97,19 @@ const isCostlySpell = (components: string) => {
     components.includes("gp")
   );
 };
+
+const getOptionalActionColor = (title: string) => {
+  switch (title) {
+    case "Action":
+      return "action";
+    case "Bonus Action":
+      return "bonus-action";
+    case "Reaction":
+      return "reaction";
+    default:
+      return "";
+  }
+};
 </script>
 
 <template>
@@ -134,7 +147,7 @@ const isCostlySpell = (components: string) => {
       <div
         v-for="spellSection in spellSectionList"
         :key="spellSection.title"
-        class="spell-section"
+        :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
       >
         <h2>{{ spellSection.title }}</h2>
         <div class="spell-section-spell-list">
@@ -200,6 +213,18 @@ const isCostlySpell = (components: string) => {
 
 <style scoped>
 .spell-cheat-sheet-container {
+  --concentration-color: color-mix(
+    in srgb,
+    oklch(76.99% 0.08 226.91) 20%,
+    var(--body-bg)
+  );
+
+  --cantrip-color: color-mix(
+    in srgb,
+    oklch(40% 0.032 304.82) 40%,
+    var(--body-bg)
+  );
+
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -220,6 +245,27 @@ const isCostlySpell = (components: string) => {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      border-radius: 10px;
+      padding: 1rem;
+
+      --background-color: transparent;
+      background-color: color-mix(
+        in srgb,
+        var(--background-color),
+        transparent 80%
+      );
+
+      &.action {
+        --background-color: var(--action-color);
+      }
+
+      &.bonus-action {
+        --background-color: var(--bonus-action-color);
+      }
+
+      &.reaction {
+        --background-color: var(--reaction-color);
+      }
 
       .spell-section-spell-list {
         display: grid;
@@ -231,7 +277,24 @@ const isCostlySpell = (components: string) => {
           display: flex;
           flex-direction: column;
           text-align: center;
+          background-color: var(--card-bg);
           color: var(--text-color);
+
+          &.concentration {
+            background-color: var(--concentration-color);
+
+            &.cantrip {
+              background: linear-gradient(
+                90deg,
+                var(--cantrip-color),
+                var(--concentration-color)
+              );
+            }
+          }
+
+          &.cantrip {
+            background-color: var(--cantrip-color);
+          }
 
           .spell-school-icon {
             position: absolute;
@@ -286,8 +349,6 @@ const isCostlySpell = (components: string) => {
     }
   }
 
-  --concentration-color: oklch(76.99% 0.08 226.91 / 0.2);
-  --cantrip-color: oklch(40% 0.032 304.82 / 0.4);
   .concentration {
     background-color: var(--concentration-color);
 
