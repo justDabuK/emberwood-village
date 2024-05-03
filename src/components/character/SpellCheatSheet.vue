@@ -4,35 +4,67 @@ import type { MarkdownInstance } from "astro";
 import type { Spell } from "../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
-import { computed } from "vue";
+import { computed, type ComputedRef } from "vue";
+import type { CollectionEntry } from "astro:content";
 
 const props = defineProps<{
-  allSpells: MarkdownInstance<Record<string, any>>[];
+  allSpells: CollectionEntry<"spells">[];
   typeOfRest: TypeOfRest;
   knownSpellNameList: Spell[];
   spellsSaveDiceCheck: number;
   spellAttackModifier: number;
-  casterLevel: number;
+  casterLevel:
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 17
+    | 18
+    | 19
+    | 20;
 }>();
 
 const spellSlots = defineModel<SpellSlots>("spellSlots", { required: true });
 const concentration = defineModel<boolean>("concentration");
-const currentSpellSlotLevel = computed(() => Object.keys(spellSlots.value)[0]);
+const currentSpellSlotLevel = computed(
+  () =>
+    Object.keys(spellSlots.value).map(Number)[0] as
+      | 1
+      | 2
+      | 3
+      | 4
+      | 5
+      | 6
+      | 7
+      | 8
+      | 9,
+);
 
 const knownSpellList = props.allSpells
-  .filter((spell) => props.knownSpellNameList.includes(spell.frontmatter.title))
-  .sort((a, b) => a.frontmatter.level - b.frontmatter.level);
+  .filter((spell) => props.knownSpellNameList.includes(spell.data.title))
+  .sort((a, b) => a.data.level - b.data.level);
 
-const isBonusActionSpell = (spell: MarkdownInstance<Record<string, any>>) =>
-  spell.frontmatter.castingTime.includes("bonus");
-const isReactionSpell = (spell: MarkdownInstance<Record<string, any>>) =>
-  spell.frontmatter.castingTime.includes("reaction");
-const isActionSpell = (spell: MarkdownInstance<Record<string, any>>) =>
-  spell.frontmatter.castingTime.includes("action") &&
+const isBonusActionSpell = (spell: CollectionEntry<"spells">) =>
+  spell.data.castingTime.includes("bonus");
+const isReactionSpell = (spell: CollectionEntry<"spells">) =>
+  spell.data.castingTime.includes("reaction");
+const isActionSpell = (spell: CollectionEntry<"spells">) =>
+  spell.data.castingTime.includes("action") &&
   !isBonusActionSpell(spell) &&
   !isReactionSpell(spell);
-const isRitualSpell = (spell: MarkdownInstance<Record<string, any>>) =>
-  spell.frontmatter.ritual;
+const isRitualSpell = (spell: CollectionEntry<"spells">) => spell.data.ritual;
 
 const bonusActionSpellList = knownSpellList.filter(isBonusActionSpell);
 const actionSpellList = knownSpellList.filter(isActionSpell);
@@ -109,57 +141,56 @@ const isCostlySpell = (components: string) => {
         <div class="spell-section-spell-list">
           <a
             v-for="spell in spellSection.spells"
-            :key="spell.frontmatter.title"
-            :href="spell.url"
+            :key="spell.data.title"
+            :href="`/spells/${spell.slug}`"
             :class="[
               'card',
               'spell',
-              spell.frontmatter.duration.includes('Concentration')
+              spell.data.duration.includes('Concentration')
                 ? 'concentration'
                 : '',
               'card',
               'spell',
-              spell.frontmatter.level === 0 ? 'cantrip' : '',
+              spell.data.level === 0 ? 'cantrip' : '',
             ]"
           >
             <SpellSchoolIcon
               class="spell-school-icon"
-              :spell-school="spell.frontmatter.school"
+              :spell-school="spell.data.school"
             />
             <SpellRangeIcon
               class="spell-range-icon"
-              :range="spell.frontmatter.range"
+              :range="spell.data.range"
             />
-            <p class="title">{{ spell.frontmatter.title }}</p>
+            <p class="title">{{ spell.data.title }}</p>
 
             <p
               v-if="
-                spell.frontmatter.level === 0 &&
-                spell.frontmatter.effect &&
-                spell.frontmatter.effect[casterLevel]
+                spell.data.level === 0 &&
+                spell.data.effect &&
+                spell.data.effect[casterLevel]
               "
             >
-              {{ spell.frontmatter.effect[casterLevel] }}
+              {{ spell.data.effect[casterLevel] }}
             </p>
             <p
               v-else-if="
-                spell.frontmatter.effect &&
-                spell.frontmatter.effect[currentSpellSlotLevel]
+                spell.data.effect && spell.data.effect[currentSpellSlotLevel]
               "
             >
-              {{ spell.frontmatter.effect[currentSpellSlotLevel] }}
+              {{ spell.data.effect[currentSpellSlotLevel] }}
             </p>
 
             <p
-              v-if="isCostlySpell(spell.frontmatter.components)"
+              v-if="isCostlySpell(spell.data.components)"
               :class="[
                 'cost',
-                spell.frontmatter.school.includes('Contaminated')
+                spell.data.school.includes('Contaminated')
                   ? 'contaminated'
                   : '',
               ]"
             >
-              {{ getCostlyComponent(spell.frontmatter.components) }}
+              {{ getCostlyComponent(spell.data.components) }}
             </p>
           </a>
         </div>

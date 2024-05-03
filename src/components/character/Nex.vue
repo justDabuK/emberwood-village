@@ -14,9 +14,10 @@ import { getChainShirtArmorClass } from "../../scripts/armorClassUtils.ts";
 import { Spell } from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
 import NoteSection from "./NoteSection.vue";
+import type { CollectionEntry } from "astro:content";
 
 defineProps<{
-  allSpells: MarkdownInstance<Record<string, any>>[];
+  allSpells: CollectionEntry<"spells">[];
 }>();
 
 const NEX_LEVEL = 4;

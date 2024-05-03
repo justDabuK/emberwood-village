@@ -1,6 +1,7 @@
 import { number } from "astro/zod";
 import { z, defineCollection } from "astro:content";
 import { possiblePrerequisites } from "../scripts/spellPrerequisites.ts";
+import { Spell, SpellSchool } from "../scripts/spellUtils.ts";
 
 const bestiaryCollection = defineCollection({
   type: "content",
@@ -69,14 +70,15 @@ const shopCollection = defineCollection({
 const spellCollection = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string(),
+    title: z.nativeEnum(Spell),
     level: z.number(),
-    school: z.string(),
+    school: z.nativeEnum(SpellSchool),
     castingTime: z.string(),
     range: z.string(),
     components: z.string(),
     duration: z.string(),
     disabled: z.boolean().optional(),
+    ritual: z.boolean().optional(),
     prerequisites: z.array(z.nativeEnum(possiblePrerequisites)).optional(),
     effect: z
       .object({

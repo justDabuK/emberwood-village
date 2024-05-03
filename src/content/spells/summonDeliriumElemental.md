@@ -1,5 +1,5 @@
 ---
-title: "Summon Delerium Elemental"
+title: "Summon Delirium Elemental"
 level: 4
 school: "Contaminated Conjuration"
 castingTime: "1 action"

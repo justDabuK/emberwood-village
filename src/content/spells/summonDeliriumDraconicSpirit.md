@@ -1,5 +1,5 @@
 ---
-title: "Summon Delerium Draconic Spirit"
+title: "Summon Delirium Draconic Spirit"
 level: 5
 school: "Contaminated Conjuration"
 castingTime: "1 action"

@@ -1,14 +1,5 @@
 <script setup lang="ts">
-enum SpellSchool {
-  Abjuration = "Abjuration",
-  Conjuration = "Conjuration",
-  Divination = "Divination",
-  Enchantment = "Enchantment",
-  Evocation = "Evocation",
-  Illusion = "Illusion",
-  Necromancy = "Necromancy",
-  Transmutation = "Transmutation",
-}
+import { SpellSchool } from "../../scripts/spellUtils.ts";
 
 defineProps<{
   spellSchool: SpellSchool;
