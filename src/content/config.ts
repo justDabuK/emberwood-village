@@ -17,18 +17,29 @@ const downtimeCollection = defineCollection({
   }),
 });
 
-// TODO: make shop schema a reusable variable
+const shopSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  columnStart: z.number(),
+  columnEnd: z.number(),
+  rowStart: z.number(),
+  rowEnd: z.number(),
+  icon: z.string(),
+});
+
 const establishmentCollection = defineCollection({
   type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    columnStart: z.number(),
-    columnEnd: z.number(),
-    rowStart: z.number(),
-    rowEnd: z.number(),
-    icon: z.string(),
-  }),
+  schema: shopSchema,
+});
+
+const miscCollection = defineCollection({
+  type: "content",
+  schema: shopSchema,
+});
+
+const shopCollection = defineCollection({
+  type: "content",
+  schema: shopSchema,
 });
 
 const magicItemCollection = defineCollection({
@@ -37,32 +48,6 @@ const magicItemCollection = defineCollection({
     title: z.string(),
     rarity: z.string(),
     type: z.string(),
-  }),
-});
-
-const miscCollection = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    columnStart: z.number(),
-    columnEnd: z.number(),
-    rowStart: z.number(),
-    rowEnd: z.number(),
-    icon: z.string(),
-  }),
-});
-
-const shopCollection = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    columnStart: z.number(),
-    columnEnd: z.number(),
-    rowStart: z.number(),
-    rowEnd: z.number(),
-    icon: z.string(),
   }),
 });
 
