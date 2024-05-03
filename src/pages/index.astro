@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import MarkdownLink from "../components/MarkdownLink.astro";
 import MapLink from "../components/MapLink.astro";
-import { MarkdownInstance } from "astro";
 import { Image } from "astro:assets";
 import emberwoodVillageMap from "../assets/02_EMBERWOOD_VILLAGE_NOGRID.jpg";
 import { getCollection } from "astro:content";
@@ -10,10 +9,6 @@ import { getCollection } from "astro:content";
 const allEstablishments = await getCollection("establishments");
 const allMisc = await getCollection("misc");
 const allShops = await getCollection("shops");
-
-const getGridRowSpanStyle = (
-  shops: MarkdownInstance<Record<string, unknown>>[],
-) => `grid-row: span ${3 + shops.length}`;
 ---
 
 <BaseLayout title="Emberwood Village">
@@ -47,9 +42,8 @@ const getGridRowSpanStyle = (
     }
   </div>
 
-  <!-- Todo: use icon prop for below links (need to fix the size)-->
   <div class="shop-list">
-    <div class="card" style={getGridRowSpanStyle(allShops)}>
+    <div class="card">
       <h3>Shops</h3>
       <ul>
         {
@@ -57,7 +51,6 @@ const getGridRowSpanStyle = (
             <MarkdownLink
               url={`/shops/${shop.slug}`}
               title={shop.data.title}
-              disabled={shop.data.disabled}
               icon={shop.data.icon}
             />
           ))
@@ -65,7 +58,7 @@ const getGridRowSpanStyle = (
       </ul>
     </div>
 
-    <div class="card" style={getGridRowSpanStyle(allEstablishments)}>
+    <div class="card">
       <h3>Hotels, Bars und Restaurants</h3>
       <ul>
         {
@@ -73,7 +66,6 @@ const getGridRowSpanStyle = (
             <MarkdownLink
               url={`/establishments/${establishment.slug}`}
               title={establishment.data.title}
-              disabled={establishment.data.disabled}
               icon={establishment.data.icon}
             />
           ))
@@ -81,7 +73,7 @@ const getGridRowSpanStyle = (
       </ul>
     </div>
 
-    <div class="card" style={getGridRowSpanStyle(allMisc)}>
+    <div class="card">
       <h3>Anderweitig interessante Orte</h3>
       <ul>
         {
@@ -89,7 +81,6 @@ const getGridRowSpanStyle = (
             <MarkdownLink
               url={`/misc/${misc.slug}`}
               title={misc.data.title}
-              disabled={misc.data.disabled}
               icon={misc.data.icon}
             />
           ))
