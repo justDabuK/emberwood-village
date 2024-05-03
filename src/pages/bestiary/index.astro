@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MarkdownLink from "../../components/MarkdownLink.astro";
+import { getCollection } from "astro:content";
 
-const allBeasts = await Astro.glob("/src/pages/bestiary/*.md");
+const allBeasts = await getCollection("bestiary");
 ---
 
 <!-- TODO: add
@@ -22,7 +23,10 @@ const allBeasts = await Astro.glob("/src/pages/bestiary/*.md");
   <ul>
     {
       allBeasts.map((beast) => (
-        <MarkdownLink url={beast.url} title={beast.frontmatter.title} />
+        <MarkdownLink
+          url={`/bestiary/${beast.slug}/`}
+          title={beast.data.title}
+        />
       ))
     }
   </ul>
