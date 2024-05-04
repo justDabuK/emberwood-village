@@ -104,7 +104,7 @@ const defaultCreatureList: Creature[] = [
             title: "2 Weapon Attacks (Dual Wielder)",
             dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
             items: [
-              { name: "<insert rapier name>", dice: `1d8+1d8+${MODIFIER.DEX}` },
+              { name: "Schimmel Pimmel", dice: `1d8+1d8+${MODIFIER.DEX}` },
               { name: "Shortsword", dice: `1d6+${MODIFIER.DEX}` },
             ],
           },
@@ -140,8 +140,8 @@ const defaultCreatureList: Creature[] = [
             description: "Dash, Disengage, or Hide",
           },
           {
-            title: "Activate <insert rapier name>",
-            description: "see <insert rapier name> section",
+            title: "Activate Schimmel Pimmel",
+            description: "see Schimmel Pimmel section",
           },
         ],
       },
@@ -168,7 +168,11 @@ const defaultCreatureList: Creature[] = [
             description: "(6 Felder)",
           },
           {
-            title: "Feline Agility",
+            title: "Feline Agility", // TODO: make this abhakable
+            usages: {
+              flags: [...Array(1)].fill(false),
+              typeOfRest: TypeOfRest.SHORT,
+            },
             description:
               "Double movement speed for one turn, reactivates if 0 movement on 1 turn",
           },
@@ -198,7 +202,7 @@ const defaultCreatureList: Creature[] = [
         ],
       },
       {
-        title: "<insert rapier name>",
+        title: "Schimmel Pimmel",
         description:
           "You can use a bonus action to speak its name, causing it to set its appareance for 1 minute. Roll a d6 to determine the effect",
         subsections: [
