@@ -86,7 +86,7 @@ export enum TypeOfRest {
 export type UsagesPerRest = {
   flags: boolean[];
   description?: string;
-  typeOfRest: TypeOfRest;
+  typeOfRest?: TypeOfRest;
 };
 
 export type Item = {

@@ -168,10 +168,9 @@ const defaultCreatureList: Creature[] = [
             description: "(6 Felder)",
           },
           {
-            title: "Feline Agility", // TODO: make this abhakable
+            title: "Feline Agility",
             usages: {
-              flags: [...Array(1)].fill(false),
-              typeOfRest: TypeOfRest.SHORT,
+              flags: [false],
             },
             description:
               "Double movement speed for one turn, reactivates if 0 movement on 1 turn",
