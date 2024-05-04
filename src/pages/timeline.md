@@ -36,4 +36,4 @@ title: "Timeline"
 | 1 day: Wednesday               | Adventure time with Panin Dias                                                     |
 |                                | Fight with Lemmington against shadowy dregs                                        |
 |                                | Caspian duel over a delerium dragon wyrmling and a mutated Troll                   |
-|                                | The rise of Jazz                                                                   |
+|                                | Jazz: The awakening                                                                |
