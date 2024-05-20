@@ -154,8 +154,8 @@ const defaultNexCreatureList: Creature[] = [
   {
     name: "Nex",
     hitPoints: {
-      current: (5 + MODIFIER.CON) * NEX_LEVEL,
-      max: (5 + MODIFIER.CON) * NEX_LEVEL,
+      current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (NEX_LEVEL - 1),
+      max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (NEX_LEVEL - 1),
       temporary: 0,
       hitDice: {
         flags: [...Array(NEX_LEVEL)].fill(false),

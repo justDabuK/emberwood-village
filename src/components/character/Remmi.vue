@@ -80,8 +80,8 @@ const defaultCreatureList: Creature[] = [
   {
     name: "Remmi",
     hitPoints: {
-      current: (5 + MODIFIER.CON) * LEVEL,
-      max: (5 + MODIFIER.CON) * LEVEL,
+      current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
+      max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
       temporary: 0,
       hitDice: {
         flags: [...Array(LEVEL)].fill(false),
