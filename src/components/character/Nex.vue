@@ -278,7 +278,7 @@ const defaultNexCreatureList: Creature[] = [
     ],
   },
   {
-    name: "Bernhard",
+    name: "Bernadette",
     hitPoints: {
       current: 5 + 5 * NEX_LEVEL,
       max: 5 + 5 * NEX_LEVEL,
