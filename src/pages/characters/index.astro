@@ -6,6 +6,7 @@ import jyzznProfilePicture from "../../assets/jyzzn-profile-picture.png";
 import remmiProfilePicture from "../../assets/remmi-profile-picture.jpg";
 import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
 import hopperProfilePicture from "../../assets/hopper.jpeg";
+import johanProfilePicture from "../../assets/Johan.jpeg";
 ---
 
 <BaseLayout title="Characters">
@@ -68,6 +69,21 @@ import hopperProfilePicture from "../../assets/hopper.jpeg";
             style={`view-transition-name: ${sanitizeTitle("Hopper")}`}
         >
           Hopper
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="/characters/johan">
+        <Image
+            src={johanProfilePicture}
+            alt="Johan profile picture"
+            class="profile-picture"
+        />
+        <div
+            class="character-name"
+            style={`view-transition-name: ${sanitizeTitle("Johan")}`}
+        >
+          Johan
         </div>
       </a>
     </div>
