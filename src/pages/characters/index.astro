@@ -9,6 +9,8 @@ import nexProfilePicture from "../../assets/nex.jpg";
 import hopperProfilePicture from "../../assets/hopper.jpeg";
 import johanProfilePicture from "../../assets/Johan.jpeg";
 import mustafaProfilePicture from "../../assets/mustafa.png";
+import zaraProfilePicture from "../../assets/Zara.jpeg";
+import barbProfilePicture from "../../assets/barb.jpg";
 ---
 
 <BaseLayout title="Characters">
@@ -101,6 +103,36 @@ import mustafaProfilePicture from "../../assets/mustafa.png";
           style={`view-transition-name: ${sanitizeTitle("Mustafa")}`}
         >
           Mustafa
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="/characters/zara">
+        <Image
+          src={zaraProfilePicture}
+          alt="Zara profile picture"
+          class="profile-picture"
+        />
+        <div
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Zara")}`}
+        >
+          Zara
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="/characters/barb">
+        <Image
+          src={barbProfilePicture}
+          alt="Barb profile picture"
+          class="profile-picture"
+        />
+        <div
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Barb")}`}
+        >
+          Barb
         </div>
       </a>
     </div>
