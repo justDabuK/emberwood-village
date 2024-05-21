@@ -5,8 +5,10 @@ import { Image } from "astro:assets";
 import jyzznProfilePicture from "../../assets/jyzzn-profile-picture.png";
 import remmiProfilePicture from "../../assets/remmi-profile-picture.jpg";
 import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
+import nexProfilePicture from "../../assets/nex.jpg";
 import hopperProfilePicture from "../../assets/hopper.jpeg";
 import johanProfilePicture from "../../assets/Johan.jpeg";
+import mustafaProfilePicture from "../../assets/mustafa.png";
 ---
 
 <BaseLayout title="Characters">
@@ -15,7 +17,7 @@ import johanProfilePicture from "../../assets/Johan.jpeg";
     <div class="card">
       <a href="/characters/nex">
         <Image
-          src={dominikProfilePicture}
+          src={nexProfilePicture}
           alt="Nex profile picture"
           class="profile-picture"
         />
@@ -60,13 +62,13 @@ import johanProfilePicture from "../../assets/Johan.jpeg";
     <div class="card">
       <a href="/characters/hopper">
         <Image
-            src={hopperProfilePicture}
-            alt="Hopper profile picture"
-            class="profile-picture"
+          src={hopperProfilePicture}
+          alt="Hopper profile picture"
+          class="profile-picture"
         />
         <div
-            class="character-name"
-            style={`view-transition-name: ${sanitizeTitle("Hopper")}`}
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Hopper")}`}
         >
           Hopper
         </div>
@@ -75,15 +77,30 @@ import johanProfilePicture from "../../assets/Johan.jpeg";
     <div class="card">
       <a href="/characters/johan">
         <Image
-            src={johanProfilePicture}
-            alt="Johan profile picture"
-            class="profile-picture"
+          src={johanProfilePicture}
+          alt="Johan profile picture"
+          class="profile-picture"
         />
         <div
-            class="character-name"
-            style={`view-transition-name: ${sanitizeTitle("Johan")}`}
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Johan")}`}
         >
           Johan
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="/characters/mustafa">
+        <Image
+          src={mustafaProfilePicture}
+          alt="Mustafa profile picture"
+          class="profile-picture"
+        />
+        <div
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Mustafa")}`}
+        >
+          Mustafa
         </div>
       </a>
     </div>
