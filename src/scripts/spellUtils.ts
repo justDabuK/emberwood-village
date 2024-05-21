@@ -1,3 +1,5 @@
+import type { SpellSlots } from "./cheatSheetTypes.ts";
+
 export const getSpellSchoolIconName = (school: string) => {
   if (school.startsWith("Contaminated")) {
     return "deliriumCrystal.png";
@@ -85,7 +87,7 @@ export enum Spell {
   MelfSAcidArrow = "Melf's Acid Arrow",
   Mending = "Mending",
   Message = "Message",
-  MinorIllusion = "MinorIllusion",
+  MinorIllusion = "Minor Illusion",
   MistyStep = "Misty Step",
   NeutralizingField = "Neutralizing Field",
   OctarineSpray = "Octarine Spray",
@@ -149,3 +151,375 @@ export enum SpellSchool {
   ContaminatedNecromancy = "Contaminated Necromancy",
   ContaminatedTransmutation = "Contaminated Transmutation",
 }
+
+export const getWizardSpellSlots = (level: number): SpellSlots => {
+  switch (level) {
+    case 1:
+      return {
+        1: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+      };
+    case 2:
+      return {
+        1: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+      };
+    case 3:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+      };
+    case 4:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+      };
+    case 5:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+      };
+    case 6:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+      };
+    case 7:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+    case 8:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+      };
+    case 9:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+    case 10:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+      };
+    case 11:
+    case 12:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        6: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+    case 13:
+    case 14:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        6: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        7: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+    case 15:
+    case 16:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        6: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        7: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        8: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+    case 17:
+    case 18:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        6: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        7: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        8: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        9: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+    case 19:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        6: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        7: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        8: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        9: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+    case 20:
+      return {
+        1: {
+          flags: [...Array(4)].fill(false),
+          max: 4,
+        },
+        2: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        3: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        4: {
+          flags: [...Array(3)].fill(false),
+          max: 3,
+        },
+        5: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        6: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        7: {
+          flags: [...Array(2)].fill(false),
+          max: 2,
+        },
+        8: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+        9: {
+          flags: [...Array(1)].fill(false),
+          max: 1,
+        },
+      };
+
+    default:
+      throw new Error(`Level ${LEVEL} out of bounds`);
+  }
+};

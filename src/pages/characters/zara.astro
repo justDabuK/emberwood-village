@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Zara from "../../components/character/Zara.vue";
+import { getCollection } from "astro:content";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Zara" icon="Zara.jpeg" iconCover>
+  <Zara client:load allSpells={allSpells} />
+</BaseLayout>

@@ -54,8 +54,8 @@ export const getPlateArmorClass = () => {
 };
 
 export const getUnarmoredDefenseArmorClass = (
-    firstModifier: number,
-    secondModifier: number,
+  firstModifier: number,
+  secondModifier = 0,
 ) => {
   return 10 + firstModifier + secondModifier;
 };
