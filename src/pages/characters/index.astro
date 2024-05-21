@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import jyzznProfilePicture from "../../assets/jyzzn-profile-picture.png";
 import remmiProfilePicture from "../../assets/remmi-profile-picture.jpg";
 import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
+import hopperProfilePicture from "../../assets/hopper.jpeg";
 ---
 
 <BaseLayout title="Characters">
@@ -52,6 +53,21 @@ import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
           style={`view-transition-name: ${sanitizeTitle("Jyzzn")}`}
         >
           Jyzzn
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="/characters/hopper">
+        <Image
+            src={hopperProfilePicture}
+            alt="Hopper profile picture"
+            class="profile-picture"
+        />
+        <div
+            class="character-name"
+            style={`view-transition-name: ${sanitizeTitle("Hopper")}`}
+        >
+          Hopper
         </div>
       </a>
     </div>
