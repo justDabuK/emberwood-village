@@ -12,6 +12,7 @@ import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
 
+// TODO: decouple dynamic data from static data
 const JAZZ_LEVEL = 4;
 const JAZZ_PROFICIENCY_BONUS = 2;
 const JAZZ_NUMBER_OF_RAGES = 3;
