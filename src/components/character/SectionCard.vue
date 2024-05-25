@@ -79,8 +79,14 @@ const optionalColorClass = computed(() => {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in section.table.rows" :key="row[0]">
-            <td v-for="cell in row" :key="cell">{{ cell }}</td>
+          <tr
+            v-for="row in section.table.rows"
+            :key="row.content[0]"
+            :style="
+              row.backgroundColor ? `background: ${row.backgroundColor}` : ''
+            "
+          >
+            <td v-for="cell in row.content" :key="cell">{{ cell }}</td>
           </tr>
         </tbody>
       </table>

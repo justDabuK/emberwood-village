@@ -114,18 +114,21 @@ const defaultJazzCreatureList: Creature[] = [
             ],
           },
           {
-            title: "Octarine Breath Weapon",
+            title: "Breath Weapon",
             usages: {
               flags: [...Array(JAZZ_PROFICIENCY_BONUS)].fill(false),
               typeOfRest: TypeOfRest.LONG,
             },
-            description: `see Octarine Breath Weapon`,
-          },
-          {
-            title: "Dragon Fear",
-            dice: `DC ${8 + JAZZ_PROFICIENCY_BONUS + MODIFIER.CHA} WIS save`,
-            description:
-              "creatures within 30ft.(6 Felder), frightened for 1 minute if fail, can repeat save when taking damage",
+            items: [
+              {
+                name: "Octarine Breath Weapon (15 ft.)",
+                dice: `DC ${8 + MODIFIER.CON + JAZZ_PROFICIENCY_BONUS} DEX save`,
+              },
+              {
+                name: "Dragon Fear (30 ft.)",
+                dice: `DC ${8 + JAZZ_PROFICIENCY_BONUS + MODIFIER.CHA} WIS save`,
+              },
+            ],
           },
           {
             title: "Coiling Grasp Tattoo",
@@ -251,30 +254,49 @@ const defaultJazzCreatureList: Creature[] = [
         table: {
           headers: ["d6", "effect"],
           rows: [
-            [
-              "1",
-              `The target takes ${breathWeaponDamageDiceNumber()}d10 psychic damage on a failed save, or half as much damage on a success`,
-            ],
-            [
-              "2",
-              `The target takes ${breathWeaponDamageDiceNumber()}d10 necrotic damage on a failed save, or half as much damage on a success`,
-            ],
-            [
-              "3",
-              `The target takes ${breathWeaponDamageDiceNumber()}d10 force damage on a failed save, or half as much damage on a success`,
-            ],
-            [
-              "4",
-              `The target takes ${breathWeaponDamageDiceNumber()}d10 radiant damage on a failed save, or half as much damage on a success`,
-            ],
-            [
-              "5",
-              `The target takes ${breathWeaponDamageDiceNumber()}d10 thunder damage on a failed save, or half as much damage on a success`,
-            ],
-            [
-              "6",
-              "The target is struck by an additional ray. Roll on this table twice more. There’s no limit to how many additional rays can strike a single creature in this manner",
-            ],
+            {
+              content: [
+                "1",
+                `The target takes ${breathWeaponDamageDiceNumber()}d10 psychic damage on a failed save, or half as much damage on a success`,
+              ],
+              backgroundColor: "darkgreen",
+            },
+            {
+              content: [
+                "2",
+                `The target takes ${breathWeaponDamageDiceNumber()}d10 necrotic damage on a failed save, or half as much damage on a success`,
+              ],
+              backgroundColor: "darkgoldenrod",
+            },
+            {
+              content: [
+                "3",
+                `The target takes ${breathWeaponDamageDiceNumber()}d10 force damage on a failed save, or half as much damage on a success`,
+              ],
+              backgroundColor: "purple",
+            },
+            {
+              content: [
+                "4",
+                `The target takes ${breathWeaponDamageDiceNumber()}d10 radiant damage on a failed save, or half as much damage on a success`,
+              ],
+              backgroundColor: "grey",
+            },
+            {
+              content: [
+                "5",
+                `The target takes ${breathWeaponDamageDiceNumber()}d10 thunder damage on a failed save, or half as much damage on a success`,
+              ],
+              backgroundColor: "darkblue",
+            },
+            {
+              content: [
+                "6",
+                "The target is struck by an additional ray. Roll on this table twice more. There’s no limit to how many additional rays can strike a single creature in this manner",
+              ],
+              backgroundColor:
+                "linear-gradient(45deg, darkgreen, darkgoldenrod, purple, grey, darkblue)",
+            },
           ],
         },
       },

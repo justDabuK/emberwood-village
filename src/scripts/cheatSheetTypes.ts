@@ -66,7 +66,7 @@ export type Section = {
   description?: string;
   table?: {
     headers: string[];
-    rows: string[][];
+    rows: { content: string[]; backgroundColor?: string }[];
   };
 };
 

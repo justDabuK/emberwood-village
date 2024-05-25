@@ -218,30 +218,49 @@ const defaultCreatureList: Creature[] = [
         table: {
           headers: ["d6", "effect"],
           rows: [
-            [
-              "1",
-              "The sword takes the form of a green emerald and deals an extra 1d8 psychic damage",
-            ],
-            [
-              "2",
-              "The sword takes the form of a yellow topaz and deals an extra 1d8 necrotic damage",
-            ],
-            [
-              "3",
-              "The sword takes the form of a purple amathyst and deals an extra 1d8 force damage",
-            ],
-            [
-              "4",
-              "The sword takes the form of a white crystal and deals an extra 1d8 radiant damage",
-            ],
-            [
-              "5",
-              "The sword takes the form of a blue saphire and deals an extra 1d8 thunder damage",
-            ],
-            [
-              "6",
-              "The sword takes on two forms. Roll on this table twice more. There’s no limit to how many additional colors the sword can take on in this manner",
-            ],
+            {
+              content: [
+                "1",
+                "The sword takes the form of a green emerald and deals an extra 1d8 psychic damage",
+              ],
+              backgroundColor: "darkgreen",
+            },
+            {
+              content: [
+                "2",
+                "The sword takes the form of a yellow topaz and deals an extra 1d8 necrotic damage",
+              ],
+              backgroundColor: "darkgoldenrod",
+            },
+            {
+              content: [
+                "3",
+                "The sword takes the form of a purple amathyst and deals an extra 1d8 force damage",
+              ],
+              backgroundColor: "purple",
+            },
+            {
+              content: [
+                "4",
+                "The sword takes the form of a white crystal and deals an extra 1d8 radiant damage",
+              ],
+              backgroundColor: "grey",
+            },
+            {
+              content: [
+                "5",
+                "The sword takes the form of a blue saphire and deals an extra 1d8 thunder damage",
+              ],
+              backgroundColor: "darkblue",
+            },
+            {
+              content: [
+                "6",
+                "The sword takes on two forms. Roll on this table twice more. There’s no limit to how many additional colors the sword can take on in this manner",
+              ],
+              backgroundColor:
+                "linear-gradient(45deg, darkgreen, darkgoldenrod, purple, grey, darkblue)",
+            },
           ],
         },
       },
