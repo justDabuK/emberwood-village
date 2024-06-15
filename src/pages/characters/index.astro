@@ -4,13 +4,13 @@ import { sanitizeTitle } from "../../scripts/sanitizeTitle";
 import { Image } from "astro:assets";
 import jyzznProfilePicture from "../../assets/jyzzn-profile-picture.png";
 import remmiProfilePicture from "../../assets/remmi-profile-picture.jpg";
-import dominikProfilePicture from "../../assets/dominik-profile-picture.jpg";
 import nexProfilePicture from "../../assets/nex.jpg";
 import hopperProfilePicture from "../../assets/hopper.jpeg";
 import johanProfilePicture from "../../assets/Johan.jpeg";
 import mustafaProfilePicture from "../../assets/mustafa.png";
 import zaraProfilePicture from "../../assets/Zara.jpeg";
 import barbProfilePicture from "../../assets/barb.jpg";
+import otaggProfilePicture from "../../assets/otagg.jpg";
 ---
 
 <BaseLayout title="Characters">
@@ -133,6 +133,21 @@ import barbProfilePicture from "../../assets/barb.jpg";
           style={`view-transition-name: ${sanitizeTitle("Barb")}`}
         >
           Barb
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="/characters/otagg">
+        <Image
+          src={otaggProfilePicture}
+          alt="Otagg profile picture"
+          class="profile-picture"
+        />
+        <div
+          class="character-name"
+          style={`view-transition-name: ${sanitizeTitle("Otagg")}`}
+        >
+          Otagg
         </div>
       </a>
     </div>
