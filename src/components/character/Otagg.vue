@@ -92,8 +92,8 @@ const defaultCreatureList: Creature[] = [
             dice: `d20+${Math.max(MODIFIER.DEX, MODIFIER.STR) + PROFICIENCY_BONUS}`,
             items: [
               {
-                name: "Quarterstaff (10 ft.)",
-                dice: `1d8+${Math.max(MODIFIER.DEX, MODIFIER.STR)}`,
+                name: "Shortsword",
+                dice: `1d6+${Math.max(MODIFIER.DEX, MODIFIER.STR)}`,
               },
               {
                 name: "Unarmed Strike",
@@ -266,10 +266,7 @@ const notesStorage = useStorage<string>(
     "- waterskin\n" +
     "- 50 ft. of hempen rope\n" +
     "- 10 darts\n" +
-    "- bottle of black ink\n" +
-    "- quill\n" +
-    "- small knife\n" +
-    "- letter from dead colleague posing a question you have not yet been able to answer\n" +
+    "- healer's kit\n" +
     "- common clothes\n" +
     "- 10 gp",
 );
