@@ -58,10 +58,13 @@ export enum Spell {
   DetectEvilAndGood = "Detect Evil and Good",
   DetectMagic = "Detect Magic",
   DetectPoisonAndDisease = "Detect Poison and Disease",
+  Druidcraft = "Druidcraft",
   EarthTremor = "Earth Tremor",
   EnhanceAbility = "Enhance Ability",
   EnlargeReduce = "Enlarge/Reduce",
+  Entangle = "Entangle",
   Envenom = "Envenom",
+  FaerieFire = "Faerie Fire",
   FalseLife = "False Life",
   FeatherFall = "Feather Fall",
   FindFamiliar = "Find Familiar",
@@ -92,6 +95,7 @@ export enum Spell {
   Message = "Message",
   MinorIllusion = "Minor Illusion",
   MistyStep = "Misty Step",
+  Moonbeam = "Moonbeam",
   NeutralizingField = "Neutralizing Field",
   OctarineSpray = "Octarine Spray",
   OctarineSword = "Octarine Sword",
@@ -126,6 +130,7 @@ export enum Spell {
   TashaSCausticBrew = "Tasha's Caustic Brew",
   TenserSFloatingDisk = "Tenser's Floating Disk",
   Thaumaturgy = "Thaumaturgy",
+  ThornWhip = "Thorn Whip",
   Thunderwave = "Thunderwave",
   ToxicShield = "Toxic Shield",
   UnbindGravity = "Unbind Gravity",
@@ -156,7 +161,7 @@ export enum SpellSchool {
   ContaminatedTransmutation = "Contaminated Transmutation",
 }
 
-export const getWizardSpellSlots = (level: number): SpellSlots => {
+export const getFullCasterSpellSlots = (level: number): SpellSlots => {
   switch (level) {
     case 1:
       return convertToSpellSlots([2]);

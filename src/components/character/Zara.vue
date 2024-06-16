@@ -14,7 +14,7 @@ import {
   getChainShirtArmorClass,
   getUnarmoredDefenseArmorClass,
 } from "../../scripts/armorClassUtils.ts";
-import { getWizardSpellSlots, Spell } from "../../scripts/spellUtils.ts";
+import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
@@ -135,7 +135,7 @@ const defaultCreatureList: Creature[] = [
     initiative: MODIFIER.DEX,
     inspiration: false,
     magic: {
-      spellSlots: getWizardSpellSlots(LEVEL),
+      spellSlots: getFullCasterSpellSlots(LEVEL),
       refresh: TypeOfRest.LONG,
       concentration: false,
     },

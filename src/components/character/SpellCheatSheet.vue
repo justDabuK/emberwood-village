@@ -94,9 +94,9 @@ const isCostlySpell = (components: string) => {
   return (
     components.includes("delerium") ||
     components.includes("gold") ||
-    components.includes("gp") ||
-    components.includes("sp") ||
-    components.includes("cp")
+    components.includes(" gp") ||
+    components.includes(" sp") ||
+    components.includes(" cp")
   );
 };
 

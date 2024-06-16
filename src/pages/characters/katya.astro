@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Katya from "../../components/character/Katya.vue";
+import { getCollection } from "astro:content";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Katya" icon="katya.jpg" iconCover>
+  <Katya client:load allSpells={allSpells} />
+</BaseLayout>

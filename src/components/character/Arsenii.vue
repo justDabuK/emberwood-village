@@ -18,7 +18,7 @@ import {
 import NoteSection from "./NoteSection.vue";
 import {
   getEldritchKnightSpellSlots,
-  getWizardSpellSlots,
+  getFullCasterSpellSlots,
   Spell,
 } from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
