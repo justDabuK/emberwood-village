@@ -12,24 +12,24 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.4",
-    "@astrojs/vue": "^4.3.0",
-    "@vueuse/core": "^10.9.0",
-    "astro": "^4.9.1",
+    "@astrojs/vue": "^4.4.0",
+    "@vueuse/core": "^10.11.0",
+    "astro": "^4.10.2",
     "astro-icon": "1.0.0",
     "typescript": "^5.4.5",
-    "vue": "^3.4.27"
+    "vue": "^3.4.29"
   },
   "devDependencies": {
-    "@eslint/js": "^9.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.10.0",
-    "@typescript-eslint/parser": "^7.10.0",
-    "eslint": "^9.3.0",
+    "@eslint/js": "^9.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0",
+    "eslint": "^9.5.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^1.2.0",
+    "eslint-plugin-astro": "^1.2.2",
     "eslint-plugin-vue": "^9.26.0",
-    "globals": "^15.3.0",
-    "prettier": "^3.2.5",
+    "globals": "^15.5.0",
+    "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.13.0",
-    "typescript-eslint": "^7.10.0"
+    "typescript-eslint": "^7.13.0"
   }
 }
