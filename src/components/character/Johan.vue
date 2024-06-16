@@ -40,11 +40,10 @@ const getSneakAttackDice = () => {
 
 const racialBonusPlus2 = 2;
 const racialBonusPlus1 = 1;
-const elvenAccuracyBonus = 1;
 
 const ABILITY_SCORES: AbilityScores = {
   STR: 8,
-  DEX: 15 + racialBonusPlus2 + elvenAccuracyBonus,
+  DEX: 15 + racialBonusPlus2,
   CON: 13 + racialBonusPlus1,
   INT: 12,
   WIS: 10,
@@ -74,6 +73,7 @@ const SKILL_PROFICIENCIES = [
 ];
 
 const SKILL_EXPERTIES = [Skill.Stealth];
+const dualWielderArmorclassBonus = 1;
 
 const defaultCreatureList: Creature[] = [
   {
@@ -90,7 +90,7 @@ const defaultCreatureList: Creature[] = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getLeatherArmorClass(MODIFIER.DEX),
+    armorClass: getLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
     initiative: MODIFIER.DEX + MODIFIER.CHA,
     inspiration: false,
     sectionList: [
@@ -99,7 +99,7 @@ const defaultCreatureList: Creature[] = [
         used: false,
         subsections: [
           {
-            title: "Weapon Attack",
+            title: "2 Weapon Attacks (Dual Wielder)",
             dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
             items: [
               { name: "Shortbow (80/ 320)", dice: `1d6+${MODIFIER.DEX}` },
@@ -168,11 +168,6 @@ const defaultCreatureList: Creature[] = [
             title: "Fancy Footwork",
             description:
               "no opportunity attacks from target when meleed before",
-          },
-          {
-            title: "Elven Accuracy",
-            description:
-              "if advantage on attack roll, you can reroll one of the damage dice",
           },
         ],
       },

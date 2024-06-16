@@ -48,10 +48,10 @@ const SkillsPerAbilityScore = {
 
 const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
   const modifier = props.modifiers[abilityScore];
-  if (props.skillProficiencyList.includes(skill)) {
-    return addSign(modifier + props.proficiencyBonus);
-  } else if (props.skillExpertiseList.includes(skill)) {
+  if (props.skillExpertiseList.includes(skill)) {
     return addSign(modifier + props.proficiencyBonus * 2);
+  } else if (props.skillProficiencyList.includes(skill)) {
+    return addSign(modifier + props.proficiencyBonus);
   } else {
     return addSign(modifier);
   }
