@@ -59,3 +59,7 @@ export const getUnarmoredDefenseArmorClass = (
 ) => {
   return 10 + firstModifier + secondModifier;
 };
+
+export const getShieldArmorClass = (armorClass: number) => {
+  return armorClass + 2;
+};

@@ -14,6 +14,7 @@ import { Spell } from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
+import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -49,20 +50,6 @@ const knownSpellNameList = [
   Spell.CometShards,
   Spell.WitherAndBloom,
 ];
-
-const getProficiencyBonus = (level: number) => {
-  if (level < 5) {
-    return 2;
-  } else if (level < 9) {
-    return 3;
-  } else if (level < 13) {
-    return 4;
-  } else if (level < 17) {
-    return 5;
-  } else {
-    return 6;
-  }
-};
 
 const getCantripsKnown = (level: number) => {
   if (level < 4) {

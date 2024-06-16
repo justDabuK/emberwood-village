@@ -38,6 +38,7 @@ export enum Spell {
   Biohazard = "Biohazard",
   Bless = "Bless",
   BlindnessDeafness = "Blindness/Deafness",
+  BoomingBlade = "Booming Blade",
   BurningHands = "Burning Hands",
   CausticGrip = "Caustic Grip",
   ChillTouch = "Chill Touch",
@@ -70,8 +71,10 @@ export enum Spell {
   GentleRepose = "Gentle Repose",
   GraspingGhost = "Grasping Ghost",
   Grease = "Grease",
+  GreenFlameBlade = "Green-Flame Blade",
   Guidance = "Guidance",
   HealingWord = "Healing Word",
+  HellishRebuke = "Hellish Rebuke",
   HoldPerson = "Hold Person",
   HorrificTransformation = "Horrific Transformation",
   Identify = "Identify",
@@ -109,6 +112,7 @@ export enum Spell {
   Shield = "Shield",
   ShockingGrasp = "Shocking Grasp",
   Silence = "Silence",
+  SilveryBarbs = "Silvery Barbs",
   SiphonContamination = "Siphon Contamination",
   SiphonTime = "Siphon Time",
   Sleep = "Sleep",
@@ -155,371 +159,103 @@ export enum SpellSchool {
 export const getWizardSpellSlots = (level: number): SpellSlots => {
   switch (level) {
     case 1:
-      return {
-        1: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-      };
+      return convertToSpellSlots([2]);
     case 2:
-      return {
-        1: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-      };
+      return convertToSpellSlots([3]);
     case 3:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-      };
+      return convertToSpellSlots([4, 2]);
     case 4:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-      };
+      return convertToSpellSlots([4, 3]);
     case 5:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-      };
+      return convertToSpellSlots([4, 3, 2]);
     case 6:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3]);
     case 7:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3, 1]);
     case 8:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3, 2]);
     case 9:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3, 3, 1]);
     case 10:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3, 3, 2]);
     case 11:
     case 12:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        6: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3, 3, 2, 1]);
     case 13:
     case 14:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        6: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        7: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3, 3, 2, 1, 1]);
     case 15:
     case 16:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        6: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        7: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        8: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3, 3, 2, 1, 1, 1]);
+    case 17:
+      return convertToSpellSlots([4, 3, 3, 3, 2, 1, 1, 1, 1]);
+    case 18:
+      return convertToSpellSlots([4, 3, 3, 3, 3, 1, 1, 1, 1]);
+    case 19:
+      return convertToSpellSlots([4, 3, 3, 3, 3, 2, 1, 1, 1]);
+    case 20:
+      return convertToSpellSlots([4, 3, 3, 3, 3, 2, 2, 1, 1]);
+    default:
+      throw new Error(`Level ${level} out of bounds`);
+  }
+};
+
+type SpellLevel = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+
+const toSpellLevel = (number: number): SpellLevel => {
+  if (number < 1) {
+    return "1";
+  }
+  if (number > 9) {
+    return "9";
+  }
+  return `${number}` as SpellLevel;
+};
+
+const convertToSpellSlots = (slotLevelList: number[]): SpellSlots => {
+  const spellSlots: SpellSlots = {};
+  slotLevelList.forEach(
+    (numberOfSlots, index) =>
+      (spellSlots[toSpellLevel(index + 1)] = {
+        flags: [...Array(numberOfSlots)].fill(false),
+        max: numberOfSlots,
+      }),
+  );
+  return spellSlots;
+};
+
+export const getEldritchKnightSpellSlots = (level: number): SpellSlots => {
+  switch (level) {
+    case 1:
+      return convertToSpellSlots([]);
+    case 2:
+      return convertToSpellSlots([]);
+    case 3:
+      return convertToSpellSlots([2]);
+    case 4:
+    case 5:
+    case 6:
+      return convertToSpellSlots([3]);
+    case 7:
+    case 8:
+    case 9:
+      return convertToSpellSlots([4, 2]);
+    case 10:
+    case 11:
+    case 12:
+      return convertToSpellSlots([4, 3]);
+    case 13:
+    case 14:
+    case 15:
+      return convertToSpellSlots([4, 3, 2]);
+    case 16:
     case 17:
     case 18:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        6: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        7: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        8: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        9: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
+      return convertToSpellSlots([4, 3, 3]);
     case 19:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        6: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        7: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        8: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        9: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
     case 20:
-      return {
-        1: {
-          flags: [...Array(4)].fill(false),
-          max: 4,
-        },
-        2: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        3: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        4: {
-          flags: [...Array(3)].fill(false),
-          max: 3,
-        },
-        5: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        6: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        7: {
-          flags: [...Array(2)].fill(false),
-          max: 2,
-        },
-        8: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-        9: {
-          flags: [...Array(1)].fill(false),
-          max: 1,
-        },
-      };
-
+      return convertToSpellSlots([4, 3, 3, 1]);
     default:
-      throw new Error(`Level ${LEVEL} out of bounds`);
+      throw new Error(`Level ${level} out of bounds`);
   }
 };

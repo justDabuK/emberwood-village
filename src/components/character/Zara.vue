@@ -136,7 +136,7 @@ const defaultCreatureList: Creature[] = [
     inspiration: false,
     magic: {
       spellSlots: getWizardSpellSlots(LEVEL),
-      refresh: TypeOfRest.SHORT,
+      refresh: TypeOfRest.LONG,
       concentration: false,
     },
     sectionList: [

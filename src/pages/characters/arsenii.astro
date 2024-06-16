@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Arsenii from "../../components/character/Arsenii.vue";
+import { getCollection } from "astro:content";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Arsenii" icon="arsenii.jpeg" iconCover>
+  <Arsenii client:load allSpells={allSpells} />
+</BaseLayout>

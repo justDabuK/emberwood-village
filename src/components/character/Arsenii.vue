@@ -11,10 +11,23 @@ import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {
   getChainMailArmorClass,
+  getShieldArmorClass,
   getStuddedLeatherArmorClass,
   getUnarmoredDefenseArmorClass,
 } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
+import {
+  getEldritchKnightSpellSlots,
+  getWizardSpellSlots,
+  Spell,
+} from "../../scripts/spellUtils.ts";
+import SpellCheatSheet from "./SpellCheatSheet.vue";
+import type { CollectionEntry } from "astro:content";
+import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
+
+defineProps<{
+  allSpells: CollectionEntry<"spells">[];
+}>();
 
 const LEVEL = 3;
 const PROFICIENCY_BONUS = 2;
@@ -23,12 +36,12 @@ const racialBonusPlus2 = 2;
 const racialBonusPlus1 = 1;
 
 const ABILITY_SCORES: AbilityScores = {
-  STR: 15 + racialBonusPlus1,
-  DEX: 12,
-  CON: 14 + racialBonusPlus2,
-  INT: 8,
-  WIS: 13,
-  CHA: 10,
+  STR: 15 + racialBonusPlus2,
+  DEX: 10,
+  CON: 14,
+  INT: 13 + racialBonusPlus1,
+  WIS: 12,
+  CHA: 8,
 };
 
 const MODIFIER: AbilityScores = {
@@ -46,14 +59,29 @@ const SKILL_PROFICIENCIES = [
   Skill.Athletics,
   Skill.Intimidation,
   Skill.Perception,
-  Skill.Survival,
+  Skill.Insight,
 ];
 
 const SKILL_EXPERTIES = [];
 
+const knownSpellNameList = [
+  // --- tiefling spells ---
+  Spell.Thaumaturgy,
+  Spell.HellishRebuke,
+  // ---cantrips: 2 ---
+  Spell.BoomingBlade,
+  Spell.GreenFlameBlade,
+  // ---spells known: 3 ---
+  Spell.Shield,
+  Spell.SilveryBarbs,
+  Spell.BurningHands,
+];
+
+const defenseFightingStyleArmorClassBonus = 1;
+
 const defaultCreatureList: Creature[] = [
   {
-    name: "Mustafa",
+    name: "Arsenii",
     hitPoints: {
       current: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),
       max: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),
@@ -64,9 +92,16 @@ const defaultCreatureList: Creature[] = [
         typeOfRest: TypeOfRest.LONG,
       },
     },
+    magic: {
+      spellSlots: getEldritchKnightSpellSlots(LEVEL),
+      refresh: TypeOfRest.LONG,
+      concentration: false,
+    },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getChainMailArmorClass(),
+    armorClass:
+      getShieldArmorClass(getChainMailArmorClass()) +
+      defenseFightingStyleArmorClassBonus,
     initiative: MODIFIER.DEX,
     inspiration: false,
     sectionList: [
@@ -78,16 +113,13 @@ const defaultCreatureList: Creature[] = [
             title: "Weapon Attack",
             dice: `d20+${MODIFIER.STR + PROFICIENCY_BONUS}`,
             items: [
-              { name: "Maul", dice: `2d6+${MODIFIER.STR}` },
-              { name: "Greatsword", dice: `2d6+${MODIFIER.STR}` },
+              { name: "Longsword", dice: `1d8+${MODIFIER.STR}` },
               { name: "Handaxe", dice: `1d6+${MODIFIER.STR}` },
-              { name: "Horns", dice: `1d6+${MODIFIER.STR}` },
             ],
           },
           {
-            title: "Echo Weapon Attack",
-            dice: `d20+${MODIFIER.STR + PROFICIENCY_BONUS}`,
-            description: "same as above but originates from echo location",
+            title: "Spell casting",
+            description: "See spell casting cheat sheet",
           },
         ],
       },
@@ -95,15 +127,6 @@ const defaultCreatureList: Creature[] = [
         title: "Bonus Action",
         used: false,
         subsections: [
-          {
-            title: "Goring Rush",
-            description: "after Dash and movement of 20 ft., Horns attack",
-          },
-          {
-            title: "Hammering Horns",
-            description: `As part of attack, attempt to push creature for 10 ft.`,
-            dice: `DC ${8 + PROFICIENCY_BONUS + MODIFIER.STR}`,
-          },
           {
             title: "Second Wind",
             description: `regain 1d10 + ${LEVEL} hit points`,
@@ -113,21 +136,12 @@ const defaultCreatureList: Creature[] = [
             },
           },
           {
-            title: "Manifest Echo",
-            description: `Manifest echo within 15 ft. of you (AC ${14 + PROFICIENCY_BONUS}, HP 1, immune to all conditions, my saving throws, speed 30 ft.)`,
+            title: "Weapon Bond",
+            description: "Summon Longsword or handaxe to your hand",
           },
           {
-            title: "Dismiss Echo",
-            description: `let echo vanish`,
-          },
-          {
-            title: "Echo teleport",
-            description:
-              "Switch places with echo at cost of 15 ft. of movement (distance doesn't matter)",
-          },
-          {
-            title: "Great weapon master",
-            description: "extra attack when crit or killed a creature",
+            title: "Spell casting",
+            description: "See spell casting cheat sheet",
           },
         ],
       },
@@ -140,8 +154,20 @@ const defaultCreatureList: Creature[] = [
             description: "See Weapon Attack",
           },
           {
-            title: "Echo Opportunity Attack",
-            description: "See Weapon Attack (originates from echo location)",
+            title: "Spell Opportunity Attack (Warcaster)",
+            description: "Any single target spell with 1 action casting time",
+          },
+          {
+            title: "Spell casting",
+            description: "See spell casting cheat sheet",
+          },
+          {
+            title: "Infernal Legacy",
+            description: "Hellish Rebuke for free",
+            usages: {
+              flags: [false],
+              typeOfRest: TypeOfRest.LONG,
+            },
           },
         ],
       },
@@ -159,18 +185,17 @@ const defaultCreatureList: Creature[] = [
         title: "Features",
         subsections: [
           {
-            title: "Labyrinthine Recall",
-            description:
-              "You always know where north is. Advantage on checks for navigating or tracking.",
+            title: "Hellish Resistance",
+            description: "Resistant to fire damage (half damage)",
           },
           {
-            title: "Great Weapon Fighting",
+            title: "Weapon Bond",
             description:
-              "Reroll 1 or 2 on damage when attacking with two-handed weapon",
+              "You can not be disarmed except if you are incapacitated",
           },
           {
-            title: "Great Weapon Master",
-            description: "take -5 penalty to attack roll to get +10 damage",
+            title: "Warcaster",
+            description: "Advantage on concentration checks",
           },
         ],
       },
@@ -182,19 +207,6 @@ const defaultCreatureList: Creature[] = [
             usages: {
               flags: [...Array(1)].fill(false),
               typeOfRest: TypeOfRest.SHORT,
-            },
-          },
-        ],
-      },
-      {
-        title: "Unleash Incarnation",
-        description: "when attack, extra attack with echo (for rest of turn)",
-        subsections: [
-          {
-            title: "Extra attack",
-            usages: {
-              flags: [...Array(MODIFIER.CON)].fill(false),
-              typeOfRest: TypeOfRest.LONG,
             },
           },
         ],
@@ -216,7 +228,8 @@ const notesStorage = useStorage<string>(
   "Equipment:\n" +
     "\n" +
     "- chain mail (AC 16)\n" +
-    "- Maul, Greatsword\n" +
+    "- Longsword\n" +
+    "- Shield (AC + 2)\n" +
     "- 2 handaxes\n" +
     "- backpack\n" +
     "- crowbar\n" +
@@ -249,6 +262,18 @@ const notesStorage = useStorage<string>(
       :skill-proficiency-list="SKILL_PROFICIENCIES"
       :skill-expertise-list="SKILL_EXPERTIES"
       :proficiency-bonus="PROFICIENCY_BONUS"
+    />
+    <div class="divider" />
+    <SpellCheatSheet
+      v-if="creatureList[0].magic"
+      v-model:spell-slots="creatureList[0].magic.spellSlots"
+      v-model:concentration="creatureList[0].magic.concentration"
+      :all-spells="allSpells"
+      :type-of-rest="creatureList[0].magic.refresh"
+      :known-spell-name-list="knownSpellNameList"
+      :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(LEVEL)"
+      :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(LEVEL)"
+      :caster-level="LEVEL"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />

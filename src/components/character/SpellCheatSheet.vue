@@ -94,7 +94,9 @@ const isCostlySpell = (components: string) => {
   return (
     components.includes("delerium") ||
     components.includes("gold") ||
-    components.includes("gp")
+    components.includes("gp") ||
+    components.includes("sp") ||
+    components.includes("cp")
   );
 };
 
@@ -144,69 +146,73 @@ const getOptionalActionColor = (title: string) => {
       </div>
     </div>
     <div class="spell-cheat-sheet-body">
-      <div
+      <template
         v-for="spellSection in spellSectionList"
         :key="spellSection.title"
-        :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
       >
-        <h2>{{ spellSection.title }}</h2>
-        <div class="spell-section-spell-list">
-          <a
-            v-for="spell in spellSection.spells"
-            :key="spell.data.title"
-            :href="`/spells/${spell.slug}`"
-            :class="[
-              'card',
-              'spell',
-              spell.data.duration.includes('Concentration')
-                ? 'concentration'
-                : '',
-              'card',
-              'spell',
-              spell.data.level === 0 ? 'cantrip' : '',
-            ]"
-          >
-            <SpellSchoolIcon
-              class="spell-school-icon"
-              :spell-school="spell.data.school"
-            />
-            <SpellRangeIcon
-              class="spell-range-icon"
-              :range="spell.data.range"
-            />
-            <p class="title">{{ spell.data.title }}</p>
-
-            <p
-              v-if="
-                spell.data.level === 0 &&
-                spell.data.effect &&
-                spell.data.effect[casterLevel]
-              "
-            >
-              {{ spell.data.effect[casterLevel] }}
-            </p>
-            <p
-              v-else-if="
-                spell.data.effect && spell.data.effect[currentSpellSlotLevel]
-              "
-            >
-              {{ spell.data.effect[currentSpellSlotLevel] }}
-            </p>
-
-            <p
-              v-if="isCostlySpell(spell.data.components)"
+        <div
+          v-if="spellSection.spells.length > 0"
+          :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
+        >
+          <h2>{{ spellSection.title }}</h2>
+          <div class="spell-section-spell-list">
+            <a
+              v-for="spell in spellSection.spells"
+              :key="spell.data.title"
+              :href="`/spells/${spell.slug}`"
               :class="[
-                'cost',
-                spell.data.school.includes('Contaminated')
-                  ? 'contaminated'
+                'card',
+                'spell',
+                spell.data.duration.includes('Concentration')
+                  ? 'concentration'
                   : '',
+                'card',
+                'spell',
+                spell.data.level === 0 ? 'cantrip' : '',
               ]"
             >
-              {{ getCostlyComponent(spell.data.components) }}
-            </p>
-          </a>
+              <SpellSchoolIcon
+                class="spell-school-icon"
+                :spell-school="spell.data.school"
+              />
+              <SpellRangeIcon
+                class="spell-range-icon"
+                :range="spell.data.range"
+              />
+              <p class="title">{{ spell.data.title }}</p>
+
+              <p
+                v-if="
+                  spell.data.level === 0 &&
+                  spell.data.effect &&
+                  spell.data.effect[casterLevel]
+                "
+              >
+                {{ spell.data.effect[casterLevel] }}
+              </p>
+              <p
+                v-else-if="
+                  spell.data.effect && spell.data.effect[currentSpellSlotLevel]
+                "
+              >
+                {{ spell.data.effect[currentSpellSlotLevel] }}
+              </p>
+
+              <p
+                v-if="isCostlySpell(spell.data.components)"
+                :class="[
+                  'cost',
+                  spell.data.school.includes('Contaminated')
+                    ? 'contaminated'
+                    : '',
+                ]"
+              >
+                {{ getCostlyComponent(spell.data.components) }}
+              </p>
+            </a>
+          </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
