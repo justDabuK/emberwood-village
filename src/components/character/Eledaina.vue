@@ -91,7 +91,7 @@ const SKILL_EXPERTIES: Skill[] = [];
 
 const defaultCreatureList: Creature[] = [
   {
-    name: "Katya",
+    name: "Eledaina",
     hitPoints: {
       current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
       max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
