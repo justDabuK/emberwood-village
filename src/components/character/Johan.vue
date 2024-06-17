@@ -73,7 +73,7 @@ const SKILL_PROFICIENCIES = [
   Skill.Survival,
 ];
 
-const SKILL_EXPERTIES = [Skill.Stealth];
+const SKILL_EXPERTIES = [Skill.Stealth, Skill.ThievesTools];
 const dualWielderArmorclassBonus = 1;
 
 const defaultCreatureList: Creature[] = [
