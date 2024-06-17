@@ -64,9 +64,10 @@ const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[] = ["DEX", "INT"];
 const SKILL_PROFICIENCIES = [
   Skill.Acrobatics,
   Skill.SleightOfHand,
+  Skill.ThievesTools,
   Skill.Stealth,
   Skill.Deception,
-  Skill.Intimidation,
+  Skill.Perception,
   Skill.Persuasion,
   Skill.Athletics,
   Skill.Survival,
