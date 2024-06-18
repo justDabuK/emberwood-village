@@ -101,10 +101,10 @@ const defaultCreatureList: Creature[] = [
         subsections: [
           {
             title: "2 Weapon Attacks (Dual Wielder)",
-            dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
+            dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}/+${MODIFIER.DEX + PROFICIENCY_BONUS + 1}`,
             items: [
               { name: "Shortbow (80/ 320)", dice: `1d6+${MODIFIER.DEX}` },
-              { name: "Rapier", dice: `1d8+${MODIFIER.DEX}` },
+              { name: "Rapier", dice: `1d8+${MODIFIER.DEX + 1}` },
               { name: "Dagger", dice: `1d4+${MODIFIER.DEX}` },
             ],
           },

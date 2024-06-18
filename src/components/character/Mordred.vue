@@ -81,7 +81,7 @@ const defenseFightingStyleArmorClassBonus = 1;
 
 const defaultCreatureList: Creature[] = [
   {
-    name: "Arsenii",
+    name: "Mordred",
     hitPoints: {
       current: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),
       max: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),
