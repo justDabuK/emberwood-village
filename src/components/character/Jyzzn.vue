@@ -11,9 +11,10 @@ import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
+import {getProficiencyBonus} from "../../scripts/getProficiencyBonus.ts";
 
 // TODO: decouple dynamic data from static data
-const JAZZ_LEVEL = 4;
+const LEVEL = 4;
 const JAZZ_PROFICIENCY_BONUS = 2;
 const JAZZ_NUMBER_OF_RAGES = 3;
 const JAZZ_RAGE_DAMAGE = 2;
@@ -52,11 +53,11 @@ const SKILL_PROFICIENCIES = [
 const SKILL_EXPERTISE: Skill[] = [];
 
 const breathWeaponDamageDiceNumber = () => {
-  if (JAZZ_LEVEL < 5) {
+  if (LEVEL < 5) {
     return 1;
-  } else if (JAZZ_LEVEL < 11) {
+  } else if (LEVEL < 11) {
     return 2;
-  } else if (JAZZ_LEVEL < 17) {
+  } else if (LEVEL < 17) {
     return 3;
   } else {
     return 4;
@@ -64,9 +65,9 @@ const breathWeaponDamageDiceNumber = () => {
 };
 
 const contaminatedFuryExtraDamage = () => {
-  if (JAZZ_LEVEL < 10) {
+  if (LEVEL < 10) {
     return "1d8";
-  } else if (JAZZ_LEVEL < 14) {
+  } else if (LEVEL < 14) {
     return "2d8";
   } else {
     return "3d8";
@@ -77,11 +78,11 @@ const defaultJazzCreatureList: Creature[] = [
   {
     name: "Jyzzn",
     hitPoints: {
-      current: 12 + MODIFIER.CON + (7 + MODIFIER.CON) * (JAZZ_LEVEL - 1),
-      max: 12 + MODIFIER.CON + (7 + MODIFIER.CON) * (JAZZ_LEVEL - 1),
+      current: 12 + MODIFIER.CON + (7 + MODIFIER.CON) * (LEVEL - 1),
+      max: 12 + MODIFIER.CON + (7 + MODIFIER.CON) * (LEVEL - 1),
       temporary: 0,
       hitDice: {
-        flags: [...Array(JAZZ_LEVEL)].fill(false),
+        flags: [...Array(LEVEL)].fill(false),
         description: "d12",
         typeOfRest: TypeOfRest.LONG,
       },
@@ -95,6 +96,7 @@ const defaultJazzCreatureList: Creature[] = [
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,
     },
+    proficiencyBonus: getProficiencyBonus(LEVEL),
     inspiration: false,
     sectionList: [
       {

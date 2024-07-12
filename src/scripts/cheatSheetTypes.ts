@@ -19,7 +19,8 @@ export type Creature = {
   skill: {
     proficiencies: Skill[];
     expertise: Skill[];
-  }
+  },
+  proficiencyBonus: number;
   inspiration?: boolean;
   sectionList: Section[];
 };

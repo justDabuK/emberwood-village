@@ -110,6 +110,7 @@ const defaultCreatureList: Creature[] = [
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,
     },
+    proficiencyBonus: getProficiencyBonus(LEVEL),
     inspiration: false,
     magic: {
       spellSlots: getFullCasterSpellSlots(LEVEL),

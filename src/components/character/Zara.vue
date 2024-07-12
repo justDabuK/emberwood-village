@@ -19,6 +19,7 @@ import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
 import WizardSpellCheatSheet from "./SpellCheatSheet/WizardSpellCheatSheetContainer.vue";
+import {getProficiencyBonus} from "../../scripts/getProficiencyBonus.ts";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -55,20 +56,6 @@ const preparedSpellNameList = [
   Spell.ScorchingRay,
   Spell.Web,
 ];
-
-const getProficiencyBonus = (level: number) => {
-  if (level < 5) {
-    return 2;
-  } else if (level < 9) {
-    return 3;
-  } else if (level < 13) {
-    return 4;
-  } else if (level < 17) {
-    return 5;
-  } else {
-    return 6;
-  }
-};
 
 const getCantripsKnown = (level: number) => {
   if (level < 4) {
@@ -138,6 +125,7 @@ const defaultCreatureList: Creature[] = [
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,
     },
+    proficiencyBonus: getProficiencyBonus(LEVEL),
     inspiration: false,
     magic: {
       spellSlots: getFullCasterSpellSlots(LEVEL),

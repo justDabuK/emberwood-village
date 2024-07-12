@@ -11,6 +11,7 @@ import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getStuddedLeatherArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
+import {getProficiencyBonus} from "../../scripts/getProficiencyBonus.ts";
 
 const LEVEL = 4;
 const PROFICIENCY_BONUS = 2;
@@ -99,6 +100,7 @@ const defaultCreatureList: Creature[] = [
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,
     },
+    proficiencyBonus: getProficiencyBonus(LEVEL),
     inspiration: false,
     sectionList: [
       {
