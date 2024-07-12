@@ -4,17 +4,13 @@ import {
   type Creature,
   getModifier,
   Skill,
-  type SpellSlots,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
-import SkillCheatSheet from "./SkillCheatSheet.vue";
 import {
-  getChainShirtArmorClass,
   getLeatherArmorClass,
   getShieldArmorClass,
-  getUnarmoredDefenseArmorClass,
 } from "../../scripts/armorClassUtils.ts";
 import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
 import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
@@ -465,15 +461,6 @@ const notesStorage = useStorage<string>(
     <RoundCheatSheet
       v-model="creatureList"
       @reset-to-default="resetToDefault"
-    />
-    <div class="divider" />
-    <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTISE"
-      :proficiency-bonus="getProficiencyBonus(LEVEL)"
     />
     <div class="divider" />
     <SpellCheatSheet

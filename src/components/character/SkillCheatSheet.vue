@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { type AbilityScores, Skill } from "../../scripts/cheatSheetTypes.ts";
+import {
+  type AbilityScores,
+  getModifier,
+  Skill,
+} from "../../scripts/cheatSheetTypes.ts";
 import { addSign } from "../../scripts/addSign.ts";
 
 const props = defineProps<{
   abilityScores: AbilityScores;
-  modifiers: AbilityScores;
   savingThrowProficiencyList: (keyof AbilityScores)[];
   skillProficiencyList: Skill[];
   skillExpertiseList: Skill[];
@@ -46,8 +49,17 @@ const SkillsPerAbilityScore = {
   ],
 };
 
+const modifiers: AbilityScores = {
+  STR: getModifier(props.abilityScores.STR),
+  DEX: getModifier(props.abilityScores.DEX),
+  CON: getModifier(props.abilityScores.CON),
+  INT: getModifier(props.abilityScores.INT),
+  WIS: getModifier(props.abilityScores.WIS),
+  CHA: getModifier(props.abilityScores.CHA),
+};
+
 const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
-  const modifier = props.modifiers[abilityScore];
+  const modifier = modifiers[abilityScore];
   if (props.skillExpertiseList.includes(skill)) {
     return addSign(modifier + props.proficiencyBonus * 2);
   } else if (props.skillProficiencyList.includes(skill)) {
@@ -58,7 +70,7 @@ const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
 };
 
 const getSavingThrowModifier = (abilityScore: keyof AbilityScores) => {
-  const modifier = props.modifiers[abilityScore];
+  const modifier = modifiers[abilityScore];
   return props.savingThrowProficiencyList.includes(abilityScore)
     ? addSign(modifier + props.proficiencyBonus)
     : addSign(modifier);
@@ -93,7 +105,7 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
         </div>
         <div class="primary-section">
           <span>Modifier</span>
-          <span>{{ addSign(props.modifiers[scoreKey]) }}</span>
+          <span>{{ addSign(modifiers[scoreKey]) }}</span>
         </div>
         <div class="secondary-section">
           <span

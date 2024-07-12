@@ -5,6 +5,7 @@ import type { Creature } from "../../scripts/cheatSheetTypes.ts";
 import Contamination from "./Contamination.vue";
 import TitleValueCard from "./TitleValueCard.vue";
 import { addSign } from "../../scripts/addSign.ts";
+import SkillCheatSheet from "./SkillCheatSheet.vue";
 
 const creature = defineModel<Creature>({ required: true });
 </script>
@@ -39,6 +40,13 @@ const creature = defineModel<Creature>({ required: true });
       />
     </div>
   </div>
+  <SkillCheatSheet
+    :ability-scores="creature.abilityScores"
+    :saving-throw-proficiency-list="creature.savingThrowProficiencyList"
+    :skill-proficiency-list="creature.skill.proficiencies"
+    :skill-expertise-list="creature.skill.expertise"
+    :proficiency-bonus="creature.proficiencyBonus"
+  />
 </template>
 
 <style scoped>

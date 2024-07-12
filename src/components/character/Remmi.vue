@@ -8,7 +8,6 @@ import {
 } from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
-import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getStuddedLeatherArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
@@ -292,15 +291,6 @@ const notesStorage = useStorage<string>("remi-notes", "");
     <RoundCheatSheet
       v-model="creatureList"
       @reset-to-default="resetToDefault"
-    />
-    <div class="divider" />
-    <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTISE"
-      :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />

@@ -8,7 +8,6 @@ import {
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
 import { useStorage } from "@vueuse/core";
-import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
@@ -300,15 +299,6 @@ const notesStorage = useStorage<string>(
       v-model="creatureList"
       @reset-to-default="resetToDefault"
       class="round-cheat-sheet"
-    />
-    <div class="divider" />
-    <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTISE"
-      :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />

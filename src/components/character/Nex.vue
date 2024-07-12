@@ -8,10 +8,8 @@ import {
 } from "../../scripts/cheatSheetTypes.ts";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
-import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getChainShirtArmorClass } from "../../scripts/armorClassUtils.ts";
 import { Spell } from "../../scripts/spellUtils.ts";
-import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
@@ -464,15 +462,6 @@ const notesStorage = useStorage<string>("nex-notes", "");
     <RoundCheatSheet
       v-model="creatureList"
       @reset-to-default="resetToDefault"
-    />
-    <div class="divider" />
-    <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTISE"
-      :proficiency-bonus="getProficiencyBonus(NEX_LEVEL)"
     />
     <div class="divider" />
     <ApothecarySpellCheatSheetContainer
