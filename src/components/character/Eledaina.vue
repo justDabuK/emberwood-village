@@ -84,6 +84,42 @@ const SKILL_PROFICIENCIES = [
 
 const SKILL_EXPERTISE: Skill[] = [];
 
+const direWolfAbilityScores: AbilityScores = {
+  STR: 17,
+  DEX: 15,
+  CON: 15,
+  INT: 3,
+  WIS: 12,
+  CHA: 7,
+};
+const direWolfSavingThrowProficiencyList: (keyof AbilityScores)[] = [];
+const direWolfSkillProficiencies: Skill[] = [Skill.Perception, Skill.Stealth];
+const direWolfProficiencyBonus = 2;
+
+const brownBearAbilityScores: AbilityScores = {
+  STR: 19,
+  DEX: 10,
+  CON: 16,
+  INT: 2,
+  WIS: 13,
+  CHA: 7,
+};
+const brownBearSavingThrowProficiencyList: (keyof AbilityScores)[] = [];
+const brownBearSkillProficiencies: Skill[] = [Skill.Perception];
+const brownBearProficiencyBonus = 2;
+
+const giantSpiderAbilityScores: AbilityScores = {
+  STR: 14,
+  DEX: 16,
+  CON: 12,
+  INT: 2,
+  WIS: 11,
+  CHA: 4,
+};
+const giantSpiderSavingThrowProficiencyList: (keyof AbilityScores)[] = [];
+const giantSpiderSkillProficiencies: Skill[] = [Skill.Stealth];
+const giantSpiderProficiencyBonus = 2;
+
 const defaultCreatureList: Creature[] = [
   {
     name: "Eledaina",
@@ -207,6 +243,13 @@ const defaultCreatureList: Creature[] = [
     contamination: 0,
     exhaustion: 0,
     armorClass: 14,
+    abilityScores: direWolfAbilityScores,
+    savingThrowProficiencyList: direWolfSavingThrowProficiencyList,
+    skill: {
+      proficiencies: direWolfSkillProficiencies,
+      expertise: [],
+    },
+    proficiencyBonus: direWolfProficiencyBonus,
     sectionList: [
       {
         title: "Action",
@@ -277,6 +320,13 @@ const defaultCreatureList: Creature[] = [
     contamination: 0,
     exhaustion: 0,
     armorClass: 11,
+    abilityScores: brownBearAbilityScores,
+    savingThrowProficiencyList: brownBearSavingThrowProficiencyList,
+    skill: {
+      proficiencies: brownBearSkillProficiencies,
+      expertise: [],
+    },
+    proficiencyBonus: brownBearProficiencyBonus,
     sectionList: [
       {
         title: "Action",
@@ -347,6 +397,13 @@ const defaultCreatureList: Creature[] = [
     contamination: 0,
     exhaustion: 0,
     armorClass: 14,
+    abilityScores: giantSpiderAbilityScores,
+    savingThrowProficiencyList: giantSpiderSavingThrowProficiencyList,
+    skill: {
+      proficiencies: giantSpiderSkillProficiencies,
+      expertise: [],
+    },
+    proficiencyBonus: giantSpiderProficiencyBonus,
     sectionList: [
       {
         title: "Action",
@@ -417,6 +474,14 @@ const defaultCreatureList: Creature[] = [
           {
             title: "Web Walker",
             description: "Ignore movement restrictions caused by webbing",
+          },
+          {
+            title: "Blindsight",
+            description: "10 ft. (2 squares)",
+          },
+          {
+            title: "Darkvision",
+            description: "60 ft. (12 squares)",
           },
         ],
       },
