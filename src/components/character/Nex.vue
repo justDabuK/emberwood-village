@@ -170,6 +170,7 @@ const defaultNexCreatureList: Creature[] = [
     armorClass: getChainShirtArmorClass(MODIFIER.DEX),
     initiative: MODIFIER.DEX,
     abilityScores: ABILITY_SCORES,
+    savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     proficiencyBonus: getProficiencyBonus(NEX_LEVEL),
     skill: {
       proficiencies: SKILL_PROFICIENCIES,

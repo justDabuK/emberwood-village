@@ -11,7 +11,7 @@ import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
-import {getProficiencyBonus} from "../../scripts/getProficiencyBonus.ts";
+import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 
 // TODO: decouple dynamic data from static data
 const LEVEL = 4;
@@ -92,6 +92,7 @@ const defaultJazzCreatureList: Creature[] = [
     armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX, MODIFIER.CON),
     initiative: MODIFIER.DEX,
     abilityScores: ABILITY_SCORES,
+    savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,

@@ -11,7 +11,7 @@ import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getStuddedLeatherArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
-import {getProficiencyBonus} from "../../scripts/getProficiencyBonus.ts";
+import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 
 const LEVEL = 4;
 const PROFICIENCY_BONUS = 2;
@@ -96,6 +96,7 @@ const defaultCreatureList: Creature[] = [
       getStuddedLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
     initiative: MODIFIER.DEX + MODIFIER.CHA,
     abilityScores: ABILITY_SCORES,
+    savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,

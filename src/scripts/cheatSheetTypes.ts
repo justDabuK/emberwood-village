@@ -16,10 +16,11 @@ export type Creature = {
     concentration: boolean;
   };
   abilityScores: AbilityScores;
+  savingThrowProficiencyList: (keyof AbilityScores)[];
   skill: {
     proficiencies: Skill[];
     expertise: Skill[];
-  },
+  };
   proficiencyBonus: number;
   inspiration?: boolean;
   sectionList: Section[];

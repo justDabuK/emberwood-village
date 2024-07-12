@@ -19,7 +19,7 @@ import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
 import WizardSpellCheatSheet from "./SpellCheatSheet/WizardSpellCheatSheetContainer.vue";
-import {getProficiencyBonus} from "../../scripts/getProficiencyBonus.ts";
+import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -121,6 +121,7 @@ const defaultCreatureList: Creature[] = [
     armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX),
     initiative: MODIFIER.DEX,
     abilityScores: ABILITY_SCORES,
+    savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,

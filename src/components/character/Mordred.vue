@@ -104,6 +104,7 @@ const defaultCreatureList: Creature[] = [
       defenseFightingStyleArmorClassBonus,
     initiative: MODIFIER.DEX,
     abilityScores: ABILITY_SCORES,
+    savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,

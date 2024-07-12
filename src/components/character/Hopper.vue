@@ -9,8 +9,12 @@ import {
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
-import {getStuddedLeatherArmorClass, getUnarmoredDefenseArmorClass} from "../../scripts/armorClassUtils.ts";
+import {
+  getStuddedLeatherArmorClass,
+  getUnarmoredDefenseArmorClass,
+} from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./NoteSection.vue";
+import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 
 const LEVEL = 3;
 const PROFICIENCY_BONUS = 2;
@@ -67,14 +71,15 @@ const defaultCreatureList: Creature[] = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass:
-        getUnarmoredDefenseArmorClass(MODIFIER.DEX, MODIFIER.WIS),
+    armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX, MODIFIER.WIS),
     initiative: MODIFIER.DEX + PROFICIENCY_BONUS,
     abilityScores: ABILITY_SCORES,
+    savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
       proficiencies: SKILL_PROFICIENCIES,
       expertise: SKILL_EXPERTISE,
     },
+    proficiencyBonus: getProficiencyBonus(LEVEL),
     inspiration: false,
     sectionList: [
       {
@@ -86,7 +91,10 @@ const defaultCreatureList: Creature[] = [
             dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
             items: [
               { name: "Quarterstaff (10 ft.)", dice: `1d8+${MODIFIER.DEX}` },
-              { name: "Unarmed Strike", dice: `${monkWeaponDamageDie}+${MODIFIER.DEX}` },
+              {
+                name: "Unarmed Strike",
+                dice: `${monkWeaponDamageDie}+${MODIFIER.DEX}`,
+              },
               { name: "Dart (20/60 ft.)", dice: `1d4+${MODIFIER.DEX}` },
             ],
           },
@@ -102,7 +110,8 @@ const defaultCreatureList: Creature[] = [
           },
           {
             title: "Flurry of Blows | 1 Ki",
-            description: "after attack action, two unarmed strikes as bonus action",
+            description:
+              "after attack action, two unarmed strikes as bonus action",
           },
           {
             title: "Patient Defense | 1 Ki",
@@ -110,11 +119,13 @@ const defaultCreatureList: Creature[] = [
           },
           {
             title: "Serpent Spring | 1 Ki",
-            description: "Disengage or Dash, jump distance is tippled for the turn (long: 36 ft./ 7 squares, high: 15 ft. /3 squares), advantage on next melee attack",
+            description:
+              "Disengage or Dash, jump distance is tippled for the turn (long: 36 ft./ 7 squares, high: 15 ft. /3 squares), advantage on next melee attack",
           },
           {
             title: "Rabbit Hop",
-            description: "jump 10 ft. (2 squares) without provoking oppertunity attacks",
+            description:
+              "jump 10 ft. (2 squares) without provoking oppertunity attacks",
             usages: {
               flags: [...Array(PROFICIENCY_BONUS)].fill(false),
               typeOfRest: TypeOfRest.LONG,
@@ -139,8 +150,11 @@ const defaultCreatureList: Creature[] = [
             description: `deflect ranged weapon attack, reduce damage by 1d10 + ${MODIFIER.DEX + LEVEL}. If damaged reducedto 0, you catched the missile. If catched see below`,
             dice: `d20 + ${MODIFIER.DEX + PROFICIENCY_BONUS}`,
             items: [
-              { name: "Throw back (20/60 ft.) | 1 Ki", dice: `${monkWeaponDamageDie} + ${MODIFIER.DEX}`}
-            ]
+              {
+                name: "Throw back (20/60 ft.) | 1 Ki",
+                dice: `${monkWeaponDamageDie} + ${MODIFIER.DEX}`,
+              },
+            ],
           },
         ],
       },
@@ -154,11 +168,11 @@ const defaultCreatureList: Creature[] = [
           },
           {
             title: "Long Jump",
-            description: `10ft.(2 squares) run-up, ${ABILITY_SCORES.STR * 2}ft. (${Math.floor(ABILITY_SCORES.STR * 2 / 5)} squares) jump`,
+            description: `10ft.(2 squares) run-up, ${ABILITY_SCORES.STR * 2}ft. (${Math.floor((ABILITY_SCORES.STR * 2) / 5)} squares) jump`,
           },
           {
             title: "High Jump",
-            description: `10ft.(2 squares) run-up, ${(3 + MODIFIER.STR) * 2}ft. (${Math.floor((3 + MODIFIER.STR) * 2 / 5)} squares) jump`,
+            description: `10ft.(2 squares) run-up, ${(3 + MODIFIER.STR) * 2}ft. (${Math.floor(((3 + MODIFIER.STR) * 2) / 5)} squares) jump`,
           },
         ],
       },
@@ -168,7 +182,7 @@ const defaultCreatureList: Creature[] = [
           {
             title: "Ki points",
             description:
-                "Some of your actions or bonus actions require Ki points. Check the checkboxes when you use any of them.",
+              "Some of your actions or bonus actions require Ki points. Check the checkboxes when you use any of them.",
             usages: {
               flags: [...Array(LEVEL)].fill(false),
               typeOfRest: TypeOfRest.LONG,
@@ -177,7 +191,7 @@ const defaultCreatureList: Creature[] = [
           {
             title: "Mobile",
             description:
-                "no opportunity attacks from target when meleed before. Ignore difficult terrain when dashing.",
+              "no opportunity attacks from target when meleed before. Ignore difficult terrain when dashing.",
           },
         ],
       },
@@ -186,14 +200,16 @@ const defaultCreatureList: Creature[] = [
 ];
 
 const creatureList = useStorage<Creature[]>(
-    `${defaultCreatureList[0].name}-creature-list`,
-    defaultCreatureList,
+  `${defaultCreatureList[0].name}-creature-list`,
+  defaultCreatureList,
 );
 
 const resetToDefault = () => {
   creatureList.value = defaultCreatureList;
 };
-const notesStorage = useStorage<string>(`${defaultCreatureList[0].name}-notes`, "Equipment:\n" +
+const notesStorage = useStorage<string>(
+  `${defaultCreatureList[0].name}-notes`,
+  "Equipment:\n" +
     "\n" +
     "- Quarterstaff\n" +
     "- backpack\n" +
@@ -209,23 +225,24 @@ const notesStorage = useStorage<string>(`${defaultCreatureList[0].name}-notes`, 
     "- winter blanket\n" +
     "- common clothes\n" +
     "- herbalism kit\n" +
-    "- 5 gp");
+    "- 5 gp",
+);
 </script>
 
 <template>
   <div class="cheat-sheet-list">
     <RoundCheatSheet
-        v-model="creatureList"
-        @reset-to-default="resetToDefault"
+      v-model="creatureList"
+      @reset-to-default="resetToDefault"
     />
     <div class="divider" />
     <SkillCheatSheet
-        :modifiers="MODIFIER"
-        :ability-scores="ABILITY_SCORES"
-        :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-        :skill-proficiency-list="SKILL_PROFICIENCIES"
-        :skill-expertise-list="SKILL_EXPERTISE"
-        :proficiency-bonus="PROFICIENCY_BONUS"
+      :modifiers="MODIFIER"
+      :ability-scores="ABILITY_SCORES"
+      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
+      :skill-proficiency-list="SKILL_PROFICIENCIES"
+      :skill-expertise-list="SKILL_EXPERTISE"
+      :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />
     <NoteSection v-model="notesStorage" />
