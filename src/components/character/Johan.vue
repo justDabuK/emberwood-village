@@ -237,10 +237,10 @@ const notesStorage = useStorage<string>(
 .cheat-sheet-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--size-24);
 
   .divider {
-    border-bottom: 1px solid var(--text-color-darker-1);
+    border-bottom: var(--size-1) solid var(--text-color-darker-1);
   }
 }
 </style>

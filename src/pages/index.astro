@@ -103,13 +103,13 @@ const allShops = await getCollection("shops");
     height: auto;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    border-radius: 10px;
+    border-radius: var(--size-8);
   }
 
   .shop-list {
     display: grid;
     margin-top: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-256), 1fr));
     overflow: auto;
   }
 

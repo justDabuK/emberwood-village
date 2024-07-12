@@ -53,25 +53,25 @@ const inspiration = computed<boolean | undefined>({
 .cheat-sheet {
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 30px;
+  gap: var(--size-24);
 
   .cheat-sheet-headline {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 8px;
+    gap: var(--size-8);
 
     button {
       cursor: pointer;
       background-color: var(--button-color);
       color: var(--text-color);
       border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
+      border-radius: var(--size-4);
+      padding: var(--size-8) var(--size-24);
       font: inherit;
       box-shadow:
-        inset 0 1px 0 oklch(70% 0.08 226.91),
-        0 1px 3px oklch(0 0 0 / 20%);
+        inset 0 var(--size-1) 0 oklch(70% 0.08 226.91),
+        0 var(--size-1) var(--size-4) oklch(0 0 0 / 20%);
 
       &:hover {
         background-color: var(--button-color-hover);
@@ -80,13 +80,13 @@ const inspiration = computed<boolean | undefined>({
       &:active {
         background-color: var(--button-color-active);
         box-shadow:
-          inset 0 2px 20px oklch(0 0 0 / 10%),
-          0 2px 0 oklch(100% 0 0 / 15%);
+          inset 0 var(--size-2) var(--size-24) oklch(0 0 0 / 10%),
+          0 var(--size-2) 0 oklch(100% 0 0 / 15%);
       }
 
       &.secondary {
         background-color: transparent;
-        border: 1px solid var(--text-color);
+        border: var(--size-1) solid var(--text-color);
 
         &:hover {
           background-color: oklch(60% 0.08 226.91 / 25%);

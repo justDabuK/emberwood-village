@@ -135,8 +135,8 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
 <style scoped>
 .cheat-sheet {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--size-256), 1fr));
+  gap: var(--size-24);
 }
 
 .card {
@@ -150,25 +150,25 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
 }
 
 .ability-overview {
-  border-bottom: 1px solid var(--text-color-darker-1);
+  border-bottom: var(--size-1) solid var(--text-color-darker-1);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 10px;
+  padding-bottom: var(--size-8);
 
   .secondary-section {
     display: flex;
     flex-direction: column;
     text-align: center;
     color: var(--text-color-darker-1);
-    gap: 10px;
+    gap: var(--size-8);
   }
 
   .primary-section {
     display: flex;
     flex-direction: column;
     text-align: center;
-    font-size: 20px;
-    gap: 5px;
+    font-size: var(--size-24);
+    gap: var(--size-4);
   }
 }
 
@@ -176,7 +176,7 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
   display: flex;
   flex-direction: column;
   list-style: none;
-  margin: 10px auto;
+  margin: var(--size-8) auto;
 }
 
 .proficient {

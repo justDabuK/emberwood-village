@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import {getLevelString, type Spell} from "../../../scripts/spellUtils.ts";
+import { getLevelString, type Spell } from "../../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
-import {type SpellSlots, TypeOfRest} from "../../../scripts/cheatSheetTypes.ts";
-import type {CollectionEntry} from "astro:content";
+import {
+  type SpellSlots,
+  TypeOfRest,
+} from "../../../scripts/cheatSheetTypes.ts";
+import type { CollectionEntry } from "astro:content";
 
 defineProps<{
   casterLevel: number;
@@ -12,8 +15,8 @@ defineProps<{
   typeOfRest: TypeOfRest;
   spellSectionByLevelList: {
     title: string;
-    spells: Record<number, CollectionEntry<"spells">[]>
-  }[]
+    spells: Record<number, CollectionEntry<"spells">[]>;
+  }[];
 }>();
 
 const spellSlots = defineModel<SpellSlots>("spellSlots", { required: true });
@@ -59,11 +62,11 @@ const getOptionalActionColor = (title: string) => {
           <li v-for="(slot, level) in spellSlots" :key="level">
             {{ `${level}: ` }}
             <input
-                v-if="slot"
-                v-for="(_, index) in slot.flags"
-                :key="index"
-                type="checkbox"
-                v-model="slot.flags[index]"
+              v-if="slot"
+              v-for="(_, index) in slot.flags"
+              :key="index"
+              type="checkbox"
+              v-model="slot.flags[index]"
             />
           </li>
         </ul>
@@ -75,22 +78,22 @@ const getOptionalActionColor = (title: string) => {
     </div>
     <div class="spell-cheat-sheet-body">
       <template
-          v-for="spellSection in spellSectionByLevelList"
-          :key="spellSection.title"
+        v-for="spellSection in spellSectionByLevelList"
+        :key="spellSection.title"
       >
         <div
-            v-if="Object.keys(spellSection.spells).length > 0"
-            :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
+          v-if="Object.keys(spellSection.spells).length > 0"
+          :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
         >
           <h2>{{ spellSection.title }}</h2>
           <div v-for="(spellList, level) in spellSection.spells">
             <h3>{{ getLevelString(level) }}</h3>
             <div class="spell-section-spell-list">
               <a
-                  v-for="spell in spellList"
-                  :key="spell.data.title"
-                  :href="`/spells/${spell.slug}`"
-                  :class="[
+                v-for="spell in spellList"
+                :key="spell.data.title"
+                :href="`/spells/${spell.slug}`"
+                :class="[
                   'card',
                   'spell',
                   spell.data.duration.includes('Concentration')
@@ -99,17 +102,17 @@ const getOptionalActionColor = (title: string) => {
                 ]"
               >
                 <SpellSchoolIcon
-                    class="spell-school-icon"
-                    :spell-school="spell.data.school"
+                  class="spell-school-icon"
+                  :spell-school="spell.data.school"
                 />
                 <SpellRangeIcon
-                    class="spell-range-icon"
-                    :range="spell.data.range"
+                  class="spell-range-icon"
+                  :range="spell.data.range"
                 />
                 <p class="title">{{ spell.data.title }}</p>
 
                 <p
-                    v-if="
+                  v-if="
                     spell.data.level === 0 &&
                     spell.data.effect &&
                     spell.data.effect[casterLevel]
@@ -117,17 +120,13 @@ const getOptionalActionColor = (title: string) => {
                 >
                   {{ spell.data.effect[casterLevel] }}
                 </p>
-                <p
-                    v-else-if="
-                    spell.data.effect && spell.data.effect[level]
-                  "
-                >
+                <p v-else-if="spell.data.effect && spell.data.effect[level]">
                   {{ spell.data.effect[level] }}
                 </p>
 
                 <p
-                    v-if="isCostlySpell(spell.data.components)"
-                    :class="[
+                  v-if="isCostlySpell(spell.data.components)"
+                  :class="[
                     'cost',
                     spell.data.school.includes('Contaminated')
                       ? 'contaminated'
@@ -148,45 +147,45 @@ const getOptionalActionColor = (title: string) => {
 <style scoped>
 .spell-cheat-sheet-container {
   --concentration-color: color-mix(
-      in srgb,
-      oklch(76.99% 0.08 226.91) 20%,
-      var(--body-bg)
+    in srgb,
+    oklch(76.99% 0.08 226.91) 20%,
+    var(--body-bg)
   );
 
   --cantrip-color: color-mix(
-      in srgb,
-      oklch(40% 0.032 304.82) 40%,
-      var(--body-bg)
+    in srgb,
+    oklch(40% 0.032 304.82) 40%,
+    var(--body-bg)
   );
 
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--size-24);
 
   .spell-cheat-sheet-header {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: var(--size-24);
     justify-content: space-between;
   }
 
   .spell-cheat-sheet-body {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(620px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(var(--size-640), 1fr));
+    gap: var(--size-24);
 
     .spell-section {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      border-radius: 10px;
+      gap: var(--size-24);
+      border-radius: var(--size-8);
       padding: 1rem;
 
       --background-color: transparent;
       background-color: color-mix(
-          in srgb,
-          var(--background-color),
-          transparent 80%
+        in srgb,
+        var(--background-color),
+        transparent 80%
       );
 
       &.action {
@@ -203,8 +202,8 @@ const getOptionalActionColor = (title: string) => {
 
       .spell-section-spell-list {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(var(--size-256), 1fr));
+        gap: var(--size-24);
 
         .spell {
           position: relative;
@@ -219,9 +218,9 @@ const getOptionalActionColor = (title: string) => {
 
             &.cantrip {
               background: linear-gradient(
-                  90deg,
-                  var(--cantrip-color),
-                  var(--concentration-color)
+                90deg,
+                var(--cantrip-color),
+                var(--concentration-color)
               );
             }
           }
@@ -232,10 +231,10 @@ const getOptionalActionColor = (title: string) => {
 
           .spell-school-icon {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            height: 30px;
-            width: 30px;
+            top: var(--size-8);
+            left: var(--size-8);
+            height: var(--size-24);
+            width: var(--size-24);
             color: var(--text-color-darker-1);
           }
 
@@ -245,16 +244,16 @@ const getOptionalActionColor = (title: string) => {
 
           .spell-range-icon {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            height: 30px;
-            width: 30px;
+            top: var(--size-8);
+            right: var(--size-8);
+            height: var(--size-24);
+            width: var(--size-24);
             color: var(--text-color-darker-1);
           }
 
           .cost {
-            border-radius: 10px;
-            padding: 5px;
+            border-radius: var(--size-8);
+            padding: var(--size-4);
             background-color: oklch(from gold l c h / 0.1);
             color: oklch(from gold l c h / 0.6);
 
@@ -272,7 +271,7 @@ const getOptionalActionColor = (title: string) => {
                 background: linear-gradient(125deg, rebeccapurple 20%, teal);
                 height: 100%;
                 width: 100%;
-                border-radius: 10px;
+                border-radius: var(--size-8);
                 opacity: 0.2;
                 z-index: -1;
               }

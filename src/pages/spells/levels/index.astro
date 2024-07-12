@@ -53,7 +53,7 @@ const sortedLevelToSpellMap = new Map([...levelToSpellMap.entries()].sort());
 <style>
   .level-list-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-256), 1fr));
     padding: 1rem 0;
   }
 

@@ -59,6 +59,8 @@ li {
   --reaction-color: darkblue;
 
   /* sizes */
+  --size-1: 1px;
+  --size-2: 2px;
   --size-4: 4px;
   --size-8: 8px;
   --size-12: 12px;
@@ -88,6 +90,8 @@ li {
   --font-size-48: 48px;
   --font-size-60: 60px;
   --font-size-72: 72px;
+
+  --portrait-breakpoint: 768px;
 }
 
 a {
@@ -119,15 +123,15 @@ h4 {
 
 .card {
   background: var(--card-bg);
-  border-radius: 10px;
+  border-radius: var(--size-8);
   padding: 0 1rem;
   box-shadow:
-    inset 0 1px 0 oklch(30% 0.032 304.82),
-    0 1px 3px oklch(0 0 0 / 20%);
+    inset 0 var(--size-1) 0 oklch(30% 0.032 304.82),
+    0 var(--size-1) var(--size-4) oklch(0 0 0 / 20%);
 }
 
 .divider {
-  border-bottom: 1px solid var(--text-color-darker-1);
+  border-bottom: var(--size-1) solid var(--text-color-darker-1);
 }
 
 textarea {
@@ -135,13 +139,13 @@ textarea {
   background-color: var(--body-bg);
   color: var(--text-color);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--size-8);
   box-shadow:
-    inset 0 2px 20px oklch(0 0 0 / 10%),
-    0 2px 0 oklch(100% 0 0 / 15%);
+    inset 0 var(--size-2) var(--size-24) oklch(0 0 0 / 10%),
+    0 var(--size-2) 0 oklch(100% 0 0 / 15%);
 
   &:focus {
-    outline: 2px solid var(--highlight-color);
+    outline: var(--size-2) solid var(--highlight-color);
   }
 }
 
@@ -153,10 +157,10 @@ table {
   :is(td, th) {
     border-style: solid;
     padding: 0.5em 1em;
-    border-block-width: 1px 0;
-    border-inline-width: 1px 0;
+    border-block-width: var(--size-1) 0;
+    border-inline-width: var(--size-1) 0;
     &:last-of-type {
-      border-inline-width: 1px;
+      border-inline-width: var(--size-1);
     }
   }
 
@@ -166,16 +170,16 @@ table {
 
   :is(tr):last-of-type {
     & td {
-      border-block-width: 1px;
+      border-block-width: var(--size-1);
     }
   }
 
   th {
     &:first-of-type {
-      border-start-start-radius: 10px;
+      border-start-start-radius: var(--size-8);
     }
     &:last-of-type {
-      border-start-end-radius: 10px;
+      border-start-end-radius: var(--size-8);
     }
   }
 
@@ -183,10 +187,10 @@ table {
     &:last-of-type {
       & td {
         &:first-of-type {
-          border-end-start-radius: 10px;
+          border-end-start-radius: var(--size-8);
         }
         &:last-of-type {
-          border-end-end-radius: 10px;
+          border-end-end-radius: var(--size-8);
         }
       }
     }

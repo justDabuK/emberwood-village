@@ -129,8 +129,8 @@ const optionalColorClass = computed(() => {
 .section {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 10px;
+  gap: var(--size-24);
+  padding: var(--size-8);
 
   .section-title {
     display: flex;
@@ -148,7 +148,7 @@ const optionalColorClass = computed(() => {
   .subsection {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--size-8);
 
     .subsection-header {
       display: flex;

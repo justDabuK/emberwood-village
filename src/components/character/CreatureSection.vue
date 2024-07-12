@@ -106,7 +106,7 @@ const setTab = (tab: Tabs) => {
       border: none;
       padding: var(--size-8) var(--size-16);
       font: inherit;
-      border-radius: 5px 5px 0 0;
+      border-radius: var(--size-4) var(--size-4) 0 0;
 
       &:hover {
         color: var(--highlight-color);
@@ -123,13 +123,13 @@ const setTab = (tab: Tabs) => {
   .colored-background {
     background-color: var(--active-tab-background-color);
     padding: var(--size-16);
-    border-radius: 5px;
+    border-radius: var(--size-4);
   }
 
   .action-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(var(--size-256), 1fr));
+    gap: var(--size-24);
 
     .armor-class {
       grid-row: 2;

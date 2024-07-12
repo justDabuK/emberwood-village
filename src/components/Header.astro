@@ -115,8 +115,8 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) =>
     background: var(--body-bg);
     position: relative;
     box-shadow:
-      inset 0 2px 20px oklch(0 0 0 / 10%),
-      0 2px 0 oklch(100% 0 0 / 15%);
+      inset 0 var(--size-2) var(--size-24) oklch(0 0 0 / 10%),
+      0 var(--size-2) 0 oklch(100% 0 0 / 15%);
   }
 
   .nav-list li.active::before,
@@ -134,15 +134,15 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) =>
   .nav-list li.active::before {
     top: calc(var(--border-radius) * -1);
     border-radius: 0 0 100vw 0;
-    box-shadow: 10px 10px 0 10px var(--body-bg);
+    box-shadow: var(--size-8) var(--size-8) 0 var(--size-8) var(--body-bg);
   }
 
   .nav-list li.active::after {
     bottom: calc(var(--border-radius) * -1);
     border-radius: 0 100vw 0 0;
     box-shadow:
-      10px -10px 0 10px var(--body-bg),
-      inset 0 2px 0 oklch(100% 0 0 / 15%);
+      var(--size-8) calc(-1 * var(--size-8)) 0 var(--size-8) var(--body-bg),
+      inset 0 var(--size-2) 0 oklch(100% 0 0 / 15%);
   }
 
   .nav-list a {
@@ -157,7 +157,7 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) =>
 
   .nav-list a span {
     background-image: linear-gradient(90deg, rebeccapurple, teal);
-    background-size: 0 3px;
+    background-size: 0 var(--size-4);
     background-repeat: no-repeat;
     background-position: left 1.2em;
     padding-block: 0.15em;
@@ -167,7 +167,7 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) =>
 
   .nav-list a:hover span,
   .nav-list a:focus span {
-    background-size: 100% 3px;
+    background-size: 100% var(--size-4);
   }
 
   .delerium-text-color a {
@@ -183,16 +183,16 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) =>
 
   @keyframes glow {
     0% {
-      text-shadow: 0 0 5px rebeccapurple;
+      text-shadow: 0 0 var(--size-4) rebeccapurple;
     }
     25% {
-      text-shadow: 0 0 10px rebeccapurple;
+      text-shadow: 0 0 var(--size-8) rebeccapurple;
     }
     50% {
-      text-shadow: 0 0 10px teal;
+      text-shadow: 0 0 var(--size-8) teal;
     }
     75% {
-      text-shadow: 0 0 5px teal;
+      text-shadow: 0 0 var(--size-4) teal;
     }
   }
 
@@ -243,13 +243,15 @@ const isSubPath = (pathStartsWith: string[], currentPath: string) =>
     .nav-list li.active::before {
       left: calc(var(--border-radius) * -1);
       border-radius: 0 100vw 0 0;
-      box-shadow: 5px -5px 0 5px var(--body-bg);
+      box-shadow: var(--size-4) calc(-1 * var(--size-4)) 0 var(--size-4)
+        var(--body-bg);
     }
 
     .nav-list li.active::after {
       right: calc(var(--border-radius) * -1);
       border-radius: 100vw 0 0 0;
-      box-shadow: -5px -5px 0 5px var(--body-bg);
+      box-shadow: calc(-1 * var(--size-4)) calc(-1 * var(--size-4)) 0
+        var(--size-4) var(--body-bg);
     }
   }
 </style>

@@ -38,12 +38,12 @@ const inspiration = defineModel({ type: Boolean, required: true });
 <style scoped>
 label {
   cursor: pointer;
-  border: 1px solid var(--text-color);
-  border-radius: 5px;
-  padding: 10px;
+  border: var(--size-1) solid var(--text-color);
+  border-radius: var(--size-4);
+  padding: var(--size-8);
 }
 .icon {
-  width: 24px;
-  height: 24px;
+  width: var(--size-24);
+  height: var(--size-24);
 }
 </style>

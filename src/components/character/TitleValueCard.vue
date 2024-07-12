@@ -18,8 +18,8 @@ defineProps<{
 .card {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 10px;
+  gap: var(--size-24);
+  padding: var(--size-8);
 
   .title {
     color: var(--text-color-darker-1);

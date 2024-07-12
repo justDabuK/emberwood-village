@@ -35,8 +35,8 @@ const reset = () => {
   grid-row: 3;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 10px;
+  gap: var(--size-24);
+  padding: var(--size-8);
   background-image: linear-gradient(125deg, rebeccapurple 20%, teal);
   background-size: var(--contamination-percentage) 100%;
   background-repeat: no-repeat;
@@ -60,8 +60,8 @@ const reset = () => {
       background-color: var(--body-bg);
       color: var(--text-color);
       border: none;
-      border-radius: 5px;
-      padding: 10px 15px;
+      border-radius: var(--size-4);
+      padding: var(--size-8) var(--size-16);
       cursor: pointer;
     }
 

@@ -12,7 +12,7 @@ const notes = defineModel<string>({ required: true });
 
 <style scoped>
 .note-section {
-  padding: 10px;
+  padding: var(--size-8);
   display: flex;
   background-color: var(--nav-bg);
   min-height: var(--size-512);

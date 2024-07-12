@@ -548,6 +548,6 @@ const notesStorage = useStorage<string>(
 .cheat-sheet-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--size-24);
 }
 </style>

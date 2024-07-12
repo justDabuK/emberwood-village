@@ -198,14 +198,14 @@ import eledainaProfilePicture from "../../assets/eledaina.jpg";
     left: 1rem;
     padding: 1rem;
     background-color: var(--map-link-bg-hover);
-    border-radius: 10px;
+    border-radius: var(--size-8);
     color: var(--map-link-icon-color);
     font-size: 1.25rem;
   }
 
   .character-list-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-256), 1fr));
     gap: 1rem;
   }
 
@@ -213,6 +213,6 @@ import eledainaProfilePicture from "../../assets/eledaina.jpg";
     max-width: 100%;
     object-fit: cover;
     max-height: 400px;
-    border-radius: 10px;
+    border-radius: var(--size-8);
   }
 </style>
