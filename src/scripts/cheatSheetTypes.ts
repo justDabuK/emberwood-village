@@ -15,6 +15,11 @@ export type Creature = {
     refresh: TypeOfRest;
     concentration: boolean;
   };
+  abilityScores: AbilityScores;
+  skill: {
+    proficiencies: Skill[];
+    expertise: Skill[];
+  }
   inspiration?: boolean;
   sectionList: Section[];
 };

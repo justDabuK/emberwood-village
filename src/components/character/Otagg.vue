@@ -47,7 +47,7 @@ const SKILL_PROFICIENCIES = [
   Skill.Athletics,
 ];
 
-const SKILL_EXPERTIES = [];
+const SKILL_EXPERTISE: Skill[] = [];
 const dragonbornBaseSpeed = 30;
 const unarmoredMovementBonus = 10;
 const martialArtsDamageDie = "1d4";
@@ -81,6 +81,11 @@ const defaultCreatureList: Creature[] = [
     exhaustion: 0,
     armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX, MODIFIER.WIS),
     initiative: MODIFIER.DEX,
+    abilityScores: ABILITY_SCORES,
+    skill: {
+      proficiencies: SKILL_PROFICIENCIES,
+      expertise: SKILL_EXPERTISE,
+    },
     inspiration: false,
     sectionList: [
       {
@@ -284,7 +289,7 @@ const notesStorage = useStorage<string>(
       :ability-scores="ABILITY_SCORES"
       :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
+      :skill-expertise-list="SKILL_EXPERTISE"
       :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />

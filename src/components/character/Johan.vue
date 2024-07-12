@@ -73,8 +73,8 @@ const SKILL_PROFICIENCIES = [
   Skill.Survival,
 ];
 
-const SKILL_EXPERTIES = [Skill.Stealth, Skill.ThievesTools];
-const dualWielderArmorclassBonus = 1;
+const SKILL_EXPERTISE = [Skill.Stealth, Skill.ThievesTools];
+const dualWielderArmorClassBonus = 1;
 
 const defaultCreatureList: Creature[] = [
   {
@@ -91,8 +91,13 @@ const defaultCreatureList: Creature[] = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
+    armorClass: getLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorClassBonus,
     initiative: MODIFIER.DEX + MODIFIER.CHA,
+    abilityScores: ABILITY_SCORES,
+    skill: {
+      proficiencies: SKILL_PROFICIENCIES,
+      expertise: SKILL_EXPERTISE,
+    },
     inspiration: false,
     sectionList: [
       {
@@ -227,7 +232,7 @@ const notesStorage = useStorage<string>(
       :ability-scores="ABILITY_SCORES"
       :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
+      :skill-expertise-list="SKILL_EXPERTISE"
       :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />

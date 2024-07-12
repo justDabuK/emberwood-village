@@ -72,7 +72,7 @@ const SKILL_PROFICIENCIES = [
   Skill.Performance,
 ];
 
-const SKILL_EXPERTIES = [Skill.Deception, Skill.Persuasion];
+const SKILL_EXPERTISE = [Skill.Deception, Skill.Persuasion];
 
 const dualWielderArmorclassBonus = 1;
 
@@ -94,6 +94,11 @@ const defaultCreatureList: Creature[] = [
     armorClass:
       getStuddedLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorclassBonus,
     initiative: MODIFIER.DEX + MODIFIER.CHA,
+    abilityScores: ABILITY_SCORES,
+    skill: {
+      proficiencies: SKILL_PROFICIENCIES,
+      expertise: SKILL_EXPERTISE,
+    },
     inspiration: false,
     sectionList: [
       {
@@ -291,7 +296,7 @@ const notesStorage = useStorage<string>("remi-notes", "");
       :ability-scores="ABILITY_SCORES"
       :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
+      :skill-expertise-list="SKILL_EXPERTISE"
       :proficiency-bonus="PROFICIENCY_BONUS"
     />
     <div class="divider" />

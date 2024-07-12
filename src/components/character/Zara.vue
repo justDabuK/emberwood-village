@@ -114,7 +114,7 @@ const SKILL_PROFICIENCIES = [
   Skill.History,
 ];
 
-const SKILL_EXPERTIES: Skill[] = [];
+const SKILL_EXPERTISE: Skill[] = [];
 
 const defaultCreatureList: Creature[] = [
   {
@@ -133,6 +133,11 @@ const defaultCreatureList: Creature[] = [
     exhaustion: 0,
     armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX),
     initiative: MODIFIER.DEX,
+    abilityScores: ABILITY_SCORES,
+    skill: {
+      proficiencies: SKILL_PROFICIENCIES,
+      expertise: SKILL_EXPERTISE,
+    },
     inspiration: false,
     magic: {
       spellSlots: getFullCasterSpellSlots(LEVEL),
@@ -275,7 +280,7 @@ const notesStorage = useStorage<string>(
       :ability-scores="ABILITY_SCORES"
       :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
+      :skill-expertise-list="SKILL_EXPERTISE"
       :proficiency-bonus="getProficiencyBonus(LEVEL)"
     />
     <div class="divider" />

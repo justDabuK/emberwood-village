@@ -49,7 +49,7 @@ const SKILL_PROFICIENCIES = [
   Skill.Intimidation,
 ];
 
-const SKILL_EXPERTIES: Skill[] = [];
+const SKILL_EXPERTISE: Skill[] = [];
 
 const breathWeaponDamageDiceNumber = () => {
   if (JAZZ_LEVEL < 5) {
@@ -90,6 +90,11 @@ const defaultJazzCreatureList: Creature[] = [
     exhaustion: 0,
     armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX, MODIFIER.CON),
     initiative: MODIFIER.DEX,
+    abilityScores: ABILITY_SCORES,
+    skill: {
+      proficiencies: SKILL_PROFICIENCIES,
+      expertise: SKILL_EXPERTISE,
+    },
     inspiration: false,
     sectionList: [
       {
@@ -328,7 +333,7 @@ const notesStorage = useStorage<string>("jazz-notes", "");
       :ability-scores="ABILITY_SCORES"
       :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
+      :skill-expertise-list="SKILL_EXPERTISE"
       :proficiency-bonus="JAZZ_PROFICIENCY_BONUS"
     />
     <div class="divider" />

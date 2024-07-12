@@ -155,6 +155,11 @@ const defaultNexCreatureList: Creature[] = [
     exhaustion: 0,
     armorClass: getChainShirtArmorClass(MODIFIER.DEX),
     initiative: MODIFIER.DEX,
+    abilityScores: ABILITY_SCORES,
+    skill: {
+      proficiencies: SKILL_PROFICIENCIES,
+      expertise: SKILL_EXPERTISE,
+    },
     inspiration: false,
     magic: {
       spellSlots: {
