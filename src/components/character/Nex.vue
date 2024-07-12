@@ -129,14 +129,14 @@ const MODIFIER: AbilityScores = {
 
 const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[] = ["INT", "WIS"];
 
-const SKILL_PROFICIENCIES = [
+const SKILL_PROFICIENCIES: Skill[] = [
   Skill.Stealth,
   Skill.Arcana,
   Skill.Investigation,
   Skill.Perception,
 ];
 
-const SKILL_EXPERTIES: Skill[] = [];
+const SKILL_EXPERTISE: Skill[] = [];
 
 const defaultNexCreatureList: Creature[] = [
   {
@@ -408,7 +408,7 @@ const notesStorage = useStorage<string>("nex-notes", "");
       :ability-scores="ABILITY_SCORES"
       :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
       :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTIES"
+      :skill-expertise-list="SKILL_EXPERTISE"
       :proficiency-bonus="getProficiencyBonus(NEX_LEVEL)"
     />
     <div class="divider" />
