@@ -15,6 +15,7 @@ import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
+import ApothecarySpellCheatSheetContainer from "./SpellCheatSheet/ApothecarySpellCheatSheetContainer.vue";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -411,7 +412,7 @@ const notesStorage = useStorage<string>("nex-notes", "");
       :proficiency-bonus="getProficiencyBonus(NEX_LEVEL)"
     />
     <div class="divider" />
-    <SpellCheatSheet
+    <ApothecarySpellCheatSheetContainer
       v-if="creatureList[0].magic"
       v-model:spell-slots="creatureList[0].magic.spellSlots"
       v-model:concentration="creatureList[0].magic.concentration"
