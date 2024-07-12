@@ -150,6 +150,18 @@ const corpseWroughtCreatureSavingThrowProficiencyList: (keyof AbilityScores)[] =
   ["CON", "WIS"];
 const corpseWroughtCreatureSkillProficiencies: Skill[] = [Skill.Athletics];
 
+const owlAbilityScores: AbilityScores = {
+  STR: 3,
+  DEX: 13,
+  CON: 8,
+  INT: 2,
+  WIS: 12,
+  CHA: 7,
+};
+const owlSavingThrowProficiencyList: (keyof AbilityScores)[] = [];
+const owlSkillProficiencies: Skill[] = [Skill.Perception, Skill.Stealth];
+const owlProficiencyBonus = 2;
+
 const defaultNexCreatureList: Creature[] = [
   {
     name: "Nex",
@@ -367,6 +379,13 @@ const defaultNexCreatureList: Creature[] = [
     contamination: 0,
     exhaustion: 0,
     armorClass: 11,
+    abilityScores: owlAbilityScores,
+    savingThrowProficiencyList: owlSavingThrowProficiencyList,
+    skill: {
+      proficiencies: owlSkillProficiencies,
+      expertise: [],
+    },
+    proficiencyBonus: owlProficiencyBonus,
     sectionList: [
       {
         title: "Action",
@@ -378,7 +397,7 @@ const defaultNexCreatureList: Creature[] = [
           },
           {
             title: "Weapon Attack",
-            dice: "d20+3",
+            dice: `d20+${getModifier(owlAbilityScores.DEX) + owlProficiencyBonus}`,
             items: [{ name: "Talons", dice: "1" }],
           },
         ],
@@ -418,6 +437,10 @@ const defaultNexCreatureList: Creature[] = [
             title: "Keen Hearing and Sight",
             description:
               "Advantage on perception checks when hearing or seeing",
+          },
+          {
+            title: "Darkvision",
+            description: "120 ft. (24 squares)",
           },
         ],
       },
