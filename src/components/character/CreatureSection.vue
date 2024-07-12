@@ -11,7 +11,7 @@ const creature = defineModel<Creature>({ required: true });
 </script>
 
 <template>
-  <div class="creature-section">
+  <div>
     <h3>{{ creature.name }}</h3>
     <div class="action-grid">
       <SectionCard
