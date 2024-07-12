@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type SpellSlots, TypeOfRest } from "../../scripts/cheatSheetTypes.ts";
-import type { Spell } from "../../scripts/spellUtils.ts";
+import { type SpellSlots, TypeOfRest } from "../../../scripts/cheatSheetTypes.ts";
+import type { Spell } from "../../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
 import { computed } from "vue";

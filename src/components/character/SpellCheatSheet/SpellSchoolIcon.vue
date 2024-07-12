@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SpellSchool } from "../../scripts/spellUtils.ts";
+import { SpellSchool } from "../../../scripts/spellUtils.ts";
 
 defineProps<{
   spellSchool: SpellSchool;

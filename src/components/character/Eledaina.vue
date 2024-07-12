@@ -17,10 +17,10 @@ import {
   getUnarmoredDefenseArmorClass,
 } from "../../scripts/armorClassUtils.ts";
 import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
-import SpellCheatSheet from "./SpellCheatSheet.vue";
+import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheet.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
-import WizardSpellCheatSheet from "./WizardSpellCheatSheet.vue";
+import WizardSpellCheatSheet from "./SpellCheatSheet/WizardSpellCheatSheet.vue";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];

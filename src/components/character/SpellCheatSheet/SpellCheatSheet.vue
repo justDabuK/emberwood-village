@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type SpellSlots, TypeOfRest } from "../../scripts/cheatSheetTypes.ts";
-import {getLevelString, type Spell} from "../../scripts/spellUtils.ts";
+import { type SpellSlots, TypeOfRest } from "../../../scripts/cheatSheetTypes.ts";
+import {getLevelString, type Spell} from "../../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
 import type { CollectionEntry } from "astro:content";
@@ -159,8 +159,6 @@ const getOptionalActionColor = (title: string) => {
                   spell.data.duration.includes('Concentration')
                     ? 'concentration'
                     : '',
-                  'card',
-                  'spell',
                 ]"
               >
                 <SpellSchoolIcon
