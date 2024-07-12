@@ -11,7 +11,7 @@ import { useStorage } from "@vueuse/core";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { getChainShirtArmorClass } from "../../scripts/armorClassUtils.ts";
 import { Spell } from "../../scripts/spellUtils.ts";
-import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheet.vue";
+import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
 import NoteSection from "./NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";

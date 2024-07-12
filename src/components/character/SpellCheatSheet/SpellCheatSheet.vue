@@ -1,86 +1,23 @@
 <script setup lang="ts">
-import { type SpellSlots, TypeOfRest } from "../../../scripts/cheatSheetTypes.ts";
 import {getLevelString, type Spell} from "../../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
-import type { CollectionEntry } from "astro:content";
+import {type SpellSlots, TypeOfRest} from "../../../scripts/cheatSheetTypes.ts";
+import type {CollectionEntry} from "astro:content";
 
-const props = defineProps<{
-  allSpells: CollectionEntry<"spells">[];
-  typeOfRest: TypeOfRest;
-  knownSpellNameList: Spell[];
+defineProps<{
+  casterLevel: number;
   spellsSaveDiceCheck: number;
   spellAttackModifier: number;
-  casterLevel:
-    | 1
-    | 2
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 17
-    | 18
-    | 19
-    | 20;
+  typeOfRest: TypeOfRest;
+  spellSectionByLevelList: {
+    title: string;
+    spells: Record<number, CollectionEntry<"spells">[]>
+  }[]
 }>();
 
 const spellSlots = defineModel<SpellSlots>("spellSlots", { required: true });
 const concentration = defineModel<boolean>("concentration");
-
-const knownSpellList: CollectionEntry<"spells">[] = props.allSpells
-  .filter((spell) => props.knownSpellNameList.includes(spell.data.title))
-  .sort((a, b) => a.data.level - b.data.level);
-
-const isBonusActionSpell = (spell: CollectionEntry<"spells">) =>
-  spell.data.castingTime.includes("bonus");
-const isReactionSpell = (spell: CollectionEntry<"spells">) =>
-  spell.data.castingTime.includes("reaction");
-const isActionSpell = (spell: CollectionEntry<"spells">) =>
-  spell.data.castingTime.includes("action") &&
-  !isBonusActionSpell(spell) &&
-  !isReactionSpell(spell);
-const isRitualSpell = (spell: CollectionEntry<"spells">) => spell.data.ritual;
-
-const bonusActionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isBonusActionSpell);
-const actionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isActionSpell);
-const reactionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isReactionSpell);
-const ritualSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isRitualSpell);
-const remainingSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(
-  (spell) =>
-    !isBonusActionSpell(spell) &&
-    !isActionSpell(spell) &&
-    !isReactionSpell(spell) &&
-    !isRitualSpell(spell),
-);
-
-const orderSpellsByLevel = (spellList: CollectionEntry<"spells">[]) => {
-  const spellListByLevel: Record<number, CollectionEntry<"spells">[]> = {};
-  for (const spell of spellList) {
-    if (!spellListByLevel[spell.data.level]) {
-      spellListByLevel[spell.data.level] = [];
-    }
-    spellListByLevel[spell.data.level].push(spell);
-  }
-  return spellListByLevel;
-};
-
-const spellSectionByLevelList = [
-  { title: "Action", spells: orderSpellsByLevel(actionSpellList) },
-  { title: "Bonus Action", spells: orderSpellsByLevel(bonusActionSpellList) },
-  { title: "Reaction", spells: orderSpellsByLevel(reactionSpellList) },
-  { title: "Ritual", spells: orderSpellsByLevel(ritualSpellList) },
-  { title: "Remaining", spells: orderSpellsByLevel(remainingSpellList) },
-];
 
 const getCostlyComponent = (components: string) => {
   const match = components.match(/\((.+)\)/);
@@ -122,11 +59,11 @@ const getOptionalActionColor = (title: string) => {
           <li v-for="(slot, level) in spellSlots" :key="level">
             {{ `${level}: ` }}
             <input
-              v-if="slot"
-              v-for="(_, index) in slot.flags"
-              :key="index"
-              type="checkbox"
-              v-model="slot.flags[index]"
+                v-if="slot"
+                v-for="(_, index) in slot.flags"
+                :key="index"
+                type="checkbox"
+                v-model="slot.flags[index]"
             />
           </li>
         </ul>
@@ -138,22 +75,22 @@ const getOptionalActionColor = (title: string) => {
     </div>
     <div class="spell-cheat-sheet-body">
       <template
-        v-for="spellSection in spellSectionByLevelList"
-        :key="spellSection.title"
+          v-for="spellSection in spellSectionByLevelList"
+          :key="spellSection.title"
       >
         <div
-          v-if="Object.keys(spellSection.spells).length > 0"
-          :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
+            v-if="Object.keys(spellSection.spells).length > 0"
+            :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
         >
           <h2>{{ spellSection.title }}</h2>
           <div v-for="(spellList, level) in spellSection.spells">
             <h3>{{ getLevelString(level) }}</h3>
             <div class="spell-section-spell-list">
               <a
-                v-for="spell in spellList"
-                :key="spell.data.title"
-                :href="`/spells/${spell.slug}`"
-                :class="[
+                  v-for="spell in spellList"
+                  :key="spell.data.title"
+                  :href="`/spells/${spell.slug}`"
+                  :class="[
                   'card',
                   'spell',
                   spell.data.duration.includes('Concentration')
@@ -162,17 +99,17 @@ const getOptionalActionColor = (title: string) => {
                 ]"
               >
                 <SpellSchoolIcon
-                  class="spell-school-icon"
-                  :spell-school="spell.data.school"
+                    class="spell-school-icon"
+                    :spell-school="spell.data.school"
                 />
                 <SpellRangeIcon
-                  class="spell-range-icon"
-                  :range="spell.data.range"
+                    class="spell-range-icon"
+                    :range="spell.data.range"
                 />
                 <p class="title">{{ spell.data.title }}</p>
 
                 <p
-                  v-if="
+                    v-if="
                     spell.data.level === 0 &&
                     spell.data.effect &&
                     spell.data.effect[casterLevel]
@@ -181,7 +118,7 @@ const getOptionalActionColor = (title: string) => {
                   {{ spell.data.effect[casterLevel] }}
                 </p>
                 <p
-                  v-else-if="
+                    v-else-if="
                     spell.data.effect && spell.data.effect[level]
                   "
                 >
@@ -189,8 +126,8 @@ const getOptionalActionColor = (title: string) => {
                 </p>
 
                 <p
-                  v-if="isCostlySpell(spell.data.components)"
-                  :class="[
+                    v-if="isCostlySpell(spell.data.components)"
+                    :class="[
                     'cost',
                     spell.data.school.includes('Contaminated')
                       ? 'contaminated'
@@ -211,15 +148,15 @@ const getOptionalActionColor = (title: string) => {
 <style scoped>
 .spell-cheat-sheet-container {
   --concentration-color: color-mix(
-    in srgb,
-    oklch(76.99% 0.08 226.91) 20%,
-    var(--body-bg)
+      in srgb,
+      oklch(76.99% 0.08 226.91) 20%,
+      var(--body-bg)
   );
 
   --cantrip-color: color-mix(
-    in srgb,
-    oklch(40% 0.032 304.82) 40%,
-    var(--body-bg)
+      in srgb,
+      oklch(40% 0.032 304.82) 40%,
+      var(--body-bg)
   );
 
   display: flex;
@@ -247,9 +184,9 @@ const getOptionalActionColor = (title: string) => {
 
       --background-color: transparent;
       background-color: color-mix(
-        in srgb,
-        var(--background-color),
-        transparent 80%
+          in srgb,
+          var(--background-color),
+          transparent 80%
       );
 
       &.action {
@@ -282,9 +219,9 @@ const getOptionalActionColor = (title: string) => {
 
             &.cantrip {
               background: linear-gradient(
-                90deg,
-                var(--cantrip-color),
-                var(--concentration-color)
+                  90deg,
+                  var(--cantrip-color),
+                  var(--concentration-color)
               );
             }
           }
