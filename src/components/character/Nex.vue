@@ -146,10 +146,8 @@ const corpseWroughtCreatureAbilityScores: AbilityScores = {
   WIS: 12,
   CHA: 8,
 };
-const corpseWroughtCreatureSavingThrows: (keyof AbilityScores)[] = [
-  "CON",
-  "WIS",
-];
+const corpseWroughtCreatureSavingThrowProficiencyList: (keyof AbilityScores)[] =
+  ["CON", "WIS"];
 const corpseWroughtCreatureSkillProficiencies: Skill[] = [Skill.Athletics];
 
 const defaultNexCreatureList: Creature[] = [
@@ -296,6 +294,7 @@ const defaultNexCreatureList: Creature[] = [
     exhaustion: 0,
     armorClass: 14 + getProficiencyBonus(NEX_LEVEL),
     abilityScores: corpseWroughtCreatureAbilityScores,
+    savingThrowProficiencyList: corpseWroughtCreatureSavingThrowProficiencyList,
     skill: {
       proficiencies: corpseWroughtCreatureSkillProficiencies,
       expertise: [],
