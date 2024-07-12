@@ -6,14 +6,43 @@ import Contamination from "./Contamination.vue";
 import TitleValueCard from "./TitleValueCard.vue";
 import { addSign } from "../../scripts/addSign.ts";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
+import { ref } from "vue";
 
 const creature = defineModel<Creature>({ required: true });
+
+enum Tabs {
+  ACTIONS,
+  SKILL,
+}
+
+const currentTab = ref<Tabs>(Tabs.ACTIONS);
+
+const setTab = (tab: Tabs) => {
+  currentTab.value = tab;
+};
 </script>
 
 <template>
-  <div>
-    <h3>{{ creature.name }}</h3>
-    <div class="action-grid">
+  <div class="creature-section">
+    <div class="header">
+      <h3>{{ creature.name }}</h3>
+      <div>
+        <button
+          :class="currentTab === Tabs.ACTIONS ? 'active' : ''"
+          @click="setTab(Tabs.ACTIONS)"
+        >
+          Actions & Co.
+        </button>
+        <button
+          :class="currentTab === Tabs.SKILL ? 'active' : ''"
+          @click="setTab(Tabs.SKILL)"
+        >
+          Skills
+        </button>
+      </div>
+    </div>
+
+    <div v-if="currentTab === Tabs.ACTIONS" class="action-grid">
       <SectionCard
         v-for="section in creature.sectionList"
         :key="section.title"
@@ -39,25 +68,58 @@ const creature = defineModel<Creature>({ required: true });
         class="initiative"
       />
     </div>
+    <SkillCheatSheet
+      v-else
+      :ability-scores="creature.abilityScores"
+      :saving-throw-proficiency-list="creature.savingThrowProficiencyList"
+      :skill-proficiency-list="creature.skill.proficiencies"
+      :skill-expertise-list="creature.skill.expertise"
+      :proficiency-bonus="creature.proficiencyBonus"
+    />
   </div>
-  <SkillCheatSheet
-    :ability-scores="creature.abilityScores"
-    :saving-throw-proficiency-list="creature.savingThrowProficiencyList"
-    :skill-proficiency-list="creature.skill.proficiencies"
-    :skill-expertise-list="creature.skill.expertise"
-    :proficiency-bonus="creature.proficiencyBonus"
-  />
 </template>
 
 <style scoped>
-.action-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+.creature-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-16);
 
-  .armor-class {
-    grid-row: 2;
-    grid-column: 1;
+  .header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--size-16);
+
+    /* TODO: align style to navigation bar? */
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      color: var(--text-color);
+      border: none;
+      padding: 10px 20px;
+      font: inherit;
+
+      &:hover {
+        color: var(--highlight-color);
+        transition: none;
+      }
+
+      &.active {
+        color: var(--highlight-color);
+        border-bottom: 2px solid var(--highlight-color);
+      }
+    }
+  }
+
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+
+    .armor-class {
+      grid-row: 2;
+      grid-column: 1;
+    }
   }
 }
 </style>
