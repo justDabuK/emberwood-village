@@ -170,8 +170,8 @@ const getOptionalActionColor = (title: string) => {
   }
 
   .spell-cheat-sheet-body {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--size-640), 1fr));
+    display: flex;
+    flex-direction: column;
     gap: var(--size-24);
 
     .spell-section {
