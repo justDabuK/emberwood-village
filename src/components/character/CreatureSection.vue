@@ -42,7 +42,10 @@ const setTab = (tab: Tabs) => {
       </div>
     </div>
 
-    <div v-if="currentTab === Tabs.ACTIONS" class="action-grid">
+    <div
+      v-if="currentTab === Tabs.ACTIONS"
+      class="action-grid colored-background"
+    >
       <SectionCard
         v-for="section in creature.sectionList"
         :key="section.title"
@@ -70,6 +73,7 @@ const setTab = (tab: Tabs) => {
     </div>
     <SkillCheatSheet
       v-else
+      class="colored-background"
       :ability-scores="creature.abilityScores"
       :saving-throw-proficiency-list="creature.savingThrowProficiencyList"
       :skill-proficiency-list="creature.skill.proficiencies"
@@ -83,12 +87,16 @@ const setTab = (tab: Tabs) => {
 .creature-section {
   display: flex;
   flex-direction: column;
-  gap: var(--size-16);
+  --active-tab-background-color: var(--nav-bg);
 
   .header {
     display: flex;
     align-items: baseline;
     gap: var(--size-16);
+
+    h3 {
+      margin: 0;
+    }
 
     /* TODO: align style to navigation bar? */
     button {
@@ -96,19 +104,26 @@ const setTab = (tab: Tabs) => {
       background-color: transparent;
       color: var(--text-color);
       border: none;
-      padding: 10px 20px;
+      padding: var(--size-8) var(--size-16);
       font: inherit;
+      border-radius: 5px 5px 0 0;
 
       &:hover {
         color: var(--highlight-color);
+        background-color: oklch(60% 0.08 226.91 / 10%);
         transition: none;
       }
 
       &.active {
-        color: var(--highlight-color);
-        border-bottom: 2px solid var(--highlight-color);
+        background-color: var(--active-tab-background-color);
       }
     }
+  }
+
+  .colored-background {
+    background-color: var(--active-tab-background-color);
+    padding: var(--size-16);
+    border-radius: 5px;
   }
 
   .action-grid {
