@@ -213,6 +213,14 @@ const defaultNexCreatureList: Creature[] = [
             title: "Spell casting",
             description: "See spell casting cheat sheet",
           },
+          {
+            title: "Bless",
+            usages: {
+              flags: [false],
+              typeOfRest: TypeOfRest.LONG,
+            },
+            description: "for free, 1st level",
+          },
         ],
       },
       {
@@ -227,6 +235,14 @@ const defaultNexCreatureList: Creature[] = [
           {
             title: "Spell casting",
             description: "See spell casting cheat sheet",
+          },
+          {
+            title: "Misty Step",
+            usages: {
+              flags: [false],
+              typeOfRest: TypeOfRest.LONG,
+            },
+            description: "for free, 2nd level",
           },
         ],
       },
