@@ -138,6 +138,20 @@ const SKILL_PROFICIENCIES: Skill[] = [
 
 const SKILL_EXPERTISE: Skill[] = [];
 
+const corpseWroughtCreatureAbilityScores: AbilityScores = {
+  STR: 18,
+  DEX: 10,
+  CON: 16,
+  INT: 8,
+  WIS: 12,
+  CHA: 8,
+};
+const corpseWroughtCreatureSavingThrows: (keyof AbilityScores)[] = [
+  "CON",
+  "WIS",
+];
+const corpseWroughtCreatureSkillProficiencies: Skill[] = [Skill.Athletics];
+
 const defaultNexCreatureList: Creature[] = [
   {
     name: "Nex",
@@ -280,6 +294,12 @@ const defaultNexCreatureList: Creature[] = [
     contamination: 0,
     exhaustion: 0,
     armorClass: 14 + getProficiencyBonus(NEX_LEVEL),
+    abilityScores: corpseWroughtCreatureAbilityScores,
+    skill: {
+      proficiencies: corpseWroughtCreatureSkillProficiencies,
+      expertise: [],
+    },
+    proficiencyBonus: getProficiencyBonus(NEX_LEVEL),
     sectionList: [
       {
         title: "Action",
@@ -287,8 +307,10 @@ const defaultNexCreatureList: Creature[] = [
         subsections: [
           {
             title: "Weapon Attack",
-            dice: `d20+${4 + getProficiencyBonus(NEX_LEVEL)}`,
-            items: [{ name: "Slam", dice: "1d8+4" }],
+            dice: `d20+${getModifier(ABILITY_SCORES.STR) + getProficiencyBonus(NEX_LEVEL)}`,
+            items: [
+              { name: "Slam", dice: `1d8+${getModifier(ABILITY_SCORES.STR)}` },
+            ],
           },
         ],
       },
@@ -319,6 +341,18 @@ const defaultNexCreatureList: Creature[] = [
             title: "Lightning Absorption",
             description:
               "If hit by lightning damage, regain HP equal to the damage",
+          },
+          {
+            title: "Damage Immunities",
+            description: "poison, lightning",
+          },
+          {
+            title: "Condition Immunities",
+            description: "poisoned",
+          },
+          {
+            title: "Darkvision",
+            description: "60 ft. (12 squares)",
           },
         ],
       },
