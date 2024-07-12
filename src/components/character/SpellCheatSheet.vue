@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { type SpellSlots, TypeOfRest } from "../../scripts/cheatSheetTypes.ts";
-import type { Spell } from "../../scripts/spellUtils.ts";
+import {getLevelString, type Spell} from "../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
-import { computed } from "vue";
 import type { CollectionEntry } from "astro:content";
 
 const props = defineProps<{
@@ -37,21 +36,8 @@ const props = defineProps<{
 
 const spellSlots = defineModel<SpellSlots>("spellSlots", { required: true });
 const concentration = defineModel<boolean>("concentration");
-const currentSpellSlotLevel = computed(
-  () =>
-    Object.keys(spellSlots.value).map(Number)[0] as
-      | 1
-      | 2
-      | 3
-      | 4
-      | 5
-      | 6
-      | 7
-      | 8
-      | 9,
-);
 
-const knownSpellList = props.allSpells
+const knownSpellList: CollectionEntry<"spells">[] = props.allSpells
   .filter((spell) => props.knownSpellNameList.includes(spell.data.title))
   .sort((a, b) => a.data.level - b.data.level);
 
@@ -65,11 +51,11 @@ const isActionSpell = (spell: CollectionEntry<"spells">) =>
   !isReactionSpell(spell);
 const isRitualSpell = (spell: CollectionEntry<"spells">) => spell.data.ritual;
 
-const bonusActionSpellList = knownSpellList.filter(isBonusActionSpell);
-const actionSpellList = knownSpellList.filter(isActionSpell);
-const reactionSpellList = knownSpellList.filter(isReactionSpell);
-const ritualSpellList = knownSpellList.filter(isRitualSpell);
-const remainingSpellList = knownSpellList.filter(
+const bonusActionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isBonusActionSpell);
+const actionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isActionSpell);
+const reactionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isReactionSpell);
+const ritualSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isRitualSpell);
+const remainingSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(
   (spell) =>
     !isBonusActionSpell(spell) &&
     !isActionSpell(spell) &&
@@ -77,12 +63,23 @@ const remainingSpellList = knownSpellList.filter(
     !isRitualSpell(spell),
 );
 
-const spellSectionList = [
-  { title: "Action", spells: actionSpellList },
-  { title: "Bonus Action", spells: bonusActionSpellList },
-  { title: "Reaction", spells: reactionSpellList },
-  { title: "Ritual", spells: ritualSpellList },
-  { title: "Remaining", spells: remainingSpellList },
+const orderSpellsByLevel = (spellList: CollectionEntry<"spells">[]) => {
+  const spellListByLevel: Record<number, CollectionEntry<"spells">[]> = {};
+  for (const spell of spellList) {
+    if (!spellListByLevel[spell.data.level]) {
+      spellListByLevel[spell.data.level] = [];
+    }
+    spellListByLevel[spell.data.level].push(spell);
+  }
+  return spellListByLevel;
+};
+
+const spellSectionByLevelList = [
+  { title: "Action", spells: orderSpellsByLevel(actionSpellList) },
+  { title: "Bonus Action", spells: orderSpellsByLevel(bonusActionSpellList) },
+  { title: "Reaction", spells: orderSpellsByLevel(reactionSpellList) },
+  { title: "Ritual", spells: orderSpellsByLevel(ritualSpellList) },
+  { title: "Remaining", spells: orderSpellsByLevel(remainingSpellList) },
 ];
 
 const getCostlyComponent = (components: string) => {
@@ -91,13 +88,7 @@ const getCostlyComponent = (components: string) => {
 };
 
 const isCostlySpell = (components: string) => {
-  return (
-    components.includes("delerium") ||
-    components.includes("gold") ||
-    components.includes(" gp") ||
-    components.includes(" sp") ||
-    components.includes(" cp")
-  );
+  return !!components.match(/(\d+ (gp|sp|cp))/g)?.length;
 };
 
 const getOptionalActionColor = (title: string) => {
@@ -147,69 +138,71 @@ const getOptionalActionColor = (title: string) => {
     </div>
     <div class="spell-cheat-sheet-body">
       <template
-        v-for="spellSection in spellSectionList"
+        v-for="spellSection in spellSectionByLevelList"
         :key="spellSection.title"
       >
         <div
-          v-if="spellSection.spells.length > 0"
+          v-if="Object.keys(spellSection.spells).length > 0"
           :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
         >
           <h2>{{ spellSection.title }}</h2>
-          <div class="spell-section-spell-list">
-            <a
-              v-for="spell in spellSection.spells"
-              :key="spell.data.title"
-              :href="`/spells/${spell.slug}`"
-              :class="[
-                'card',
-                'spell',
-                spell.data.duration.includes('Concentration')
-                  ? 'concentration'
-                  : '',
-                'card',
-                'spell',
-                spell.data.level === 0 ? 'cantrip' : '',
-              ]"
-            >
-              <SpellSchoolIcon
-                class="spell-school-icon"
-                :spell-school="spell.data.school"
-              />
-              <SpellRangeIcon
-                class="spell-range-icon"
-                :range="spell.data.range"
-              />
-              <p class="title">{{ spell.data.title }}</p>
-
-              <p
-                v-if="
-                  spell.data.level === 0 &&
-                  spell.data.effect &&
-                  spell.data.effect[casterLevel]
-                "
-              >
-                {{ spell.data.effect[casterLevel] }}
-              </p>
-              <p
-                v-else-if="
-                  spell.data.effect && spell.data.effect[currentSpellSlotLevel]
-                "
-              >
-                {{ spell.data.effect[currentSpellSlotLevel] }}
-              </p>
-
-              <p
-                v-if="isCostlySpell(spell.data.components)"
+          <div v-for="(spellList, level) in spellSection.spells">
+            <h3>{{ getLevelString(level) }}</h3>
+            <div class="spell-section-spell-list">
+              <a
+                v-for="spell in spellList"
+                :key="spell.data.title"
+                :href="`/spells/${spell.slug}`"
                 :class="[
-                  'cost',
-                  spell.data.school.includes('Contaminated')
-                    ? 'contaminated'
+                  'card',
+                  'spell',
+                  spell.data.duration.includes('Concentration')
+                    ? 'concentration'
                     : '',
+                  'card',
+                  'spell',
                 ]"
               >
-                {{ getCostlyComponent(spell.data.components) }}
-              </p>
-            </a>
+                <SpellSchoolIcon
+                  class="spell-school-icon"
+                  :spell-school="spell.data.school"
+                />
+                <SpellRangeIcon
+                  class="spell-range-icon"
+                  :range="spell.data.range"
+                />
+                <p class="title">{{ spell.data.title }}</p>
+
+                <p
+                  v-if="
+                    spell.data.level === 0 &&
+                    spell.data.effect &&
+                    spell.data.effect[casterLevel]
+                  "
+                >
+                  {{ spell.data.effect[casterLevel] }}
+                </p>
+                <p
+                  v-else-if="
+                    spell.data.effect && spell.data.effect[level]
+                  "
+                >
+                  {{ spell.data.effect[level] }}
+                </p>
+
+                <p
+                  v-if="isCostlySpell(spell.data.components)"
+                  :class="[
+                    'cost',
+                    spell.data.school.includes('Contaminated')
+                      ? 'contaminated'
+                      : '',
+                  ]"
+                >
+                  {{ getCostlyComponent(spell.data.components) }}
+                </p>
+              </a>
+            </div>
           </div>
         </div>
       </template>
@@ -357,18 +350,6 @@ const getOptionalActionColor = (title: string) => {
 
   .concentration {
     background-color: var(--concentration-color);
-
-    &.cantrip {
-      background: linear-gradient(
-        90deg,
-        var(--cantrip-color),
-        var(--concentration-color)
-      );
-    }
-  }
-
-  .cantrip {
-    background-color: var(--cantrip-color);
   }
 }
 </style>

@@ -1,5 +1,24 @@
 import type { SpellSlots } from "./cheatSheetTypes.ts";
 
+export const getLevelString = (spellLevel: number | string) => {
+  switch (spellLevel) {
+    case "0":
+    case 0:
+      return "Cantrip";
+    case "1":
+    case 1:
+      return "1st level";
+    case "2":
+    case 2:
+      return "2nd level";
+    case "3":
+    case 3:
+      return "3rd level";
+    default:
+      return `${spellLevel}th level`;
+  }
+};
+
 export const getSpellSchoolIconName = (school: string) => {
   if (school.startsWith("Contaminated")) {
     return "deliriumCrystal.png";
