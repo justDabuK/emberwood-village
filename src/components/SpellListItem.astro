@@ -3,9 +3,9 @@ import { achievedPrerequisites } from "../scripts/spellPrerequisites";
 import MarkdownLink from "./MarkdownLink.astro";
 import { getSpellSchoolIconName } from "../scripts/spellUtils";
 import InlineIcon from "./InlineIcon.astro";
-import { CollectionEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 
-type Props = CollectionEntry<"spells">;
+type Props = { spell: CollectionEntry<"spells"> };
 
 const { spell } = Astro.props;
 ---

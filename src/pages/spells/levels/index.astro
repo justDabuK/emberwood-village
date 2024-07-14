@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SpellListItem from "../../../components/SpellListItem.astro";
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 const allSpells = await getCollection("spells");
 
@@ -10,7 +10,7 @@ const levelToSpellMap = new Map<number, CollectionEntry<"spells">[]>();
 allSpells.forEach((spell) => {
   const level = spell.data.level;
   if (levelToSpellMap.has(level)) {
-    levelToSpellMap.get(level).push(spell);
+    levelToSpellMap.get(level)?.push(spell);
   } else {
     levelToSpellMap.set(level, [spell]);
   }

@@ -48,6 +48,7 @@ const magicItemCollection = defineCollection({
     title: z.string(),
     rarity: z.string(),
     type: z.string(),
+    disabled: z.boolean().optional(),
   }),
 });
 

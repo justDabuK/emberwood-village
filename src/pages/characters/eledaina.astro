@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Eledaina from "../../components/character/Eledaina.vue";
+import EledainaContainer from "../../components/character/Eledaina.vue";
 import { getCollection } from "astro:content";
 
 const allSpells = await getCollection("spells");
 ---
 
 <BaseLayout title="Eledaina" icon="eledaina.jpg" iconCover>
-  <Eledaina client:load allSpells={allSpells} />
+  <EledainaContainer client:load allSpells={allSpells} />
 </BaseLayout>

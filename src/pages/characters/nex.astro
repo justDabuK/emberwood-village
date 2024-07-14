@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Nex from "../../components/character/Nex.vue";
+import NexContainer from "../../components/character/Nex.vue";
 import { getCollection } from "astro:content";
 
 const allSpells = await getCollection("spells");
@@ -17,5 +17,5 @@ TODO:
     - when hovering over spell detail view, it extends and shows whole description
 -->
 <BaseLayout title="Nex" icon="dominik-profile-picture.jpg" iconCover>
-  <Nex client:load allSpells={allSpells} />
+  <NexContainer client:load allSpells={allSpells} />
 </BaseLayout>

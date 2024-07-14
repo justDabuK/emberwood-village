@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Mordred from "../../components/character/Mordred.vue";
+import MordredContainer from "../../components/character/Mordred.vue";
 import { getCollection } from "astro:content";
 
 const allSpells = await getCollection("spells");
 ---
 
 <BaseLayout title="Mordred" icon="mordred.jpeg" iconCover>
-  <Mordred client:load allSpells={allSpells} />
+  <MordredContainer client:load allSpells={allSpells} />
 </BaseLayout>

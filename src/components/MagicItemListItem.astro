@@ -1,15 +1,10 @@
 ---
 import MarkdownLink from "./MarkdownLink.astro";
 import { getMagicItemIconName } from "../scripts/getMagicItemIconName";
+import { type CollectionEntry } from "astro:content";
 
 type Props = {
-  slug: string;
-  data: {
-    title: string;
-    rarity: boolean;
-    type: string;
-    disabled: boolean;
-  };
+  item: CollectionEntry<"magicItems">;
 };
 
 const { item } = Astro.props;
