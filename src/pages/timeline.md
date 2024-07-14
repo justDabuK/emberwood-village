@@ -37,3 +37,9 @@ title: "Timeline"
 |                                | Fight with Lemmington against shadowy dregs                                        |
 |                                | Caspian duel over a delerium dragon wyrmling and a mutated Troll                   |
 |                                | Jazz: The awakening                                                                |
+| 1 day: Thursday                | Get a new Job from Blackjack Mel, lets steal the Scepter of St. Vitruvio           |
+|                                | Deceived silver order knights, intimidated mephits, stole Scepter and more         |
+|                                | Fled from Followers of falling fire and got lost in the ruins                      |
+|                                | Met undead haze people, fled and left behind bernadette                            |
+|                                | Met silver order knights and deceived them once more (also first arcane anomaly)   |
+|                                | Remet followers of falling fire and after unsuccessful flight, fought to death     |
