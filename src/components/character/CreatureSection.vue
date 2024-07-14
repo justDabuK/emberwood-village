@@ -6,7 +6,8 @@ import Contamination from "./Contamination.vue";
 import TitleValueCard from "./TitleValueCard.vue";
 import { addSign } from "../../scripts/addSign.ts";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import MenuRightIcon from "./SpellCheatSheet/MenuRightIcon.vue";
 
 const creature = defineModel<Creature>({ required: true });
 
@@ -20,13 +21,33 @@ const currentTab = ref<Tabs>(Tabs.ACTIONS);
 const setTab = (tab: Tabs) => {
   currentTab.value = tab;
 };
+
+const isDetailsOpen = ref<boolean>(false);
+const detailsRef = ref<HTMLDetailsElement>();
+watch(
+  detailsRef,
+  (value) => {
+    if (value) {
+      isDetailsOpen.value = value.open;
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
-  <div class="creature-section">
-    <div class="header">
-      <h3>{{ creature.name }}</h3>
-      <div>
+  <details
+    class="creature-section"
+    ref="detailsRef"
+    open
+    @toggle="isDetailsOpen = !isDetailsOpen"
+  >
+    <summary class="header">
+      <MenuRightIcon :class="['icon', isDetailsOpen ? 'open' : '']" />
+      <h3>
+        {{ creature.name }}
+      </h3>
+      <div v-if="isDetailsOpen">
         <button
           :class="currentTab === Tabs.ACTIONS ? 'active' : ''"
           @click="setTab(Tabs.ACTIONS)"
@@ -40,7 +61,7 @@ const setTab = (tab: Tabs) => {
           Skills
         </button>
       </div>
-    </div>
+    </summary>
 
     <div
       v-if="currentTab === Tabs.ACTIONS"
@@ -80,7 +101,7 @@ const setTab = (tab: Tabs) => {
       :skill-expertise-list="creature.skill.expertise"
       :proficiency-bonus="creature.proficiencyBonus"
     />
-  </div>
+  </details>
 </template>
 
 <style scoped>
@@ -93,7 +114,18 @@ const setTab = (tab: Tabs) => {
     display: flex;
     align-items: baseline;
     gap: var(--size-16);
+    cursor: pointer;
 
+    .icon {
+      width: var(--size-24);
+      height: var(--size-24);
+      margin: auto 0;
+      transition: all 300ms ease-in-out;
+
+      &.open {
+        transform: rotate(90deg);
+      }
+    }
     h3 {
       margin: 0;
     }
