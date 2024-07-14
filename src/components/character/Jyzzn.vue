@@ -105,8 +105,12 @@ const defaultJazzCreatureList: Creature[] = [
         subsections: [
           {
             title: "Weapon Attack",
-            dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR}`,
+            dice: `d20+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR}/+${JAZZ_PROFICIENCY_BONUS + MODIFIER.STR + 1}`,
             items: [
+              {
+                name: "Twillight (Maul)",
+                dice: `2d6+${contaminatedFuryExtraDamage()}+${MODIFIER.STR + 1}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE + 1} R)`,
+              },
               {
                 name: "Greataxe",
                 dice: `1d12+${contaminatedFuryExtraDamage()}+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`,
