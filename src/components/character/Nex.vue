@@ -333,9 +333,12 @@ const defaultNexCreatureList: Creature[] = [
         subsections: [
           {
             title: "Weapon Attack",
-            dice: `d20+${getModifier(ABILITY_SCORES.STR) + getProficiencyBonus(NEX_LEVEL)}`,
+            dice: `d20+${getModifier(corpseWroughtCreatureAbilityScores.STR) + getProficiencyBonus(NEX_LEVEL)}`,
             items: [
-              { name: "Slam", dice: `1d8+${getModifier(ABILITY_SCORES.STR)}` },
+              {
+                name: "Slam",
+                dice: `1d8+${getModifier(corpseWroughtCreatureAbilityScores.STR)}`,
+              },
             ],
           },
         ],
