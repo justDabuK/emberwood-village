@@ -13,6 +13,26 @@ const increase = () => {
 const reset = () => {
   contaminationLevel.value = 0;
 };
+
+const currentSymptom = computed(() => {
+  switch (contaminationLevel.value) {
+    case 1:
+      return "No symptoms. Yet.";
+    case 2:
+      return "Hit points regained by expending hit dice halved.";
+    case 3:
+      return "No hit points regained at the end of a long rest.";
+    case 4:
+      return "Damage dealt by weapon attacks and spells halved.";
+    case 5:
+      return "Incapacitated.";
+    case 6:
+      return "Monstrous Transformation!";
+    case 0:
+    default:
+      return "";
+  }
+});
 </script>
 
 <template>
@@ -26,6 +46,7 @@ const reset = () => {
       <span>{{ contaminationLevel }}</span>
       <button class="increase-button" @click="increase">+</button>
     </div>
+    <span>{{ currentSymptom }}</span>
   </div>
 </template>
 
