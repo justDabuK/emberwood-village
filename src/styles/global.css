@@ -3,11 +3,6 @@
    License: none (public domain)
 */
 
-/* TODO: does this solve Katyas problem? */
-* {
-  -webkit-appearance: none;
-}
-
 html,
 body {
   margin: 0;
