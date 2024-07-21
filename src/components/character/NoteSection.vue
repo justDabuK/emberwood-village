@@ -19,6 +19,9 @@ const notes = defineModel<string>({ required: true });
 
   textarea {
     flex: 1;
+    /* TODO: can I use
+        field-sizing: content
+        here? */
   }
 }
 </style>
