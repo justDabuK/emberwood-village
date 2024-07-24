@@ -47,7 +47,7 @@ watch(
       <h3>
         {{ creature.name }}
       </h3>
-      <div v-if="isDetailsOpen">
+      <div>
         <button
           :class="currentTab === Tabs.ACTIONS ? 'active' : ''"
           @click="setTab(Tabs.ACTIONS)"

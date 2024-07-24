@@ -236,6 +236,11 @@ const getOptionalActionColor = (title: string) => {
             height: var(--size-24);
             width: var(--size-24);
             color: var(--text-color-darker-1);
+
+            svg {
+              height: var(--size-24);
+              width: var(--size-24);
+            }
           }
 
           .title {

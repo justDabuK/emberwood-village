@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <svg viewBox="0 0 24 24">
+  <svg width="24" height="24" viewBox="0 0 24 24">
     <path
       v-if="range.includes('Self')"
       fill="currentColor"

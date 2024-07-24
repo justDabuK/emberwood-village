@@ -8,6 +8,8 @@ defineProps<{
 
 <template>
   <svg
+    width="24"
+    height="24"
     v-if="spellSchool.includes(SpellSchool.Abjuration)"
     viewBox="0 0 142 250.23"
   >
@@ -27,6 +29,8 @@ defineProps<{
     />
   </svg>
   <svg
+    width="24"
+    height="24"
     v-else-if="spellSchool.includes(SpellSchool.Conjuration)"
     viewBox="0 0 169.16 197"
   >
@@ -46,6 +50,8 @@ defineProps<{
     />
   </svg>
   <svg
+    width="24"
+    height="24"
     v-else-if="spellSchool.includes(SpellSchool.Divination)"
     viewBox="0 0 200.34 243.26"
   >
@@ -65,6 +71,8 @@ defineProps<{
     />
   </svg>
   <svg
+    width="24"
+    height="24"
     v-else-if="spellSchool.includes(SpellSchool.Enchantment)"
     viewBox="0 0 175.17 206.25"
   >
@@ -84,6 +92,8 @@ defineProps<{
     />
   </svg>
   <svg
+    width="24"
+    height="24"
     v-else-if="spellSchool.includes(SpellSchool.Evocation)"
     viewBox="0 0 248 204"
   >
@@ -103,6 +113,8 @@ defineProps<{
     />
   </svg>
   <svg
+    width="24"
+    height="24"
     v-else-if="spellSchool.includes(SpellSchool.Illusion)"
     viewBox="0 0 245.38 110.4"
   >
@@ -122,6 +134,8 @@ defineProps<{
     />
   </svg>
   <svg
+    width="24"
+    height="24"
     v-else-if="spellSchool.includes(SpellSchool.Necromancy)"
     viewBox="0 0 240.1 134.02"
   >
@@ -141,6 +155,8 @@ defineProps<{
     />
   </svg>
   <svg
+    width="24"
+    height="24"
     v-else-if="spellSchool.includes(SpellSchool.Transmutation)"
     viewBox="0 0 175 166"
   >

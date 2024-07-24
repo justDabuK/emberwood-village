@@ -3,6 +3,10 @@
    License: none (public domain)
 */
 
+details {
+  -webkit-appearance: none;
+}
+
 html,
 body {
   margin: 0;
