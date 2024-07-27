@@ -12,25 +12,25 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.4",
-    "@astrojs/vue": "^4.4.0",
+    "@astrojs/vue": "^4.5.0",
     "@vueuse/core": "^10.11.0",
-    "astro": "^4.10.2",
+    "astro": "^4.12.2",
     "astro-icon": "1.0.0",
-    "typescript": "^5.4.5",
-    "vue": "^3.4.29"
+    "typescript": "^5.5.4",
+    "vue": "^3.4.34"
   },
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
-    "@typescript-eslint/eslint-plugin": "^7.13.0",
-    "@typescript-eslint/parser": "^7.13.0",
-    "eslint": "^9.5.0",
+    "@eslint/js": "^9.8.0",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^1.2.2",
-    "eslint-plugin-vue": "^9.26.0",
-    "globals": "^15.5.0",
-    "prettier": "^3.3.2",
+    "eslint-plugin-astro": "^1.2.3",
+    "eslint-plugin-vue": "^9.27.0",
+    "globals": "^15.8.0",
+    "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.13.0",
-    "typescript-eslint": "^7.13.0"
+    "typescript-eslint": "^7.17.0"
   },
   "packageManager": "pnpm@9.4.0"
 }
