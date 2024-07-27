@@ -6,14 +6,12 @@ import {
   Skill,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
-import RoundCheatSheet from "./CheatSheet/RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
 import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
-import NoteSection from "./CheatSheet/NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
-import WizardSpellCheatSheet from "./CheatSheet/SpellCheatSheet/WizardSpellCheatSheetContainer.vue";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
+import WizardCheatSheet from "./CheatSheet/WizardCheatSheet.vue";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -255,33 +253,12 @@ const notesStorage = useStorage<string>(
 </script>
 
 <template>
-  <div class="cheat-sheet-list">
-    <RoundCheatSheet
-      v-model="creatureList"
-      @reset-to-default="resetToDefault"
-    />
-    <div class="divider" />
-    <WizardSpellCheatSheet
-      v-if="creatureList[0].magic"
-      v-model:spell-slots="creatureList[0].magic.spellSlots"
-      v-model:concentration="creatureList[0].magic.concentration"
-      :all-spells="allSpells"
-      :type-of-rest="creatureList[0].magic.refresh"
-      :spell-book-spell-name-list="spellBookSpellNameList"
-      :prepared-spell-name-list="preparedSpellNameList"
-      :spells-save-dice-check="8 + MODIFIER.INT + getProficiencyBonus(LEVEL)"
-      :spell-attack-modifier="MODIFIER.INT + getProficiencyBonus(LEVEL)"
-      :caster-level="LEVEL"
-    />
-    <div class="divider" />
-    <NoteSection v-model="notesStorage" />
-  </div>
+  <WizardCheatSheet
+    v-model="creatureList"
+    v-model:notes-storage="notesStorage"
+    :all-spells="allSpells"
+    :spell-book-spell-name-list="spellBookSpellNameList"
+    :prepared-spell-name-list="preparedSpellNameList"
+    @reset-to-default="resetToDefault"
+  />
 </template>
-
-<style scoped>
-.cheat-sheet-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-24);
-}
-</style>
