@@ -111,19 +111,19 @@ const defaultJazzCreatureList: Creature[] = [
             items: [
               {
                 name: "Twillight (Maul)",
-                dice: `2d6+${contaminatedFuryExtraDamage()}+${MODIFIER.STR + 1}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE + 1} R)`,
+                dice: `2d6+${MODIFIER.STR + 1}(+${contaminatedFuryExtraDamage()}+${MODIFIER.STR + JAZZ_RAGE_DAMAGE + 1} R)`,
               },
               {
                 name: "Greataxe",
-                dice: `1d12+${contaminatedFuryExtraDamage()}+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`,
+                dice: `1d12+${MODIFIER.STR}(+${contaminatedFuryExtraDamage()}+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`,
               },
               {
                 name: "Javelin (30/120 ft.)",
-                dice: `1d6+${contaminatedFuryExtraDamage()}+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`,
+                dice: `1d6+${MODIFIER.STR}(+${contaminatedFuryExtraDamage()}+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`,
               },
               {
                 name: "Handaxe (20/60 ft.)",
-                dice: `1d6+${contaminatedFuryExtraDamage()}+${MODIFIER.STR}(+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`,
+                dice: `1d6+${MODIFIER.STR}(+${contaminatedFuryExtraDamage()}+${MODIFIER.STR + JAZZ_RAGE_DAMAGE} R)`,
               },
             ],
           },
