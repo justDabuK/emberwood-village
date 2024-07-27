@@ -14,6 +14,7 @@ import NoteSection from "./CheatSheet/NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 import ApothecarySpellCheatSheetContainer from "./CheatSheet/SpellCheatSheet/ApothecarySpellCheatSheetContainer.vue";
+import ApothecaryCheatSheet from "./CheatSheet/ApothecaryCheatSheet.vue";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -477,41 +478,25 @@ const notesStorage = useStorage<string>("nex-notes", "");
 </script>
 
 <template>
-  <div class="cheat-sheet-list">
-    <RoundCheatSheet
-      v-model="creatureList"
-      @reset-to-default="resetToDefault"
-    />
-    <div class="divider" />
-    <ApothecarySpellCheatSheetContainer
-      v-if="creatureList[0].magic"
-      v-model:spell-slots="creatureList[0].magic.spellSlots"
-      v-model:concentration="creatureList[0].magic.concentration"
-      :all-spells="allSpells"
-      :type-of-rest="creatureList[0].magic.refresh"
-      :known-spell-name-list="knownSpellNameList"
-      :spells-save-dice-check="
-        8 +
-        MODIFIER.INT +
-        getProficiencyBonus(NEX_LEVEL) +
-        tomeOfOccultDraconicPracticesBonus
-      "
-      :spell-attack-modifier="
-        MODIFIER.INT +
-        getProficiencyBonus(NEX_LEVEL) +
-        tomeOfOccultDraconicPracticesBonus
-      "
-      :caster-level="NEX_LEVEL"
-    />
-    <div class="divider" />
-    <NoteSection v-model="notesStorage" />
-  </div>
+  <ApothecaryCheatSheet
+    v-model="creatureList"
+    v-model:notes-storage="notesStorage"
+    :all-spells="allSpells"
+    :known-spell-name-list="knownSpellNameList"
+    :spells-save-dice-check="
+      8 +
+      getModifier(creatureList[0].abilityScores.INT) +
+      creatureList[0].proficiencyBonus +
+      tomeOfOccultDraconicPracticesBonus
+    "
+    :spell-attack-modifier="
+      getModifier(creatureList[0].abilityScores.INT) +
+      creatureList[0].proficiencyBonus +
+      tomeOfOccultDraconicPracticesBonus
+    "
+    :caster-level="NEX_LEVEL"
+    @reset-to-default="resetToDefault"
+  />
 </template>
 
-<style scoped>
-.cheat-sheet-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-24);
-}
-</style>
+<style scoped></style>
