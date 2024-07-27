@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { type SpellSlots, TypeOfRest } from "../../../scripts/cheatSheetTypes.ts";
-import type { Spell } from "../../../scripts/spellUtils.ts";
+import {
+  type SpellSlots,
+  TypeOfRest,
+} from "../../../../scripts/cheatSheetTypes.ts";
+import type { Spell } from "../../../../scripts/spellUtils.ts";
 import type { CollectionEntry } from "astro:content";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
 
@@ -69,11 +72,12 @@ const remainingSpellList = preparedSpellList.filter(
     !isRitualSpell(spell),
 );
 const remainingSpellBook = spellBookSpellList.filter(
-  (spell) => !bonusActionSpellList.includes(spell) &&
+  (spell) =>
+    !bonusActionSpellList.includes(spell) &&
     !actionSpellList.includes(spell) &&
     !reactionSpellList.includes(spell) &&
     !ritualSpellList.includes(spell) &&
-    !remainingSpellList.includes(spell)
+    !remainingSpellList.includes(spell),
 );
 
 const orderSpellsByLevel = (spellList: CollectionEntry<"spells">[]) => {
@@ -93,18 +97,21 @@ const spellSectionByLevelList = [
   { title: "Reaction", spells: orderSpellsByLevel(reactionSpellList) },
   { title: "Ritual", spells: orderSpellsByLevel(ritualSpellList) },
   { title: "Remaining", spells: orderSpellsByLevel(remainingSpellList) },
-  { title: "Spell book (not prepared)", spells: orderSpellsByLevel(remainingSpellBook) },
+  {
+    title: "Spell book (not prepared)",
+    spells: orderSpellsByLevel(remainingSpellBook),
+  },
 ];
 </script>
 
 <template>
   <SpellCheatSheet
-      v-model:spell-slots="spellSlots"
-      v-model:concentration="concentration"
-      :caster-level="casterLevel"
-      :spells-save-dice-check="spellsSaveDiceCheck"
-      :spell-attack-modifier="spellAttackModifier"
-      :type-of-rest="typeOfRest"
-      :spell-section-by-level-list="spellSectionByLevelList"
+    v-model:spell-slots="spellSlots"
+    v-model:concentration="concentration"
+    :caster-level="casterLevel"
+    :spells-save-dice-check="spellsSaveDiceCheck"
+    :spell-attack-modifier="spellAttackModifier"
+    :type-of-rest="typeOfRest"
+    :spell-section-by-level-list="spellSectionByLevelList"
   />
 </template>

@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { type SpellSlots, TypeOfRest } from "../../../scripts/cheatSheetTypes.ts";
-import {type Spell} from "../../../scripts/spellUtils.ts";
+import {
+  type SpellSlots,
+  TypeOfRest,
+} from "../../../../scripts/cheatSheetTypes.ts";
+import { type Spell } from "../../../../scripts/spellUtils.ts";
 import type { CollectionEntry } from "astro:content";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
-import {computed} from "vue";
+import { computed } from "vue";
 
 const props = defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -37,17 +40,17 @@ const props = defineProps<{
 const spellSlots = defineModel<SpellSlots>("spellSlots", { required: true });
 const concentration = defineModel<boolean>("concentration");
 const currentSpellSlotLevel = computed(
-    () =>
-        Object.keys(spellSlots.value).map(Number)[0] as
-            | 1
-            | 2
-            | 3
-            | 4
-            | 5
-            | 6
-            | 7
-            | 8
-            | 9,
+  () =>
+    Object.keys(spellSlots.value).map(Number)[0] as
+      | 1
+      | 2
+      | 3
+      | 4
+      | 5
+      | 6
+      | 7
+      | 8
+      | 9,
 );
 
 const knownSpellList: CollectionEntry<"spells">[] = props.allSpells
@@ -64,10 +67,14 @@ const isActionSpell = (spell: CollectionEntry<"spells">) =>
   !isReactionSpell(spell);
 const isRitualSpell = (spell: CollectionEntry<"spells">) => spell.data.ritual;
 
-const bonusActionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isBonusActionSpell);
-const actionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isActionSpell);
-const reactionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isReactionSpell);
-const ritualSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isRitualSpell);
+const bonusActionSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isBonusActionSpell);
+const actionSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isActionSpell);
+const reactionSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isReactionSpell);
+const ritualSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isRitualSpell);
 const remainingSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(
   (spell) =>
     !isBonusActionSpell(spell) &&
@@ -90,7 +97,7 @@ const orderSpellsByLevel = (spellList: CollectionEntry<"spells">[]) => {
 const alignSpellsWithSpellLevel = (spellList: CollectionEntry<"spells">[]) => {
   const spellListByLevel: Record<number, CollectionEntry<"spells">[]> = {};
   for (const spell of spellList) {
-    if(spell.data.level === 0) {
+    if (spell.data.level === 0) {
       if (!spellListByLevel[spell.data.level]) {
         spellListByLevel[spell.data.level] = [];
       }
@@ -107,7 +114,10 @@ const alignSpellsWithSpellLevel = (spellList: CollectionEntry<"spells">[]) => {
 
 const spellSectionByLevelList = [
   { title: "Action", spells: alignSpellsWithSpellLevel(actionSpellList) },
-  { title: "Bonus Action", spells: alignSpellsWithSpellLevel(bonusActionSpellList) },
+  {
+    title: "Bonus Action",
+    spells: alignSpellsWithSpellLevel(bonusActionSpellList),
+  },
   { title: "Reaction", spells: alignSpellsWithSpellLevel(reactionSpellList) },
   { title: "Remaining", spells: alignSpellsWithSpellLevel(remainingSpellList) },
   { title: "Ritual", spells: orderSpellsByLevel(ritualSpellList) },
@@ -116,14 +126,12 @@ const spellSectionByLevelList = [
 
 <template>
   <SpellCheatSheet
-      v-model:spell-slots="spellSlots"
-      v-model:concentration="concentration"
-      :caster-level="casterLevel"
-      :spells-save-dice-check="spellsSaveDiceCheck"
-      :spell-attack-modifier="spellAttackModifier"
-      :type-of-rest="typeOfRest"
-      :spell-section-by-level-list="spellSectionByLevelList"
+    v-model:spell-slots="spellSlots"
+    v-model:concentration="concentration"
+    :caster-level="casterLevel"
+    :spells-save-dice-check="spellsSaveDiceCheck"
+    :spell-attack-modifier="spellAttackModifier"
+    :type-of-rest="typeOfRest"
+    :spell-section-by-level-list="spellSectionByLevelList"
   />
 </template>
-
-

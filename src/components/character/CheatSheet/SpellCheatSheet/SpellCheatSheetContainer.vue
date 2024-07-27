@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { type SpellSlots, TypeOfRest } from "../../../scripts/cheatSheetTypes.ts";
-import {type Spell} from "../../../scripts/spellUtils.ts";
+import {
+  type SpellSlots,
+  TypeOfRest,
+} from "../../../../scripts/cheatSheetTypes.ts";
+import { type Spell } from "../../../../scripts/spellUtils.ts";
 import type { CollectionEntry } from "astro:content";
 import SpellCheatSheet from "./SpellCheatSheet.vue";
 
@@ -50,10 +53,14 @@ const isActionSpell = (spell: CollectionEntry<"spells">) =>
   !isReactionSpell(spell);
 const isRitualSpell = (spell: CollectionEntry<"spells">) => spell.data.ritual;
 
-const bonusActionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isBonusActionSpell);
-const actionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isActionSpell);
-const reactionSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isReactionSpell);
-const ritualSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(isRitualSpell);
+const bonusActionSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isBonusActionSpell);
+const actionSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isActionSpell);
+const reactionSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isReactionSpell);
+const ritualSpellList: CollectionEntry<"spells">[] =
+  knownSpellList.filter(isRitualSpell);
 const remainingSpellList: CollectionEntry<"spells">[] = knownSpellList.filter(
   (spell) =>
     !isBonusActionSpell(spell) &&
@@ -84,14 +91,12 @@ const spellSectionByLevelList = [
 
 <template>
   <SpellCheatSheet
-      v-model:spell-slots="spellSlots"
-      v-model:concentration="concentration"
-      :caster-level="casterLevel"
-      :spells-save-dice-check="spellsSaveDiceCheck"
-      :spell-attack-modifier="spellAttackModifier"
-      :type-of-rest="typeOfRest"
-      :spell-section-by-level-list="spellSectionByLevelList"
+    v-model:spell-slots="spellSlots"
+    v-model:concentration="concentration"
+    :caster-level="casterLevel"
+    :spells-save-dice-check="spellsSaveDiceCheck"
+    :spell-attack-modifier="spellAttackModifier"
+    :type-of-rest="typeOfRest"
+    :spell-section-by-level-list="spellSectionByLevelList"
   />
 </template>
-
-

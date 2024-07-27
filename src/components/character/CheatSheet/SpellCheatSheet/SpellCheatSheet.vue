@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { getLevelString, type Spell } from "../../../scripts/spellUtils.ts";
+import { getLevelString, type Spell } from "../../../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
 import {
   type SpellSlots,
   TypeOfRest,
-} from "../../../scripts/cheatSheetTypes.ts";
+} from "../../../../scripts/cheatSheetTypes.ts";
 import type { CollectionEntry } from "astro:content";
 
 defineProps<{

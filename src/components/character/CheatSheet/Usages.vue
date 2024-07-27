@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { UsagesPerRest } from "../../scripts/cheatSheetTypes.ts";
+import type { UsagesPerRest } from "../../../scripts/cheatSheetTypes.ts";
 
 const model = defineModel<UsagesPerRest>({ required: true });
 </script>

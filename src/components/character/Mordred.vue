@@ -6,18 +6,18 @@ import {
   Skill,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
-import RoundCheatSheet from "./RoundCheatSheet.vue";
+import RoundCheatSheet from "./CheatSheet/RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
 import {
   getChainMailArmorClass,
   getShieldArmorClass,
 } from "../../scripts/armorClassUtils.ts";
-import NoteSection from "./NoteSection.vue";
+import NoteSection from "./CheatSheet/NoteSection.vue";
 import {
   getEldritchKnightSpellSlots,
   Spell,
 } from "../../scripts/spellUtils.ts";
-import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
+import SpellCheatSheet from "./CheatSheet/SpellCheatSheet/SpellCheatSheetContainer.vue";
 import type { CollectionEntry } from "astro:content";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 

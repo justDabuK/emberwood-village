@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import SectionCard from "./SectionCard.vue";
-import HitPoints from "./HitPoints.vue";
-import type { Creature } from "../../scripts/cheatSheetTypes.ts";
+import HitPoints from "../HitPoints.vue";
+import type { Creature } from "../../../scripts/cheatSheetTypes.ts";
 import Contamination from "./Contamination.vue";
 import TitleValueCard from "./TitleValueCard.vue";
-import { addSign } from "../../scripts/addSign.ts";
+import { addSign } from "../../../scripts/addSign.ts";
 import SkillCheatSheet from "./SkillCheatSheet.vue";
 import { ref, watch } from "vue";
 import MenuRightIcon from "./SpellCheatSheet/MenuRightIcon.vue";

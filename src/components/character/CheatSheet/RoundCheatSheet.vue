@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Creature, Section } from "../../scripts/cheatSheetTypes.ts";
+import type { Creature, Section } from "../../../scripts/cheatSheetTypes.ts";
 import CreatureSection from "./CreatureSection.vue";
 import { computed } from "vue";
 import InspirationToggleButton from "./InspirationToggleButton.vue";

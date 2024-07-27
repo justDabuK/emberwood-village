@@ -6,15 +6,15 @@ import {
   Skill,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
-import RoundCheatSheet from "./RoundCheatSheet.vue";
+import RoundCheatSheet from "./CheatSheet/RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
 import {
   getLeatherArmorClass,
   getShieldArmorClass,
 } from "../../scripts/armorClassUtils.ts";
 import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
-import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
-import NoteSection from "./NoteSection.vue";
+import SpellCheatSheet from "./CheatSheet/SpellCheatSheet/SpellCheatSheetContainer.vue";
+import NoteSection from "./CheatSheet/NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
 
 defineProps<{

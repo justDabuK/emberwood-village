@@ -3,8 +3,8 @@ import {
   type AbilityScores,
   getModifier,
   Skill,
-} from "../../scripts/cheatSheetTypes.ts";
-import { addSign } from "../../scripts/addSign.ts";
+} from "../../../scripts/cheatSheetTypes.ts";
+import { addSign } from "../../../scripts/addSign.ts";
 
 const props = defineProps<{
   abilityScores: AbilityScores;
