@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CollectionEntry } from "astro:content";
-import ApothecaryCheatSheet from "./CheatSheet/ApothecaryCheatSheet.vue";
+import ApothecaryCheatSheet from "../CheatSheet/ApothecaryCheatSheet.vue";
 import { useNexCreatureList } from "./useNexCreatureList.ts";
 
 defineProps<{

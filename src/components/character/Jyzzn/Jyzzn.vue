@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MartialCheatSheet from "./CheatSheet/MartialCheatSheet.vue";
+import MartialCheatSheet from "../CheatSheet/MartialCheatSheet.vue";
 import { useJyzznCreatureList } from "./useJyzznCreatureList.ts";
 
 const { creatureList, notesStorage, resetToDefault } = useJyzznCreatureList();

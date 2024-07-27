@@ -1,13 +1,13 @@
-import { Spell } from "../../scripts/spellUtils.ts";
+import { Spell } from "../../../scripts/spellUtils.ts";
 import {
   type AbilityScores,
   type Creature,
   getModifier,
   Skill,
   TypeOfRest,
-} from "../../scripts/cheatSheetTypes.ts";
-import { getChainShirtArmorClass } from "../../scripts/armorClassUtils.ts";
-import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
+} from "../../../scripts/cheatSheetTypes.ts";
+import { getChainShirtArmorClass } from "../../../scripts/armorClassUtils.ts";
+import { getProficiencyBonus } from "../../../scripts/getProficiencyBonus.ts";
 import { useStorage } from "@vueuse/core";
 
 export const useNexCreatureList = () => {

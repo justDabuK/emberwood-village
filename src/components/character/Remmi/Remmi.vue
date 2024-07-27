@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MartialCheatSheet from "./CheatSheet/MartialCheatSheet.vue";
+import MartialCheatSheet from "../CheatSheet/MartialCheatSheet.vue";
 import { useRemmiCreatureList } from "./useRemmiCreatureList.ts";
 
 const { creatureList, notesStorage, resetToDefault } = useRemmiCreatureList();

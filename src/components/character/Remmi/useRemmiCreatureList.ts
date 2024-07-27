@@ -4,9 +4,9 @@ import {
   getModifier,
   Skill,
   TypeOfRest,
-} from "../../scripts/cheatSheetTypes.ts";
-import { getStuddedLeatherArmorClass } from "../../scripts/armorClassUtils.ts";
-import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
+} from "../../../scripts/cheatSheetTypes.ts";
+import { getStuddedLeatherArmorClass } from "../../../scripts/armorClassUtils.ts";
+import { getProficiencyBonus } from "../../../scripts/getProficiencyBonus.ts";
 import { useStorage } from "@vueuse/core";
 
 export const useRemmiCreatureList = () => {

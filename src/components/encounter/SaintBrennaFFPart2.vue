@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Creature } from "../../scripts/cheatSheetTypes.ts";
-import { useJyzznCreatureList } from "../character/useJyzznCreatureList.ts";
-import { useRemmiCreatureList } from "../character/useRemmiCreatureList.ts";
+import { useJyzznCreatureList } from "../character/Jyzzn/useJyzznCreatureList.ts";
+import { useRemmiCreatureList } from "../character/Remmi/useRemmiCreatureList.ts";
 import type { CollectionEntry } from "astro:content";
-import { useNexCreatureList } from "../character/useNexCreatureList.ts";
+import { useNexCreatureList } from "../character/Nex/useNexCreatureList.ts";
 import { type Component, ref } from "vue";
 import MartialCheatSheet from "../character/CheatSheet/MartialCheatSheet.vue";
 import ApothecaryCheatSheet from "../character/CheatSheet/ApothecaryCheatSheet.vue";
