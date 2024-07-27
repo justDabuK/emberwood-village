@@ -7,6 +7,7 @@ import { useNexCreatureList } from "../character/Nex/useNexCreatureList.ts";
 import { type Component, ref } from "vue";
 import MartialCheatSheet from "../character/CheatSheet/MartialCheatSheet.vue";
 import ApothecaryCheatSheet from "../character/CheatSheet/ApothecaryCheatSheet.vue";
+import { useCultist } from "../../scripts/monsters/useCultist.ts";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -16,6 +17,8 @@ const { creatureList: nexCreatureList, knownSpellNameList } =
   useNexCreatureList();
 const { creatureList: jyzznCreatureList } = useJyzznCreatureList();
 const { creatureList: remmiCreatureList } = useRemmiCreatureList();
+const { creatureList: henkerCreatureList } = useCultist("Henker");
+const { creatureList: nonneCreatureList } = useCultist("Nonne");
 
 type CreatureComponentMap = {
   creatureList: Creature[];
@@ -31,9 +34,16 @@ const creatureEncounterList: CreatureComponentMap[] = [
     component: ApothecaryCheatSheet,
     knownSpellNameList,
   },
+  { creatureList: henkerCreatureList.value, component: MartialCheatSheet },
+  { creatureList: nonneCreatureList.value, component: MartialCheatSheet },
 ];
 
 const activeCreatureComponentMap = ref<CreatureComponentMap>();
+
+const isBloodied = (creature: Creature) =>
+  creature.hitPoints.current <= creature.hitPoints.max / 2;
+
+const isDead = (creature: Creature) => creature.hitPoints.current <= 0;
 </script>
 
 <template>
@@ -51,13 +61,14 @@ const activeCreatureComponentMap = ref<CreatureComponentMap>();
         <tr
           v-for="creatureComponentMap in creatureEncounterList"
           :key="creatureComponentMap.creatureList[0].name"
-          :class="
-            activeCreatureComponentMap !== undefined &&
-            activeCreatureComponentMap.creatureList[0].name ===
-              creatureComponentMap.creatureList[0].name
-              ? 'active'
-              : ''
-          "
+          :class="{
+            active:
+              activeCreatureComponentMap !== undefined &&
+              activeCreatureComponentMap.creatureList[0].name ===
+                creatureComponentMap.creatureList[0].name,
+            bloodied: isBloodied(creatureComponentMap.creatureList[0]),
+            dead: isDead(creatureComponentMap.creatureList[0]),
+          }"
           @click="activeCreatureComponentMap = creatureComponentMap"
         >
           <td>{{ creatureComponentMap.creatureList[0].name }}</td>
@@ -99,6 +110,16 @@ const activeCreatureComponentMap = ref<CreatureComponentMap>();
       &.active {
         background: var(--map-link-bg-hover);
         color: var(--body-bg);
+      }
+
+      &.bloodied {
+        background: var(--action-color);
+        color: var(--text-color);
+      }
+
+      &.dead {
+        background: var(--body-bg);
+        color: var(--text-color-darker-1);
       }
     }
 
