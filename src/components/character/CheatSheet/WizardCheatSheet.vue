@@ -35,7 +35,7 @@ const emit = defineEmits<{
       :type-of-rest="creatureList[0].magic.refresh"
       :spell-book-spell-name-list="spellBookSpellNameList"
       :prepared-spell-name-list="preparedSpellNameList"
-      :spells-save-dice-check="creatureList[0].magic.spellSaveDiceCheck"
+      :spell-save-dice-check="creatureList[0].magic.spellSaveDiceCheck"
       :spell-attack-modifier="creatureList[0].magic.spellAttackModifier"
       :caster-level="creatureList[0].characterLevel"
     />

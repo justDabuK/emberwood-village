@@ -12,7 +12,7 @@ const props = defineProps<{
   typeOfRest: TypeOfRest;
   spellBookSpellNameList: Spell[];
   preparedSpellNameList: Spell[];
-  spellsSaveDiceCheck: number;
+  spellSaveDiceCheck: number;
   spellAttackModifier: number;
   casterLevel:
     | 1
@@ -109,7 +109,7 @@ const spellSectionByLevelList = [
     v-model:spell-slots="spellSlots"
     v-model:concentration="concentration"
     :caster-level="casterLevel"
-    :spells-save-dice-check="spellsSaveDiceCheck"
+    :spells-save-dice-check="spellSaveDiceCheck"
     :spell-attack-modifier="spellAttackModifier"
     :type-of-rest="typeOfRest"
     :spell-section-by-level-list="spellSectionByLevelList"
