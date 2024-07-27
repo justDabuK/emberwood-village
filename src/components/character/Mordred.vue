@@ -78,6 +78,7 @@ const defenseFightingStyleArmorClassBonus = 1;
 const defaultCreatureList: Creature[] = [
   {
     name: "Mordred",
+    characterLevel: LEVEL,
     hitPoints: {
       current: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),
       max: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),
@@ -92,6 +93,8 @@ const defaultCreatureList: Creature[] = [
       spellSlots: getEldritchKnightSpellSlots(LEVEL),
       refresh: TypeOfRest.LONG,
       concentration: false,
+      spellSaveDiceCheck: 8 + MODIFIER.INT + getProficiencyBonus(LEVEL),
+      spellAttackModifier: MODIFIER.INT + getProficiencyBonus(LEVEL),
     },
     contamination: 0,
     exhaustion: 0,

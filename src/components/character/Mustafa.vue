@@ -50,6 +50,7 @@ const SKILL_EXPERTISE: Skill[] = [];
 const defaultCreatureList: Creature[] = [
   {
     name: "Mustafa",
+    characterLevel: LEVEL,
     hitPoints: {
       current: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),
       max: 10 + MODIFIER.CON + (6 + MODIFIER.CON) * (LEVEL - 1),

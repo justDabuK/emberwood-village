@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
-import Usages from "./CheatSheet/Usages.vue";
-import type { UsagesPerRest } from "../../scripts/cheatSheetTypes.ts";
+import Usages from "./Usages.vue";
+import type { UsagesPerRest } from "../../../scripts/cheatSheetTypes.ts";
 
 const props = defineProps<{
   maxHitPoints: number;

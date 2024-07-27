@@ -79,6 +79,7 @@ const dualWielderArmorClassBonus = 1;
 const defaultCreatureList: Creature[] = [
   {
     name: "Johan",
+    characterLevel: LEVEL,
     hitPoints: {
       current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
       max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),

@@ -100,6 +100,7 @@ const SKILL_EXPERTISE: Skill[] = [];
 const defaultCreatureList: Creature[] = [
   {
     name: "Zara",
+    characterLevel: LEVEL,
     hitPoints: {
       current: 6 + MODIFIER.CON + (4 + MODIFIER.CON) * (LEVEL - 1),
       max: 6 + MODIFIER.CON + (4 + MODIFIER.CON) * (LEVEL - 1),
@@ -126,6 +127,8 @@ const defaultCreatureList: Creature[] = [
       spellSlots: getFullCasterSpellSlots(LEVEL),
       refresh: TypeOfRest.LONG,
       concentration: false,
+      spellSaveDiceCheck: 8 + MODIFIER.INT + getProficiencyBonus(LEVEL),
+      spellAttackModifier: MODIFIER.INT + getProficiencyBonus(LEVEL),
     },
     sectionList: [
       {

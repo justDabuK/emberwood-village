@@ -123,6 +123,7 @@ const giantSpiderProficiencyBonus = 2;
 const defaultCreatureList: Creature[] = [
   {
     name: "Eledaina",
+    characterLevel: LEVEL,
     hitPoints: {
       current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
       max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
@@ -149,6 +150,8 @@ const defaultCreatureList: Creature[] = [
       spellSlots: getFullCasterSpellSlots(LEVEL),
       refresh: TypeOfRest.LONG,
       concentration: false,
+      spellSaveDiceCheck: 8 + MODIFIER.WIS + getProficiencyBonus(LEVEL),
+      spellAttackModifier: MODIFIER.WIS + getProficiencyBonus(LEVEL),
     },
     sectionList: [
       {
