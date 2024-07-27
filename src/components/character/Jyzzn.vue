@@ -11,6 +11,7 @@ import { useStorage } from "@vueuse/core";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./CheatSheet/NoteSection.vue";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
+import MartialCheatSheet from "./CheatSheet/MartialCheatSheet.vue";
 
 // TODO: decouple dynamic data from static data
 const LEVEL = 4;
@@ -328,25 +329,9 @@ const notesStorage = useStorage<string>("jazz-notes", "");
 </script>
 
 <template>
-  <div class="cheat-sheet-list">
-    <RoundCheatSheet
-      v-model="creatureList"
-      @reset-to-default="resetToDefault"
-      class="round-cheat-sheet"
-    />
-    <div class="divider" />
-    <NoteSection v-model="notesStorage" />
-  </div>
+  <MartialCheatSheet
+    v-model="creatureList"
+    v-model:notes-storage="notesStorage"
+    @reset-to-default="resetToDefault"
+  />
 </template>
-
-<style scoped>
-.cheat-sheet-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-24);
-
-  .divider {
-    border-bottom: var(--size-1) solid var(--text-color-darker-1);
-  }
-}
-</style>

@@ -12,6 +12,7 @@ import SkillCheatSheet from "./CheatSheet/SkillCheatSheet.vue";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
 import NoteSection from "./CheatSheet/NoteSection.vue";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
+import MartialCheatSheet from "./CheatSheet/MartialCheatSheet.vue";
 
 const LEVEL = 3;
 const PROFICIENCY_BONUS = 2;
@@ -282,33 +283,9 @@ const notesStorage = useStorage<string>(
 </script>
 
 <template>
-  <div class="cheat-sheet-list">
-    <RoundCheatSheet
-      v-model="creatureList"
-      @reset-to-default="resetToDefault"
-    />
-    <div class="divider" />
-    <SkillCheatSheet
-      :modifiers="MODIFIER"
-      :ability-scores="ABILITY_SCORES"
-      :saving-throw-proficiency-list="SAVING_THROW_PROFICIENCIES_LIST"
-      :skill-proficiency-list="SKILL_PROFICIENCIES"
-      :skill-expertise-list="SKILL_EXPERTISE"
-      :proficiency-bonus="PROFICIENCY_BONUS"
-    />
-    <div class="divider" />
-    <NoteSection v-model="notesStorage" />
-  </div>
+  <MartialCheatSheet
+    v-model="creatureList"
+    v-model:notes-storage="notesStorage"
+    @reset-to-default="resetToDefault"
+  />
 </template>
-
-<style scoped>
-.cheat-sheet-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-24);
-
-  .divider {
-    border-bottom: var(--size-1) solid var(--text-color-darker-1);
-  }
-}
-</style>

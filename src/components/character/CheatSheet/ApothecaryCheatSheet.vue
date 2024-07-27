@@ -40,7 +40,7 @@ const emit = defineEmits<{
       :caster-level="creatureList[0].characterLevel"
     />
     <div class="divider" />
-    <NoteSection v-if="notesStorage" v-model="notesStorage" />
+    <NoteSection v-if="notesStorage !== undefined" v-model="notesStorage" />
   </div>
 </template>
 
