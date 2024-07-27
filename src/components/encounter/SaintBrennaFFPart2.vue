@@ -84,7 +84,6 @@ const activeCreatureComponentMap = ref<CreatureComponentMap>();
 <style scoped>
 .encounter-container {
   display: flex;
-  gap: var(--size-16);
   overflow: auto;
 
   table {
@@ -109,6 +108,9 @@ const activeCreatureComponentMap = ref<CreatureComponentMap>();
   }
 
   .creature-preview {
+    border-left: 1px solid var(--text-color);
+    margin-left: var(--size-16);
+    padding-left: var(--size-16);
     flex: 1;
     overflow: auto;
   }
