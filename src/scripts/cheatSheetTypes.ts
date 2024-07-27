@@ -1,4 +1,5 @@
 export type Creature = {
+  characterLevel?: CharacterLevel;
   name: string;
   hitPoints: {
     current: number;
@@ -14,6 +15,8 @@ export type Creature = {
     spellSlots: SpellSlots;
     refresh: TypeOfRest;
     concentration: boolean;
+    spellSaveDiceCheck: number;
+    spellAttackModifier: number;
   };
   abilityScores: AbilityScores;
   savingThrowProficiencyList: (keyof AbilityScores)[];
@@ -135,3 +138,25 @@ export enum Skill {
   Performance = "Performance",
   Persuasion = "Persuasion",
 }
+
+export type CharacterLevel =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20;

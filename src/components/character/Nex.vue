@@ -164,6 +164,7 @@ const owlProficiencyBonus = 2;
 const defaultNexCreatureList: Creature[] = [
   {
     name: "Nex",
+    characterLevel: NEX_LEVEL,
     hitPoints: {
       current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (NEX_LEVEL - 1),
       max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (NEX_LEVEL - 1),
@@ -195,6 +196,15 @@ const defaultNexCreatureList: Creature[] = [
       },
       refresh: TypeOfRest.SHORT,
       concentration: false,
+      spellSaveDiceCheck:
+        8 +
+        MODIFIER.INT +
+        getProficiencyBonus(NEX_LEVEL) +
+        tomeOfOccultDraconicPracticesBonus,
+      spellAttackModifier:
+        MODIFIER.INT +
+        getProficiencyBonus(NEX_LEVEL) +
+        tomeOfOccultDraconicPracticesBonus,
     },
     sectionList: [
       {
@@ -483,18 +493,6 @@ const notesStorage = useStorage<string>("nex-notes", "");
     v-model:notes-storage="notesStorage"
     :all-spells="allSpells"
     :known-spell-name-list="knownSpellNameList"
-    :spells-save-dice-check="
-      8 +
-      getModifier(creatureList[0].abilityScores.INT) +
-      creatureList[0].proficiencyBonus +
-      tomeOfOccultDraconicPracticesBonus
-    "
-    :spell-attack-modifier="
-      getModifier(creatureList[0].abilityScores.INT) +
-      creatureList[0].proficiencyBonus +
-      tomeOfOccultDraconicPracticesBonus
-    "
-    :caster-level="NEX_LEVEL"
     @reset-to-default="resetToDefault"
   />
 </template>

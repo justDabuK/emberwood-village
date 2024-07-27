@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { getProficiencyBonus } from "../../../scripts/getProficiencyBonus.ts";
-import type { Creature } from "../../../scripts/cheatSheetTypes.ts";
+import type {
+  CharacterLevel,
+  Creature,
+} from "../../../scripts/cheatSheetTypes.ts";
 import type { CollectionEntry } from "astro:content";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import ApothecarySpellCheatSheetContainer from "./SpellCheatSheet/ApothecarySpellCheatSheetContainer.vue";
@@ -10,29 +12,6 @@ import type { Spell } from "../../../scripts/spellUtils.ts";
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
   knownSpellNameList: Spell[];
-  spellsSaveDiceCheck: number;
-  spellAttackModifier: number;
-  casterLevel:
-    | 1
-    | 2
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 17
-    | 18
-    | 19
-    | 20;
 }>();
 const creatureList = defineModel<Creature[]>({ required: true });
 const notesStorage = defineModel<string>("notesStorage");
@@ -50,18 +29,18 @@ const emit = defineEmits<{
     />
     <div class="divider" />
     <ApothecarySpellCheatSheetContainer
-      v-if="creatureList[0].magic"
+      v-if="creatureList[0].magic && creatureList[0].characterLevel"
       v-model:spell-slots="creatureList[0].magic.spellSlots"
       v-model:concentration="creatureList[0].magic.concentration"
       :all-spells="allSpells"
       :type-of-rest="creatureList[0].magic.refresh"
       :known-spell-name-list="knownSpellNameList"
-      :spells-save-dice-check="spellsSaveDiceCheck"
-      :spell-attack-modifier="spellAttackModifier"
-      :caster-level="casterLevel"
+      :spell-save-dice-check="creatureList[0].magic.spellSaveDiceCheck"
+      :spell-attack-modifier="creatureList[0].magic.spellAttackModifier"
+      :caster-level="creatureList[0].characterLevel"
     />
     <div class="divider" />
-    <NoteSection v-model="notesStorage" />
+    <NoteSection v-if="notesStorage" v-model="notesStorage" />
   </div>
 </template>
 

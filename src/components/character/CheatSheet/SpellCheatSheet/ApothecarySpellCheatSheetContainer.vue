@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+  type CharacterLevel,
   type SpellSlots,
   TypeOfRest,
 } from "../../../../scripts/cheatSheetTypes.ts";
@@ -12,29 +13,9 @@ const props = defineProps<{
   allSpells: CollectionEntry<"spells">[];
   typeOfRest: TypeOfRest;
   knownSpellNameList: Spell[];
-  spellsSaveDiceCheck: number;
+  spellSaveDiceCheck: number;
   spellAttackModifier: number;
-  casterLevel:
-    | 1
-    | 2
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 17
-    | 18
-    | 19
-    | 20;
+  casterLevel: CharacterLevel;
 }>();
 
 const spellSlots = defineModel<SpellSlots>("spellSlots", { required: true });
@@ -129,7 +110,7 @@ const spellSectionByLevelList = [
     v-model:spell-slots="spellSlots"
     v-model:concentration="concentration"
     :caster-level="casterLevel"
-    :spells-save-dice-check="spellsSaveDiceCheck"
+    :spells-save-dice-check="spellSaveDiceCheck"
     :spell-attack-modifier="spellAttackModifier"
     :type-of-rest="typeOfRest"
     :spell-section-by-level-list="spellSectionByLevelList"
