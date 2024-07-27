@@ -6,16 +6,14 @@ import {
   Skill,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
-import RoundCheatSheet from "./CheatSheet/RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
 import {
   getLeatherArmorClass,
   getShieldArmorClass,
 } from "../../scripts/armorClassUtils.ts";
 import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
-import SpellCheatSheet from "./CheatSheet/SpellCheatSheet/SpellCheatSheetContainer.vue";
-import NoteSection from "./CheatSheet/NoteSection.vue";
 import type { CollectionEntry } from "astro:content";
+import SpellCasterCheatSheet from "./CheatSheet/SpellCasterCheatSheet.vue";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -525,32 +523,11 @@ const notesStorage = useStorage<string>(
 </script>
 
 <template>
-  <div class="cheat-sheet-list">
-    <RoundCheatSheet
-      v-model="creatureList"
-      @reset-to-default="resetToDefault"
-    />
-    <div class="divider" />
-    <SpellCheatSheet
-      v-if="creatureList[0].magic"
-      v-model:spell-slots="creatureList[0].magic.spellSlots"
-      v-model:concentration="creatureList[0].magic.concentration"
-      :all-spells="allSpells"
-      :type-of-rest="creatureList[0].magic.refresh"
-      :known-spell-name-list="preparedSpellNameList"
-      :spells-save-dice-check="8 + MODIFIER.WIS + getProficiencyBonus(LEVEL)"
-      :spell-attack-modifier="MODIFIER.WIS + getProficiencyBonus(LEVEL)"
-      :caster-level="LEVEL"
-    />
-    <div class="divider" />
-    <NoteSection v-model="notesStorage" />
-  </div>
+  <SpellCasterCheatSheet
+    v-model="creatureList"
+    v-model:notes-storage="notesStorage"
+    :all-spells="allSpells"
+    :known-spell-name-list="preparedSpellNameList"
+    @reset-to-default="resetToDefault"
+  />
 </template>
-
-<style scoped>
-.cheat-sheet-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-24);
-}
-</style>
