@@ -4,10 +4,11 @@ import { useJyzznCreatureList } from "../character/Jyzzn/useJyzznCreatureList.ts
 import { useRemmiCreatureList } from "../character/Remmi/useRemmiCreatureList.ts";
 import type { CollectionEntry } from "astro:content";
 import { useNexCreatureList } from "../character/Nex/useNexCreatureList.ts";
-import { type Component, ref } from "vue";
+import { type Component, computed, ref } from "vue";
 import MartialCheatSheet from "../character/CheatSheet/MartialCheatSheet.vue";
 import ApothecaryCheatSheet from "../character/CheatSheet/ApothecaryCheatSheet.vue";
 import { useCultist } from "../../scripts/monsters/useCultist.ts";
+import { useStorage } from "@vueuse/core";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -38,6 +39,32 @@ const creatureEncounterList: CreatureComponentMap[] = [
   { creatureList: nonneCreatureList.value, component: MartialCheatSheet },
 ];
 
+const creatureInitiativeMap = useStorage("saintBrennaFFPart2-initiative-map", {
+  [jyzznCreatureList.value[0].name]: undefined,
+  [remmiCreatureList.value[0].name]: undefined,
+  [nexCreatureList.value[0].name]: undefined,
+  [henkerCreatureList.value[0].name]: undefined,
+  [nonneCreatureList.value[0].name]: undefined,
+});
+
+const compareCreatureComponentMap = (
+  a: CreatureComponentMap,
+  b: CreatureComponentMap,
+) => {
+  const aInitiative = creatureInitiativeMap.value[a.creatureList[0].name];
+  const bInitiative = creatureInitiativeMap.value[b.creatureList[0].name];
+
+  if (aInitiative === undefined || bInitiative === undefined) {
+    return 0;
+  }
+
+  return bInitiative - aInitiative;
+};
+
+const sortedCreatureEncounterList = computed(() =>
+  creatureEncounterList.sort(compareCreatureComponentMap),
+);
+
 const activeCreatureComponentMap = ref<CreatureComponentMap>();
 
 const isBloodied = (creature: Creature) =>
@@ -59,7 +86,7 @@ const isDead = (creature: Creature) => creature.hitPoints.current <= 0;
       </thead>
       <tbody>
         <tr
-          v-for="creatureComponentMap in creatureEncounterList"
+          v-for="creatureComponentMap in sortedCreatureEncounterList"
           :key="creatureComponentMap.creatureList[0].name"
           :class="{
             active:
@@ -72,7 +99,15 @@ const isDead = (creature: Creature) => creature.hitPoints.current <= 0;
           @click="activeCreatureComponentMap = creatureComponentMap"
         >
           <td>{{ creatureComponentMap.creatureList[0].name }}</td>
-          <td>{{ 0 }}</td>
+          <td>
+            <input
+              type="number"
+              v-model="
+                creatureInitiativeMap[creatureComponentMap.creatureList[0].name]
+              "
+              :placeholder="`?+${creatureComponentMap.creatureList[0].initiative}`"
+            />
+          </td>
           <td>{{ creatureComponentMap.creatureList[0].hitPoints.current }}</td>
           <td>{{ creatureComponentMap.creatureList[0].armorClass }}</td>
         </tr>
@@ -134,6 +169,24 @@ const isDead = (creature: Creature) => creature.hitPoints.current <= 0;
     padding-left: var(--size-16);
     flex: 1;
     overflow: auto;
+  }
+
+  input {
+    font: inherit;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--size-8);
+    padding: var(--size-4) var(--size-8);
+    text-align: right;
+    width: 100%;
+    box-shadow:
+      inset 0 var(--size-2) var(--size-24) oklch(0 0 0 / 10%),
+      0 var(--size-2) 0 oklch(100% 0 0 / 15%);
+
+    &:focus {
+      outline: var(--size-1) solid var(--highlight-color);
+    }
   }
 }
 </style>
