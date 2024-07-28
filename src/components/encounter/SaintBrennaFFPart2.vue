@@ -10,6 +10,8 @@ import ApothecaryCheatSheet from "../character/CheatSheet/ApothecaryCheatSheet.v
 import { useCultist } from "../../scripts/monsters/useCultist.ts";
 import { useStorage } from "@vueuse/core";
 
+const encounterId = "saintBrennaFFPart2";
+
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
 }>();
@@ -39,7 +41,7 @@ const creatureEncounterList: CreatureComponentMap[] = [
   { creatureList: nonneCreatureList.value, component: MartialCheatSheet },
 ];
 
-const creatureInitiativeMap = useStorage("saintBrennaFFPart2-initiative-map", {
+const creatureInitiativeMap = useStorage(`${encounterId}-initiative-map`, {
   [jyzznCreatureList.value[0].name]: undefined,
   [remmiCreatureList.value[0].name]: undefined,
   [nexCreatureList.value[0].name]: undefined,
