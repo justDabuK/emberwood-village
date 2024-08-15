@@ -4,16 +4,15 @@ import {
   type Creature,
   getModifier,
   Skill,
+  type Subsection,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
-import RoundCheatSheet from "./CheatSheet/RoundCheatSheet.vue";
 import { useStorage } from "@vueuse/core";
 import { getLeatherArmorClass } from "../../scripts/armorClassUtils.ts";
-import NoteSection from "./CheatSheet/NoteSection.vue";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 import MartialCheatSheet from "./CheatSheet/MartialCheatSheet.vue";
 
-const LEVEL = 3;
+const LEVEL = 4;
 const PROFICIENCY_BONUS = 2;
 const getSneakAttackDice = () => {
   if (LEVEL < 3) {
@@ -51,15 +50,6 @@ const ABILITY_SCORES: AbilityScores = {
   CHA: 14,
 };
 
-const MODIFIER: AbilityScores = {
-  STR: getModifier(ABILITY_SCORES.STR),
-  DEX: getModifier(ABILITY_SCORES.DEX),
-  CON: getModifier(ABILITY_SCORES.CON),
-  INT: getModifier(ABILITY_SCORES.INT),
-  WIS: getModifier(ABILITY_SCORES.WIS),
-  CHA: getModifier(ABILITY_SCORES.CHA),
-};
-
 const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[] = ["DEX", "INT"];
 
 const SKILL_PROFICIENCIES = [
@@ -77,13 +67,26 @@ const SKILL_PROFICIENCIES = [
 const SKILL_EXPERTISE = [Skill.Stealth, Skill.ThievesTools];
 const dualWielderArmorClassBonus = 1;
 
+// --- elven accuracy ---
+ABILITY_SCORES.DEX += 1;
+const elvenAccuracySubsection: Subsection = {
+  title: "Elven Accuracy",
+  description:
+    "when advantage on attack roll, reroll one damage die if you want to",
+};
 const defaultCreatureList: Creature[] = [
   {
     name: "Johan",
     characterLevel: LEVEL,
     hitPoints: {
-      current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
-      max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
+      current:
+        8 +
+        getModifier(ABILITY_SCORES.CON) +
+        (5 + getModifier(ABILITY_SCORES.CON)) * (LEVEL - 1),
+      max:
+        8 +
+        getModifier(ABILITY_SCORES.CON) +
+        (5 + getModifier(ABILITY_SCORES.CON)) * (LEVEL - 1),
       temporary: 0,
       hitDice: {
         flags: [...Array(LEVEL)].fill(false),
@@ -93,8 +96,11 @@ const defaultCreatureList: Creature[] = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getLeatherArmorClass(MODIFIER.DEX) + dualWielderArmorClassBonus,
-    initiative: MODIFIER.DEX + MODIFIER.CHA,
+    armorClass:
+      getLeatherArmorClass(getModifier(ABILITY_SCORES.DEX)) +
+      dualWielderArmorClassBonus,
+    initiative:
+      getModifier(ABILITY_SCORES.DEX) + getModifier(ABILITY_SCORES.CHA),
     abilityScores: ABILITY_SCORES,
     savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
@@ -110,11 +116,20 @@ const defaultCreatureList: Creature[] = [
         subsections: [
           {
             title: "2 Weapon Attacks (Dual Wielder)",
-            dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}/+${MODIFIER.DEX + PROFICIENCY_BONUS + 1}`,
+            dice: `d20+${getModifier(ABILITY_SCORES.DEX) + PROFICIENCY_BONUS}/+${getModifier(ABILITY_SCORES.DEX) + PROFICIENCY_BONUS + 1}`,
             items: [
-              { name: "Shortbow (80/ 320)", dice: `1d6+${MODIFIER.DEX}` },
-              { name: "Rapier", dice: `1d8+${MODIFIER.DEX + 1}` },
-              { name: "Dagger", dice: `1d4+${MODIFIER.DEX}` },
+              {
+                name: "Shortbow (80/ 320)",
+                dice: `1d6+${getModifier(ABILITY_SCORES.DEX)}`,
+              },
+              {
+                name: "+1 Rapier",
+                dice: `1d8+${getModifier(ABILITY_SCORES.DEX) + 1}`,
+              },
+              {
+                name: "Dagger",
+                dice: `1d4+${getModifier(ABILITY_SCORES.DEX)}`,
+              },
             ],
           },
         ],
@@ -179,6 +194,7 @@ const defaultCreatureList: Creature[] = [
             description:
               "no opportunity attacks from target when meleed before",
           },
+          elvenAccuracySubsection,
         ],
       },
     ],
