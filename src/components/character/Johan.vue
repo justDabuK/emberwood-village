@@ -11,32 +11,9 @@ import { useStorage } from "@vueuse/core";
 import { getLeatherArmorClass } from "../../scripts/armorClassUtils.ts";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 import MartialCheatSheet from "./CheatSheet/MartialCheatSheet.vue";
+import { getSneakAttackDice } from "../../scripts/getSneakAttackDice.ts";
 
 const LEVEL = 4;
-const PROFICIENCY_BONUS = 2;
-const getSneakAttackDice = () => {
-  if (LEVEL < 3) {
-    return "1d6";
-  } else if (LEVEL < 5) {
-    return "2d6";
-  } else if (LEVEL < 7) {
-    return "3d6";
-  } else if (LEVEL < 9) {
-    return "4d6";
-  } else if (LEVEL < 11) {
-    return "5d6";
-  } else if (LEVEL < 13) {
-    return "6d6";
-  } else if (LEVEL < 15) {
-    return "7d6";
-  } else if (LEVEL < 17) {
-    return "8d6";
-  } else if (LEVEL < 19) {
-    return "9d6";
-  } else {
-    return "10d6";
-  }
-};
 
 const racialBonusPlus2 = 2;
 const racialBonusPlus1 = 1;
@@ -116,7 +93,7 @@ const defaultCreatureList: Creature[] = [
         subsections: [
           {
             title: "2 Weapon Attacks (Dual Wielder)",
-            dice: `d20+${getModifier(ABILITY_SCORES.DEX) + PROFICIENCY_BONUS}/+${getModifier(ABILITY_SCORES.DEX) + PROFICIENCY_BONUS + 1}`,
+            dice: `d20+${getModifier(ABILITY_SCORES.DEX) + getProficiencyBonus(LEVEL)}/+${getModifier(ABILITY_SCORES.DEX) + getProficiencyBonus(LEVEL) + 1}`,
             items: [
               {
                 name: "Shortbow (80/ 320)",
@@ -145,7 +122,7 @@ const defaultCreatureList: Creature[] = [
             items: [
               {
                 name: "Damage",
-                dice: getSneakAttackDice(),
+                dice: getSneakAttackDice(LEVEL),
               },
             ],
           },

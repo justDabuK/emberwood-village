@@ -8,33 +8,10 @@ import {
 import { getStuddedLeatherArmorClass } from "../../../scripts/armorClassUtils.ts";
 import { getProficiencyBonus } from "../../../scripts/getProficiencyBonus.ts";
 import { useStorage } from "@vueuse/core";
+import { getSneakAttackDice } from "../../../scripts/getSneakAttackDice.ts";
 
 export const useRemmiCreatureList = () => {
   const LEVEL = 4;
-  const PROFICIENCY_BONUS = 2;
-  const getSneakAttackDice = () => {
-    if (LEVEL < 3) {
-      return "1d6";
-    } else if (LEVEL < 5) {
-      return "2d6";
-    } else if (LEVEL < 7) {
-      return "3d6";
-    } else if (LEVEL < 9) {
-      return "4d6";
-    } else if (LEVEL < 11) {
-      return "5d6";
-    } else if (LEVEL < 13) {
-      return "6d6";
-    } else if (LEVEL < 15) {
-      return "7d6";
-    } else if (LEVEL < 17) {
-      return "8d6";
-    } else if (LEVEL < 19) {
-      return "9d6";
-    } else {
-      return "10d6";
-    }
-  };
 
   const racialBonusPlus2 = 2;
   const racialBonusPlus1 = 1;
@@ -111,7 +88,7 @@ export const useRemmiCreatureList = () => {
           subsections: [
             {
               title: "2 Weapon Attacks (Dual Wielder)",
-              dice: `d20+${MODIFIER.DEX + PROFICIENCY_BONUS}`,
+              dice: `d20+${MODIFIER.DEX + getProficiencyBonus(LEVEL)}`,
               items: [
                 { name: "Schimmel Pimmel", dice: `1d8+1d8+${MODIFIER.DEX}` },
                 { name: "Shortsword", dice: `1d6+${MODIFIER.DEX}` },
@@ -134,7 +111,7 @@ export const useRemmiCreatureList = () => {
               items: [
                 {
                   name: "Damage",
-                  dice: getSneakAttackDice(),
+                  dice: getSneakAttackDice(LEVEL),
                 },
               ],
             },
@@ -197,10 +174,10 @@ export const useRemmiCreatureList = () => {
             {
               title: "Noble Confidence",
               usages: {
-                flags: [...Array(PROFICIENCY_BONUS)].fill(false),
+                flags: [...Array(getProficiencyBonus(LEVEL))].fill(false),
                 typeOfRest: TypeOfRest.SHORT,
               },
-              description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${PROFICIENCY_BONUS} allies per short rest`,
+              description: `give 1d4 bonus to ability check, saving throw or attack roll, to ${getProficiencyBonus(LEVEL)} allies per short rest`,
             },
             {
               title: "Fancy Footwork",
