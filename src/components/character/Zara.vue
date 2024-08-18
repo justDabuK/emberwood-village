@@ -17,7 +17,7 @@ defineProps<{
   allSpells: CollectionEntry<"spells">[];
 }>();
 
-const LEVEL = 3;
+const LEVEL = 4;
 
 const spellBookSpellNameList = [
   // --- spellbook spells : 10 ---
@@ -31,6 +31,8 @@ const spellBookSpellNameList = [
   Spell.Identify,
   Spell.DetectMagic,
   Spell.EarthTremor,
+  Spell.Invisibility,
+  Spell.Pyrotechnics,
 ];
 
 const preparedSpellNameList = [
@@ -39,14 +41,16 @@ const preparedSpellNameList = [
   Spell.MageHand,
   Spell.MinorIllusion,
   Spell.RayOfFrost,
-  // --- known spells : 7 ---
+  // --- known spells : 9 ---
   Spell.BurningHands,
   Spell.MagicMissile,
   Spell.Shield,
-  Spell.TashaSCausticBrew,
   Spell.Thunderwave,
   Spell.ScorchingRay,
   Spell.Web,
+  Spell.EarthTremor,
+  Spell.Invisibility,
+  Spell.Pyrotechnics,
 ];
 
 const getCantripsKnown = (level: number) => {
@@ -75,15 +79,6 @@ const ABILITY_SCORES: AbilityScores = {
   CHA: 10,
 };
 
-const MODIFIER: AbilityScores = {
-  STR: getModifier(ABILITY_SCORES.STR),
-  DEX: getModifier(ABILITY_SCORES.DEX),
-  CON: getModifier(ABILITY_SCORES.CON),
-  INT: getModifier(ABILITY_SCORES.INT),
-  WIS: getModifier(ABILITY_SCORES.WIS),
-  CHA: getModifier(ABILITY_SCORES.CHA),
-};
-
 const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[] = ["INT", "WIS"];
 
 const SKILL_PROFICIENCIES = [
@@ -95,13 +90,23 @@ const SKILL_PROFICIENCIES = [
 
 const SKILL_EXPERTISE: Skill[] = [];
 
+// --- Lvl 4 ---
+const level4AbilityScoreIncrease = 2;
+ABILITY_SCORES.INT += level4AbilityScoreIncrease;
+
 const defaultCreatureList: Creature[] = [
   {
     name: "Zara",
     characterLevel: LEVEL,
     hitPoints: {
-      current: 6 + MODIFIER.CON + (4 + MODIFIER.CON) * (LEVEL - 1),
-      max: 6 + MODIFIER.CON + (4 + MODIFIER.CON) * (LEVEL - 1),
+      current:
+        6 +
+        getModifier(ABILITY_SCORES.CON) +
+        (4 + getModifier(ABILITY_SCORES.CON)) * (LEVEL - 1),
+      max:
+        6 +
+        getModifier(ABILITY_SCORES.CON) +
+        (4 + getModifier(ABILITY_SCORES.CON)) * (LEVEL - 1),
       temporary: 0,
       hitDice: {
         flags: [...Array(LEVEL)].fill(false),
@@ -111,8 +116,8 @@ const defaultCreatureList: Creature[] = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getUnarmoredDefenseArmorClass(MODIFIER.DEX),
-    initiative: MODIFIER.DEX,
+    armorClass: getUnarmoredDefenseArmorClass(getModifier(ABILITY_SCORES.DEX)),
+    initiative: getModifier(ABILITY_SCORES.DEX),
     abilityScores: ABILITY_SCORES,
     savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
@@ -125,8 +130,10 @@ const defaultCreatureList: Creature[] = [
       spellSlots: getFullCasterSpellSlots(LEVEL),
       refresh: TypeOfRest.LONG,
       concentration: false,
-      spellSaveDiceCheck: 8 + MODIFIER.INT + getProficiencyBonus(LEVEL),
-      spellAttackModifier: MODIFIER.INT + getProficiencyBonus(LEVEL),
+      spellSaveDiceCheck:
+        8 + getModifier(ABILITY_SCORES.INT) + getProficiencyBonus(LEVEL),
+      spellAttackModifier:
+        getModifier(ABILITY_SCORES.INT) + getProficiencyBonus(LEVEL),
     },
     sectionList: [
       {
@@ -135,8 +142,13 @@ const defaultCreatureList: Creature[] = [
         subsections: [
           {
             title: "Weapon Attack",
-            dice: `d20+${MODIFIER.STR + getProficiencyBonus(LEVEL)}`,
-            items: [{ name: "Quarterstaff", dice: `1d6+${MODIFIER.STR}` }],
+            dice: `d20+${getModifier(ABILITY_SCORES.STR) + getProficiencyBonus(LEVEL)}`,
+            items: [
+              {
+                name: "Quarterstaff",
+                dice: `1d6+${getModifier(ABILITY_SCORES.STR)}`,
+              },
+            ],
           },
           {
             title: "Spell casting",
@@ -177,7 +189,7 @@ const defaultCreatureList: Creature[] = [
           },
           {
             title: "Telekinetic Reprisal",
-            description: `when taken damage from creature withing 10 ft. then DC ${8 + getProficiencyBonus(LEVEL) + MODIFIER.INT} for 2d8 force damage and push for 10 ft. (2 squares)`,
+            description: `when taken damage from creature withing 10 ft. then DC ${8 + getProficiencyBonus(LEVEL) + getModifier(ABILITY_SCORES.INT)} for 2d8 force damage and push for 10 ft. (2 squares)`,
             usages: {
               flags: [...Array(getProficiencyBonus(LEVEL))].fill(false),
               typeOfRest: TypeOfRest.LONG,
