@@ -33,6 +33,8 @@ const preparedSpellNameList = [
   Spell.FaerieFire,
   Spell.Moonbeam,
   Spell.WitherAndBloom,
+  Spell.DetectPoisonAndDisease,
+  Spell.PurifyFoodAndDrink,
 ];
 
 const getProficiencyBonus = (level: number) => {
