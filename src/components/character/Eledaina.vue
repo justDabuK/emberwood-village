@@ -82,7 +82,7 @@ const SKILL_EXPERTISE: Skill[] = [];
 
 // --- post creation stuff ---
 // 4th level
-preCreationApplyTelepathic(ABILITY_SCORES, preparedSpellNameList);
+preCreationApplyTelepathic(ABILITY_SCORES, preparedSpellNameList, "WIS");
 
 // --- direWolf --
 const direWolfAbilityScores: AbilityScores = {

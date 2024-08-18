@@ -8,9 +8,14 @@ import { Spell } from "../spellUtils.ts";
 export const preCreationApplyTelepathic = (
   abilityScores: AbilityScores,
   knownSpellNameList: Spell[],
+  abilityToIncrease: keyof AbilityScores,
 ) => {
-  abilityScores.WIS += 1;
+  console.group("telepathic");
+  console.log(abilityScores);
+  abilityScores[abilityToIncrease] += 1;
   knownSpellNameList.push(Spell.DetectThoughts);
+  console.log(abilityScores);
+  console.groupEnd();
 };
 
 export const postCreationApplyTelepathic = (creatureList: Creature[]) => {

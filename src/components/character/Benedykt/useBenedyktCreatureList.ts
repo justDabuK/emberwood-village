@@ -101,7 +101,7 @@ export const useBenedyktCreatureList = () => {
     STR: 8,
     DEX: 12,
     CON: 14,
-    INT: 17 + racialBonusPlus2,
+    INT: 15 + racialBonusPlus2,
     WIS: 13 + racialBonusPlus1,
     CHA: 10,
   };
@@ -125,12 +125,17 @@ export const useBenedyktCreatureList = () => {
     Skill.Persuasion, // bedside manners
   ];
 
+  console.group("ability stuff");
+  console.log("pre telepathic", ABILITY_SCORES);
   // --- pre creation stuff ---
-  preCreationApplyTelepathic(ABILITY_SCORES, knownSpellNameList);
+  preCreationApplyTelepathic(ABILITY_SCORES, knownSpellNameList, "INT");
+  console.log("post telepathic", ABILITY_SCORES);
 
   // --- 4th level ---
   ABILITY_SCORES.INT += 2;
 
+  console.log("pose level 4", ABILITY_SCORES);
+  console.groupEnd();
   const benedykt: Creature = {
     name: "Benedykt",
     characterLevel: LEVEL,
