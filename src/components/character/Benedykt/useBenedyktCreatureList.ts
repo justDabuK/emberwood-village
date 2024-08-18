@@ -14,6 +14,8 @@ import {
   preCreationApplyTelepathic,
 } from "../../../scripts/feats/telepathic.ts";
 import { owl } from "../../../scripts/familiars/owl.ts";
+import { useAbilityScoreImprovement } from "../../../scripts/feats/abilityScoreImprovement.ts";
+import { useMageborn } from "../../../scripts/backgrounds/useMageborn.ts";
 
 export const useBenedyktCreatureList = () => {
   const LEVEL = 4;
@@ -125,17 +127,19 @@ export const useBenedyktCreatureList = () => {
     Skill.Persuasion, // bedside manners
   ];
 
-  console.group("ability stuff");
-  console.log("pre telepathic", ABILITY_SCORES);
   // --- pre creation stuff ---
+  const {
+    preCreatureCreation: applyMagebornPreCreation,
+    postCreatureCreation: applyMagebornPostCreation,
+  } = useMageborn(Skill.Arcana, Skill.Perception);
+  const { preCreatureCreation: applyASI } = useAbilityScoreImprovement(
+    "INT",
+    "INT",
+  );
+  applyMagebornPreCreation(SKILL_PROFICIENCIES);
   preCreationApplyTelepathic(ABILITY_SCORES, knownSpellNameList, "INT");
-  console.log("post telepathic", ABILITY_SCORES);
+  applyASI(ABILITY_SCORES); // 4th level
 
-  // --- 4th level ---
-  ABILITY_SCORES.INT += 2;
-
-  console.log("pose level 4", ABILITY_SCORES);
-  console.groupEnd();
   const benedykt: Creature = {
     name: "Benedykt",
     characterLevel: LEVEL,
@@ -291,10 +295,6 @@ export const useBenedyktCreatureList = () => {
             title: "Languages",
             description: "Common, Draconic, Elvish, Dwarvish, Orc",
           },
-          {
-            title: "Bookworm",
-            description: `Create on spell scroll of ${Math.max(1, Math.floor(getProficiencyBonus(LEVEL) / 2))}`,
-          },
         ],
       },
       {
@@ -442,6 +442,7 @@ export const useBenedyktCreatureList = () => {
   ];
 
   // --- post creation stuff ---
+  applyMagebornPostCreation(defaultCreatureList);
   postCreationApplyTelepathic(defaultCreatureList);
 
   const creatureList = useStorage<Creature[]>(

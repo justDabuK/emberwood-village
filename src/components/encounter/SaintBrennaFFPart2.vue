@@ -35,7 +35,7 @@ const creatureEncounterList: CreatureComponentMap[] = [
   {
     creatureList: nexCreatureList.value,
     component: ApothecaryCheatSheet,
-    knownSpellNameList,
+    knownSpellNameList: preparedSpellNameList,
   },
   { creatureList: henkerCreatureList.value, component: MartialCheatSheet },
   { creatureList: nonneCreatureList.value, component: MartialCheatSheet },
