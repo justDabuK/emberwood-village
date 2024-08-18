@@ -77,6 +77,7 @@ export enum Spell {
   DetectEvilAndGood = "Detect Evil and Good",
   DetectMagic = "Detect Magic",
   DetectPoisonAndDisease = "Detect Poison and Disease",
+  DetectThoughts = "Detect Thoughts",
   Druidcraft = "Druidcraft",
   EarthTremor = "Earth Tremor",
   EnhanceAbility = "Enhance Ability",

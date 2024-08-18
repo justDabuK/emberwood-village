@@ -4,6 +4,7 @@ import {
   type Creature,
   getModifier,
   Skill,
+  type Subsection,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
 import { useStorage } from "@vueuse/core";
@@ -19,13 +20,13 @@ defineProps<{
   allSpells: CollectionEntry<"spells">[];
 }>();
 
-const LEVEL = 3;
+const LEVEL = 4;
 
 const preparedSpellNameList = [
   // --- Cantrips:  2 ---
   Spell.ThornWhip,
   Spell.Druidcraft,
-  // --- known spells : 6 ---
+  // --- known spells : 8 ---
   Spell.Entangle,
   Spell.Thunderwave,
   Spell.CureWounds,
@@ -60,15 +61,6 @@ const ABILITY_SCORES: AbilityScores = {
   CHA: 10,
 };
 
-const MODIFIER: AbilityScores = {
-  STR: getModifier(ABILITY_SCORES.STR),
-  DEX: getModifier(ABILITY_SCORES.DEX),
-  CON: getModifier(ABILITY_SCORES.CON),
-  INT: getModifier(ABILITY_SCORES.INT),
-  WIS: getModifier(ABILITY_SCORES.WIS),
-  CHA: getModifier(ABILITY_SCORES.CHA),
-};
-
 const SAVING_THROW_PROFICIENCIES_LIST: (keyof AbilityScores)[] = ["INT", "WIS"];
 
 const SKILL_PROFICIENCIES = [
@@ -82,6 +74,25 @@ const SKILL_PROFICIENCIES = [
 
 const SKILL_EXPERTISE: Skill[] = [];
 
+// --- 4th level ---
+const telepathicAbilityScoreIncrease = 1;
+ABILITY_SCORES.WIS += telepathicAbilityScoreIncrease;
+const telepathicFeatureSubsection: Subsection = {
+  title: "Telepathic",
+  description:
+    "speak telepathically in any language you know to any creature you can see within 60ft. (20 squares)",
+};
+const telepathicActionSubsection: Subsection = {
+  title: "Detect Thoughts",
+  usages: {
+    flags: [false],
+    typeOfRest: TypeOfRest.LONG,
+  },
+  description: "for free, 2nd level",
+};
+preparedSpellNameList.push(Spell.DetectThoughts);
+
+// --- direWolf --
 const direWolfAbilityScores: AbilityScores = {
   STR: 17,
   DEX: 15,
@@ -94,6 +105,7 @@ const direWolfSavingThrowProficiencyList: (keyof AbilityScores)[] = [];
 const direWolfSkillProficiencies: Skill[] = [Skill.Perception, Skill.Stealth];
 const direWolfProficiencyBonus = 2;
 
+// --- brown bear ---
 const brownBearAbilityScores: AbilityScores = {
   STR: 19,
   DEX: 10,
@@ -106,6 +118,7 @@ const brownBearSavingThrowProficiencyList: (keyof AbilityScores)[] = [];
 const brownBearSkillProficiencies: Skill[] = [Skill.Perception];
 const brownBearProficiencyBonus = 2;
 
+// --- giant spider ---
 const giantSpiderAbilityScores: AbilityScores = {
   STR: 14,
   DEX: 16,
@@ -123,8 +136,14 @@ const defaultCreatureList: Creature[] = [
     name: "Eledaina",
     characterLevel: LEVEL,
     hitPoints: {
-      current: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
-      max: 8 + MODIFIER.CON + (5 + MODIFIER.CON) * (LEVEL - 1),
+      current:
+        8 +
+        getModifier(ABILITY_SCORES.CON) +
+        (5 + getModifier(ABILITY_SCORES.CON)) * (LEVEL - 1),
+      max:
+        8 +
+        getModifier(ABILITY_SCORES.CON) +
+        (5 + getModifier(ABILITY_SCORES.CON)) * (LEVEL - 1),
       temporary: 0,
       hitDice: {
         flags: [...Array(LEVEL)].fill(false),
@@ -134,8 +153,10 @@ const defaultCreatureList: Creature[] = [
     },
     contamination: 0,
     exhaustion: 0,
-    armorClass: getShieldArmorClass(getLeatherArmorClass(MODIFIER.DEX)),
-    initiative: MODIFIER.DEX,
+    armorClass: getShieldArmorClass(
+      getLeatherArmorClass(getModifier(ABILITY_SCORES.DEX)),
+    ),
+    initiative: getModifier(ABILITY_SCORES.DEX),
     abilityScores: ABILITY_SCORES,
     savingThrowProficiencyList: SAVING_THROW_PROFICIENCIES_LIST,
     skill: {
@@ -148,8 +169,10 @@ const defaultCreatureList: Creature[] = [
       spellSlots: getFullCasterSpellSlots(LEVEL),
       refresh: TypeOfRest.LONG,
       concentration: false,
-      spellSaveDiceCheck: 8 + MODIFIER.WIS + getProficiencyBonus(LEVEL),
-      spellAttackModifier: MODIFIER.WIS + getProficiencyBonus(LEVEL),
+      spellSaveDiceCheck:
+        8 + getModifier(ABILITY_SCORES.WIS) + getProficiencyBonus(LEVEL),
+      spellAttackModifier:
+        getModifier(ABILITY_SCORES.WIS) + getProficiencyBonus(LEVEL),
     },
     sectionList: [
       {
@@ -158,16 +181,23 @@ const defaultCreatureList: Creature[] = [
         subsections: [
           {
             title: "Weapon Attack",
-            dice: `d20+${MODIFIER.STR + getProficiencyBonus(LEVEL)}`,
+            dice: `d20+${getModifier(ABILITY_SCORES.STR) + getProficiencyBonus(LEVEL)}`,
             items: [
-              { name: "Quarterstaff", dice: `1d6+${MODIFIER.STR}` },
-              { name: "Unarmed Horn Strik", dice: `1d6+${MODIFIER.STR}` },
+              {
+                name: "Quarterstaff",
+                dice: `1d6+${getModifier(ABILITY_SCORES.STR)}`,
+              },
+              {
+                name: "Unarmed Horn Strik",
+                dice: `1d6+${getModifier(ABILITY_SCORES.STR)}`,
+              },
             ],
           },
           {
             title: "Spell casting",
             description: "See spell casting cheat sheet",
           },
+          telepathicActionSubsection,
         ],
       },
       {
@@ -231,6 +261,7 @@ const defaultCreatureList: Creature[] = [
             title: "Warcaster",
             description: "Advantage on concentration checks",
           },
+          telepathicFeatureSubsection,
         ],
       },
     ],
