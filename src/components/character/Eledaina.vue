@@ -4,7 +4,6 @@ import {
   type Creature,
   getModifier,
   Skill,
-  type Subsection,
   TypeOfRest,
 } from "../../scripts/cheatSheetTypes.ts";
 import { useStorage } from "@vueuse/core";
@@ -15,10 +14,7 @@ import {
 import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
 import type { CollectionEntry } from "astro:content";
 import SpellCasterCheatSheet from "./CheatSheet/SpellCasterCheatSheet.vue";
-import {
-  postCreationApplyTelepathic,
-  preCreationApplyTelepathic,
-} from "../../scripts/feats/telepathic.ts";
+import { useTelepathic } from "../../scripts/feats/telepathic.ts";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -80,9 +76,13 @@ const SKILL_PROFICIENCIES = [
 
 const SKILL_EXPERTISE: Skill[] = [];
 
-// --- post creation stuff ---
+// --- pre creation stuff ---
+const {
+  preCreatureCreation: applyTelepathicPreCreation,
+  postCreatureCreation: applyTelepathicPostCreation,
+} = useTelepathic("WIS"); // 4th level
 // 4th level
-preCreationApplyTelepathic(ABILITY_SCORES, preparedSpellNameList, "WIS");
+applyTelepathicPreCreation(ABILITY_SCORES, preparedSpellNameList);
 
 // --- direWolf --
 const direWolfAbilityScores: AbilityScores = {
@@ -728,7 +728,7 @@ const defaultCreatureList: Creature[] = [
 ];
 
 // --- post creation stuff ---
-postCreationApplyTelepathic(defaultCreatureList);
+applyTelepathicPostCreation(defaultCreatureList);
 
 const creatureList = useStorage<Creature[]>(
   `${defaultCreatureList[0].name}-creature-list`,

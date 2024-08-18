@@ -9,10 +9,7 @@ import {
 import { getHideArmorClass } from "../../../scripts/armorClassUtils.ts";
 import { getProficiencyBonus } from "../../../scripts/getProficiencyBonus.ts";
 import { useStorage } from "@vueuse/core";
-import {
-  postCreationApplyTelepathic,
-  preCreationApplyTelepathic,
-} from "../../../scripts/feats/telepathic.ts";
+import { useTelepathic } from "../../../scripts/feats/telepathic.ts";
 import { owl } from "../../../scripts/familiars/owl.ts";
 import { useAbilityScoreImprovement } from "../../../scripts/feats/abilityScoreImprovement.ts";
 import { useMageborn } from "../../../scripts/backgrounds/useMageborn.ts";
@@ -26,7 +23,7 @@ export const useBenedyktCreatureList = () => {
     // --- mutagenist spells ---
     Spell.Jump,
     Spell.ToxicShield,
-    // Spell.AlterSelf,
+    Spell.AlterSelf,
     Spell.EnhanceAbility,
     // --- Cantrips:  4 ---
     Spell.ShockingGrasp,
@@ -131,13 +128,18 @@ export const useBenedyktCreatureList = () => {
   const {
     preCreatureCreation: applyMagebornPreCreation,
     postCreatureCreation: applyMagebornPostCreation,
-  } = useMageborn(Skill.Arcana, Skill.Perception);
+  } = useMageborn(Skill.Arcana, Skill.Perception); // background
+  const {
+    preCreatureCreation: applyTelepathicPreCreation,
+    postCreatureCreation: applyTelepathicPostCreation,
+  } = useTelepathic("INT"); // beginner feat
   const { preCreatureCreation: applyASI } = useAbilityScoreImprovement(
     "INT",
     "INT",
-  );
+  ); // 4th level
+
   applyMagebornPreCreation(SKILL_PROFICIENCIES);
-  preCreationApplyTelepathic(ABILITY_SCORES, knownSpellNameList, "INT");
+  applyTelepathicPreCreation(ABILITY_SCORES, knownSpellNameList);
   applyASI(ABILITY_SCORES); // 4th level
 
   const benedykt: Creature = {
@@ -443,7 +445,7 @@ export const useBenedyktCreatureList = () => {
 
   // --- post creation stuff ---
   applyMagebornPostCreation(defaultCreatureList);
-  postCreationApplyTelepathic(defaultCreatureList);
+  applyTelepathicPostCreation(defaultCreatureList);
 
   const creatureList = useStorage<Creature[]>(
     `${defaultCreatureList[0].name}-creature-list`,
