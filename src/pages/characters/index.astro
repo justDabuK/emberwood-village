@@ -13,177 +13,125 @@ import barbProfilePicture from "../../assets/barb.jpg";
 import otaggProfilePicture from "../../assets/otagg-profile.jpg";
 import mordredProfilePicture from "../../assets/mordred.jpeg";
 import eledainaProfilePicture from "../../assets/eledaina.jpg";
+
+const johan = {
+  name: "Johan",
+  profilePicture: johanProfilePicture,
+  link: "/characters/johan",
+};
+
+const zara = {
+  name: "Zara",
+  profilePicture: zaraProfilePicture,
+  link: "/characters/zara",
+};
+
+const eledaina = {
+  name: "Eledaina",
+  profilePicture: eledainaProfilePicture,
+  link: "/characters/eledaina",
+};
+
+const dungeonsOfDrakkenheimCast = [
+  {
+    name: "Nex",
+    profilePicture: nexProfilePicture,
+    link: "/characters/nex",
+  },
+  {
+    name: "Remmi",
+    profilePicture: remmiProfilePicture,
+    link: "/characters/remmi",
+  },
+  {
+    name: "Jyzzn",
+    profilePicture: jyzznProfilePicture,
+    link: "/characters/jyzzn",
+  },
+];
+
+const spriteRescueMissionCast = [
+  johan,
+  zara,
+  {
+    name: "Hopper",
+    profilePicture: hopperProfilePicture,
+    link: "/characters/hopper",
+  },
+  {
+    name: "Mustafa",
+    profilePicture: mustafaProfilePicture,
+    link: "/characters/mustafa",
+  },
+  {
+    name: "Barb",
+    profilePicture: barbProfilePicture,
+    link: "/characters/barb",
+  },
+];
+
+const partyList = [
+  {
+    name: "Dungeons of Drakkenheim",
+    cast: dungeonsOfDrakkenheimCast,
+  },
+  {
+    name: "Sprite Rescue Mission",
+    cast: spriteRescueMissionCast,
+  },
+  {
+    name: "Terror in Tierhaven",
+    cast: [
+      {
+        name: "Otagg",
+        profilePicture: otaggProfilePicture,
+        link: "/characters/otagg",
+      },
+      {
+        name: "Mordred",
+        profilePicture: mordredProfilePicture,
+        link: "/characters/mordred",
+      },
+      eledaina,
+      johan,
+      zara,
+    ],
+  },
+  {
+    name: "The Search",
+    cast: [johan, zara, eledaina],
+  },
+];
 ---
 
 <BaseLayout title="Characters">
   <p>Here you will see the characters and links to their specific sites</p>
-  <div class="character-list-container">
-    <div class="card">
-      <a href="/characters/nex">
-        <Image
-          src={nexProfilePicture}
-          alt="Nex profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Nex")}`}
-        >
-          Nex
+  {
+    partyList.map((party) => (
+      <>
+        <h3>{party.name}</h3>
+        <div class="character-list-container">
+          {party.cast.map((character) => (
+            <div class="card">
+              <a href={character.link}>
+                <Image
+                  src={character.profilePicture}
+                  alt={`${character.name} profile picture`}
+                  class="profile-picture"
+                />
+                <div
+                  class="character-name"
+                  style={`view-transition-name: ${sanitizeTitle(character.name)}`}
+                >
+                  {character.name}
+                </div>
+              </a>
+            </div>
+          ))}
         </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/remmi">
-        <Image
-          src={remmiProfilePicture}
-          alt="Remmi profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Remmi")}`}
-        >
-          Remmi
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/jyzzn">
-        <Image
-          src={jyzznProfilePicture}
-          alt="Jyzzn profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Jyzzn")}`}
-        >
-          Jyzzn
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/hopper">
-        <Image
-          src={hopperProfilePicture}
-          alt="Hopper profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Hopper")}`}
-        >
-          Hopper
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/johan">
-        <Image
-          src={johanProfilePicture}
-          alt="Johan profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Johan")}`}
-        >
-          Johan
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/mustafa">
-        <Image
-          src={mustafaProfilePicture}
-          alt="Mustafa profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Mustafa")}`}
-        >
-          Mustafa
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/zara">
-        <Image
-          src={zaraProfilePicture}
-          alt="Zara profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Zara")}`}
-        >
-          Zara
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/barb">
-        <Image
-          src={barbProfilePicture}
-          alt="Barb profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Barb")}`}
-        >
-          Barb
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/otagg">
-        <Image
-          src={otaggProfilePicture}
-          alt="Otagg profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Otagg")}`}
-        >
-          Otagg
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/mordred">
-        <Image
-          src={mordredProfilePicture}
-          alt="Mordred profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Mordred")}`}
-        >
-          Mordred Nowhere
-        </div>
-      </a>
-    </div>
-    <div class="card">
-      <a href="/characters/eledaina">
-        <Image
-          src={eledainaProfilePicture}
-          alt="Eledaina profile picture"
-          class="profile-picture"
-        />
-        <div
-          class="character-name"
-          style={`view-transition-name: ${sanitizeTitle("Eledaina")}`}
-        >
-          Eledaina
-        </div>
-      </a>
-    </div>
-  </div>
+      </>
+    ))
+  }
 </BaseLayout>
 
 <style>
