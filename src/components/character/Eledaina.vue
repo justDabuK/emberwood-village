@@ -15,6 +15,10 @@ import {
 import { getFullCasterSpellSlots, Spell } from "../../scripts/spellUtils.ts";
 import type { CollectionEntry } from "astro:content";
 import SpellCasterCheatSheet from "./CheatSheet/SpellCasterCheatSheet.vue";
+import {
+  postCreationApplyTelepathic,
+  preCreationApplyTelepathic,
+} from "../../scripts/feats/telepathic.ts";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -76,23 +80,9 @@ const SKILL_PROFICIENCIES = [
 
 const SKILL_EXPERTISE: Skill[] = [];
 
-// --- 4th level ---
-const telepathicAbilityScoreIncrease = 1;
-ABILITY_SCORES.WIS += telepathicAbilityScoreIncrease;
-const telepathicFeatureSubsection: Subsection = {
-  title: "Telepathic",
-  description:
-    "speak telepathically in any language you know to any creature you can see within 60ft. (20 squares)",
-};
-const telepathicActionSubsection: Subsection = {
-  title: "Detect Thoughts",
-  usages: {
-    flags: [false],
-    typeOfRest: TypeOfRest.LONG,
-  },
-  description: "for free, 2nd level",
-};
-preparedSpellNameList.push(Spell.DetectThoughts);
+// --- post creation stuff ---
+// 4th level
+preCreationApplyTelepathic(ABILITY_SCORES, preparedSpellNameList);
 
 // --- direWolf --
 const direWolfAbilityScores: AbilityScores = {
@@ -413,7 +403,6 @@ const defaultCreatureList: Creature[] = [
             title: "Spell casting",
             description: "See spell casting cheat sheet",
           },
-          telepathicActionSubsection,
         ],
       },
       {
@@ -477,7 +466,6 @@ const defaultCreatureList: Creature[] = [
             title: "Warcaster",
             description: "Advantage on concentration checks",
           },
-          telepathicFeatureSubsection,
         ],
       },
     ],
@@ -738,6 +726,9 @@ const defaultCreatureList: Creature[] = [
   giantToad,
   giantOctopus,
 ];
+
+// --- post creation stuff ---
+postCreationApplyTelepathic(defaultCreatureList);
 
 const creatureList = useStorage<Creature[]>(
   `${defaultCreatureList[0].name}-creature-list`,

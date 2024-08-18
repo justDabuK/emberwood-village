@@ -122,7 +122,6 @@ export enum Skill {
   Acrobatics = "Acrobatics",
   SleightOfHand = "Sleight of Hand",
   Stealth = "Stealth",
-  ThievesTools = "Thieve's Tools",
   Arcana = "Arcana",
   History = "History",
   Investigation = "Investigation",
@@ -137,6 +136,8 @@ export enum Skill {
   Intimidation = "Intimidation",
   Performance = "Performance",
   Persuasion = "Persuasion",
+  // --- tools ---
+  ThievesTools = "Thieve's Tools",
 }
 
 export type CharacterLevel =

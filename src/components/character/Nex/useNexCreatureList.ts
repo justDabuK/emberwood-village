@@ -9,6 +9,7 @@ import {
 import { getChainShirtArmorClass } from "../../../scripts/armorClassUtils.ts";
 import { getProficiencyBonus } from "../../../scripts/getProficiencyBonus.ts";
 import { useStorage } from "@vueuse/core";
+import { owl } from "../../../scripts/familiars/owl.ts";
 
 export const useNexCreatureList = () => {
   const NEX_LEVEL = 4;
@@ -394,80 +395,8 @@ export const useNexCreatureList = () => {
       ],
     },
     {
+      ...owl,
       name: "Hedrick",
-      hitPoints: {
-        current: 1,
-        max: 1,
-      },
-      contamination: 0,
-      exhaustion: 0,
-      armorClass: 11,
-      abilityScores: owlAbilityScores,
-      savingThrowProficiencyList: owlSavingThrowProficiencyList,
-      skill: {
-        proficiencies: owlSkillProficiencies,
-        expertise: [],
-      },
-      proficiencyBonus: owlProficiencyBonus,
-      sectionList: [
-        {
-          title: "Action",
-          used: false,
-          subsections: [
-            {
-              title: "Help",
-              description: "Give advantage to next attacker",
-            },
-            {
-              title: "Weapon Attack",
-              dice: `d20+${getModifier(owlAbilityScores.DEX) + owlProficiencyBonus}`,
-              items: [{ name: "Talons", dice: "1" }],
-            },
-          ],
-        },
-        {
-          title: "Reaction",
-          used: false,
-          subsections: [
-            {
-              title: "Opportunity Attack",
-              description: "See Weapon Attack",
-            },
-          ],
-        },
-        {
-          title: "Movement",
-          used: false,
-          subsections: [
-            {
-              title: "Walking 5ft.",
-              description: "(1 Feld)",
-            },
-            {
-              title: "Flying 60ft.",
-              description: "(12 Felder)",
-            },
-          ],
-        },
-        {
-          title: "Features",
-          subsections: [
-            {
-              title: "Flyby",
-              description: "No opportunity attacks while flying",
-            },
-            {
-              title: "Keen Hearing and Sight",
-              description:
-                "Advantage on perception checks when hearing or seeing",
-            },
-            {
-              title: "Darkvision",
-              description: "120 ft. (24 squares)",
-            },
-          ],
-        },
-      ],
     },
   ];
 
