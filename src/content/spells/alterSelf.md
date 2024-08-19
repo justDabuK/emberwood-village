@@ -1,7 +1,7 @@
 ---
 title: "Alter Self"
 level: 2
-school: "transmutation"
+school: "Transmutation"
 castingTime: "1 action"
 range: "Self"
 components: "V, S"

@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Ashlin from "../../components/character/Ashlin/Ashlin.vue";
+import { getCollection } from "astro:content";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Ashlin Hightree" icon="ashlin.jpg" iconCover>
+  <Ashlin client:load allSpells={allSpells} />
+</BaseLayout>

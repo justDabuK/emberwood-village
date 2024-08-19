@@ -6,6 +6,6 @@ import { getCollection } from "astro:content";
 const allSpells = await getCollection("spells");
 ---
 
-<BaseLayout title="Benedykt" icon="benedykt.png" iconCover>
+<BaseLayout title="Benedykt" icon="benedykt-profile-picture.png" iconCover>
   <Benedykt client:load allSpells={allSpells} />
 </BaseLayout>
