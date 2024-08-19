@@ -20,6 +20,7 @@ import { useGiantToad } from "../../scripts/wildShapes/useGiantToad.ts";
 import { useGiantOctopus } from "../../scripts/wildShapes/useGiantOctopus.ts";
 import { useBrownBear } from "../../scripts/wildShapes/useBrownBear.ts";
 import { useGiantSpider } from "../../scripts/wildShapes/useGiantSpider.ts";
+import { useWarCaster } from "../../scripts/feats/warCaster.ts";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -82,6 +83,7 @@ const SKILL_PROFICIENCIES = [
 const SKILL_EXPERTISE: Skill[] = [];
 
 // --- pre creation stuff ---
+const { postCreatureCreation: applyWarCasterPostCreation } = useWarCaster(); // beginner feat
 const {
   preCreatureCreation: applyTelepathicPreCreation,
   postCreatureCreation: applyTelepathicPostCreation,
@@ -184,10 +186,6 @@ const defaultCreatureList: Creature[] = [
             description: "See Weapon Attack",
           },
           {
-            title: "Spell Opportunity Attack (Warcaster)",
-            description: "Any single target spell with 1 action casting time",
-          },
-          {
             title: "Spell casting",
             description: "See spell casting cheat sheet",
           },
@@ -214,10 +212,6 @@ const defaultCreatureList: Creature[] = [
             title: "Magic Resistance",
             description: "Advantage against spell saving throws",
           },
-          {
-            title: "Warcaster",
-            description: "Advantage on concentration checks",
-          },
         ],
       },
     ],
@@ -225,6 +219,7 @@ const defaultCreatureList: Creature[] = [
 ];
 
 // --- post creation stuff ---
+applyWarCasterPostCreation(defaultCreatureList);
 applyTelepathicPostCreation(defaultCreatureList);
 
 const { postCreatureCreation: addDireWolf } = useDireWolf();
