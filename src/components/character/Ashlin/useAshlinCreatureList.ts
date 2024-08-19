@@ -82,7 +82,7 @@ export const useAshlinCreatureList = () => {
   ); // 4th level
 
   applyResilientCon(ABILITY_SCORES, SAVING_THROW_PROFICIENCIES_LIST);
-  applyFeyTouchedPreCreation(ABILITY_SCORES);
+  applyFeyTouchedPreCreation(ABILITY_SCORES, preparedSpellNameList);
   applyMagebornPreCreation(SKILL_PROFICIENCIES);
   applyCirclePreCreation(preparedSpellNameList);
   applyASI(ABILITY_SCORES);
@@ -203,7 +203,7 @@ export const useAshlinCreatureList = () => {
 
   // --- post creation stuff ---
   applyMagebornPostCreation(defaultCreatureList);
-  applyFeyTouchedPostCreation(defaultCreatureList, preparedSpellNameList);
+  applyFeyTouchedPostCreation(defaultCreatureList);
   applyCirclePostCreation(defaultCreatureList);
 
   const creatureList = useStorage<Creature[]>(

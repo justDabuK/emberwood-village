@@ -26,7 +26,7 @@ export const useTelepathic = (abilityToIncrease: keyof AbilityScores) => {
     creatureList[0].sectionList
       .find((section) => section.title === "Action")
       ?.subsections?.push({
-        title: "Detect Thoughts",
+        title: Spell.DetectThoughts,
         usages: {
           flags: [false],
           typeOfRest: TypeOfRest.LONG,

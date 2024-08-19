@@ -9,19 +9,20 @@ export const useFeyTouched = (
   abilityScore: keyof AbilityScores,
   additionalSpell: Spell,
 ) => {
-  const preCreatureCreation = (abilityScores: AbilityScores) => {
-    abilityScores[abilityScore] += 1;
-  };
-
-  const postCreatureCreation = (
-    creatureList: Creature[],
+  const preCreatureCreation = (
+    abilityScores: AbilityScores,
     preparedSpellNameList: Spell[],
   ) => {
+    abilityScores[abilityScore] += 1;
     preparedSpellNameList.push(Spell.MistyStep);
+    preparedSpellNameList.push(additionalSpell);
+  };
+
+  const postCreatureCreation = (creatureList: Creature[]) => {
     creatureList[0].sectionList
       .find((section) => section.title === "Action")
       ?.subsections?.push({
-        title: "Misty Step",
+        title: Spell.MistyStep,
         usages: {
           flags: [false],
           typeOfRest: TypeOfRest.LONG,
@@ -29,7 +30,6 @@ export const useFeyTouched = (
         description: "for free, 2nd level",
       });
 
-    preparedSpellNameList.push(additionalSpell);
     creatureList[0].sectionList
       .find((section) => section.title === "Action")
       ?.subsections?.push({
