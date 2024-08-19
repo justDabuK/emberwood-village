@@ -15,23 +15,27 @@ const reset = () => {
 };
 
 const currentSymptom = computed(() => {
-  switch (contaminationLevel.value) {
-    case 1:
-      return "No symptoms. Yet.";
-    case 2:
-      return "Hit points regained by expending hit dice halved.";
-    case 3:
-      return "No hit points regained at the end of a long rest.";
-    case 4:
-      return "Damage dealt by weapon attacks and spells halved.";
-    case 5:
-      return "Incapacitated.";
-    case 6:
-      return "Monstrous Transformation!";
-    case 0:
-    default:
-      return "";
+  const symptoms = [];
+
+  if (contaminationLevel.value == 1) {
+    symptoms.push("No symptoms. Yet.");
   }
+  if (contaminationLevel.value >= 2) {
+    symptoms.push("Hit points regained by expending hit dice halved.");
+  }
+  if (contaminationLevel.value >= 3) {
+    symptoms.push("No hit points regained at the end of a long rest.");
+  }
+  if (contaminationLevel.value >= 4) {
+    symptoms.push("Damage dealt by weapon attacks and spells halved.");
+  }
+  if (contaminationLevel.value >= 5) {
+    symptoms.push("Incapacitated.");
+  }
+  if (contaminationLevel.value >= 6) {
+    symptoms.push("Monstrous Transformation.");
+  }
+  return symptoms;
 });
 </script>
 
@@ -46,7 +50,9 @@ const currentSymptom = computed(() => {
       <span>{{ contaminationLevel }}</span>
       <button class="increase-button" @click="increase">+</button>
     </div>
-    <span>{{ currentSymptom }}</span>
+    <ul>
+      <li v-for="symptom in currentSymptom" :key="symptom">{{ symptom }}</li>
+    </ul>
   </div>
 </template>
 
@@ -93,6 +99,10 @@ const currentSymptom = computed(() => {
     .increase-button {
       background-color: rebeccapurple;
     }
+  }
+
+  ul {
+    padding: 0 var(--size-16);
   }
 }
 </style>
