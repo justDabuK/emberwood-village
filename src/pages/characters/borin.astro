@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Borin from "../../components/character/Borin/Borin.vue";
+import { getCollection } from "astro:content";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Borin Shadowface" icon="borin.jpg" iconCover>
+  <Borin client:load allSpells={allSpells} />
+</BaseLayout>
