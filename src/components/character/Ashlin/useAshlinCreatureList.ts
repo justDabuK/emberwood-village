@@ -149,6 +149,14 @@ export const useAshlinCreatureList = () => {
               title: "Spell casting",
               description: "See spell casting cheat sheet",
             },
+            {
+              title: "Wild shape",
+              description: `Transform into a beast of CR 1/2 or lower that can not fly. Stay in shape for ${Math.floor(LEVEL / 2)} hour(s)`,
+              usages: {
+                flags: [...Array(2)].fill(false),
+                typeOfRest: TypeOfRest.SHORT,
+              },
+            },
           ],
         },
         {
@@ -158,14 +166,6 @@ export const useAshlinCreatureList = () => {
             {
               title: "Spell casting",
               description: "See spell casting cheat sheet",
-            },
-            {
-              title: "Wild shape",
-              description: `Transform into a beast of CR 1/2 or lower that can not fly. Stay in shape for ${Math.floor(LEVEL / 2)} hour(s)`,
-              usages: {
-                flags: [...Array(2)].fill(false),
-                typeOfRest: TypeOfRest.SHORT,
-              },
             },
           ],
         },
