@@ -7,16 +7,16 @@ import {
 import { useStorage } from "@vueuse/core";
 import { Spell } from "../spellUtils.ts";
 
-export const usePumpkinder = (name = "") => {
-  const armorClass = 12;
-  const hitPoints = 10;
+export const useTwistedPumpkin = (name = "Twisted Pumpkin") => {
+  const armorClass = 13;
+  const hitPoints = 18;
   const abilityScores = {
-    STR: 6,
-    DEX: 14,
-    CON: 10,
+    STR: 8,
+    DEX: 16,
+    CON: 12,
     INT: 8,
     WIS: 12,
-    CHA: 16,
+    CHA: 18,
   };
   const skillProficiencies = [Skill.Stealth];
   const proficiencyBonus = 2;
@@ -26,14 +26,14 @@ export const usePumpkinder = (name = "") => {
 
   const defaultCreatureList: Creature[] = [
     {
-      name: name ?? "Pumkinder",
-      characterLevel: 3,
+      name,
+      characterLevel: 4,
       hitPoints: {
         current: hitPoints,
         max: hitPoints,
         temporary: 0,
         hitDice: {
-          flags: [...Array(3)].fill(false),
+          flags: [...Array(4)].fill(false),
           description: "d6",
           typeOfRest: TypeOfRest.LONG,
         },
@@ -69,11 +69,11 @@ export const usePumpkinder = (name = "") => {
               items: [
                 {
                   name: "Claw",
-                  dice: `4(1d4 +${getModifier(abilityScores.DEX)})`,
+                  dice: `5(1d4 +${getModifier(abilityScores.DEX)})`,
                 },
                 {
                   name: "Bite",
-                  dice: `4(1d4 +${getModifier(abilityScores.DEX)})`,
+                  dice: `5(1d4 +${getModifier(abilityScores.DEX)})`,
                 },
               ],
             },
@@ -81,11 +81,11 @@ export const usePumpkinder = (name = "") => {
               title: "Pumkin Toss",
               dice: `d20+${getModifier(abilityScores.DEX) + proficiencyBonus}`,
               description:
-                "Additionally DC 12 DEX save or disadvantage on next attack roll or ability check (due to blindness)",
+                "Additionally DC 13 DEX save or disadvantage on next attack roll or ability check (due to blindness)",
               items: [
                 {
                   name: "Ranged (20/60 ft.)",
-                  dice: `5(1d6 +${getModifier(abilityScores.DEX)})`,
+                  dice: `7(1d8 +${getModifier(abilityScores.DEX)})`,
                 },
               ],
             },
@@ -100,14 +100,13 @@ export const usePumpkinder = (name = "") => {
           used: false,
           subsections: [
             {
-              title: "Hide and Seek",
-              description:
-                "Hide even if only lightly obscured, reposition up to 30 ft. staying hidden",
+              title: "Hide and Wreak",
+              description: "Hide even if only lightly obscured",
             },
             {
               title: "Mischievous Trick",
               description:
-                "Creature within 30 ft. DC 12 WIS save or disadvantage on next attack roll or ability check",
+                "Creature within 30 ft. DC 13 WIS save or disadvantage on next attack roll or ability check",
             },
           ],
         },
@@ -116,7 +115,7 @@ export const usePumpkinder = (name = "") => {
           used: false,
           subsections: [
             {
-              title: "Playful Dodge",
+              title: "Sinister Dodge",
               description: "Disadvantage on attack roll",
             },
             {
