@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Pumpkinder from "../../../components/encounter/Pumpkinder.vue";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Pumpkinder">
+  <Pumpkinder client:load allSpells={allSpells} />
+</BaseLayout>
