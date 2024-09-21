@@ -2,6 +2,7 @@
 import { type Component, computed } from "vue";
 import type { Creature } from "../../scripts/cheatSheetTypes.ts";
 import type { CollectionEntry } from "astro:content";
+import type { CreatureComponentMap } from "./creautureComponentMap.ts";
 
 const { creatureEncounterList } = defineProps<{
   creatureEncounterList: CreatureComponentMap[];

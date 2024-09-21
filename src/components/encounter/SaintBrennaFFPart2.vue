@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { Creature } from "../../scripts/cheatSheetTypes.ts";
 import { useJyzznCreatureList } from "../character/Jyzzn/useJyzznCreatureList.ts";
 import { useRemmiCreatureList } from "../character/Remmi/useRemmiCreatureList.ts";
 import type { CollectionEntry } from "astro:content";
 import { useNexCreatureList } from "../character/Nex/useNexCreatureList.ts";
-import { type Component, computed, ref } from "vue";
+import { ref } from "vue";
 import MartialCheatSheet from "../character/CheatSheet/MartialCheatSheet.vue";
 import ApothecaryCheatSheet from "../character/CheatSheet/ApothecaryCheatSheet.vue";
 import { useCultist } from "../../scripts/monsters/useCultist.ts";
 import { useStorage } from "@vueuse/core";
 import BasicEncounter from "./BasicEncounter.vue";
+import type { CreatureComponentMap } from "./creautureComponentMap.ts";
 
 const encounterId = "saintBrennaFFPart2";
 
@@ -23,12 +23,6 @@ const { creatureList: jyzznCreatureList } = useJyzznCreatureList();
 const { creatureList: remmiCreatureList } = useRemmiCreatureList();
 const { creatureList: henkerCreatureList } = useCultist("Henker");
 const { creatureList: nonneCreatureList } = useCultist("Nonne");
-
-type CreatureComponentMap = {
-  creatureList: Creature[];
-  component: Component;
-  knownSpellNameList?: string[];
-};
 
 const creatureEncounterList: CreatureComponentMap[] = [
   { creatureList: jyzznCreatureList.value, component: MartialCheatSheet },
