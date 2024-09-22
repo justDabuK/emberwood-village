@@ -256,7 +256,7 @@ const toSpellLevel = (number: number): SpellLevel => {
   return `${number}` as SpellLevel;
 };
 
-const convertToSpellSlots = (slotLevelList: number[]): SpellSlots => {
+export const convertToSpellSlots = (slotLevelList: number[]): SpellSlots => {
   const spellSlots: SpellSlots = {};
   slotLevelList.forEach(
     (numberOfSlots, index) =>
