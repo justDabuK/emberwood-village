@@ -13,6 +13,8 @@
   "dependencies": {
     "@astrojs/check": "^0.3.4",
     "@astrojs/vue": "^4.5.1",
+    "@volar/language-server": "2.4.0-alpha.18",
+    "@vue/language-server": "2.0.28",
     "@vueuse/core": "^10.11.1",
     "astro": "^4.15.8",
     "astro-icon": "1.0.0",
