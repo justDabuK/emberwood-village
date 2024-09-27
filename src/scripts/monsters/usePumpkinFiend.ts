@@ -7,24 +7,22 @@ import {
 import { useStorage } from "@vueuse/core";
 import { convertToSpellSlots, Spell } from "../spellUtils.ts";
 
-export const useSinisterPumpkin = (name = "Sinister Pumpkin") => {
-  const armorClass = 14;
-  const hitPoints = 40;
+export const usePumpkinFiend = (name = "Pumpkin Fiend") => {
+  const armorClass = 16;
+  const hitPoints = 45;
   const abilityScores = {
-    STR: 10,
+    STR: 16,
     DEX: 16,
     CON: 12,
-    INT: 10,
-    WIS: 12,
-    CHA: 14,
+    INT: 5,
+    WIS: 10,
+    CHA: 8,
   };
-  const skillProficiencies = [Skill.Deception, Skill.Stealth];
+  const skillProficiencies = [Skill.Stealth];
   const proficiencyBonus = 2;
   const knownSpellNameList = [
-    Spell.MinorIllusion, // Innate Magic
-    Spell.CharmPerson,
-    Spell.Entangle,
-    Spell.MirrorImage,
+    Spell.Prestidigitation, // Innate Spellcasting
+    Spell.Thaumaturgy, // Innate Spellcasting
   ];
 
   const defaultCreatureList: Creature[] = [
@@ -54,7 +52,7 @@ export const useSinisterPumpkin = (name = "Sinister Pumpkin") => {
       proficiencyBonus,
       inspiration: false,
       magic: {
-        spellSlots: convertToSpellSlots([3, 1]),
+        spellSlots: convertToSpellSlots([]),
         refresh: TypeOfRest.LONG,
         concentration: false,
         spellSaveDiceCheck:
@@ -67,20 +65,24 @@ export const useSinisterPumpkin = (name = "Sinister Pumpkin") => {
           used: false,
           subsections: [
             {
-              title: "Weapon Attack",
+              title: "Multiattack (2 slam)",
               dice: `d20+${getModifier(abilityScores.DEX) + proficiencyBonus}`,
               items: [
                 {
-                  name: "Bite",
-                  dice: `7(1d6 +${getModifier(abilityScores.DEX)})`,
+                  name: "Slam",
+                  dice: `7(1d8 +${getModifier(abilityScores.DEX)})`,
                 },
               ],
             },
             {
-              title: "Trickster's Mischief (Recharge 5-6)",
-              dice: `DC 12 WIS`,
+              title: "Spiky Vine Lash (30 ft.)",
+              dice: `DC 11 DEX`,
+              description: "DC 11 DEX save or 10 (3d6) piercing damage",
+            },
+            {
+              title: "Frightening Gaze (30 ft.)(Recharge 5-6)",
               description:
-                "DC 12 WIS (within 30 ft.) or charmed and unable to distinguish real from illusion. Ends if hurt or different creature uses action",
+                "DC 11 WIS save or frightened & paralyzed until end of fiends next turn. ",
             },
             {
               title: "Spell casting",
@@ -89,12 +91,16 @@ export const useSinisterPumpkin = (name = "Sinister Pumpkin") => {
           ],
         },
         {
-          title: "Bonus Action",
+          title: "Reactions",
           used: false,
           subsections: [
             {
-              title: "Fey Step (1/short rest)",
-              description: "30 ft. teleport",
+              title: "Parry",
+              description: "+3 to AC against one melee attack",
+            },
+            {
+              title: "Oppertunity Attack",
+              description: "See Attack",
             },
           ],
         },
@@ -112,16 +118,36 @@ export const useSinisterPumpkin = (name = "Sinister Pumpkin") => {
           title: "Features",
           subsections: [
             {
-              title: "Evasion",
-              description: "If successful DEX save, no damage instead of half",
-            },
-            {
               title: "Darkvision",
               description: "60 ft.",
             },
             {
               title: "Languages",
-              description: "Abyssal",
+              description: "understands Abyssal but can't speak",
+            },
+            {
+              title: "Damage Resistances",
+              description:
+                "cold, fire, lightning, bludgeoning, piercing, and slashing from nonmagical attacks",
+            },
+            {
+              title: "Condition Immunities",
+              description: "frightened",
+            },
+            {
+              title: "Keen Smell",
+              description:
+                "The pumpkin fiend has advantage on Wisdom (Perception) checks that rely on smell",
+            },
+            {
+              title: "Pumpkin Form",
+              description:
+                "Advantage on Stealth check when hiding among other pumpkins, as looking like a large pumpkin with malevolant toothy grin",
+            },
+            {
+              title: "Pumpkin Regeneration",
+              description:
+                "Regain 5 HP at the start of its turn as long as a pumpkin is within 5 ft. Stop if taken radiant damage, or holly water attack or if dead",
             },
           ],
         },

@@ -134,6 +134,7 @@ export enum Spell {
   PoisonNeedle = "Poison Needle",
   PoisonSpray = "Poison Spray",
   PrayerOfHealing = "Prayer of Healing",
+  Prestidigitation = "Prestidigitation",
   ProtectionFromPoison = "Protection from Poison",
   PurgeContamination = "Purge Contamination",
   PurifyFoodAndDrink = "Purify Food and Drink",

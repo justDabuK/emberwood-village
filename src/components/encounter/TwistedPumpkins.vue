@@ -7,7 +7,7 @@ import SpellCasterCheatSheet from "../character/CheatSheet/SpellCasterCheatSheet
 import { ref } from "vue";
 import { useTwistedPumpkin } from "../../scripts/monsters/useTwistedPumpkin.ts";
 
-const encounterId = "pumpkinder";
+const encounterId = "twisted-pumpkins";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];

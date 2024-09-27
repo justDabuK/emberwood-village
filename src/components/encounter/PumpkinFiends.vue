@@ -5,16 +5,16 @@ import BasicEncounter from "./BasicEncounter.vue";
 import type { CreatureComponentMap } from "./creautureComponentMap.ts";
 import SpellCasterCheatSheet from "../character/CheatSheet/SpellCasterCheatSheet.vue";
 import { ref } from "vue";
-import { useSinisterPumpkin } from "../../scripts/monsters/useSinisterPumpkin.ts";
+import { usePumpkinFiend } from "../../scripts/monsters/usePumpkinFiend.ts";
 
-const encounterId = "sinister-pumpkins";
+const encounterId = "pumpkin-fiends";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
 }>();
 
 const { creatureList: twistedPumpkin, knownSpellNameList } =
-  useSinisterPumpkin("Sinister Pumpkin 1");
+  usePumpkinFiend("Pumpkin Fiend 1");
 
 const creatureEncounterList: CreatureComponentMap[] = [
   {

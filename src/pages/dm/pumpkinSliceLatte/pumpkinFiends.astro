@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import PumpkinFiends from "../../../components/encounter/PumpkinFiends.vue";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Pumpkin Fiends">
+  <PumpkinFiends client:load allSpells={allSpells} />
+</BaseLayout>
