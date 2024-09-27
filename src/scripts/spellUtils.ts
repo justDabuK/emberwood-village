@@ -93,6 +93,7 @@ export enum Spell {
   FalseLife = "False Life",
   FeatherFall = "Feather Fall",
   FindFamiliar = "Find Familiar",
+  Fireball = "Fireball",
   FireBolt = "Fire Bolt",
   FogCloud = "Fog Cloud",
   ForcedEvolution = "Forced Evolution",
