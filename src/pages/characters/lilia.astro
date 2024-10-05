@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LiliaContainer from "../../components/character/Lilia/Lilia.vue";
+import { getCollection } from "astro:content";
+
+const allSpells = await getCollection("spells");
+---
+
+<BaseLayout title="Satyrday" icon="lilia-portrait.jpeg" iconCover>
+  <LiliaContainer client:load allSpells={allSpells} />
+</BaseLayout>

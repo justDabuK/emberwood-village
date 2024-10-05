@@ -12,6 +12,7 @@ const props = defineProps<{
   skillProficiencyList: Skill[];
   skillExpertiseList: Skill[];
   proficiencyBonus: number;
+  jackOfAllTrades?: boolean;
 }>();
 
 const abilityScoreKeys = Object.keys(
@@ -64,6 +65,8 @@ const getSkillModifier = (skill: Skill, abilityScore: keyof AbilityScores) => {
     return addSign(modifier + props.proficiencyBonus * 2);
   } else if (props.skillProficiencyList.includes(skill)) {
     return addSign(modifier + props.proficiencyBonus);
+  } else if (props.jackOfAllTrades) {
+    return addSign(modifier + Math.floor(props.proficiencyBonus / 2));
   } else {
     return addSign(modifier);
   }
@@ -123,6 +126,7 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
           :class="[
             skillProficiencyList.includes(skill) ? 'proficient' : '',
             skillExpertiseList.includes(skill) ? 'expertise' : '',
+            jackOfAllTrades ? 'jack-of-all-trades' : '',
           ]"
         >
           {{ `${getSkillModifier(skill, scoreKey)} ${skill}` }}
@@ -179,11 +183,17 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
   margin: var(--size-8) auto;
 }
 
+.jack-of-all-trades {
+  font-style: italic;
+}
+
 .proficient {
+  font-style: unset;
   color: var(--highlight-color);
 }
 
 .expertise {
+  font-style: unset;
   font-weight: 600;
   color: var(--highlight-color);
 }

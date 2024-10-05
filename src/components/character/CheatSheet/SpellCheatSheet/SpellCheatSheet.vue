@@ -3,13 +3,14 @@ import { getLevelString, type Spell } from "../../../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
 import {
+  type Creature,
   type SpellSlots,
   TypeOfRest,
 } from "../../../../scripts/cheatSheetTypes.ts";
 import type { CollectionEntry } from "astro:content";
 
 defineProps<{
-  casterLevel: number;
+  casterLevel: Creature["characterLevel"];
   spellsSaveDiceCheck: number;
   spellAttackModifier: number;
   typeOfRest: TypeOfRest;

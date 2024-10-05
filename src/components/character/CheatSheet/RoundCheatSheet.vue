@@ -4,6 +4,10 @@ import CreatureSection from "./CreatureSection.vue";
 import { computed } from "vue";
 import InspirationToggleButton from "./InspirationToggleButton.vue";
 
+defineProps<{
+  jackOfAllTrades?: boolean;
+}>();
+
 const emit = defineEmits<{
   (evt: "resetToDefault"): void;
 }>();
@@ -45,6 +49,7 @@ const inspiration = computed<boolean | undefined>({
       v-for="(creature, index) in creatureList"
       :key="creature.name"
       v-model="creatureList[index]"
+      :jackOfAllTrades
     />
   </div>
 </template>

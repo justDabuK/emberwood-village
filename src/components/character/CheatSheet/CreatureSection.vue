@@ -11,6 +11,10 @@ import MenuRightIcon from "./SpellCheatSheet/MenuRightIcon.vue";
 
 const creature = defineModel<Creature>({ required: true });
 
+defineProps<{
+  jackOfAllTrades?: boolean;
+}>();
+
 enum Tabs {
   ACTIONS,
   SKILL,
@@ -100,6 +104,7 @@ watch(
       :skill-proficiency-list="creature.skill.proficiencies"
       :skill-expertise-list="creature.skill.expertise"
       :proficiency-bonus="creature.proficiencyBonus"
+      :jackOfAllTrades
     />
   </details>
 </template>
