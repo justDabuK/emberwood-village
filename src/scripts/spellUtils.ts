@@ -165,6 +165,7 @@ export enum Spell {
   SpareTheDying = "Spare the Dying",
   SpeakWithAnimals = "Speak with Animals",
   SpiderClimb = "Spider Climb",
+  SpiritGuardians = "Spirit Guardians",
   SpiritualWeapon = "Spiritual Weapon",
   StormOfContamination = "Storm of Contamination",
   StreamOfConsumption = "Stream of Consumption",

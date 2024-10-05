@@ -20,7 +20,7 @@ export const useFeyTouched = (
 
   const postCreatureCreation = (creatureList: Creature[]) => {
     creatureList[0].sectionList
-      .find((section) => section.title === "Action")
+      .find((section) => section.title === "Bonus Action")
       ?.subsections?.push({
         title: Spell.MistyStep,
         usages: {

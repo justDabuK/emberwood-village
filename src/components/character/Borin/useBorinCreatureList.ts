@@ -18,7 +18,7 @@ import { useDevotedMissionary } from "../../../scripts/backgrounds/useDevotedMis
 import { useTrickeryDomain } from "../../../scripts/classes/cleric/useTrickeryDomain.ts";
 
 export const useBorinCreatureList = () => {
-  const LEVEL = 4;
+  const LEVEL = 5;
 
   const preparedSpellNameList = [
     // --- Cantrips:  4 ---
@@ -26,7 +26,7 @@ export const useBorinCreatureList = () => {
     Spell.SacredFlame,
     Spell.SpareTheDying,
     Spell.TollTheDead,
-    // --- known spells : 8 ---
+    // --- known spells : 9 ---
     Spell.Command,
     Spell.DetectEvilAndGood,
     Spell.GuidingBolt,
@@ -35,6 +35,7 @@ export const useBorinCreatureList = () => {
     Spell.Aid,
     Spell.PrayerOfHealing,
     Spell.SpiritualWeapon,
+    Spell.SpiritGuardians,
   ];
 
   const racialBonusPlus1 = 1;
