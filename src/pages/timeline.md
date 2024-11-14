@@ -44,6 +44,7 @@ title: "Timeline"
 |                                | Met silver order knights and deceived them once more (also first arcane anomaly)                       |
 |                                | Remet followers of falling fire and after unsuccessful flight, fought to death                         |
 |                                | Arrived back in emberwood village and just went to bed                                                 |
-| 1 day: Friday                  | Nex starts researching Controlled Mutation (day 1)                                                     |
+| 4 days: Friday - Monday        | Nex researches Controlled Mutation                                                                     |
 |                                | Remi & Jyzzn handover the Scepter to Blackjack Mel and receive Bag of Holding and money                |
 |                                | Also receive tipp for a secret smugglers tunnel in the Black Ivory Inn & get invited to Buckledown Row |
+|                                | Talk with river about (delerium) dragons, magic items, "golden delerium" & Dresnor in Reed Manor       |
