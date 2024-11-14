@@ -37,7 +37,7 @@ export const useNexCreatureList = () => {
     Spell.StreamOfConsumption,
     Spell.HealingWord,
     Spell.GraspingGhost,
-    Spell.OcularNecrosis,
+    Spell.ControlledMutation,
     Spell.Biohazard,
     Spell.CometShards,
     Spell.WitherAndBloom,
