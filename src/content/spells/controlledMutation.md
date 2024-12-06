@@ -4,7 +4,7 @@ level: 2
 school: "Contaminated Transmutation"
 castingTime: "1 action"
 range: "30 feet"
-components: "V, S, M (a delerium chip worth 100 gp)"
+components: "V, S, M (a delerium fragment worth 100 gp)"
 duration: "Concentration, up to 1 hour"
 ---
 
