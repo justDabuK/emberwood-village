@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import SinisterPumpkins from "../../../components/encounter/SinisterPumpkins.vue";
+import SinisterPumpkinsContainer from "../../../components/encounter/SinisterPumpkins.vue";
 
 const allSpells = await getCollection("spells");
 ---
 
 <BaseLayout title="Sinister Pumpkins">
-  <SinisterPumpkins client:load allSpells={allSpells} />
+  <SinisterPumpkinsContainer client:load allSpells={allSpells} />
 </BaseLayout>

@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import SaintBrennaFFPart2 from "../../../components/encounter/SaintBrennaFFPart2.vue";
+import SaintBrennaFFPart2Container from "../../../components/encounter/SaintBrennaFFPart2.vue";
 
 const allSpells = await getCollection("spells");
 ---
 
 <BaseLayout title="Saint Brenna FF Part 2">
-  <SaintBrennaFFPart2 client:load allSpells={allSpells} />
+  <SaintBrennaFFPart2Container client:load allSpells={allSpells} />
 </BaseLayout>

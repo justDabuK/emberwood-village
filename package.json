@@ -39,6 +39,8 @@
       "@iconify/tools": "^4.0.4"
     },
     "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
       "vue-demi"
     ]
   },
