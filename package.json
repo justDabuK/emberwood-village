@@ -13,10 +13,8 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/vue": "^5.1.0",
-    "@volar/language-server": "2.4.0-alpha.18",
-    "@vue/language-server": "2.0.28",
     "@vueuse/core": "^10.11.1",
-    "astro": "^5.13.4",
+    "astro": "^5.13.5",
     "astro-icon": "1.0.0",
     "typescript": "^5.9.2",
     "vue": "^3.5.20"
@@ -44,5 +42,5 @@
       "vue-demi"
     ]
   },
-  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b"
+  "packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67"
 }
