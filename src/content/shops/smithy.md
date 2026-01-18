@@ -1,6 +1,6 @@
 ---
 title: "Crowe and Sons Smithy"
-description: "Lokaler Schmied"
+description: "Local smith"
 columnStart: 12
 columnEnd: 17
 rowStart: 22
