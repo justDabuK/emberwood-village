@@ -16,26 +16,26 @@ icon: "crystal-ball.svg"
 
 ### Magic Items of the week
 
-| Item                                                                                                    | Price  |
-| ------------------------------------------------------------------------------------------------------- |--------|
-| 9/9 [Potion of Healing](https://5e.tools/items.html#potion%20of%20healing_dmg)                          | 50 gp  |
-| 6/6 [Potion of Greater Healing](https://5e.tools/items.html#potion%20of%20greater%20healing_dmg)        | 150 gp |
-| Scroll of [Ice Knife](https://5e.tools/spells.html#ice%20knife_xge)                                     | 50 gp  |
-| Scroll of [Unseen Servant](https://5e.tools/spells.html#unseen%20servant_phb)                           | 50 gp  |
-| Scroll of [Feather Fall](https://5e.tools/spells.html#feather%20fall_phb)                               | 50 gp  |
-| Scroll of [Tasha's Caustic Brew](https://5e.tools/spells.html#tasha's%20caustic%20brew_tce)             | 50 gp  |
-| Scroll of [Maximilian's Earthen Grasp](https://5e.tools/spells.html#maximilian's%20earthen%20grasp_xge) | 100 gp |
-| Scroll of [Phantasmal Force](https://5e.tools/spells.html#phantasmal%20force_phb)                       | 100 gp |
-| Scroll of [Pyrotechnics](https://5e.tools/spells.html#pyrotechnics_xge)                                 | 100 gp |
-| Scroll of [Knock](https://5e.tools/spells.html#knock_phb)                                               | 100 gp |
-| Scroll of [Nathair's Mischief](https://5e.tools/spells.html#nathair's%20mischief_ftd)                   | 100 gp |
-| Scroll of [Magic Weapon](https://5e.tools/spells.html#magic%20weapon_phb)                               | 100 gp |
-| Scroll of [Mirror Image](https://5e.tools/spells.html#mirror%20image_phb)                               | 100 gp |
-| Scroll of [Life Transference](https://5e.tools/spells.html#life%20transference_xge)                     | 200 gp |
-| Scroll of [Tidal Wave](https://5e.tools/spells.html#tidal%20wave_xge)                                   | 200 gp |
-| Scroll of [Summon Undead](https://5e.tools/spells.html#summon%20undead_tce)                             | 500 gp |
-| [Bag of Tricks (gray)](https://5e.tools/items.html#bag%20of%20tricks%2c%20gray_dmg)                     | 200 gp |
-| [Broom of flying](https://5e.tools/items.html#broom%20of%20flying_dmg)                                  | 300 gp |
+| Item                                                                                                    | Price      |
+|---------------------------------------------------------------------------------------------------------|------------|
+| 5/9 [Potion of Healing](https://5e.tools/items.html#potion%20of%20healing_dmg)                          | 50 gp      |
+| 6/6 [Potion of Greater Healing](https://5e.tools/items.html#potion%20of%20greater%20healing_dmg)        | 150 gp     |
+| Scroll of [Ice Knife](https://5e.tools/spells.html#ice%20knife_xge)                                     | 50 gp      |
+| Scroll of [Unseen Servant](https://5e.tools/spells.html#unseen%20servant_phb)                           | 50 gp      |
+| Scroll of [Feather Fall](https://5e.tools/spells.html#feather%20fall_phb)                               | 50 gp      |
+| Scroll of [Tasha's Caustic Brew](https://5e.tools/spells.html#tasha's%20caustic%20brew_tce)             | 50 gp      |
+| Scroll of [Maximilian's Earthen Grasp](https://5e.tools/spells.html#maximilian's%20earthen%20grasp_xge) | 100 gp     |
+| Scroll of [Phantasmal Force](https://5e.tools/spells.html#phantasmal%20force_phb)                       | 100 gp     |
+| Scroll of [Pyrotechnics](https://5e.tools/spells.html#pyrotechnics_xge)                                 | 100 gp     |
+| Scroll of [Knock](https://5e.tools/spells.html#knock_phb)                                               | 100 gp     |
+| Scroll of [Nathair's Mischief](https://5e.tools/spells.html#nathair's%20mischief_ftd)                   | 100 gp     |
+| Scroll of [Magic Weapon](https://5e.tools/spells.html#magic%20weapon_phb)                               | 100 gp     |
+| Scroll of [Mirror Image](https://5e.tools/spells.html#mirror%20image_phb)                               | 100 gp     |
+| Scroll of [Life Transference](https://5e.tools/spells.html#life%20transference_xge)                     | 200 gp     |
+| Scroll of [Tidal Wave](https://5e.tools/spells.html#tidal%20wave_xge)                                   | 200 gp     |
+| Scroll of [Summon Undead](https://5e.tools/spells.html#summon%20undead_tce)                             | 500 gp     |
+| ~~[Bag of Tricks (gray)](https://5e.tools/items.html#bag%20of%20tricks%2c%20gray_dmg)~~                 | ~~200 gp~~ |
+| [Broom of flying](https://5e.tools/items.html#broom%20of%20flying_dmg)                                  | 300 gp     |
 
 ### Spell service
 
