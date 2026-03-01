@@ -14,18 +14,18 @@
     "@astrojs/check": "^0.9.6",
     "@astrojs/vue": "^5.1.4",
     "@vueuse/core": "^10.11.1",
-    "astro": "^5.17.2",
+    "astro": "^5.18.0",
     "astro-icon": "^1.1.5",
     "typescript": "^5.9.3",
-    "vue": "^3.5.28"
+    "vue": "^3.5.29"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^9.39.3",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^9.39.2",
+    "eslint": "^9.39.3",
     "eslint-config-prettier": "^9.1.2",
-    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-astro": "^1.6.0",
     "eslint-plugin-vue": "^9.33.0",
     "globals": "^15.15.0",
     "prettier": "^3.8.1",
@@ -42,5 +42,5 @@
       "vue-demi"
     ]
   },
-  "packageManager": "pnpm@10.29.3+sha512.498e1fb4cca5aa06c1dcf2611e6fafc50972ffe7189998c409e90de74566444298ffe43e6cd2acdc775ba1aa7cc5e092a8b7054c811ba8c5770f84693d33d2dc"
+  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017"
 }
