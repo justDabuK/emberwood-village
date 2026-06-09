@@ -1,10 +1,4 @@
-import {
-  type AbilityScores,
-  type Creature,
-  getModifier,
-  TypeOfRest,
-} from "../cheatSheetTypes.ts";
-import { Spell } from "../spellUtils.ts";
+import { type Creature, TypeOfRest } from "../cheatSheetTypes.ts";
 
 export const useLucky = () => {
   const postCreatureCreation = (creatureList: Creature[]) => {

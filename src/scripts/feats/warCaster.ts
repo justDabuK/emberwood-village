@@ -1,9 +1,4 @@
-import {
-  type AbilityScores,
-  type Creature,
-  TypeOfRest,
-} from "../cheatSheetTypes.ts";
-import { Spell } from "../spellUtils.ts";
+import { type Creature } from "../cheatSheetTypes.ts";
 
 export const useWarCaster = () => {
   const postCreatureCreation = (creatureList: Creature[]) => {

@@ -41,8 +41,8 @@ watch(
 
 <template>
   <details
-    class="creature-section"
     ref="detailsRef"
+    class="creature-section"
     open
     @toggle="isDetailsOpen = !isDetailsOpen"
   >
@@ -104,7 +104,7 @@ watch(
       :skill-proficiency-list="creature.skill.proficiencies"
       :skill-expertise-list="creature.skill.expertise"
       :proficiency-bonus="creature.proficiencyBonus"
-      :jackOfAllTrades
+      :jack-of-all-trades
     />
   </details>
 </template>

@@ -1,5 +1,4 @@
 import { type Creature, getModifier } from "../../cheatSheetTypes.ts";
-import { Spell } from "../../spellUtils.ts";
 import { getProficiencyBonus } from "../../getProficiencyBonus.ts";
 
 export const useDoomsayers = (currentLevel: Creature["characterLevel"]) => {

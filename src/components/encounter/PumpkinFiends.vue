@@ -35,8 +35,8 @@ const activeCreatureComponentMap = ref<CreatureComponentMap>();
   <BasicEncounter
     v-model:creature-initiative-map="creatureInitiativeMap"
     v-model:active-creature-component-map="activeCreatureComponentMap"
-    :creatureEncounterList
-    :allSpells
+    :creature-encounter-list
+    :all-spells
   />
 </template>
 

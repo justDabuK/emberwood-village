@@ -38,7 +38,7 @@ const optionalColorClass = computed(() => {
     <div class="section-title">
       <span>{{ section.title }}</span>
       <span v-if="section.dice">{{ section.dice }}</span>
-      <input v-model="model" v-if="model !== undefined" type="checkbox" />
+      <input v-if="model !== undefined" v-model="model" type="checkbox" />
     </div>
 
     <template v-if="section.subsections">

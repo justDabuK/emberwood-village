@@ -53,19 +53,6 @@ const preparedSpellNameList = [
   Spell.Pyrotechnics,
 ];
 
-const getCantripsKnown = (level: number) => {
-  if (level < 4) {
-    return 3;
-  } else if (level < 10) {
-    return 4;
-  } else {
-    return 5;
-  }
-};
-
-const getNumberOfPreparedSpells = (level: number, intModifier: number) =>
-  level + intModifier;
-
 const racialBonusPlus2 = 2;
 const racialBonusPlus1 = 1;
 const giftFromGemDragonBonus = 1;

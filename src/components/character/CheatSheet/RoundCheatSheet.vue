@@ -49,7 +49,7 @@ const inspiration = computed<boolean | undefined>({
       v-for="(creature, index) in creatureList"
       :key="creature.name"
       v-model="creatureList[index]"
-      :jackOfAllTrades
+      :jack-of-all-trades
     />
   </div>
 </template>

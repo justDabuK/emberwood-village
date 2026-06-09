@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Component, computed } from "vue";
+import { computed } from "vue";
 import type { Creature } from "../../scripts/cheatSheetTypes.ts";
 import type { CollectionEntry } from "astro:content";
 import type { CreatureComponentMap } from "./creautureComponentMap.ts";
@@ -34,7 +34,7 @@ const compareCreatureComponentMap = (
 };
 
 const sortedCreatureEncounterList = computed(() =>
-  creatureEncounterList.sort(compareCreatureComponentMap),
+  [...creatureEncounterList].sort(compareCreatureComponentMap),
 );
 
 const isBloodied = (creature: Creature) =>
@@ -71,10 +71,10 @@ const isDead = (creature: Creature) => creature.hitPoints.current <= 0;
           <td>{{ creatureComponentMap.creatureList[0].name }}</td>
           <td>
             <input
-              type="number"
               v-model="
                 creatureInitiativeMap[creatureComponentMap.creatureList[0].name]
               "
+              type="number"
               :placeholder="`?+${creatureComponentMap.creatureList[0].initiative}`"
             />
           </td>
@@ -90,7 +90,7 @@ const isDead = (creature: Creature) => creature.hitPoints.current <= 0;
       <component
         :is="activeCreatureComponentMap.component"
         v-model="activeCreatureComponentMap.creatureList"
-        :allSpells
+        :all-spells
         :known-spell-name-list="activeCreatureComponentMap.knownSpellNameList"
       />
     </div>

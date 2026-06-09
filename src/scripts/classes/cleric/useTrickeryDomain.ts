@@ -1,4 +1,4 @@
-import { type Creature, getModifier } from "../../cheatSheetTypes.ts";
+import { type Creature } from "../../cheatSheetTypes.ts";
 import { Spell } from "../../spellUtils.ts";
 
 export const useTrickeryDomain = (currentLevel: Creature["characterLevel"]) => {

@@ -8,9 +8,9 @@ defineProps<{
 
 <template>
   <svg
+    v-if="spellSchool.includes(SpellSchool.Abjuration)"
     width="24"
     height="24"
-    v-if="spellSchool.includes(SpellSchool.Abjuration)"
     viewBox="0 0 142 250.23"
   >
     <defs>
@@ -29,9 +29,9 @@ defineProps<{
     />
   </svg>
   <svg
+    v-else-if="spellSchool.includes(SpellSchool.Conjuration)"
     width="24"
     height="24"
-    v-else-if="spellSchool.includes(SpellSchool.Conjuration)"
     viewBox="0 0 169.16 197"
   >
     <defs>
@@ -50,9 +50,9 @@ defineProps<{
     />
   </svg>
   <svg
+    v-else-if="spellSchool.includes(SpellSchool.Divination)"
     width="24"
     height="24"
-    v-else-if="spellSchool.includes(SpellSchool.Divination)"
     viewBox="0 0 200.34 243.26"
   >
     <defs>
@@ -71,9 +71,9 @@ defineProps<{
     />
   </svg>
   <svg
+    v-else-if="spellSchool.includes(SpellSchool.Enchantment)"
     width="24"
     height="24"
-    v-else-if="spellSchool.includes(SpellSchool.Enchantment)"
     viewBox="0 0 175.17 206.25"
   >
     <defs>
@@ -92,9 +92,9 @@ defineProps<{
     />
   </svg>
   <svg
+    v-else-if="spellSchool.includes(SpellSchool.Evocation)"
     width="24"
     height="24"
-    v-else-if="spellSchool.includes(SpellSchool.Evocation)"
     viewBox="0 0 248 204"
   >
     <defs>
@@ -113,9 +113,9 @@ defineProps<{
     />
   </svg>
   <svg
+    v-else-if="spellSchool.includes(SpellSchool.Illusion)"
     width="24"
     height="24"
-    v-else-if="spellSchool.includes(SpellSchool.Illusion)"
     viewBox="0 0 245.38 110.4"
   >
     <defs>
@@ -134,9 +134,9 @@ defineProps<{
     />
   </svg>
   <svg
+    v-else-if="spellSchool.includes(SpellSchool.Necromancy)"
     width="24"
     height="24"
-    v-else-if="spellSchool.includes(SpellSchool.Necromancy)"
     viewBox="0 0 240.1 134.02"
   >
     <defs>
@@ -155,9 +155,9 @@ defineProps<{
     />
   </svg>
   <svg
+    v-else-if="spellSchool.includes(SpellSchool.Transmutation)"
     width="24"
     height="24"
-    v-else-if="spellSchool.includes(SpellSchool.Transmutation)"
     viewBox="0 0 175 166"
   >
     <defs>

@@ -1,4 +1,4 @@
-import { type Creature, type Skill, TypeOfRest } from "../cheatSheetTypes.ts";
+import { type Creature, type Skill } from "../cheatSheetTypes.ts";
 import { getProficiencyBonus } from "../getProficiencyBonus.ts";
 
 export const useMageborn = (firstSkill: Skill, secondSkill: Skill) => {

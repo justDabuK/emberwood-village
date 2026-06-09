@@ -6,13 +6,9 @@ import {
   Skill,
   TypeOfRest,
 } from "../../../scripts/cheatSheetTypes.ts";
-import {
-  getChainShirtArmorClass,
-  getLeatherArmorClass,
-} from "../../../scripts/armorClassUtils.ts";
+import { getLeatherArmorClass } from "../../../scripts/armorClassUtils.ts";
 import { getProficiencyBonus } from "../../../scripts/getProficiencyBonus.ts";
 import { useStorage } from "@vueuse/core";
-import { owl } from "../../../scripts/familiars/owl.ts";
 import { useSurvivor } from "../../../scripts/backgrounds/useSurvivor.ts";
 import { useFeyTouched } from "../../../scripts/feats/feyTouched.ts";
 import { useBard } from "../../../scripts/classes/bard/useBard.ts";
@@ -36,49 +32,6 @@ export const useLiliaCreatureList = () => {
     Spell.MajorImage,
     Spell.HypnoticPattern,
   ];
-
-  const getBardCantripsKnown = (level: number) => {
-    if (level < 4) {
-      return 2;
-    } else if (level < 10) {
-      return 3;
-    } else {
-      return 4;
-    }
-  };
-
-  const getBardSpellsKnown = (level: number) => {
-    switch (level) {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-      case 7:
-      case 8:
-      case 9:
-        return level + 3;
-      case 10:
-        return 14;
-      case 11:
-      case 12:
-        return 15;
-      case 13:
-        return 16;
-      case 14:
-        return 18;
-      case 15:
-      case 16:
-        return 19;
-      case 17:
-        return 20;
-      case 18:
-      case 19:
-      case 20:
-        return 22;
-    }
-  };
 
   const racialBonusPlus2 = 2;
   const racialBonusPlus1 = 1;

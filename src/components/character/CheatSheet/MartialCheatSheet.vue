@@ -15,8 +15,8 @@ const emit = defineEmits<{
   <div class="cheat-sheet-list">
     <RoundCheatSheet
       v-model="creatureList"
-      @reset-to-default="emit('resetToDefault')"
       class="round-cheat-sheet"
+      @reset-to-default="emit('resetToDefault')"
     />
     <div class="divider" />
     <NoteSection v-if="notesStorage !== undefined" v-model="notesStorage" />

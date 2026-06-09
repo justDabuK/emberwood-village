@@ -1,5 +1,4 @@
 import { type Creature, type Skill, TypeOfRest } from "../cheatSheetTypes.ts";
-import { getProficiencyBonus } from "../getProficiencyBonus.ts";
 
 export const useDevotedMissionary = (firstSkill: Skill, secondSkill: Skill) => {
   const preCreatureCreation = (skillProficiencies: Skill[]) => {

@@ -43,19 +43,6 @@ export const useNexCreatureList = () => {
     Spell.WitherAndBloom,
   ];
 
-  const getCantripsKnown = (level: number) => {
-    if (level < 4) {
-      return 3;
-    } else if (level < 10) {
-      return 4;
-    } else {
-      return 5;
-    }
-  };
-
-  const getSpellsKnown = (level: number, intModifier: number) =>
-    level + intModifier;
-
   const getSpellSlots = (level: number) => {
     if (level === 1) {
       return 1;
@@ -83,14 +70,6 @@ export const useNexCreatureList = () => {
       return 4;
     } else {
       return 5;
-    }
-  };
-
-  const getTheoriesKnown = (level: number) => {
-    if (level === 1) {
-      return 0;
-    } else {
-      return Math.floor(level / 2) + 1;
     }
   };
 
@@ -143,18 +122,6 @@ export const useNexCreatureList = () => {
   const corpseWroughtCreatureSavingThrowProficiencyList: (keyof AbilityScores)[] =
     ["CON", "WIS"];
   const corpseWroughtCreatureSkillProficiencies: Skill[] = [Skill.Athletics];
-
-  const owlAbilityScores: AbilityScores = {
-    STR: 3,
-    DEX: 13,
-    CON: 8,
-    INT: 2,
-    WIS: 12,
-    CHA: 7,
-  };
-  const owlSavingThrowProficiencyList: (keyof AbilityScores)[] = [];
-  const owlSkillProficiencies: Skill[] = [Skill.Perception, Skill.Stealth];
-  const owlProficiencyBonus = 2;
 
   const defaultNexCreatureList: Creature[] = [
     {

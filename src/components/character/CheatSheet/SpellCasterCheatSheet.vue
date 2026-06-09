@@ -5,7 +5,6 @@ import SpellCheatSheet from "./SpellCheatSheet/SpellCheatSheetContainer.vue";
 import type { Creature } from "../../../scripts/cheatSheetTypes.ts";
 import type { CollectionEntry } from "astro:content";
 import type { Spell } from "../../../scripts/spellUtils.ts";
-import CreatureSection from "./CreatureSection.vue";
 
 defineProps<{
   allSpells: CollectionEntry<"spells">[];
@@ -25,7 +24,7 @@ const emit = defineEmits<{
   <div class="cheat-sheet-list">
     <RoundCheatSheet
       v-model="creatureList"
-      :jackOfAllTrades
+      :jack-of-all-trades
       @reset-to-default="emit('resetToDefault')"
     />
     <div class="divider" />

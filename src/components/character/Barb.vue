@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import RoundCheatSheet from "./CheatSheet/RoundCheatSheet.vue";
 import {
   type AbilityScores,
   type Creature,
@@ -9,7 +8,6 @@ import {
 } from "../../scripts/cheatSheetTypes.ts";
 import { useStorage } from "@vueuse/core";
 import { getUnarmoredDefenseArmorClass } from "../../scripts/armorClassUtils.ts";
-import NoteSection from "./CheatSheet/NoteSection.vue";
 import { getProficiencyBonus } from "../../scripts/getProficiencyBonus.ts";
 import MartialCheatSheet from "./CheatSheet/MartialCheatSheet.vue";
 

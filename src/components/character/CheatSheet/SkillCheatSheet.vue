@@ -123,6 +123,7 @@ const getAbilityScoreName = (abilityScore: keyof AbilityScores) => {
       <ul class="skill-list">
         <li
           v-for="skill in SkillsPerAbilityScore[scoreKey]"
+          :key="skill"
           :class="[
             skillProficiencyList.includes(skill) ? 'proficient' : '',
             skillExpertiseList.includes(skill) ? 'expertise' : '',

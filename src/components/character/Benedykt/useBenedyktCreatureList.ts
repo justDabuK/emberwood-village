@@ -42,19 +42,6 @@ export const useBenedyktCreatureList = () => {
     Spell.WitherAndBloom,
   ];
 
-  const getCantripsKnown = (level: number) => {
-    if (level < 4) {
-      return 3;
-    } else if (level < 10) {
-      return 4;
-    } else {
-      return 5;
-    }
-  };
-
-  const getSpellsKnown = (level: number, intModifier: number) =>
-    level + intModifier;
-
   const getSpellSlots = (level: number) => {
     if (level === 1) {
       return 1;
@@ -82,14 +69,6 @@ export const useBenedyktCreatureList = () => {
       return 4;
     } else {
       return 5;
-    }
-  };
-
-  const getTheoriesKnown = (level: number) => {
-    if (level === 1) {
-      return 0;
-    } else {
-      return Math.floor(level / 2) + 1;
     }
   };
 

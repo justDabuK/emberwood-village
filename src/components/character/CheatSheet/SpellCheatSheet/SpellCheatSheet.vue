@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getLevelString, type Spell } from "../../../../scripts/spellUtils.ts";
+import { getLevelString } from "../../../../scripts/spellUtils.ts";
 import SpellSchoolIcon from "./SpellSchoolIcon.vue";
 import SpellRangeIcon from "./SpellRangeIcon.vue";
 import {
@@ -62,19 +62,20 @@ const getOptionalActionColor = (title: string) => {
         <ul>
           <li v-for="(slot, level) in spellSlots" :key="level">
             {{ `${level}: ` }}
-            <input
-              v-if="slot"
-              v-for="(_, index) in slot.flags"
-              :key="index"
-              type="checkbox"
-              v-model="slot.flags[index]"
-            />
+            <template v-if="slot">
+              <input
+                v-for="(_, index) in slot.flags"
+                :key="index"
+                v-model="slot.flags[index]"
+                type="checkbox"
+              />
+            </template>
           </li>
         </ul>
       </div>
       <div class="card concentration">
         <h2>Concentration</h2>
-        <input type="checkbox" v-model="concentration" />
+        <input v-model="concentration" type="checkbox" />
       </div>
     </div>
     <div class="spell-cheat-sheet-body">
@@ -87,7 +88,7 @@ const getOptionalActionColor = (title: string) => {
           :class="`spell-section ${getOptionalActionColor(spellSection.title)}`"
         >
           <h2>{{ spellSection.title }}</h2>
-          <div v-for="(spellList, level) in spellSection.spells">
+          <div v-for="(spellList, level) in spellSection.spells" :key="level">
             <h3>{{ getLevelString(level) }}</h3>
             <div class="spell-section-spell-list">
               <a

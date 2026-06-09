@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import type {
-  CharacterLevel,
-  Creature,
-} from "../../../scripts/cheatSheetTypes.ts";
+import type { Creature } from "../../../scripts/cheatSheetTypes.ts";
 import type { CollectionEntry } from "astro:content";
 import RoundCheatSheet from "./RoundCheatSheet.vue";
 import ApothecarySpellCheatSheetContainer from "./SpellCheatSheet/ApothecarySpellCheatSheetContainer.vue";
