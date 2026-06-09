@@ -11,7 +11,7 @@ const { item } = Astro.props;
 ---
 
 <MarkdownLink
-  url={`/magicItems/${item.slug}`}
+  url={`/magicItems/${item.id}`}
   title={item.data.title}
   disabled={item.data.disabled}
   icon={getMagicItemIconName(item.data.type)}

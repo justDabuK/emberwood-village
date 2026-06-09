@@ -18,15 +18,15 @@ const allShops = await getCollection("shops");
       [
         ...allEstablishments.map((establishment) => ({
           data: establishment.data,
-          url: `/establishments/${establishment.slug}`,
+          url: `/establishments/${establishment.id}`,
         })),
         ...allShops.map((shop) => ({
           data: shop.data,
-          url: `/shops/${shop.slug}`,
+          url: `/shops/${shop.id}`,
         })),
         ...allMisc.map((misc) => ({
           data: misc.data,
-          url: `/misc/${misc.slug}`,
+          url: `/misc/${misc.id}`,
         })),
       ]
         .filter(
@@ -49,7 +49,7 @@ const allShops = await getCollection("shops");
         {
           allShops.map((shop) => (
             <MarkdownLink
-              url={`/shops/${shop.slug}`}
+              url={`/shops/${shop.id}`}
               title={shop.data.title}
               icon={shop.data.icon}
             />
@@ -64,7 +64,7 @@ const allShops = await getCollection("shops");
         {
           allEstablishments.map((establishment) => (
             <MarkdownLink
-              url={`/establishments/${establishment.slug}`}
+              url={`/establishments/${establishment.id}`}
               title={establishment.data.title}
               icon={establishment.data.icon}
             />
@@ -79,7 +79,7 @@ const allShops = await getCollection("shops");
         {
           allMisc.map((misc) => (
             <MarkdownLink
-              url={`/misc/${misc.slug}`}
+              url={`/misc/${misc.id}`}
               title={misc.data.title}
               icon={misc.data.icon}
             />

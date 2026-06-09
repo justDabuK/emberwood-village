@@ -13,7 +13,7 @@ const allDowntimeActivities = await getCollection("downtime");
     {
       allDowntimeActivities.map((activity) => (
         <MarkdownLink
-          url={`/downtime/${activity.slug}`}
+          url={`/downtime/${activity.id}`}
           title={activity.data.title}
           disabled={activity.data.disabled}
         />

@@ -24,7 +24,7 @@ const allBeasts = await getCollection("bestiary");
     {
       allBeasts.map((beast) => (
         <MarkdownLink
-          url={`/bestiary/${beast.slug}/`}
+          url={`/bestiary/${beast.id}/`}
           title={beast.data.title}
         />
       ))

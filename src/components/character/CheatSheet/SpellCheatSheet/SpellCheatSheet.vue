@@ -93,7 +93,7 @@ const getOptionalActionColor = (title: string) => {
               <a
                 v-for="spell in spellList"
                 :key="spell.data.title"
-                :href="`/spells/${spell.slug}`"
+                :href="`/spells/${spell.id}`"
                 :class="[
                   'card',
                   'spell',

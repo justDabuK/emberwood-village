@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import { sanitizeTitle } from "../scripts/sanitizeTitle";
 import InlineIcon from "../components/InlineIcon.astro";
 
@@ -24,7 +24,7 @@ const titleTransitionName = `view-transition-name: ${sanitizeTitle(title)}`;
     <link rel="icon" type="image/svg+xml" href="/deliriumCrystal.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <Header />

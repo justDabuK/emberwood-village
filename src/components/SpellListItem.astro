@@ -11,7 +11,7 @@ const { spell } = Astro.props;
 ---
 
 <MarkdownLink
-  url={`/spells/${spell.slug}`}
+  url={`/spells/${spell.id}`}
   title={spell.data.title}
   disabled={spell.data.disabled}
   icon={getSpellSchoolIconName(spell.data.school)}
